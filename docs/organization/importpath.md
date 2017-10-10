@@ -20,3 +20,23 @@ package path指具体包的路径，比如有个hello包，那么其import path�
 	比如在github上注册了一个账户叫做cyent，那么github默认会给一个github.com/cyent，之后创建的repo都可以放在这下面，比如github.com/cyent/repo1。
 
 	通常个人用户会像上面这么用，但是对于团队或者公司来说，cyent只是一个注册账号，不作为品牌推广，因此会用团队名，公司名，或产品系列名等，比如github.com/mycompany，这就是建立了一个organization，organization名字叫做mycompany，之后repo都放在这下面，比如github.com/mycompany/myproduct
+
+## **例子**
+
+---
+
+举例说明：假设GOPATH=/opt/cyent/golang，那么本地目录结构:
+
+```text
+/opt/cyent/golang/src/
+	github.com/organization1/repo
+	github.com/organization2/repo
+	github.com/cyent/repo1
+```
+
+上面这种目录结构解读：
+/opt/cyent/golang是放置我的所有go代码的根路径
+
+其中我自己的代码在github.com/cyent/repo1下
+
+organization1/repo和organization2/repo是我代码中会依赖的库（编译时候会自动载到本地来）
