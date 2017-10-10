@@ -55,3 +55,10 @@ extra_javascript:
 
 pages:
     - 一. 介绍: index.md
+    - 二. 代码组织:
+        - 1. workspace: organization/workspace.md
+        - 2. GOPATH: organization/gopath.md
+        - 3. import path: organization/importpath.md
+    - 三. 附录:
+        - 1. 文档: appendix/doc.md
+        - 2. 编码规范: appendix/code.md
