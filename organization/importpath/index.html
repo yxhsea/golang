@@ -290,6 +290,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" title="例子" class="md-nav__link">
+    例子
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -384,6 +391,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" title="例子" class="md-nav__link">
+    例子
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -415,6 +429,19 @@
 <p>比如在github上注册了一个账户叫做cyent，那么github默认会给一个github.com/cyent，之后创建的repo都可以放在这下面，比如github.com/cyent/repo1。</p>
 <p>通常个人用户会像上面这么用，但是对于团队或者公司来说，cyent只是一个注册账号，不作为品牌推广，因此会用团队名，公司名，或产品系列名等，比如github.com/mycompany，这就是建立了一个organization，organization名字叫做mycompany，之后repo都放在这下面，比如github.com/mycompany/myproduct</p>
 </div>
+<h2 id="_3"><strong>例子</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<hr />
+<p>举例说明：假设GOPATH=/opt/cyent/golang，那么本地目录结构:</p>
+<div class="codehilite"><pre><span></span>/opt/cyent/golang/src/
+    github.com/organization1/repo
+    github.com/organization2/repo
+    github.com/cyent/repo1
+</pre></div>
+
+<p>上面这种目录结构解读：
+/opt/cyent/golang是放置我的所有go代码的根路径</p>
+<p>其中我自己的代码在github.com/cyent/repo1下</p>
+<p>organization1/repo和organization2/repo是我代码中会依赖的库（编译时候会自动载到本地来）</p>
                 
                   
                 
