@@ -10,26 +10,28 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/organization/gopath/">
+      
       
         <meta name="author" content="cyent">
       
       
-        <link rel="shortcut icon" href="/markdown-with-mkdocs-material/assets/images/favicon.png">
+        <link rel="shortcut icon" href="../../assets/images/favicon.png">
       
       <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.10.1">
     
     
       
-        <title>Go语言学习 - cyent笔记</title>
+        <title>2. GOPATH - Go语言学习 - cyent笔记</title>
       
     
     
-      <script src="/markdown-with-mkdocs-material/assets/javascripts/modernizr-e826f8942a.js"></script>
+      <script src="../../assets/javascripts/modernizr-e826f8942a.js"></script>
     
     
-      <link rel="stylesheet" href="/markdown-with-mkdocs-material/assets/stylesheets/application-a20f419c8e.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application-a20f419c8e.css">
       
-        <link rel="stylesheet" href="/markdown-with-mkdocs-material/assets/stylesheets/application-23f75ab9c7.palette.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-23f75ab9c7.palette.css">
       
     
     
@@ -80,7 +82,13 @@
         <span class="md-flex__ellipsis md-header-nav__title">
           
             
-            Go语言学习 - cyent笔记
+              
+                <span class="md-header-nav__parent">
+                  二. 代码组织
+                </span>
+              
+            
+            2. GOPATH
           
         </span>
       </div>
@@ -189,7 +197,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/markdown-with-mkdocs-material/" title="一. 介绍" class="md-nav__link">
+    <a href="../.." title="一. 介绍" class="md-nav__link">
       一. 介绍
     </a>
   </li>
@@ -199,10 +207,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
     
     <label class="md-nav__link" for="nav-2">
       二. 代码组织
@@ -220,7 +230,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/markdown-with-mkdocs-material/organization/workspace/" title="1. workspace" class="md-nav__link">
+    <a href="../workspace/" title="1. workspace" class="md-nav__link">
       1. workspace
     </a>
   </li>
@@ -230,11 +240,57 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="/markdown-with-mkdocs-material/organization/gopath/" title="2. GOPATH" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        2. GOPATH
+      </label>
+    
+    <a href="./" title="2. GOPATH" class="md-nav__link md-nav__link--active">
       2. GOPATH
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="简介" class="md-nav__link">
+    简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gopath" title="如何查看GOPATH" class="md-nav__link">
+    如何查看GOPATH
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gopath_1" title="GOPATH的设置" class="md-nav__link">
+    GOPATH的设置
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -244,7 +300,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/markdown-with-mkdocs-material/organization/importpath/" title="3. import path" class="md-nav__link">
+    <a href="../importpath/" title="3. import path" class="md-nav__link">
       3. import path
     </a>
   </li>
@@ -280,7 +336,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/markdown-with-mkdocs-material/appendix/doc/" title="1. 文档" class="md-nav__link">
+    <a href="../../appendix/doc/" title="1. 文档" class="md-nav__link">
       1. 文档
     </a>
   </li>
@@ -292,7 +348,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/markdown-with-mkdocs-material/appendix/code/" title="2. 编码规范" class="md-nav__link">
+    <a href="../../appendix/code/" title="2. 编码规范" class="md-nav__link">
       2. 编码规范
     </a>
   </li>
@@ -310,12 +366,79 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="简介" class="md-nav__link">
+    简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gopath" title="如何查看GOPATH" class="md-nav__link">
+    如何查看GOPATH
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gopath_1" title="GOPATH的设置" class="md-nav__link">
+    GOPATH的设置
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
+                
+                
+                  <h1>2. GOPATH</h1>
+                
+                <h2 id="_1"><strong>简介</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
+<p>GOPATH：workspace的路径，默认为$HOME/go。</p>
+<div class="admonition warning">
+<p>GOPATH不是指go安装路径，因此不能写/usr/local/go-1.8之类的</p>
+</div>
+<h2 id="gopath"><strong>如何查看GOPATH</strong><a class="headerlink" href="#gopath" title="Permanent link">&para;</a></h2>
+<hr />
+<p>go env可以看到所有go环境变量，如果只看GOPATH可以go env GOPATH</p>
+<h2 id="gopath_1"><strong>GOPATH的设置</strong><a class="headerlink" href="#gopath_1" title="Permanent link">&para;</a></h2>
+<hr />
+<p>执行命令</p>
+<div class="codehilite"><pre><span></span>export GOPATH=/path/to
+</pre></div>
 
+<p>为便于在命令行下执行编译出的二进制可执行程序，建议将bin目录路径加到系统PATH上:</p>
+<div class="codehilite"><pre><span></span>export PATH=$PATH:$(go env GOPATH)/bin
+</pre></div>
+
+<p>另外，可以将上面2个export写入~/.bash_profile，然后source ~/.bash_profile 立即生效</p>
+                
+                  
+                
+              
               
                 
               
@@ -326,6 +449,41 @@
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../workspace/" title="1. workspace" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                1. workspace
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../importpath/" title="3. import path" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                3. import path
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -354,14 +512,14 @@
       
     </div>
     
-      <script src="/markdown-with-mkdocs-material/assets/javascripts/application-f3ab9e5ff8.js"></script>
+      <script src="../../assets/javascripts/application-f3ab9e5ff8.js"></script>
       
       
-      <script>app.initialize({url:{base:"/markdown-with-mkdocs-material"}})</script>
+      <script>app.initialize({url:{base:"../.."}})</script>
       
-        <script src="/markdown-with-mkdocs-material/js/extra.js"></script>
+        <script src="../../js/extra.js"></script>
       
-        <script src="/markdown-with-mkdocs-material/js/baidu-tongji.js"></script>
+        <script src="../../js/baidu-tongji.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       

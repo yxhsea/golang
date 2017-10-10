@@ -10,26 +10,28 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/appendix/code/">
+      
       
         <meta name="author" content="cyent">
       
       
-        <link rel="shortcut icon" href="/markdown-with-mkdocs-material/assets/images/favicon.png">
+        <link rel="shortcut icon" href="../../assets/images/favicon.png">
       
       <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.10.1">
     
     
       
-        <title>Go语言学习 - cyent笔记</title>
+        <title>2. 编码规范 - Go语言学习 - cyent笔记</title>
       
     
     
-      <script src="/markdown-with-mkdocs-material/assets/javascripts/modernizr-e826f8942a.js"></script>
+      <script src="../../assets/javascripts/modernizr-e826f8942a.js"></script>
     
     
-      <link rel="stylesheet" href="/markdown-with-mkdocs-material/assets/stylesheets/application-a20f419c8e.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application-a20f419c8e.css">
       
-        <link rel="stylesheet" href="/markdown-with-mkdocs-material/assets/stylesheets/application-23f75ab9c7.palette.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-23f75ab9c7.palette.css">
       
     
     
@@ -80,7 +82,13 @@
         <span class="md-flex__ellipsis md-header-nav__title">
           
             
-            Go语言学习 - cyent笔记
+              
+                <span class="md-header-nav__parent">
+                  三. 附录
+                </span>
+              
+            
+            2. 编码规范
           
         </span>
       </div>
@@ -189,7 +197,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/markdown-with-mkdocs-material/" title="一. 介绍" class="md-nav__link">
+    <a href="../.." title="一. 介绍" class="md-nav__link">
       一. 介绍
     </a>
   </li>
@@ -220,7 +228,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/markdown-with-mkdocs-material/organization/workspace/" title="1. workspace" class="md-nav__link">
+    <a href="../../organization/workspace/" title="1. workspace" class="md-nav__link">
       1. workspace
     </a>
   </li>
@@ -232,7 +240,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/markdown-with-mkdocs-material/organization/gopath/" title="2. GOPATH" class="md-nav__link">
+    <a href="../../organization/gopath/" title="2. GOPATH" class="md-nav__link">
       2. GOPATH
     </a>
   </li>
@@ -244,7 +252,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/markdown-with-mkdocs-material/organization/importpath/" title="3. import path" class="md-nav__link">
+    <a href="../../organization/importpath/" title="3. import path" class="md-nav__link">
       3. import path
     </a>
   </li>
@@ -259,10 +267,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       三. 附录
@@ -280,7 +290,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/markdown-with-mkdocs-material/appendix/doc/" title="1. 文档" class="md-nav__link">
+    <a href="../doc/" title="1. 文档" class="md-nav__link">
       1. 文档
     </a>
   </li>
@@ -290,11 +300,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="/markdown-with-mkdocs-material/appendix/code/" title="2. 编码规范" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="2. 编码规范" class="md-nav__link md-nav__link--active">
       2. 编码规范
     </a>
+    
   </li>
 
         
@@ -310,12 +327,34 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
-
+                
+                
+                  <h1>2. 编码规范</h1>
+                
+                <p>关于编码规范及go的一些宗旨理念等</p>
+<p>英文：<a href="https://golang.org/doc/effective_go.html#names">https://golang.org/doc/effective_go.html#names</a></p>
+<p>中文：<a href="https://go-zh.org/doc/effective_go.html#名称">https://go-zh.org/doc/effective_go.html#名称</a></p>
+                
+                  
+                
+              
               
                 
               
@@ -326,6 +365,27 @@
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../doc/" title="1. 文档" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                1. 文档
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -354,14 +414,14 @@
       
     </div>
     
-      <script src="/markdown-with-mkdocs-material/assets/javascripts/application-f3ab9e5ff8.js"></script>
+      <script src="../../assets/javascripts/application-f3ab9e5ff8.js"></script>
       
       
-      <script>app.initialize({url:{base:"/markdown-with-mkdocs-material"}})</script>
+      <script>app.initialize({url:{base:"../.."}})</script>
       
-        <script src="/markdown-with-mkdocs-material/js/extra.js"></script>
+        <script src="../../js/extra.js"></script>
       
-        <script src="/markdown-with-mkdocs-material/js/baidu-tongji.js"></script>
+        <script src="../../js/baidu-tongji.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
