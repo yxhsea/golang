@@ -2,7 +2,7 @@
 
 ---
 
-GOPATH：workspace的路径，默认为$HOME/go。
+GOPATH：workspace的路径，默认为`$HOME/go`。
 
 !!! warning ""
 	GOPATH不是指go安装路径，因此不能写/usr/local/go-1.8之类的
@@ -11,7 +11,7 @@ GOPATH：workspace的路径，默认为$HOME/go。
 
 ---
 
-go env可以看到所有go环境变量，如果只看GOPATH可以go env GOPATH
+`go env`可以看到所有go环境变量，如果只看GOPATH可以`go env GOPATH`
 
 ## **GOPATH的设置**
 
@@ -29,4 +29,4 @@ export GOPATH=/path/to
 export PATH=$PATH:$(go env GOPATH)/bin
 ```
 
-另外，可以将上面2个export写入~/.bash_profile，然后source ~/.bash_profile 立即生效
+另外，可以将上面2个export写入~/.bash_profile，然后`source ~/.bash_profile` 立即生效
