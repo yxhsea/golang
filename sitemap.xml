@@ -4,7 +4,7 @@
     
     <url>
      <loc>https://cyent.github.io/markdown-with-mkdocs-material//</loc>
-     <lastmod>2017-10-10</lastmod>
+     <lastmod>2017-10-12</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,19 +13,31 @@
         
     <url>
      <loc>https://cyent.github.io/markdown-with-mkdocs-material//organization/workspace/</loc>
-     <lastmod>2017-10-10</lastmod>
+     <lastmod>2017-10-12</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/markdown-with-mkdocs-material//organization/gopath/</loc>
-     <lastmod>2017-10-10</lastmod>
+     <lastmod>2017-10-12</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/markdown-with-mkdocs-material//organization/importpath/</loc>
-     <lastmod>2017-10-10</lastmod>
+     <lastmod>2017-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://cyent.github.io/markdown-with-mkdocs-material//organization/helloworld/</loc>
+     <lastmod>2017-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://cyent.github.io/markdown-with-mkdocs-material//organization/firstlib/</loc>
+     <lastmod>2017-10-12</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -35,13 +47,13 @@
         
     <url>
      <loc>https://cyent.github.io/markdown-with-mkdocs-material//appendix/doc/</loc>
-     <lastmod>2017-10-10</lastmod>
+     <lastmod>2017-10-12</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/markdown-with-mkdocs-material//appendix/code/</loc>
-     <lastmod>2017-10-10</lastmod>
+     <lastmod>2017-10-12</lastmod>
      <changefreq>daily</changefreq>
     </url>
         

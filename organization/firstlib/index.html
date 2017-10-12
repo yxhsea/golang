@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/organization/importpath/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/organization/firstlib/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>3. import path - Go语言学习 - cyent笔记</title>
+        <title>5. 第一个library - Go语言学习 - cyent笔记</title>
       
     
     
@@ -88,7 +88,7 @@
                 </span>
               
             
-            3. import path
+            5. 第一个library
           
         </span>
       </div>
@@ -252,57 +252,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        3. import path
-      </label>
-    
-    <a href="./" title="3. import path" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../importpath/" title="3. import path" class="md-nav__link">
       3. import path
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="简介" class="md-nav__link">
-    简介
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="组成" class="md-nav__link">
-    组成
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="例子" class="md-nav__link">
-    例子
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -322,11 +276,57 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../firstlib/" title="5. 第一个library" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        5. 第一个library
+      </label>
+    
+    <a href="./" title="5. 第一个library" class="md-nav__link md-nav__link--active">
       5. 第一个library
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lib" title="创建lib" class="md-nav__link">
+    创建lib
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lib_1" title="调用lib" class="md-nav__link">
+    调用lib
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gopath" title="附: 此时GOPATH目录结构" class="md-nav__link">
+    附: 此时GOPATH目录结构
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -402,22 +402,22 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" title="简介" class="md-nav__link">
-    简介
+  <a href="#lib" title="创建lib" class="md-nav__link">
+    创建lib
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" title="组成" class="md-nav__link">
-    组成
+  <a href="#lib_1" title="调用lib" class="md-nav__link">
+    调用lib
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" title="例子" class="md-nav__link">
-    例子
+  <a href="#gopath" title="附: 此时GOPATH目录结构" class="md-nav__link">
+    附: 此时GOPATH目录结构
   </a>
   
 </li>
@@ -437,35 +437,99 @@
               
                 
                 
-                  <h1>3. import path</h1>
+                  <h1>5. 第一个library</h1>
                 
-                <h2 id="_1"><strong>简介</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+                <h2 id="lib"><strong>创建lib</strong><a class="headerlink" href="#lib" title="Permanent link">&para;</a></h2>
 <hr />
-<p>一个import path（包路径）唯一标识一个package，一个package的import path相当于他所处于workspace中的相对路径。</p>
-<p>导入路径可以是本地也可以是在远程，比如开源代码通常放在github.com。当编译时候会自动将远程文件载到本地目录上进行读取</p>
-<h2 id="_2"><strong>组成</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<hr />
-<p>import path由base path和package path组成</p>
-<p>base path指repository路径，比如<code>github.com/cyent/golang/example</code>（对应本地workspace中的路径<code>$GOPATH/src/github.com/cyent/golang/example</code>）</p>
-<p>package path指具体包的路径，比如有个hello包，那么其import path就是github.com/cyent/golang/example/hello</p>
-<div class="admonition note">
-<p class="admonition-title">github.com也有类似workspace的概念，叫做Organizations</p>
-<p>比如在github上注册了一个账户叫做cyent（账户主页:<code>github.com/cyent</code>），之后创建的repo都可以放在这下面，比如<code>github.com/cyent/golang</code></p>
-<p>通常个人用户会像上面这么用，但是对于团队或者公司来说，cyent只是一个注册账号，不作为品牌推广，因此会用团队名，公司名，或产品系列名等，比如<code>github.com/mycompany</code>，这就是建立了一个organization，organization名字叫做mycompany，之后repo都放在这下面，比如<code>github.com/mycompany/myproduct</code></p>
-</div>
-<h2 id="_3"><strong>例子</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<hr />
-<p>举例说明：假设<code>GOPATH=/opt/cyent/golang</code>，那么本地目录结构:</p>
-<div class="codehilite"><pre><span></span>/opt/cyent/golang/src/
-    github.com/organization1/repo
-    github.com/organization2/repo
-    github.com/cyent/golang
+<p>创建<code>$GOPATH/src/github.com/cyent/golang/example/stringutil</code>目录，并在目录里放置reverse.go，内容如下</p>
+<div class="codehilite"><pre><span></span><span class="c1">// Package stringutil contains utility functions for working with strings.</span>
+<span class="kn">package</span> <span class="nx">stringutil</span>
+
+<span class="c1">// Reverse returns its argument string reversed rune-wise left to right.</span>
+<span class="kd">func</span> <span class="nx">Reverse</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="nx">r</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">rune</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+    <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="p">=</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nx">j</span><span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
+        <span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">r</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">r</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">string</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
+<span class="p">}</span>
 </pre></div>
 
-<p>上面这种目录结构解读：
-<code>/opt/cyent/golang</code>是放置我的所有go代码的根路径</p>
-<p>其中我自己的代码在<code>/opt/cyent/golang/src/github.com/cyent/golang</code>下</p>
-<p><code>organization1/repo</code>和<code>organization2/repo</code>是我代码中会依赖的库（编译时候会自动载到本地来）</p>
+<div class="codehilite"><pre><span></span>go install github.com/cyent/golang/example/stringutil
+</pre></div>
+
+<p>会看到生成了<code>$GOPATH/pkg/darwin_amd64/github.com/cyent/golang/example/stringutil.a</code></p>
+<div class="admonition warning">
+<p class="admonition-title">注意这里的路径</p>
+<p>路径不是<code>cyent/golang/example/stringutil/stringutil.a</code>，而是<code>cyent/golang/example/stringutil.a</code>。</p>
+<p>上面<code>reverse.go</code>里的代码也可以除了放在<code>$GOPATH/src/github.com/cyent/golang/example/stringutil/reverse.go</code>，也可以放在<code>$GOPATH/src/github.com/cyent/golang/example/stringutil.go</code>。实际效果是一样的。</p>
+<p>用stringutil目录只是为了分隔代码，这样比较容易让人理解，而且如果stringutil包里的函数比较多的时候，就需要分成多个源码文件，用文件名来标识内容，提高可读性，比如函数名叫做Reverse，文件名就叫做reverse.go。如果所有函数都放在一个代码文件里，那么这个代码文件就太庞大，显得很乱，不利于维护</p>
+</div>
+<h2 id="lib_1"><strong>调用lib</strong><a class="headerlink" href="#lib_1" title="Permanent link">&para;</a></h2>
+<p>修改<a href="../../organization/helloworld/#hello-world">上一页</a>中的<code>hello.go</code>，改为：</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;github.com/cyent/golang/example/stringutil&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">stringutil</span><span class="p">.</span><span class="nx">Reverse</span><span class="p">(</span><span class="s">&quot;!oG ,olleH&quot;</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>执行</p>
+<div class="codehilite"><pre><span></span>go install github.com/cyent/golang/example/hello
+</pre></div>
+
+<p>就会编译出可执行的二进制程序并自动放入<code>$GOPATH/bin</code>中，比如这个例子中生成的程序就是<code>$GOPATH/bin/hello</code></p>
+<p>执行</p>
+<div class="codehilite"><pre><span></span>$GOPATH/bin/hello
+</pre></div>
+
+<p>效果</p>
+<div class="codehilite"><pre><span></span>Hello, Go!
+</pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">注意生成的二进制路径</p>
+<p>这个hello二进制文件生成路径是<code>$GOPATH/bin/hello</code>，而不是<code>$GOPATH/bin/github.com/cyent/golang/example/hello</code>，说明一个workspace生成的二进制文件都在一起</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">自动搜索所有函数并集中到一个.a文件</p>
+<p>生成library时候是会自动把<code>$GOPATH/src/github.com/cyent/golang/example/stringutil/</code>下面所有.go文件里包含的函数集中到<code>stringutil.a</code>中（根据这些.go文件中的package xxx来自动加入到一个.a），因此如果存在相同的函数，会报错提示重复</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">$GOPATH/pkg路径</p>
+<p>注意<code>go install</code>会将<code>stringutil.a</code>对象放到<code>pkg/darwin_amd64</code>目录中，它会反映出其源码目录。 这就是在此之后调用go工具，能找到包对象并避免不必要的重新编译的原因。darwin_amd64这部分能帮助跨平台编译，并反映出你的操作系统和架构。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">静态链接</p>
+<p>Go的可执行命令是静态链接的；在运行生成的可执行二进制程序时，包对象<code>stringutil.a</code>无需存在。</p>
+</div>
+<h2 id="gopath"><strong>附: 此时GOPATH目录结构</strong><a class="headerlink" href="#gopath" title="Permanent link">&para;</a></h2>
+<hr />
+<div class="codehilite"><pre><span></span>.
+├── bin
+│   └── hello
+├── pkg
+│   └── darwin_amd64
+│       └── github.com
+│           └── cyent
+│               └── golang
+│                   └── example
+│                       └── stringutil.a
+└── src
+    └── github.com
+        └── cyent
+            └── golang
+                └── example
+                    ├── hello
+                    │   └── hello.go
+                    └── stringutil
+                        └── reverse.go
+</pre></div>
                 
                   
                 
@@ -484,7 +548,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../gopath/" title="2. GOPATH" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../helloworld/" title="4. hello world" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -493,19 +557,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                2. GOPATH
+                4. hello world
               </span>
             </div>
           </a>
         
         
-          <a href="../helloworld/" title="4. hello world" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../appendix/doc/" title="1. 文档" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                4. hello world
+                1. 文档
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
