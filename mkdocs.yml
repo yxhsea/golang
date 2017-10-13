@@ -61,6 +61,7 @@ pages:
         - 3. import path: organization/importpath.md
         - 4. hello world: organization/helloworld.md
         - 5. 第一个library: organization/firstlib.md
+        - 6. 内置的轻量级测试框架: organization/test.md
     - 三. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md

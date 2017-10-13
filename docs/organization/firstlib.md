@@ -71,6 +71,10 @@ Hello, Go!
 !!! warning "注意生成的二进制路径"
 	这个hello二进制文件生成路径是`$GOPATH/bin/hello`，而不是`$GOPATH/bin/github.com/cyent/golang/example/hello`，说明一个workspace生成的二进制文件都在一起
 
+	一个workspace里可执行程序名不能相同，因为都是放在bin目录下，这目录下没有任何子目录。即不能存在这样2个main package在一个workspace里：（假设下面2个hello.go都是package main）
+	$GOPATH/src/github.com/cyent/example/repo1/hello.go
+	$GOPATH/src/github.com/cyent/example/repo2/hello.go
+
 !!! note "自动搜索所有函数并集中到一个.a文件"
 	生成library时候是会自动把`$GOPATH/src/github.com/cyent/golang/example/stringutil/`下面所有.go文件里包含的函数集中到`stringutil.a`中（根据这些.go文件中的package xxx来自动加入到一个.a），因此如果存在相同的函数，会报错提示重复
 
@@ -79,6 +83,11 @@ Hello, Go!
 
 !!! note "静态链接"
 	Go的可执行命令是静态链接的；在运行生成的可执行二进制程序时，包对象`stringutil.a`无需存在。
+
+!!! warning "go源码文件第一行必须是package name"
+	package name就是调用时候import中/最后一段，比如想别的程序通过import "crypto/rot13"调用，那么就写package rot13
+
+	生成可执行程序，package必须为main
 
 ## **附: 此时GOPATH目录结构**
 
