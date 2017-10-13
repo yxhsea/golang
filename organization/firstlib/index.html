@@ -330,6 +330,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../test/" title="6. 内置的轻量级测试框架" class="md-nav__link">
+      6. 内置的轻量级测试框架
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -495,6 +507,9 @@
 <div class="admonition warning">
 <p class="admonition-title">注意生成的二进制路径</p>
 <p>这个hello二进制文件生成路径是<code>$GOPATH/bin/hello</code>，而不是<code>$GOPATH/bin/github.com/cyent/golang/example/hello</code>，说明一个workspace生成的二进制文件都在一起</p>
+<p>一个workspace里可执行程序名不能相同，因为都是放在bin目录下，这目录下没有任何子目录。即不能存在这样2个main package在一个workspace里：（假设下面2个hello.go都是package main）
+$GOPATH/src/github.com/cyent/example/repo1/hello.go
+$GOPATH/src/github.com/cyent/example/repo2/hello.go</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">自动搜索所有函数并集中到一个.a文件</p>
@@ -507,6 +522,11 @@
 <div class="admonition note">
 <p class="admonition-title">静态链接</p>
 <p>Go的可执行命令是静态链接的；在运行生成的可执行二进制程序时，包对象<code>stringutil.a</code>无需存在。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">go源码文件第一行必须是package name</p>
+<p>package name就是调用时候import中/最后一段，比如想别的程序通过import "crypto/rot13"调用，那么就写package rot13</p>
+<p>生成可执行程序，package必须为main</p>
 </div>
 <h2 id="gopath"><strong>附: 此时GOPATH目录结构</strong><a class="headerlink" href="#gopath" title="Permanent link">&para;</a></h2>
 <hr />
@@ -563,13 +583,13 @@
           </a>
         
         
-          <a href="../../appendix/doc/" title="1. 文档" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../test/" title="6. 内置的轻量级测试框架" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                1. 文档
+                6. 内置的轻量级测试框架
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

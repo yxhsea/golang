@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/organization/gopath/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/organization/test/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>2. GOPATH - Go语言学习 - cyent笔记</title>
+        <title>6. 内置的轻量级测试框架 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -88,7 +88,7 @@
                 </span>
               
             
-            2. GOPATH
+            6. 内置的轻量级测试框架
           
         </span>
       </div>
@@ -240,57 +240,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        2. GOPATH
-      </label>
-    
-    <a href="./" title="2. GOPATH" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../gopath/" title="2. GOPATH" class="md-nav__link">
       2. GOPATH
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="简介" class="md-nav__link">
-    简介
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gopath" title="如何查看GOPATH" class="md-nav__link">
-    如何查看GOPATH
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gopath_1" title="GOPATH的设置" class="md-nav__link">
-    GOPATH的设置
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -334,11 +288,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../test/" title="6. 内置的轻量级测试框架" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="6. 内置的轻量级测试框架" class="md-nav__link md-nav__link--active">
       6. 内置的轻量级测试框架
     </a>
+    
   </li>
 
         
@@ -410,34 +371,6 @@
   
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="简介" class="md-nav__link">
-    简介
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gopath" title="如何查看GOPATH" class="md-nav__link">
-    如何查看GOPATH
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gopath_1" title="GOPATH的设置" class="md-nav__link">
-    GOPATH的设置
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -449,28 +382,57 @@
               
                 
                 
-                  <h1>2. GOPATH</h1>
+                  <h1>6. 内置的轻量级测试框架</h1>
                 
-                <h2 id="_1"><strong>简介</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<hr />
-<p>GOPATH：workspace的路径，默认为<code>$HOME/go</code>。</p>
-<div class="admonition warning">
-<p>GOPATH不是指go安装路径，因此不能写/usr/local/go-1.8之类的</p>
-</div>
-<h2 id="gopath"><strong>如何查看GOPATH</strong><a class="headerlink" href="#gopath" title="Permanent link">&para;</a></h2>
-<hr />
-<p><code>go env</code>可以看到所有go环境变量，如果只看GOPATH可以<code>go env GOPATH</code></p>
-<h2 id="gopath_1"><strong>GOPATH的设置</strong><a class="headerlink" href="#gopath_1" title="Permanent link">&para;</a></h2>
-<hr />
-<p>执行命令</p>
-<div class="codehilite"><pre><span></span>export GOPATH=/path/to
+                <p>go内置一个轻量级测试框架，使用方法：</p>
+<ol>
+<li>
+<p>文件以<code>_test.go</code>结尾</p>
+</li>
+<li>
+<p><code>import &quot;testing&quot;</code></p>
+</li>
+<li>
+<p>函数名为<code>TestXXX</code>，并且parameter为<code>t *testing.T</code></p>
+</li>
+</ol>
+<p>例子：</p>
+<p>在<code>$GOPATH/src/github.com/cyent/golang/example/stringutil</code>里新建文件<code>reverse_test.go</code></p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">stringutil</span>
+
+<span class="kn">import</span> <span class="s">&quot;testing&quot;</span>
+
+<span class="kd">func</span> <span class="nx">TestReverse</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">cases</span> <span class="o">:=</span> <span class="p">[]</span><span class="kd">struct</span> <span class="p">{</span>
+        <span class="nx">in</span><span class="p">,</span> <span class="nx">want</span> <span class="kt">string</span>
+    <span class="p">}{</span>
+        <span class="p">{</span><span class="s">&quot;Hello, world&quot;</span><span class="p">,</span> <span class="s">&quot;dlrow ,olleH&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s">&quot;Hello, 世界&quot;</span><span class="p">,</span> <span class="s">&quot;界世 ,olleH&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">},</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">c</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">cases</span> <span class="p">{</span>
+        <span class="nx">got</span> <span class="o">:=</span> <span class="nx">Reverse</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">in</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nx">got</span> <span class="o">!=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">want</span> <span class="p">{</span>
+            <span class="nx">t</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;Reverse(%q) == %q, want %q&quot;</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">in</span><span class="p">,</span> <span class="nx">got</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">want</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
-<p>为便于在命令行下执行编译出的二进制可执行程序，建议将bin目录路径加到系统PATH上:</p>
-<div class="codehilite"><pre><span></span>export PATH=$PATH:$(go env GOPATH)/bin
+<p>执行测试：</p>
+<div class="codehilite"><pre><span></span>go test github.com/cyent/golang/exmaple/stringutil
 </pre></div>
 
-<p>另外，可以将上面2个export写入~/.bash_profile，然后<code>source ~/.bash_profile</code> 立即生效</p>
+<p>或者在<code>$GOPATH/src/github.com/cyent/golang/exmaple/stringutil</code>目录下执行<code>go test</code></p>
+<p>输出</p>
+<div class="codehilite"><pre><span></span>ok      github.com/cyent/golang/example/stringutil  0.006s
+</pre></div>
+
+<p>表示测试通过</p>
+<p>如果是在stringutil目录下直接执行<code>go test</code>，会输出</p>
+<div class="codehilite"><pre><span></span>PASS
+ok      github.com/cyent/golang/example/stringutil  0.005s
+</pre></div>
                 
                   
                 
@@ -489,7 +451,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../workspace/" title="1. workspace" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../firstlib/" title="5. 第一个library" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -498,19 +460,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                1. workspace
+                5. 第一个library
               </span>
             </div>
           </a>
         
         
-          <a href="../importpath/" title="3. import path" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../appendix/doc/" title="1. 文档" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                3. import path
+                1. 文档
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
