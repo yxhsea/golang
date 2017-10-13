@@ -65,3 +65,5 @@ pages:
     - 三. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md
+        - 3. 命令行工具:
+            - 3.1. go get: cli/go_get.md
