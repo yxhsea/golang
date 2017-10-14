@@ -62,7 +62,21 @@ pages:
         - 4. hello world: organization/helloworld.md
         - 5. 第一个library: organization/firstlib.md
         - 6. 内置的轻量级测试框架: organization/test.md
-    - 三. 附录:
+    - 三. 基础:
+        - 1. Packages: basic/packages.md
+        - 2. Imports: basic/imports.md
+        - 3. 导出名: basic/exportname.md
+        - 4. 函数: basic/function.md
+        - 5. 变量:
+            - 5.1. 声明: basic/variable_declare.md
+            - 5.2. 作用域: basic/variable_affect.md
+        - 6. 常量: basic/const.md
+        - 7. 数据类型:
+            - 7.1. 介绍: basic/type_main.md
+            - 7.2. 默认值: basic/type_default.md
+            - 7.3. 类型转换: basic/type_change.md
+            - 7.4. 类型推导: basic/type_guess.md
+    - 四. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md
         - 3. 命令行工具:
