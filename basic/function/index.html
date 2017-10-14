@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/organization/firstlib/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/basic/function/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>5. 第一个library - Go语言学习 - cyent笔记</title>
+        <title>4. 函数 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -84,11 +84,11 @@
             
               
                 <span class="md-header-nav__parent">
-                  二. 代码组织
+                  三. 基础
                 </span>
               
             
-            5. 第一个library
+            4. 函数
           
         </span>
       </div>
@@ -207,12 +207,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       二. 代码组织
@@ -230,7 +228,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../workspace/" title="1. workspace" class="md-nav__link">
+    <a href="../../organization/workspace/" title="1. workspace" class="md-nav__link">
       1. workspace
     </a>
   </li>
@@ -242,7 +240,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../gopath/" title="2. GOPATH" class="md-nav__link">
+    <a href="../../organization/gopath/" title="2. GOPATH" class="md-nav__link">
       2. GOPATH
     </a>
   </li>
@@ -254,7 +252,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../importpath/" title="3. import path" class="md-nav__link">
+    <a href="../../organization/importpath/" title="3. import path" class="md-nav__link">
       3. import path
     </a>
   </li>
@@ -266,7 +264,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../helloworld/" title="4. hello world" class="md-nav__link">
+    <a href="../../organization/helloworld/" title="4. hello world" class="md-nav__link">
       4. hello world
     </a>
   </li>
@@ -276,57 +274,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        5. 第一个library
-      </label>
-    
-    <a href="./" title="5. 第一个library" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../organization/firstlib/" title="5. 第一个library" class="md-nav__link">
       5. 第一个library
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#lib" title="创建lib" class="md-nav__link">
-    创建lib
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lib_1" title="调用lib" class="md-nav__link">
-    调用lib
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gopath" title="附: 此时GOPATH目录结构" class="md-nav__link">
-    附: 此时GOPATH目录结构
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -336,7 +288,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../test/" title="6. 内置的轻量级测试框架" class="md-nav__link">
+    <a href="../../organization/test/" title="6. 内置的轻量级测试框架" class="md-nav__link">
       6. 内置的轻量级测试框架
     </a>
   </li>
@@ -351,10 +303,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       三. 基础
@@ -372,7 +326,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../basic/packages/" title="1. Packages" class="md-nav__link">
+    <a href="../packages/" title="1. Packages" class="md-nav__link">
       1. Packages
     </a>
   </li>
@@ -384,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../basic/imports/" title="2. Imports" class="md-nav__link">
+    <a href="../imports/" title="2. Imports" class="md-nav__link">
       2. Imports
     </a>
   </li>
@@ -396,7 +350,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../basic/exportname/" title="3. 导出名" class="md-nav__link">
+    <a href="../exportname/" title="3. 导出名" class="md-nav__link">
       3. 导出名
     </a>
   </li>
@@ -406,11 +360,50 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../basic/function/" title="4. 函数" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        4. 函数
+      </label>
+    
+    <a href="./" title="4. 函数" class="md-nav__link md-nav__link--active">
       4. 函数
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="入参" class="md-nav__link">
+    入参
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="出参" class="md-nav__link">
+    出参
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -439,7 +432,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../basic/variable_declare/" title="5.1. 声明" class="md-nav__link">
+    <a href="../variable_declare/" title="5.1. 声明" class="md-nav__link">
       5.1. 声明
     </a>
   </li>
@@ -451,7 +444,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../basic/variable_affect/" title="5.2. 作用域" class="md-nav__link">
+    <a href="../variable_affect/" title="5.2. 作用域" class="md-nav__link">
       5.2. 作用域
     </a>
   </li>
@@ -468,7 +461,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../basic/const/" title="6. 常量" class="md-nav__link">
+    <a href="../const/" title="6. 常量" class="md-nav__link">
       6. 常量
     </a>
   </li>
@@ -499,7 +492,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../basic/type_main/" title="7.1. 介绍" class="md-nav__link">
+    <a href="../type_main/" title="7.1. 介绍" class="md-nav__link">
       7.1. 介绍
     </a>
   </li>
@@ -511,7 +504,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../basic/type_default/" title="7.2. 默认值" class="md-nav__link">
+    <a href="../type_default/" title="7.2. 默认值" class="md-nav__link">
       7.2. 默认值
     </a>
   </li>
@@ -523,7 +516,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../basic/type_change/" title="7.3. 类型转换" class="md-nav__link">
+    <a href="../type_change/" title="7.3. 类型转换" class="md-nav__link">
       7.3. 类型转换
     </a>
   </li>
@@ -535,7 +528,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../basic/type_guess/" title="7.4. 类型推导" class="md-nav__link">
+    <a href="../type_guess/" title="7.4. 类型推导" class="md-nav__link">
       7.4. 类型推导
     </a>
   </li>
@@ -654,22 +647,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lib" title="创建lib" class="md-nav__link">
-    创建lib
+  <a href="#_1" title="入参" class="md-nav__link">
+    入参
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#lib_1" title="调用lib" class="md-nav__link">
-    调用lib
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gopath" title="附: 此时GOPATH目录结构" class="md-nav__link">
-    附: 此时GOPATH目录结构
+  <a href="#_2" title="出参" class="md-nav__link">
+    出参
   </a>
   
 </li>
@@ -689,107 +675,66 @@
               
                 
                 
-                  <h1>5. 第一个library</h1>
+                  <h1>4. 函数</h1>
                 
-                <h2 id="lib"><strong>创建lib</strong><a class="headerlink" href="#lib" title="Permanent link">&para;</a></h2>
+                <h2 id="_1"><strong>入参</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <hr />
-<p>创建<code>$GOPATH/src/github.com/cyent/golang/example/stringutil</code>目录，并在目录里放置reverse.go，内容如下</p>
-<div class="codehilite"><pre><span></span><span class="c1">// Package stringutil contains utility functions for working with strings.</span>
-<span class="kn">package</span> <span class="nx">stringutil</span>
-
-<span class="c1">// Reverse returns its argument string reversed rune-wise left to right.</span>
-<span class="kd">func</span> <span class="nx">Reverse</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
-    <span class="nx">r</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">rune</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
-    <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="p">=</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nx">j</span><span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
-        <span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">r</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">r</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="nb">string</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
+<p>函数可以接收0个或多个参数，参数需要指定类型，返回值也需要指定类型，比如</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">add</span><span class="p">(</span><span class="nx">x</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span>
 <span class="p">}</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>go install github.com/cyent/golang/example/stringutil
-</pre></div>
-
-<p>会看到生成了<code>$GOPATH/pkg/darwin_amd64/github.com/cyent/golang/example/stringutil.a</code></p>
+<p>上面表示声明一个函数add，接收2个参数，分别都是int类型，返回的类型也是int。</p>
 <div class="admonition warning">
-<p class="admonition-title">注意这里的路径</p>
-<p>路径不是<code>cyent/golang/example/stringutil/stringutil.a</code>，而是<code>cyent/golang/example/stringutil.a</code>。</p>
-<p>上面<code>reverse.go</code>里的代码也可以除了放在<code>$GOPATH/src/github.com/cyent/golang/example/stringutil/reverse.go</code>，也可以放在<code>$GOPATH/src/github.com/cyent/golang/example/stringutil.go</code>。实际效果是一样的。</p>
-<p>用stringutil目录只是为了分隔代码，这样比较容易让人理解，而且如果stringutil包里的函数比较多的时候，就需要分成多个源码文件，用文件名来标识内容，提高可读性，比如函数名叫做Reverse，文件名就叫做reverse.go。如果所有函数都放在一个代码文件里，那么这个代码文件就太庞大，显得很乱，不利于维护</p>
+<ol>
+<li>main函数不用指定返回类型</li>
+<li>函数里如果没有<code>return</code>，而是<code>fmt.Println</code>之类的，就不用指定返回类型</li>
+</ol>
 </div>
-<h2 id="lib_1"><strong>调用lib</strong><a class="headerlink" href="#lib_1" title="Permanent link">&para;</a></h2>
-<p>修改<a href="../../organization/helloworld/#hello-world">上一页</a>中的<code>hello.go</code>，改为：</p>
-<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&quot;fmt&quot;</span>
-    <span class="s">&quot;github.com/cyent/golang/example/stringutil&quot;</span>
-<span class="p">)</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">stringutil</span><span class="p">.</span><span class="nx">Reverse</span><span class="p">(</span><span class="s">&quot;!oG ,olleH&quot;</span><span class="p">))</span>
+<p>类型：类型跟在变量名后面，比如<code class="codehilite"><span class="nx">x</span> <span class="kt">int</span></code>，表示声明一个int类型的变量x</p>
+<div class="admonition note">
+<p>如果想了解为什么长这样，可以看 <a href="https://blog.golang.org/gos-declaration-syntax">https://blog.golang.org/gos-declaration-syntax</a></p>
+</div>
+<div class="admonition success">
+<p class="admonition-title">参数类型相同可以简写</p>
+<p>如果声明的多个参数类型是相同的，可以只写最后一个参数类型，比如上面的<code class="codehilite"><span class="nx">x</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span></code>也可以写成<code class="codehilite"><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span></code></p>
+</div>
+<h2 id="_2"><strong>出参</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<hr />
+<p>返回类型必须指定，比如本页最开始的例子中，如果改成</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">add</span><span class="p">(</span><span class="nx">x</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span>
 <span class="p">}</span>
 </pre></div>
 
-<p>执行</p>
-<div class="codehilite"><pre><span></span>go install github.com/cyent/golang/example/hello
+<p>则报错:</p>
+<div class="codehilite"><pre><span></span>too many arguments to return
+    have (int)
+    want ()
 </pre></div>
 
-<p>就会编译出可执行的二进制程序并自动放入<code>$GOPATH/bin</code>中，比如这个例子中生成的程序就是<code>$GOPATH/bin/hello</code></p>
-<p>执行</p>
-<div class="codehilite"><pre><span></span>$GOPATH/bin/hello
+<p>多返回值：</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">swap</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span>
 </pre></div>
 
-<p>效果</p>
-<div class="codehilite"><pre><span></span>Hello, Go!
+<p>返回值命名：</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">swap</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">string</span><span class="p">)</span><span class="err">，</span><span class="nx">这种通常用于return不跟参数</span>
 </pre></div>
 
-<div class="admonition warning">
-<p class="admonition-title">注意生成的二进制路径</p>
-<p>这个hello二进制文件生成路径是<code>$GOPATH/bin/hello</code>，而不是<code>$GOPATH/bin/github.com/cyent/golang/example/hello</code>，说明一个workspace生成的二进制文件都在一起</p>
-<p>一个workspace里可执行程序名不能相同，因为都是放在bin目录下，这目录下没有任何子目录。即不能存在这样2个main package在一个workspace里：（假设下面2个hello.go都是package main）
-$GOPATH/src/github.com/cyent/example/repo1/hello.go
-$GOPATH/src/github.com/cyent/example/repo2/hello.go</p>
-</div>
+<p>return不跟参数：</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">split</span><span class="p">(</span><span class="nx">sum</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">x</span> <span class="p">=</span> <span class="nx">sum</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">/</span> <span class="mi">9</span>
+    <span class="nx">y</span> <span class="p">=</span> <span class="nx">sum</span> <span class="o">-</span> <span class="nx">x</span>
+    <span class="k">return</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>上面return没有跟任何参数，实际等同于<code>return x, y</code></p>
+<p>即根据<code>func split(sum int) <mark class="critic">(x, y int)</mark></code>顺序来定</p>
 <div class="admonition note">
-<p class="admonition-title">自动搜索所有函数并集中到一个.a文件</p>
-<p>生成library时候是会自动把<code>$GOPATH/src/github.com/cyent/golang/example/stringutil/</code>下面所有.go文件里包含的函数集中到<code>stringutil.a</code>中（根据这些.go文件中的package xxx来自动加入到一个.a），因此如果存在相同的函数，会报错提示重复</p>
+<p>这种return不跟参数方式不推荐，这种方式仅适用于比较短的函数，如果函数比较长，这样可读性就很不好了</p>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">$GOPATH/pkg路径</p>
-<p>注意<code>go install</code>会将<code>stringutil.a</code>对象放到<code>pkg/darwin_amd64</code>目录中，它会反映出其源码目录。 这就是在此之后调用go工具，能找到包对象并避免不必要的重新编译的原因。darwin_amd64这部分能帮助跨平台编译，并反映出你的操作系统和架构。</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">静态链接</p>
-<p>Go的可执行命令是静态链接的；在运行生成的可执行二进制程序时，包对象<code>stringutil.a</code>无需存在。</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">go源码文件第一行必须是package name</p>
-<p>package name就是调用时候import中/最后一段，比如想别的程序通过import "crypto/rot13"调用，那么就写package rot13</p>
-<p>生成可执行程序，package必须为main</p>
-</div>
-<h2 id="gopath"><strong>附: 此时GOPATH目录结构</strong><a class="headerlink" href="#gopath" title="Permanent link">&para;</a></h2>
-<hr />
-<div class="codehilite"><pre><span></span>.
-├── bin
-│   └── hello
-├── pkg
-│   └── darwin_amd64
-│       └── github.com
-│           └── cyent
-│               └── golang
-│                   └── example
-│                       └── stringutil.a
-└── src
-    └── github.com
-        └── cyent
-            └── golang
-                └── example
-                    ├── hello
-                    │   └── hello.go
-                    └── stringutil
-                        └── reverse.go
-</pre></div>
                 
                   
                 
@@ -808,7 +753,7 @@ $GOPATH/src/github.com/cyent/example/repo2/hello.go</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../helloworld/" title="4. hello world" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../exportname/" title="3. 导出名" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -817,19 +762,19 @@ $GOPATH/src/github.com/cyent/example/repo2/hello.go</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                4. hello world
+                3. 导出名
               </span>
             </div>
           </a>
         
         
-          <a href="../test/" title="6. 内置的轻量级测试框架" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../variable_declare/" title="5.1. 声明" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                6. 内置的轻量级测试框架
+                5.1. 声明
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
