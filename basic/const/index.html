@@ -624,7 +624,24 @@
                 
                   <h1>6. 常量</h1>
                 
-                
+                <p>用const声明，无论在包级别还是函数级别。不能用:=</p>
+<p>常量只能是字符串、布尔、数字类型（整数、浮点数、复数）的值</p>
+<div class="codehilite"><pre><span></span><span class="kd">const</span> <span class="nx">foo</span> <span class="p">=</span> <span class="s">&quot;bar&quot;</span>
+</pre></div>
+
+<p>上面声明一个常量，常量名叫foo，值是"bar"，foo的类型自动推导为string</p>
+<p>也可以<code class="codehilite"><span class="kd">const</span> <span class="nx">foo</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&quot;bar&quot;</span></code>来直接指定类型</p>
+<p>注意%T是查看类型，即string还是int，而看不出是常量还是变量</p>
+<p><strong>关于常量的作用域，经测试，常量作用域和变量作用域相同。</strong></p>
+<p>数值常量：</p>
+<ol>
+<li>
+<p>是高精度的值</p>
+</li>
+<li>
+<p>未指定类型的常量由上下文来决定其类型</p>
+</li>
+</ol>
                 
                   
                 

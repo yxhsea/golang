@@ -630,7 +630,13 @@
                 
                   <h1>7.3. 类型转换</h1>
                 
-                
+                <p>用T(v)表达式来将变量v转换成类型T</p>
+<div class="admonition warning">
+<p class="admonition-title">必须指定类型才能转换</p>
+<p>var a int = 5，那么：</p>
+<p>var b string = string(a) 是OK的，而var b string = a是会报错的</p>
+</div>
+<p>另外，var b = string(a)，或者b := string(a)也可以</p>
                 
                   
                 

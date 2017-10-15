@@ -630,7 +630,21 @@
                 
                   <h1>7.4. 类型推导</h1>
                 
-                
+                <p>当定义一个变量却不显式指定类型时候，类型由值推导而出</p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">i</span> <span class="kt">int</span>
+<span class="nx">j</span> <span class="o">:=</span> <span class="nx">i</span>  <span class="c1">//j是int类型</span>
+<span class="nx">k</span> <span class="o">:=</span> <span class="mi">0</span>  <span class="c1">//k是int类型</span>
+</pre></div>
+
+<p>但是如果值是数字时候，则新的变量可能是int、float64、complex128，这取决于常量的精度</p>
+<div class="codehilite"><pre><span></span><span class="nx">i</span> <span class="o">:=</span> <span class="mi">42</span>           <span class="c1">// int</span>
+<span class="nx">f</span> <span class="o">:=</span> <span class="mf">3.142</span>        <span class="c1">// float64</span>
+<span class="nx">g</span> <span class="o">:=</span> <span class="mf">0.867</span> <span class="o">+</span> <span class="m">0.5i</span> <span class="c1">// complex128</span>
+</pre></div>
+
+<p><code>%T</code>可以查看类型</p>
+<div class="codehilite"><pre><span></span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+</pre></div>
                 
                   
                 

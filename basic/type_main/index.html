@@ -630,7 +630,122 @@
                 
                   <h1>7.1. 介绍</h1>
                 
-                
+                <div class="codehilite"><pre><span></span><span class="c1">// Bool类型</span>
+<span class="kd">var</span> <span class="nx">my_bool</span> <span class="kt">bool</span> <span class="p">=</span> <span class="kc">true</span>
+
+<span class="c1">// 字符串类型</span>
+<span class="kd">var</span> <span class="nx">my_string</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&quot;hello, world!&quot;</span>
+
+<span class="c1">// int: 有符号整形，根据系统架构自动判断是int8，int16，int32还是int64</span>
+<span class="c1">// 比如当前系统是64位系统，则为int64</span>
+<span class="kd">var</span> <span class="nx">my_int_min</span> <span class="kt">int</span> <span class="p">=</span> <span class="o">-</span><span class="mi">9223372036854775808</span>
+<span class="kd">var</span> <span class="nx">my_int_max</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">9223372036854775807</span>
+
+<span class="c1">// int8: 有符号 8 位整型 (-128 到 127)</span>
+<span class="kd">var</span> <span class="nx">my_int8_min</span> <span class="kt">int8</span> <span class="p">=</span> <span class="o">-</span><span class="mi">128</span>
+<span class="kd">var</span> <span class="nx">my_int8_max</span> <span class="kt">int8</span> <span class="p">=</span> <span class="mi">127</span>
+
+<span class="c1">// int16: 有符号 16 位整型 (-32768 到 32767)</span>
+<span class="kd">var</span> <span class="nx">my_int16_min</span> <span class="kt">int16</span> <span class="p">=</span> <span class="o">-</span><span class="mi">32768</span>
+<span class="kd">var</span> <span class="nx">my_int16_max</span> <span class="kt">int16</span> <span class="p">=</span> <span class="mi">32767</span>
+
+<span class="c1">// int32: 有符号 32 位整型 (-2147483648 到 2147483647)</span>
+<span class="kd">var</span> <span class="nx">my_int32_min</span> <span class="kt">int32</span> <span class="p">=</span> <span class="o">-</span><span class="mi">2147483648</span>
+<span class="kd">var</span> <span class="nx">my_int32_max</span> <span class="kt">int32</span> <span class="p">=</span> <span class="mi">2147483647</span>
+
+<span class="c1">// int64: 有符号 64 位整型 (-9223372036854775808 到 9223372036854775807)</span>
+<span class="kd">var</span> <span class="nx">my_int64_min</span> <span class="kt">int64</span> <span class="p">=</span> <span class="o">-</span><span class="mi">9223372036854775808</span>
+<span class="kd">var</span> <span class="nx">my_int64_max</span> <span class="kt">int64</span> <span class="p">=</span> <span class="mi">9223372036854775807</span>
+
+<span class="c1">// uint: 无符号整形，根据系统架构自动判断是uint8，uint16，uint32还是uint64</span>
+<span class="c1">// 比如当前系统是64位系统，则为uint64</span>
+<span class="kd">var</span> <span class="nx">my_uint_min</span> <span class="kt">uint</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="kd">var</span> <span class="nx">my_uint_max</span> <span class="kt">uint</span> <span class="p">=</span> <span class="mi">18446744073709551615</span>
+
+<span class="c1">// uint8: 无符号 8 位整型 (0 到 255)</span>
+<span class="kd">var</span> <span class="nx">my_uint8_min</span> <span class="kt">uint8</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="kd">var</span> <span class="nx">my_uint8_max</span> <span class="kt">uint8</span> <span class="p">=</span> <span class="mi">255</span>
+
+<span class="c1">// uint16: 无符号 16 位整型 (0 到 65535)</span>
+<span class="kd">var</span> <span class="nx">my_uint16_min</span> <span class="kt">uint16</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="kd">var</span> <span class="nx">my_uint16_max</span> <span class="kt">uint16</span> <span class="p">=</span> <span class="mi">65535</span>
+
+<span class="c1">// uint32: 无符号 32 位整型 (0 到 4294967295)</span>
+<span class="kd">var</span> <span class="nx">my_uint32_min</span> <span class="kt">uint32</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="kd">var</span> <span class="nx">my_uint32_max</span> <span class="kt">uint32</span> <span class="p">=</span> <span class="mi">4294967295</span>
+
+<span class="c1">// uint64: 无符号 64 位整型 (0 到 18446744073709551615)</span>
+<span class="kd">var</span> <span class="nx">my_uint64_min</span> <span class="kt">uint64</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="kd">var</span> <span class="nx">my_uint64_max</span> <span class="kt">uint64</span> <span class="p">=</span> <span class="mi">18446744073709551615</span>
+
+<span class="c1">// uintptr: 无符号整型，用于存放一个指针，可以足够保存指针的值的范围。和uint范围相同，根据系统架构自动判断</span>
+<span class="kd">var</span> <span class="nx">my_uintptr_min</span> <span class="kt">uintptr</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="kd">var</span> <span class="nx">my_uintptr_max</span> <span class="kt">uintptr</span> <span class="p">=</span> <span class="mi">18446744073709551615</span>
+
+<span class="c1">// byte: uint8的别名</span>
+<span class="kd">var</span> <span class="nx">my_byte_min</span> <span class="kt">byte</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="kd">var</span> <span class="nx">my_byte_max</span> <span class="kt">byte</span> <span class="p">=</span> <span class="mi">255</span>
+
+<span class="c1">// rune: int32的别名。代表1个unicode码</span>
+<span class="kd">var</span> <span class="nx">my_rune_min</span> <span class="kt">rune</span> <span class="p">=</span> <span class="o">-</span><span class="mi">2147483648</span>
+<span class="kd">var</span> <span class="nx">my_rune_max</span> <span class="kt">rune</span> <span class="p">=</span> <span class="mi">2147483647</span>
+
+<span class="c1">// float32: 单精度浮点数，在C语言里等同于float</span>
+<span class="c1">// float64: 双精读浮点数，在C语言里等同于double</span>
+<span class="c1">// 如果不写类型，则为float64（暂时不知道这个是根据系统架构判断还是默认就是float64）</span>
+<span class="c1">// 从结果可以看出:</span>
+<span class="c1">//   float32只能容纳8位数字（包括小数点前后数字，不包括小数点，超过8位会将四舍五入保留8位）</span>
+<span class="c1">//   float64可以容纳比较多的数字（具体暂时还没测），而且这种双精度我也一直没搞懂，很复杂</span>
+<span class="c1">//   当符合要求时候会自动用科学计数法来表示，要注意</span>
+<span class="kd">var</span> <span class="nx">my_float32</span> <span class="kt">float32</span> <span class="p">=</span> <span class="mf">10086.141592653</span>
+<span class="kd">var</span> <span class="nx">my_float64</span> <span class="kt">float64</span> <span class="p">=</span> <span class="mf">10086.141592653</span>
+<span class="kd">var</span> <span class="nx">my_float_auto</span> <span class="p">=</span> <span class="mf">10086.141592653</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>bool: true
+string: hello, world!
+int min: -9223372036854775808
+int max: 9223372036854775807
+int8 min: -128
+int8 max: 127
+int16 min: -32768
+int16 max: 32767
+int32 min: -2147483648
+int32 max: 2147483647
+int64 min: -9223372036854775808
+int64 max: 9223372036854775807
+uint min: 0
+uint max: 18446744073709551615
+uint8 min: 0
+uint8 max: 255
+uint16 min: 0
+uint16 max: 65535
+uint32 min: 0
+uint32 max: 4294967295
+uint64 min: 0
+uint64 max: 18446744073709551615
+uintptr min: 0
+uintptr max: 18446744073709551615
+byte min: 0
+byte max: 255
+rune min: -2147483648
+rune max: 2147483647
+float32: 10086.142
+float64: 10086.141592653
+float_auto: 10086.141592653
+</pre></div>
+
+<p>除了上述的数据类型，还有2个复数：complex64、complex128</p>
+<div class="admonition note">
+<p class="admonition-title">-0和0</p>
+<p>-0等于0，用-0能编译通过，实际输出就是0。无论是unit还是int</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">int8</p>
+<p>int8意思是用二进制表示的话，从左往右第1位表示正数或是负数，第1位为0表示正数，1表示负数</p>
+<p>为什么int8最小是-128而最大是127，感觉不对称，但是正确的。是因为00000000和10000000都可以表示0，但是没必要存在2个0，因此往负数方向移1位，即00000000表示0，而10000000表示为-1，那么11111111就表示为-128。</p>
+</div>
                 
                   
                 
