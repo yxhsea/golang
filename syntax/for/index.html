@@ -580,12 +580,31 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_4" title="作用域" class="md-nav__link">
+    作用域
+  </a>
+  
+</li>
+      
       
       
     </ul>
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../if/" title="2. if" class="md-nav__link">
+      2. if
+    </a>
   </li>
 
         
@@ -724,6 +743,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_4" title="作用域" class="md-nav__link">
+    作用域
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -824,6 +850,70 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+
+<h2 id="_4"><strong>作用域</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<hr />
+<p>以下均为个人理解，不保证准确性</p>
+<ol>
+<li>
+<p>for的init statement里声明的变量，以及代码块里声明的变量，都仅限于for里，在外部是无法引用的</p>
+<details class="note"><summary>例子</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="nx">i</span> <span class="o">++</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+        <span class="nx">a</span> <span class="o">:=</span> <span class="mi">100</span>
+    <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<p>报错</p><div class="codehilite"><pre><span></span>./for.go:10: undefined: i
+./for.go:11: undefined: a
+</pre></div>
+</details></li>
+<li>
+<p>每次循环都是一个新的空间，即在第一次循环时候声明的变量，在下一次循环时候是看不到的</p>
+<details class="note"><summary>例子</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">100</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;=====&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="nx">i</span> <span class="o">++</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;---&quot;</span><span class="p">)</span>
+        <span class="nx">a</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+        <span class="nx">a</span> <span class="o">:=</span> <span class="mi">200</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+        <span class="nx">a</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;=====&quot;</span><span class="p">)</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<p>输出</p><div class="codehilite"><pre><span></span>100
+=====
+---
+101
+200
+201
+---
+102
+200
+201
+=====
+102
+</pre></div>
+<p>可以看到每次循环时候a都是200，而不会传递到下次循环中</p></details></li>
+</ol>
                 
                   
                 
@@ -857,13 +947,13 @@
           </a>
         
         
-          <a href="../../appendix/doc/" title="1. 文档" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../if/" title="2. if" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                1. 文档
+                2. if
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

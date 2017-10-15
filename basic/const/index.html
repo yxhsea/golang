@@ -428,9 +428,48 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        6. 常量
+      </label>
+    
     <a href="./" title="6. 常量" class="md-nav__link md-nav__link--active">
       6. 常量
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="声明" class="md-nav__link">
+    声明
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="作用域" class="md-nav__link">
+    作用域
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="数值常量" class="md-nav__link">
+    数值常量
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -543,6 +582,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/if/" title="2. if" class="md-nav__link">
+      2. if
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -647,6 +698,34 @@
   
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="声明" class="md-nav__link">
+    声明
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="作用域" class="md-nav__link">
+    作用域
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="数值常量" class="md-nav__link">
+    数值常量
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -660,7 +739,9 @@
                 
                   <h1>6. 常量</h1>
                 
-                <p>用const声明，无论在包级别还是函数级别。不能用:=</p>
+                <h2 id="_1"><strong>声明</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
+<p>用const声明，无论在包级别还是函数级别。不能用:=</p>
 <p>常量只能是字符串、布尔、数字类型（整数、浮点数、复数）的值</p>
 <div class="codehilite"><pre><span></span><span class="kd">const</span> <span class="nx">foo</span> <span class="p">=</span> <span class="s">&quot;bar&quot;</span>
 </pre></div>
@@ -668,8 +749,11 @@
 <p>上面声明一个常量，常量名叫foo，值是"bar"，foo的类型自动推导为string</p>
 <p>也可以<code class="codehilite"><span class="kd">const</span> <span class="nx">foo</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&quot;bar&quot;</span></code>来直接指定类型</p>
 <p>注意%T是查看类型，即string还是int，而看不出是常量还是变量</p>
-<p><strong>关于常量的作用域，经测试，常量作用域和变量作用域相同。</strong></p>
-<p>数值常量：</p>
+<h2 id="_2"><strong>作用域</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<hr />
+<p>经测试，常量作用域和变量作用域相同。</p>
+<h2 id="_3"><strong>数值常量</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<hr />
 <ol>
 <li>
 <p>是高精度的值</p>
