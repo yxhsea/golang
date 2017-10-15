@@ -78,6 +78,7 @@ pages:
             - 7.4. 类型推导: basic/type_guess.md
     - 四. 语法:
         - 1. for: syntax/for.md
+        - 2. if: syntax/if.md
     - 五. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md

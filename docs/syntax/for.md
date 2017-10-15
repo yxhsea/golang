@@ -104,3 +104,81 @@ func main() {
     }
 }
 ```
+
+## **作用域**
+
+---
+
+以下均为个人理解，不保证准确性
+
+1. for的init statement里声明的变量，以及代码块里声明的变量，都仅限于for里，在外部是无法引用的
+
+	??? note "例子"
+		```go
+		package main
+
+		import "fmt"
+
+		func main() {
+			for i := 0; i < 2; i ++ {
+				fmt.Println(i)
+				a := 100
+			}
+			fmt.Println(i)
+			fmt.Println(a)
+		}
+		```
+
+		报错
+
+		```text
+		./for.go:10: undefined: i
+		./for.go:11: undefined: a
+		```
+
+2. 每次循环都是一个新的空间，即在第一次循环时候声明的变量，在下一次循环时候是看不到的
+
+	??? note "例子"
+		```go
+		package main
+
+		import "fmt"
+
+		func main() {
+			var a int = 100
+			fmt.Println(a)
+
+			fmt.Println("=====")
+			for i := 0; i < 2; i ++ {
+				fmt.Println("---")
+				a += 1
+				fmt.Println(a)
+				a := 200
+				fmt.Println(a)
+				a += 1
+				fmt.Println(a)
+			}
+			fmt.Println("=====")
+
+			fmt.Println(a)
+		}
+		```
+
+		输出
+
+		```text
+		100
+		=====
+		---
+		101
+		200
+		201
+		---
+		102
+		200
+		201
+		=====
+		102
+		```
+
+		可以看到每次循环时候a都是200，而不会传递到下次循环中
