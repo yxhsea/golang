@@ -76,7 +76,9 @@ pages:
             - 7.2. 默认值: basic/type_default.md
             - 7.3. 类型转换: basic/type_change.md
             - 7.4. 类型推导: basic/type_guess.md
-    - 四. 附录:
+    - 四. 语法:
+        - 1. for: syntax/for.md
+    - 五. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md
         - 3. 命令行工具:
