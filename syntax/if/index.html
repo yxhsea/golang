@@ -578,6 +578,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" title="作用域" class="md-nav__link">
+    作用域
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -708,6 +715,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" title="作用域" class="md-nav__link">
+    作用域
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -732,6 +746,15 @@
 <span class="p">}</span>
 </pre></div>
 
+<p><code>支持</code>
+<div class="codehilite"><pre><span></span><span class="k">if</span> <span class="nx">x</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">x</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div></p>
 <h2 id="_2"><strong>短声明</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <hr />
 <div class="codehilite"><pre><span></span><span class="k">if</span> <span class="nx">v</span> <span class="o">:=</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Pow</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">n</span><span class="p">);</span> <span class="nx">v</span> <span class="p">&lt;</span> <span class="nx">lim</span> <span class="p">{</span>
@@ -742,18 +765,170 @@
 <div class="admonition warning">
 <p>v是局部变量，只在if语句里有效（包括else）</p>
 </div>
-<p>当然也可以
-var a int
-if a = 1; a &lt; 2 {
-    fmt.Println("yes")
-}</p>
-<p>if else写法：
-if ... {
-    ...
-} else if ... {
-} else {
-    ...
-}</p>
+<p>并不是必须要用短声明<code>:=</code>，比如下面这样也是可以的</p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">a</span> <span class="kt">int</span>
+<span class="k">if</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">a</span> <span class="p">&lt;</span> <span class="mi">2</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;yes&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="admonition error">
+<p class="admonition-title">注意</p>
+<p>无论a &lt; 2是否为true，a = 1都被执行了。因此谨慎在if条件句里引用外部变量做动作</p>
+</div>
+<p><code>else if</code>也可以带短声明，但<code>else</code>不能带短声明</p>
+<div class="codehilite"><pre><span></span><span class="k">if</span> <span class="nx">x</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">a</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">x</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">a</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>if 条件可以用bool值，比如</p>
+<div class="codehilite"><pre><span></span><span class="k">if</span> <span class="kc">true</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2 id="_3"><strong>作用域</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<hr />
+<details class="note"><summary>例1. if的代码块是独立的作用域吗?</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">:=</span> <span class="mi">1</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="mi">2</span>
+
+    <span class="k">if</span> <span class="mi">1</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+        <span class="nx">a</span> <span class="p">=</span> <span class="mi">10</span>
+        <span class="nx">b</span> <span class="p">=</span> <span class="mi">20</span>
+        <span class="nx">a</span> <span class="o">:=</span> <span class="mi">100</span>
+        <span class="nx">b</span> <span class="o">:=</span> <span class="mi">200</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<p>输出</p><div class="codehilite"><pre><span></span>a: 1
+b: 2
+a: 100
+b: 200
+a: 10
+b: 20
+</pre></div>
+<p>答: if的代码块是独立的作用域</p></details><details class="note"><summary>例2. if条件使用短声明时是独立的变量还是引用外部变量?</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">:=</span> <span class="mi">1</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="mi">2</span>
+
+    <span class="k">if</span> <span class="nx">a</span> <span class="o">:=</span> <span class="mi">10000</span><span class="p">;</span> <span class="mi">1</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+        <span class="nx">a</span> <span class="p">=</span> <span class="mi">10</span>
+        <span class="nx">b</span> <span class="p">=</span> <span class="mi">20</span>
+        <span class="nx">a</span> <span class="o">:=</span> <span class="mi">100</span>
+        <span class="nx">b</span> <span class="o">:=</span> <span class="mi">200</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<p>输出</p><div class="codehilite"><pre><span></span>a: 10000
+b: 2
+a: 100
+b: 200
+a: 1
+b: 20
+</pre></div>
+<p>答: if条件使用短声明时是独立的变量。下面这个例子更能说明</p><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="mi">2</span>
+
+    <span class="k">if</span> <span class="nx">a</span> <span class="o">:=</span> <span class="mi">10000</span><span class="p">;</span> <span class="mi">1</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+        <span class="nx">a</span> <span class="p">=</span> <span class="mi">10</span>
+        <span class="nx">b</span> <span class="p">=</span> <span class="mi">20</span>
+        <span class="nx">a</span> <span class="o">:=</span> <span class="mi">100</span>
+        <span class="nx">b</span> <span class="o">:=</span> <span class="mi">200</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<p>报错</p><div class="codehilite"><pre><span></span>./if.go:19: undefined: a
+</pre></div>
+<p>在if外引用变量a，提示未找到，因为a只在if作用域</p></details><details class="note"><summary>例3. if条件使用赋值语句时是独立的变量还是引用外部变量?</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">:=</span> <span class="mi">1</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="mi">2</span>
+
+    <span class="k">if</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">10000</span><span class="p">;</span> <span class="mi">1</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+        <span class="nx">a</span> <span class="p">=</span> <span class="mi">10</span>
+        <span class="nx">b</span> <span class="p">=</span> <span class="mi">20</span>
+        <span class="nx">a</span> <span class="o">:=</span> <span class="mi">100</span>
+        <span class="nx">b</span> <span class="o">:=</span> <span class="mi">200</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<p>输出</p><div class="codehilite"><pre><span></span>a: 10000
+b: 2
+a: 100
+b: 200
+a: 10
+b: 20
+</pre></div>
+<p>答: if条件使用赋值语句时是引用外部变量</p></details><details class="note"><summary>例4. 若if条件不满足，那么条件句里的赋值语句是否有生效?</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">:=</span> <span class="mi">1</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="mi">2</span>
+
+    <span class="k">if</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">10000</span><span class="p">;</span> <span class="kc">false</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;if-a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;if-b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<p>输出</p><div class="codehilite"><pre><span></span>a: 10000
+b: 2
+</pre></div>
+<p>答: 若if条件不满足，那么条件句里的赋值语句依然生效。因此谨慎在if条件句里引用外部变量。</p></details>
                 
                   
                 
