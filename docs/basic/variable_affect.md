@@ -205,3 +205,6 @@
 1. [for作用域](/syntax/for/#_4)
 
 2. [if作用域](/syntax/if/#_3)
+
+3. [switch作用域](/syntax/switch/#_4)
+
