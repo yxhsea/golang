@@ -594,6 +594,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../switch/" title="3. switch" class="md-nav__link">
+      3. switch
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -928,7 +940,35 @@ b: 20
 <p>输出</p><div class="codehilite"><pre><span></span>a: 10000
 b: 2
 </pre></div>
-<p>答: 若if条件不满足，那么条件句里的赋值语句依然生效。因此谨慎在if条件句里引用外部变量。</p></details>
+<p>如果有else if呢</p><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">:=</span> <span class="mi">1</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="mi">2</span>
+
+    <span class="k">if</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">10</span><span class="p">;</span> <span class="kc">false</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;if-a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;if-b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">20</span><span class="p">;</span> <span class="kc">true</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;if-a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;if-b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">30</span><span class="p">;</span> <span class="kc">false</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;if-a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;if-b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<p>输出</p><div class="codehilite"><pre><span></span>if-a: 20
+if-b: 2
+a: 20
+b: 2
+</pre></div>
+<p>答: 若if条件不满足，那么条件句里的赋值语句依然生效。若有else if，则会依次执行，直到匹配到为止，因此谨慎在if条件句里引用外部变量。</p></details>
                 
                   
                 
@@ -962,13 +1002,13 @@ b: 2
           </a>
         
         
-          <a href="../../appendix/doc/" title="1. 文档" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../switch/" title="3. switch" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                1. 文档
+                3. switch
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
