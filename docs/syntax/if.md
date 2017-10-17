@@ -245,4 +245,40 @@ if true {
 	b: 2
 	```
 
-	答: 若if条件不满足，那么条件句里的赋值语句依然生效。因此谨慎在if条件句里引用外部变量。
+	如果有else if呢
+
+	```go
+	package main
+
+	import "fmt"
+
+	func main() {
+	    a := 1
+	    b := 2
+
+	    if a = 10; false {
+	        fmt.Println("if-a:", a)
+	        fmt.Println("if-b:", b)
+	    } else if a = 20; true {
+	        fmt.Println("if-a:", a)
+	        fmt.Println("if-b:", b)
+		} else if a = 30; false {
+	        fmt.Println("if-a:", a)
+	        fmt.Println("if-b:", b)
+		}
+
+	    fmt.Println("a:", a)
+	    fmt.Println("b:", b)
+	}
+	```
+
+	输出
+
+	```text
+	if-a: 20
+	if-b: 2
+	a: 20
+	b: 2
+	```
+
+	答: 若if条件不满足，那么条件句里的赋值语句依然生效。若有else if，则会依次执行，直到匹配到为止，因此谨慎在if条件句里引用外部变量。
