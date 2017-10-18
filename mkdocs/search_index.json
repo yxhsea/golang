@@ -306,6 +306,11 @@
             "title": "4. defer"
         }, 
         {
+            "location": "/syntax/pointer/", 
+            "text": "\u58f0\u660e\u6307\u9488\uff1a\n\n\nvar\n \np\n \n*\nint\n\n\np\n \n=\n \ni\n\n\n\n\n\n\u5176\u4ed6\u58f0\u660e\u65b9\u5f0f\nvar\n \np\n \n*\nint\n \n=\n \ni\n\n\n\n\nvar\n \np\n \n=\n \ni\n\n\n\n\np\n \n:=\n \ni\n\n\n\n\n\u7b26\u53f7\u4f1a\u751f\u6210\u6307\u9488\uff0c\u5982\n\n\ni\n \n:=\n \n42\n\n\np\n \n:=\n \ni\n\n\n\n\n\n*\n\u7b26\u53f7\u8bfb\u53d6\u6307\u9488\u6307\u5411\u7684\u503c\uff0c\u5982\n\n\nfmt\n.\nPrintln\n(\n*\np\n)\n\n\n\n\n\n\u53ef\u4ee5\u53e0\u52a0\uff0c\u6bd4\u5982\uff1a\n\n\ni\n \n:=\n \n42\n\n\np\n \n:=\n \ni\n\n\nq\n \n:=\n \np\n\n\nfmt\n.\nPrintf\n(\n%T\\n\n,\n \np\n)\n\n\nfmt\n.\nPrintf\n(\n%T\\n\n,\n \nq\n)\n\n\nfmt\n.\nPrintln\n(\n*\np\n)\n\n\nfmt\n.\nPrintln\n(\np\n)\n\n\nfmt\n.\nPrintln\n(\n*\nq\n)\n\n\nfmt\n.\nPrintln\n(\n**\nq\n)\n\n\n\n\n\n\u8f93\u51fa\n\n\n*int\n**int\n42\n0xc420056168\n0xc420056168\n42\n\n\n\n\n\u4e5f\u53ef\u4ee5\u8fd9\u4e48\u53e0\u52a0\uff0c\u6bd4\u5982\uff1a\n\n\nx\n \n:=\n \n42\n\n\np\n \n:=\n \nx\n\n\n*\np\n \n=\n \n11\n\n\n*\n*\np\n \n=\n \n12\n\n\n*\n*\n*\np\n \n=\n \n13\n\n\nfmt\n.\nPrintln\n(\nx\n)\n\n\n\n\n\n\u8f93\u51fa\n\n\n13", 
+            "title": "5. \u6307\u9488"
+        }, 
+        {
             "location": "/appendix/doc/", 
             "text": "\u5b98\u65b9\u6587\u6863\n\n\n\n\n\u82f1\u6587(\u5b98\u65b9\u7f51\u7ad9): \nhttps://golang.org/\n\n\n\u4e2d\u6587(\u5b98\u65b9\u8ba4\u53ef\u7684\u7ffb\u8bd1\u7f51\u7ad9): \nhttps://go-zh.org/\n\n\n\n\n\u6ce8\u610f: \u4e2d\u6587\u7f51\u7ad9\u66f4\u65b0\u5f88\u6162\uff0c\u5b98\u7f51\u4e0a\u6709\u7684\u5185\u5bb9\u5728\u4e2d\u6587\u7f51\u7ad9\u627e\u4e0d\u5230\uff0c\u56e0\u6b64\u5efa\u8bae\u5148\u4e0a\u82f1\u6587\uff0c\u6709\u770b\u4e0d\u61c2\u7684\u65f6\u5019\u518d\u53c2\u8003\u4e2d\u6587\u7f51\u7ad9", 
             "title": "1. \u6587\u6863"

@@ -121,6 +121,12 @@
      <changefreq>daily</changefreq>
     </url>
         
+    <url>
+     <loc>https://cyent.github.io/markdown-with-mkdocs-material//syntax/pointer/</loc>
+     <lastmod>2017-10-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
     

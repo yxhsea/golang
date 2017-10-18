@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/syntax/switch/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/syntax/pointer/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>3. switch - Go语言学习 - cyent笔记</title>
+        <title>5. 指针 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -88,7 +88,7 @@
                 </span>
               
             
-            3. switch
+            5. 指针
           
         </span>
       </div>
@@ -552,64 +552,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        3. switch
-      </label>
-    
-    <a href="./" title="3. switch" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../switch/" title="3. switch" class="md-nav__link">
       3. switch
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="跟变量" class="md-nav__link">
-    跟变量
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="不跟变量" class="md-nav__link">
-    不跟变量
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="短声明" class="md-nav__link">
-    短声明
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" title="作用域" class="md-nav__link">
-    作用域
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -629,11 +576,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../pointer/" title="5. 指针" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="5. 指针" class="md-nav__link md-nav__link--active">
       5. 指针
     </a>
+    
   </li>
 
         
@@ -741,41 +695,6 @@
   
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="跟变量" class="md-nav__link">
-    跟变量
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="不跟变量" class="md-nav__link">
-    不跟变量
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="短声明" class="md-nav__link">
-    短声明
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" title="作用域" class="md-nav__link">
-    作用域
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -787,147 +706,61 @@
               
                 
                 
-                  <h1>3. switch</h1>
+                  <h1>5. 指针</h1>
                 
-                <h2 id="_1"><strong>跟变量</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<hr />
-<p>某个变量等于A或者等于B</p>
-<div class="codehilite"><pre><span></span><span class="k">switch</span> <span class="nx">varA</span> <span class="p">{</span>
-<span class="k">case</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="o">...</span>
-<span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
-    <span class="o">...</span>
-<span class="k">default</span><span class="p">:</span>
-    <span class="o">...</span>
-<span class="p">}</span>
+                <p>声明指针：</p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">p</span> <span class="o">*</span><span class="kt">int</span>
+<span class="nx">p</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">i</span>
 </pre></div>
 
-<h2 id="_2"><strong>不跟变量</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<hr />
-<p>相当于if-else if-else if-else</p>
-<div class="codehilite"><pre><span></span><span class="k">switch</span> <span class="p">{</span>
-<span class="k">case</span> <span class="nx">varA</span> <span class="p">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-    <span class="o">...</span>
-<span class="k">case</span> <span class="nx">varA</span> <span class="p">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="o">...</span>
-<span class="k">default</span><span class="p">:</span>
-    <span class="o">...</span>
-<span class="p">}</span>
+<details class="note"><summary>其他声明方式</summary><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">p</span> <span class="o">*</span><span class="kt">int</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">i</span>
+</pre></div>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">p</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">i</span>
+</pre></div>
+<div class="codehilite"><pre><span></span><span class="nx">p</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">i</span>
+</pre></div>
+</details><p><code>&amp;</code>符号会生成指针，如</p>
+<div class="codehilite"><pre><span></span><span class="nx">i</span> <span class="o">:=</span> <span class="mi">42</span>
+<span class="nx">p</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">i</span>
 </pre></div>
 
-<p><code>switch { ... }</code> 等同于 <code>switch true { ... }</code></p>
-<h2 id="_3"><strong>短声明</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<hr />
-<p>2种短声明形式：</p>
-<ol>
-<li>
-<p>跟变量</p>
-<div class="codehilite"><pre><span></span><span class="k">switch</span> <span class="nx">os</span> <span class="o">:=</span> <span class="nx">runtime</span><span class="p">.</span><span class="nx">GOOS</span><span class="p">;</span> <span class="nx">os</span> <span class="p">{</span>
-<span class="k">case</span> <span class="s">&quot;darwin&quot;</span><span class="p">:</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;OS X.&quot;</span><span class="p">)</span>
-<span class="k">case</span> <span class="s">&quot;linux&quot;</span><span class="p">:</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Linux.&quot;</span><span class="p">)</span>
-<span class="k">default</span><span class="p">:</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s.&quot;</span><span class="p">,</span> <span class="nx">os</span><span class="p">)</span>
-<span class="p">}</span>
+<p><code>*</code>符号读取指针指向的值，如</p>
+<div class="codehilite"><pre><span></span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">*</span><span class="nx">p</span><span class="p">)</span>
 </pre></div>
 
-<div class="admonition note">
-<p>os变量作用域只在switch里</p>
-</div>
-</li>
-<li>
-<p>不跟变量：</p>
-<div class="codehilite"><pre><span></span><span class="k">switch</span> <span class="nx">varA</span> <span class="o">:=</span> <span class="mi">5</span><span class="p">;</span> <span class="p">{</span> <span class="c1">//注意这里有个分号，如果没有分号会报错</span>
-<span class="k">case</span> <span class="nx">varA</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">:</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;&lt;5&quot;</span><span class="p">)</span>
-<span class="k">case</span> <span class="nx">varA</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;==5&quot;</span><span class="p">)</span>
-<span class="k">case</span> <span class="nx">varA</span> <span class="p">&gt;</span> <span class="mi">5</span><span class="p">:</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;&gt;5&quot;</span><span class="p">)</span>
-<span class="p">}</span>
+<p>可以叠加，比如：</p>
+<div class="codehilite"><pre><span></span><span class="nx">i</span> <span class="o">:=</span> <span class="mi">42</span>
+<span class="nx">p</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">i</span>
+<span class="nx">q</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">p</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="nx">q</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">*</span><span class="nx">p</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">*</span><span class="nx">q</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">**</span><span class="nx">q</span><span class="p">)</span>
 </pre></div>
 
-</li>
-</ol>
-<p>就是说switch分号后面如果是一个变量，则case就是判断这个变量值等于多少，如果分号后面没变量，则case写条件句，当true时触发</p>
-<p><strong>注意: case里不能用短声明或赋值语句</strong></p>
-<h2 id="_4"><strong>作用域</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<hr />
-<details class="note"><summary>例1. switch的短声明是独立的作用域吗?</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">a</span> <span class="o">:=</span> <span class="mi">3</span>
-
-    <span class="k">switch</span> <span class="nx">a</span> <span class="o">:=</span> <span class="mi">5</span><span class="p">;</span> <span class="p">{</span> <span class="c1">//注意这里有个分号，如果没有分号会报错</span>
-    <span class="k">case</span> <span class="nx">a</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;&lt;5&quot;</span><span class="p">)</span>
-    <span class="k">case</span> <span class="nx">a</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;==5&quot;</span><span class="p">)</span>
-    <span class="k">case</span> <span class="nx">a</span> <span class="p">&gt;</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;&gt;5&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
-<span class="p">}</span>
+<p>输出</p>
+<div class="codehilite"><pre><span></span>*int
+**int
+42
+0xc420056168
+0xc420056168
+42
 </pre></div>
-<p>输出</p><div class="codehilite"><pre><span></span>==5
-3
+
+<p>也可以这么叠加，比如：</p>
+<div class="codehilite"><pre><span></span><span class="nx">x</span> <span class="o">:=</span> <span class="mi">42</span>
+<span class="nx">p</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">x</span>
+<span class="o">*</span><span class="nx">p</span> <span class="p">=</span> <span class="mi">11</span>
+<span class="o">*&amp;*</span><span class="nx">p</span> <span class="p">=</span> <span class="mi">12</span>
+<span class="o">*&amp;*&amp;*</span><span class="nx">p</span> <span class="p">=</span> <span class="mi">13</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
 </pre></div>
-<p>答: switch的短声明是独立的作用域</p></details><details class="note"><summary>例2. switch的每个case均是独立的作用域吗?</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span>
-
-    <span class="k">switch</span> <span class="nx">a</span> <span class="o">:=</span> <span class="mi">5</span><span class="p">;</span> <span class="p">{</span> <span class="c1">//注意这里有个分号，如果没有分号会报错</span>
-    <span class="k">case</span> <span class="nx">a</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;&lt;5&quot;</span><span class="p">)</span>
-        <span class="nx">i</span> <span class="o">:=</span> <span class="mi">2</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-    <span class="k">case</span> <span class="nx">a</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;==5&quot;</span><span class="p">)</span>
-        <span class="nx">i</span> <span class="o">:=</span> <span class="mi">3</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-    <span class="k">case</span> <span class="nx">a</span> <span class="p">&gt;</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;&gt;5&quot;</span><span class="p">)</span>
-        <span class="nx">i</span> <span class="o">:=</span> <span class="mi">4</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-<span class="p">}</span>
+<p>输出</p>
+<div class="codehilite"><pre><span></span>13
 </pre></div>
-<p>输出</p><div class="codehilite"><pre><span></span>==5
-3
-1
-</pre></div>
-<p>答: switch的每个case均是独立的作用域</p></details><details class="note"><summary>例3. switch使用赋值语句时是独立变量还是引用外部变量?</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">a</span> <span class="o">:=</span> <span class="mi">3</span>
-
-    <span class="k">switch</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span> <span class="p">{</span> <span class="c1">//注意这里有个分号，如果没有分号会报错</span>
-    <span class="k">case</span> <span class="nx">a</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;&lt;5&quot;</span><span class="p">)</span>
-    <span class="k">case</span> <span class="nx">a</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;==5&quot;</span><span class="p">)</span>
-    <span class="k">case</span> <span class="nx">a</span> <span class="p">&gt;</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;&gt;5&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-<p>输出</p><div class="codehilite"><pre><span></span>==5
-5
-</pre></div>
-<p>答: switch使用赋值语句时是引用外部变量</p></details>
                 
                   
                 
@@ -946,7 +779,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../if/" title="2. if" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../defer/" title="4. defer" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -955,19 +788,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                2. if
+                4. defer
               </span>
             </div>
           </a>
         
         
-          <a href="../defer/" title="4. defer" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../appendix/doc/" title="1. 文档" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                4. defer
+                1. 文档
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
