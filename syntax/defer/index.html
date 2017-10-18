@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/basic/exportname/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/syntax/defer/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>3. 导出名 - Go语言学习 - cyent笔记</title>
+        <title>4. defer - Go语言学习 - cyent笔记</title>
       
     
     
@@ -84,11 +84,11 @@
             
               
                 <span class="md-header-nav__parent">
-                  三. 基础
+                  四. 语法
                 </span>
               
             
-            3. 导出名
+            4. defer
           
         </span>
       </div>
@@ -303,12 +303,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
       三. 基础
@@ -326,7 +324,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../packages/" title="1. Packages" class="md-nav__link">
+    <a href="../../basic/packages/" title="1. Packages" class="md-nav__link">
       1. Packages
     </a>
   </li>
@@ -338,7 +336,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../imports/" title="2. Imports" class="md-nav__link">
+    <a href="../../basic/imports/" title="2. Imports" class="md-nav__link">
       2. Imports
     </a>
   </li>
@@ -348,18 +346,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="3. 导出名" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../basic/exportname/" title="3. 导出名" class="md-nav__link">
       3. 导出名
     </a>
-    
   </li>
 
         
@@ -369,7 +360,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../function/" title="4. 函数" class="md-nav__link">
+    <a href="../../basic/function/" title="4. 函数" class="md-nav__link">
       4. 函数
     </a>
   </li>
@@ -400,7 +391,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../variable_declare/" title="5.1. 声明" class="md-nav__link">
+    <a href="../../basic/variable_declare/" title="5.1. 声明" class="md-nav__link">
       5.1. 声明
     </a>
   </li>
@@ -412,7 +403,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../variable_affect/" title="5.2. 作用域" class="md-nav__link">
+    <a href="../../basic/variable_affect/" title="5.2. 作用域" class="md-nav__link">
       5.2. 作用域
     </a>
   </li>
@@ -429,7 +420,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../const/" title="6. 常量" class="md-nav__link">
+    <a href="../../basic/const/" title="6. 常量" class="md-nav__link">
       6. 常量
     </a>
   </li>
@@ -460,7 +451,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../type_main/" title="7.1. 介绍" class="md-nav__link">
+    <a href="../../basic/type_main/" title="7.1. 介绍" class="md-nav__link">
       7.1. 介绍
     </a>
   </li>
@@ -472,7 +463,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../type_default/" title="7.2. 默认值" class="md-nav__link">
+    <a href="../../basic/type_default/" title="7.2. 默认值" class="md-nav__link">
       7.2. 默认值
     </a>
   </li>
@@ -484,7 +475,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../type_change/" title="7.3. 类型转换" class="md-nav__link">
+    <a href="../../basic/type_change/" title="7.3. 类型转换" class="md-nav__link">
       7.3. 类型转换
     </a>
   </li>
@@ -496,7 +487,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../type_guess/" title="7.4. 类型推导" class="md-nav__link">
+    <a href="../../basic/type_guess/" title="7.4. 类型推导" class="md-nav__link">
       7.4. 类型推导
     </a>
   </li>
@@ -516,10 +507,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     
     <label class="md-nav__link" for="nav-4">
       四. 语法
@@ -537,7 +530,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../syntax/for/" title="1. for" class="md-nav__link">
+    <a href="../for/" title="1. for" class="md-nav__link">
       1. for
     </a>
   </li>
@@ -549,7 +542,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../syntax/if/" title="2. if" class="md-nav__link">
+    <a href="../if/" title="2. if" class="md-nav__link">
       2. if
     </a>
   </li>
@@ -561,7 +554,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../syntax/switch/" title="3. switch" class="md-nav__link">
+    <a href="../switch/" title="3. switch" class="md-nav__link">
       3. switch
     </a>
   </li>
@@ -571,11 +564,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../syntax/defer/" title="4. defer" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="4. defer" class="md-nav__link md-nav__link--active">
       4. defer
     </a>
+    
   </li>
 
         
@@ -694,70 +694,62 @@
               
                 
                 
-                  <h1>3. 导出名</h1>
+                  <h1>4. defer</h1>
                 
-                <p>模块里名字第一个字符大写可以被其他模块引用，而如果首字符是小写则不行，比如<code>stringutil.go</code>内容:</p>
-<div class="codehilite"><pre><span></span><span class="c1">// Package stringutil contains utility functions for working with strings.</span>
-<span class="kn">package</span> <span class="nx">stringutil</span>
-
-<span class="c1">// Reverse returns its argument string reversed rune-wise left to right.</span>
-<span class="kd">func</span> <span class="nx">reverse</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
-        <span class="nx">r</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">rune</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
-        <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="p">=</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nx">j</span><span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
-                <span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">r</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">r</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="nb">string</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-
-<p><code>hello.go</code>要引用这个模块：</p>
+                <p>defer，顾名思义，就是推迟执行的意思</p>
+<p>defer使得后面跟的函数在当前函数结束之后执行（如果有return，就是在reutrn之前执行）</p>
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&quot;fmt&quot;</span>
-    <span class="s">&quot;github.com/cyent/repo1/stringutil&quot;</span>
-<span class="p">)</span>
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">func1</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">func2</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func1</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;aa&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="p">}</span>
 
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="nx">stringutil</span><span class="p">.</span><span class="nx">reverse</span><span class="p">(</span><span class="s">&quot;!oG ,olleH&quot;</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func2</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
 
-<p>这样<code>hello.go</code>编译会报错：</p>
-<div class="codehilite"><pre><span></span># github.com/cyent/repo1/hello
-./hello.go:10: cannot refer to unexported name stringutil.reverse
-./hello.go:10: undefined: stringutil.reverse
+<p>输出</p>
+<div class="codehilite"><pre><span></span>aa
+101
+11
 </pre></div>
 
-<p>正确应该是：</p>
-<p><code>stringutil.go</code>内容是：</p>
-<div class="codehilite"><pre><span></span><span class="c1">// Package stringutil contains utility functions for working with strings.</span>
-<span class="kn">package</span> <span class="nx">stringutil</span>
-
-<span class="c1">// Reverse returns its argument string reversed rune-wise left to right.</span>
-<span class="kd">func</span> <span class="nx">Reverse</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
-        <span class="nx">r</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">rune</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
-        <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="p">=</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nx">j</span><span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
-                <span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">r</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">r</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="nb">string</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-
-<p><code>hello.go</code>要引用这个模块：</p>
+<p><strong>defer栈：如果有多个defer，则是从后往前执行</strong>（原话：延迟的函数调用被压入一个栈中。当函数返回时， 会按照后进先出的顺序调用被延迟的函数调用。），比如：</p>
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&quot;fmt&quot;</span>
-    <span class="s">&quot;github.com/cyent/repo1/stringutil&quot;</span>
-<span class="p">)</span>
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">func1</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">func2</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func1</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func1</span><span class="p">(</span><span class="mi">200</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;aa&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="p">}</span>
 
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="nx">stringutil</span><span class="p">.</span><span class="nx">Reverse</span><span class="p">(</span><span class="s">&quot;!oG ,olleH&quot;</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func2</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
 
-<p>这样编译就不会报错了</p>
+<p>输出</p>
+<div class="codehilite"><pre><span></span>aa
+201
+101
+11
+</pre></div>
                 
                   
                 
@@ -776,7 +768,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../imports/" title="2. Imports" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../switch/" title="3. switch" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -785,19 +777,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                2. Imports
+                3. switch
               </span>
             </div>
           </a>
         
         
-          <a href="../function/" title="4. 函数" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../appendix/doc/" title="1. 文档" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                4. 函数
+                1. 文档
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
