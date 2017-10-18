@@ -81,6 +81,7 @@ pages:
         - 2. if: syntax/if.md
         - 3. switch: syntax/switch.md
         - 4. defer: syntax/defer.md
+        - 5. 指针: syntax/pointer.md
     - 五. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md
