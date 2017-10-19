@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/syntax/pointer/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/flow/defer/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>5. 指针 - Go语言学习 - cyent笔记</title>
+        <title>4. defer - Go语言学习 - cyent笔记</title>
       
     
     
@@ -84,11 +84,11 @@
             
               
                 <span class="md-header-nav__parent">
-                  四. 语法
+                  四. 流控制
                 </span>
               
             
-            5. 指针
+            4. defer
           
         </span>
       </div>
@@ -515,11 +515,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     
     <label class="md-nav__link" for="nav-4">
-      四. 语法
+      四. 流控制
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
-        四. 语法
+        四. 流控制
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -564,18 +564,6 @@
           
           
 
-
-  <li class="md-nav__item">
-    <a href="../defer/" title="4. defer" class="md-nav__link">
-      4. defer
-    </a>
-  </li>
-
-        
-          
-          
-          
-
   
 
 
@@ -584,8 +572,8 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
-    <a href="./" title="5. 指针" class="md-nav__link md-nav__link--active">
-      5. 指针
+    <a href="./" title="4. defer" class="md-nav__link md-nav__link--active">
+      4. defer
     </a>
     
   </li>
@@ -606,11 +594,59 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
-      五. 附录
+      五. 数据类型
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
-        五. 附录
+        五. 数据类型
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/pointer/" title="1. 指针" class="md-nav__link">
+      1. 指针
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/struct/" title="2. struct" class="md-nav__link">
+      2. struct
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      六. 附录
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        六. 附录
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -646,13 +682,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
     
-    <label class="md-nav__link" for="nav-5-3">
+    <label class="md-nav__link" for="nav-6-3">
       3. 命令行工具
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-5-3">
+      <label class="md-nav__title" for="nav-6-3">
         3. 命令行工具
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -706,60 +742,61 @@
               
                 
                 
-                  <h1>5. 指针</h1>
+                  <h1>4. defer</h1>
                 
-                <p>声明指针：</p>
-<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">p</span> <span class="o">*</span><span class="kt">int</span>
-<span class="nx">p</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">i</span>
-</pre></div>
+                <p>defer，顾名思义，就是推迟执行的意思</p>
+<p>defer使得后面跟的函数在当前函数结束之后执行（如果有return，就是在reutrn之前执行）</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
-<details class="note"><summary>其他声明方式</summary><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">p</span> <span class="o">*</span><span class="kt">int</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">i</span>
-</pre></div>
-<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">p</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">i</span>
-</pre></div>
-<div class="codehilite"><pre><span></span><span class="nx">p</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">i</span>
-</pre></div>
-</details><p><code>&amp;</code>符号会生成指针，如</p>
-<div class="codehilite"><pre><span></span><span class="nx">i</span> <span class="o">:=</span> <span class="mi">42</span>
-<span class="nx">p</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">i</span>
-</pre></div>
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 
-<p><code>*</code>符号读取指针指向的值，如</p>
-<div class="codehilite"><pre><span></span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">*</span><span class="nx">p</span><span class="p">)</span>
-</pre></div>
+<span class="kd">func</span> <span class="nx">func1</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="p">}</span>
 
-<p>可以叠加，比如：</p>
-<div class="codehilite"><pre><span></span><span class="nx">i</span> <span class="o">:=</span> <span class="mi">42</span>
-<span class="nx">p</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">i</span>
-<span class="nx">q</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">p</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="nx">q</span><span class="p">)</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">*</span><span class="nx">p</span><span class="p">)</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">*</span><span class="nx">q</span><span class="p">)</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">**</span><span class="nx">q</span><span class="p">)</span>
+<span class="kd">func</span> <span class="nx">func2</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func1</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;aa&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func2</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="p">}</span>
 </pre></div>
 
 <p>输出</p>
-<div class="codehilite"><pre><span></span>*int
-**int
-42
-0xc420056168
-0xc420056168
-42
+<div class="codehilite"><pre><span></span>aa
+101
+11
 </pre></div>
 
-<p>也可以这么叠加，比如：</p>
-<div class="codehilite"><pre><span></span><span class="nx">x</span> <span class="o">:=</span> <span class="mi">42</span>
-<span class="nx">p</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">x</span>
-<span class="o">*</span><span class="nx">p</span> <span class="p">=</span> <span class="mi">11</span>
-<span class="o">*&amp;*</span><span class="nx">p</span> <span class="p">=</span> <span class="mi">12</span>
-<span class="o">*&amp;*&amp;*</span><span class="nx">p</span> <span class="p">=</span> <span class="mi">13</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+<p><strong>defer栈：如果有多个defer，则是从后往前执行</strong>（原话：延迟的函数调用被压入一个栈中。当函数返回时， 会按照后进先出的顺序调用被延迟的函数调用。），比如：</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">func1</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">func2</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func1</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func1</span><span class="p">(</span><span class="mi">200</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;aa&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func2</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="p">}</span>
 </pre></div>
 
 <p>输出</p>
-<div class="codehilite"><pre><span></span>13
+<div class="codehilite"><pre><span></span>aa
+201
+101
+11
 </pre></div>
                 
                   
@@ -779,7 +816,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../defer/" title="4. defer" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../switch/" title="3. switch" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -788,19 +825,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                4. defer
+                3. switch
               </span>
             </div>
           </a>
         
         
-          <a href="../../appendix/doc/" title="1. 文档" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../datatype/pointer/" title="1. 指针" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                1. 文档
+                1. 指针
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

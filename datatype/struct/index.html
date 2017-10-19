@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/appendix/doc/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/struct/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>1. 文档 - Go语言学习 - cyent笔记</title>
+        <title>2. struct - Go语言学习 - cyent笔记</title>
       
     
     
@@ -84,11 +84,11 @@
             
               
                 <span class="md-header-nav__parent">
-                  六. 附录
+                  五. 数据类型
                 </span>
               
             
-            1. 文档
+            2. struct
           
         </span>
       </div>
@@ -579,10 +579,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
     
     <label class="md-nav__link" for="nav-5">
       五. 数据类型
@@ -600,7 +602,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/pointer/" title="1. 指针" class="md-nav__link">
+    <a href="../pointer/" title="1. 指针" class="md-nav__link">
       1. 指针
     </a>
   </li>
@@ -610,11 +612,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../datatype/struct/" title="2. struct" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="2. struct" class="md-nav__link md-nav__link--active">
       2. struct
     </a>
+    
   </li>
 
         
@@ -627,12 +636,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
       六. 附录
@@ -648,43 +655,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        1. 文档
-      </label>
-    
-    <a href="./" title="1. 文档" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../appendix/doc/" title="1. 文档" class="md-nav__link">
       1. 文档
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="官方文档" class="md-nav__link">
-    官方文档
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -694,7 +669,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../code/" title="2. 编码规范" class="md-nav__link">
+    <a href="../../appendix/code/" title="2. 编码规范" class="md-nav__link">
       2. 编码规范
     </a>
   </li>
@@ -756,20 +731,6 @@
   
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="官方文档" class="md-nav__link">
-    官方文档
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -781,15 +742,9 @@
               
                 
                 
-                  <h1>1. 文档</h1>
+                  <h1>2. struct</h1>
                 
-                <h2 id="_1"><strong>官方文档</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<hr />
-<p>英文(官方网站): <a href="https://golang.org/">https://golang.org/</a></p>
-<p>中文(官方认可的翻译网站): <a href="https://go-zh.org/">https://go-zh.org/</a></p>
-<div class="admonition note">
-<p>注意: 中文网站更新很慢，官网上有的内容在中文网站找不到，因此建议先上英文，有看不懂的时候再参考中文网站</p>
-</div>
+                
                 
                   
                 
@@ -808,7 +763,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../datatype/struct/" title="2. struct" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../pointer/" title="1. 指针" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -817,19 +772,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                2. struct
+                1. 指针
               </span>
             </div>
           </a>
         
         
-          <a href="../code/" title="2. 编码规范" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../appendix/doc/" title="1. 文档" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                2. 编码规范
+                1. 文档
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

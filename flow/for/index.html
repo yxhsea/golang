@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/syntax/defer/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/flow/for/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>4. defer - Go语言学习 - cyent笔记</title>
+        <title>1. for - Go语言学习 - cyent笔记</title>
       
     
     
@@ -84,11 +84,11 @@
             
               
                 <span class="md-header-nav__parent">
-                  四. 语法
+                  四. 流控制
                 </span>
               
             
-            4. defer
+            1. for
           
         </span>
       </div>
@@ -515,11 +515,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     
     <label class="md-nav__link" for="nav-4">
-      四. 语法
+      四. 流控制
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
-        四. 语法
+        四. 流控制
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -528,11 +528,71 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../for/" title="1. for" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        1. for
+      </label>
+    
+    <a href="./" title="1. for" class="md-nav__link md-nav__link--active">
       1. for
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="基本格式" class="md-nav__link">
+    基本格式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="简写格式" class="md-nav__link">
+    简写格式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="死循环" class="md-nav__link">
+    死循环
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#range" title="结合range" class="md-nav__link">
+    结合range
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="作用域" class="md-nav__link">
+    作用域
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -564,29 +624,10 @@
           
           
 
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="4. defer" class="md-nav__link md-nav__link--active">
-      4. defer
-    </a>
-    
-  </li>
-
-        
-          
-          
-          
-
 
   <li class="md-nav__item">
-    <a href="../pointer/" title="5. 指针" class="md-nav__link">
-      5. 指针
+    <a href="../defer/" title="4. defer" class="md-nav__link">
+      4. defer
     </a>
   </li>
 
@@ -606,11 +647,59 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
-      五. 附录
+      五. 数据类型
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
-        五. 附录
+        五. 数据类型
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/pointer/" title="1. 指针" class="md-nav__link">
+      1. 指针
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/struct/" title="2. struct" class="md-nav__link">
+      2. struct
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      六. 附录
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        六. 附录
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -646,13 +735,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
     
-    <label class="md-nav__link" for="nav-5-3">
+    <label class="md-nav__link" for="nav-6-3">
       3. 命令行工具
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-5-3">
+      <label class="md-nav__title" for="nav-6-3">
         3. 命令行工具
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -695,6 +784,48 @@
   
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="基本格式" class="md-nav__link">
+    基本格式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="简写格式" class="md-nav__link">
+    简写格式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="死循环" class="md-nav__link">
+    死循环
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#range" title="结合range" class="md-nav__link">
+    结合range
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="作用域" class="md-nav__link">
+    作用域
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -706,62 +837,155 @@
               
                 
                 
-                  <h1>4. defer</h1>
+                  <h1>1. for</h1>
                 
-                <p>defer，顾名思义，就是推迟执行的意思</p>
-<p>defer使得后面跟的函数在当前函数结束之后执行（如果有return，就是在reutrn之前执行）</p>
-<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="kd">func</span> <span class="nx">func1</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">func2</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func1</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;aa&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func2</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+                <h2 id="_1"><strong>基本格式</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
+<p>golang里循环只有for一种，没有其他的（比如其他语言还有while）</p>
+<p>语法：</p>
+<div class="codehilite"><pre><span></span><span class="k">for</span> <span class="nx">init</span> <span class="nx">statement</span><span class="p">;</span> <span class="nx">condition</span> <span class="nx">expression</span><span class="p">;</span> <span class="nx">post</span> <span class="nx">statement</span> <span class="p">{</span>
+    <span class="o">...</span>
 <span class="p">}</span>
 </pre></div>
 
-<p>输出</p>
-<div class="codehilite"><pre><span></span>aa
+<div class="admonition note">
+<p class="admonition-title">没有括号</p>
+<p><code>init statement; condition expression; post statement</code>前后没有括号<code>()</code></p>
+</div>
+<p>举例</p>
+<div class="codehilite"><pre><span></span><span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+    <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">i</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">init statement里不能用var</p>
+<p>这里<code>i := 0</code>不能写成<code>var i int = 0</code>，因为这个地方要求不能用<code>var</code>，只能用<code>:=</code>，如果一定要<code>var</code>，要在<code>for</code>前先<code>var</code>，比如这样也是可以的：</p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">i</span> <span class="kt">int</span>
+<span class="k">for</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span> <span class="o">++</span> <span class="p">{</span>
+    <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">i</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+<h2 id="_2"><strong>简写格式</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<hr />
+<p>init statement和post statement是可选的，因此可以忽略，比如：</p>
+<div class="codehilite"><pre><span></span><span class="nx">sum</span> <span class="o">:=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="p">;</span> <span class="nx">sum</span> <span class="p">&lt;</span> <span class="mi">1000</span><span class="p">;</span> <span class="p">{</span>
+    <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">sum</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>可以省略分号，即可以写成（这种写法相当于C语言中的while）</p>
+<div class="codehilite"><pre><span></span><span class="nx">sum</span> <span class="o">:=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="nx">sum</span> <span class="p">&lt;</span> <span class="mi">1000</span> <span class="p">{</span>
+    <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">sum</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">分号只能都要，或者都不要</p>
+<p>下面这2种是错的</p>
+<div class="codehilite"><pre><span></span><span class="k">for</span> <span class="p">;</span> <span class="nx">sum</span> <span class="p">&lt;</span> <span class="mi">1000</span> <span class="p">{</span>
+    <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">sum</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>或</p>
+<div class="codehilite"><pre><span></span><span class="k">for</span> <span class="nx">sum</span> <span class="p">&lt;</span> <span class="mi">1000</span><span class="p">;</span> <span class="p">{</span>
+    <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">sum</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+<h2 id="_3"><strong>死循环</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<hr />
+<div class="codehilite"><pre><span></span><span class="k">for</span> <span class="p">{</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2 id="range"><strong>结合range</strong><a class="headerlink" href="#range" title="Permanent link">&para;</a></h2>
+<hr />
+<p>结合range可以对slice、map、数组、字符串等进行迭代循环</p>
+<div class="codehilite"><pre><span></span><span class="k">for</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">value</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">oldMap</span> <span class="p">{</span>
+    <span class="nx">newMap</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="p">=</span> <span class="nx">value</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>比如：</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">numbers</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+
+    <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">x</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">numbers</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;第 %d 位 x 的值 = %d\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2 id="_4"><strong>作用域</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<hr />
+<p>以下均为个人理解，不保证准确性</p>
+<ol>
+<li>
+<p>for的init statement里声明的变量，以及代码块里声明的变量，都仅限于for里，在外部是无法引用的</p>
+<details class="note"><summary>例子</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="nx">i</span> <span class="o">++</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+        <span class="nx">a</span> <span class="o">:=</span> <span class="mi">100</span>
+    <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<p>报错</p><div class="codehilite"><pre><span></span>./for.go:10: undefined: i
+./for.go:11: undefined: a
+</pre></div>
+</details></li>
+<li>
+<p>每次循环都是一个新的空间，即在第一次循环时候声明的变量，在下一次循环时候是看不到的</p>
+<details class="note"><summary>例子</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">100</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;=====&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="nx">i</span> <span class="o">++</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;---&quot;</span><span class="p">)</span>
+        <span class="nx">a</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+        <span class="nx">a</span> <span class="o">:=</span> <span class="mi">200</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+        <span class="nx">a</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;=====&quot;</span><span class="p">)</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<p>输出</p><div class="codehilite"><pre><span></span>100
+=====
+---
 101
-11
-</pre></div>
-
-<p><strong>defer栈：如果有多个defer，则是从后往前执行</strong>（原话：延迟的函数调用被压入一个栈中。当函数返回时， 会按照后进先出的顺序调用被延迟的函数调用。），比如：</p>
-<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="kd">func</span> <span class="nx">func1</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">func2</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func1</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func1</span><span class="p">(</span><span class="mi">200</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;aa&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func2</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-<span class="p">}</span>
-</pre></div>
-
-<p>输出</p>
-<div class="codehilite"><pre><span></span>aa
+200
 201
-101
-11
+---
+102
+200
+201
+=====
+102
 </pre></div>
+<p>可以看到每次循环时候a都是200，而不会传递到下次循环中</p></details></li>
+</ol>
                 
                   
                 
@@ -780,7 +1004,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../switch/" title="3. switch" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../basic/type_guess/" title="7.4. 类型推导" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -789,19 +1013,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                3. switch
+                7.4. 类型推导
               </span>
             </div>
           </a>
         
         
-          <a href="../pointer/" title="5. 指针" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../if/" title="2. if" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                5. 指针
+                2. if
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
