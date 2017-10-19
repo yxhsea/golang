@@ -76,13 +76,15 @@ pages:
             - 7.2. 默认值: basic/type_default.md
             - 7.3. 类型转换: basic/type_change.md
             - 7.4. 类型推导: basic/type_guess.md
-    - 四. 语法:
-        - 1. for: syntax/for.md
-        - 2. if: syntax/if.md
-        - 3. switch: syntax/switch.md
-        - 4. defer: syntax/defer.md
-        - 5. 指针: syntax/pointer.md
-    - 五. 附录:
+    - 四. 流控制:
+        - 1. for: flow/for.md
+        - 2. if: flow/if.md
+        - 3. switch: flow/switch.md
+        - 4. defer: flow/defer.md
+    - 五. 数据类型:
+        - 1. 指针: datatype/pointer.md
+        - 2. struct: datatype/struct.md
+    - 六. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md
         - 3. 命令行工具:
