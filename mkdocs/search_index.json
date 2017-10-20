@@ -311,9 +311,24 @@
             "title": "1. \u6307\u9488"
         }, 
         {
-            "location": "/datatype/struct/", 
-            "text": "", 
-            "title": "2. struct"
+            "location": "/datatype/struct_main/", 
+            "text": "type\n \nvertex\n \nstruct\n \n{\n\n    \nx\n \nint\n\n    \ny\n \nint\n\n\n}\n\n\n\nfunc\n \nmain\n()\n \n{\n\n    \nfmt\n.\nPrintln\n(\nvertex\n{\n1\n,\n \n2\n})\n   \n//\u6253\u5370\u6574\u4e2astruct\n\n    \nv\n \n:=\n \nvertex\n{\n1\n,\n \n2\n}\n\n    \nv\n.\nx\n \n=\n \n4\n\n    \nfmt\n.\nPrintln\n(\nv\n.\nx\n)\n            \n//\u4ec5\u6253\u5370x\u8fd9\u4e2a\u5b57\u6bb5\n\n    \nfmt\n.\nPrintf\n(\n%T\\n\n,\n \nv\n)\n\n\n}\n\n\n\n\n\n\u8f93\u51fa\n\n\n{1 2}\n4\nmain.vertex", 
+            "title": "2.1. \u58f0\u660e"
+        }, 
+        {
+            "location": "/datatype/struct_pointer/", 
+            "text": "type\n \nVertex\n \nstruct\n \n{\n\n    \nX\n \nint\n\n    \nY\n \nint\n\n\n}\n\n\n\nfunc\n \nmain\n()\n \n{\n\n    \nv\n \n:=\n \nVertex\n{\n1\n,\n \n2\n}\n\n    \np\n \n:=\n \nv\n\n    \np\n.\nX\n \n=\n \n1e9\n\n    \nfmt\n.\nPrintln\n(\nv\n)\n\n\n}\n\n\n\n\n\np.X\n\u539f\u672c\u5e94\u8be5\u5199\u6210\n(*p).X\n\uff0c\u4f46golang\u652f\u6301\np.X\n\u8fd9\u6837\u5199\u6cd5\uff0c\u56e0\u6b64\u8fd92\u79cd\u5199\u6cd5\u7684\u6548\u679c\u662f\u4e00\u6837\u7684", 
+            "title": "2.3. struct\u6307\u9488"
+        }, 
+        {
+            "location": "/datatype/struct_literal/", 
+            "text": "type\n \nVertex\n \nstruct\n \n{\n\n    \nX\n,\n \nY\n \nint\n\n\n}\n\n\n\nvar\n \n(\n\n    \nv1\n \n=\n \nVertex\n{\n1\n,\n \n2\n}\n  \n// has type Vertex\n\n    \nv2\n \n=\n \nVertex\n{\nX\n:\n \n1\n}\n  \n// Y:0 is implicit\n\n    \nv3\n \n=\n \nVertex\n{}\n      \n// X:0 and Y:0\n\n    \np\n  \n=\n \nVertex\n{\n1\n,\n \n2\n}\n \n// has type *Vertex\n\n\n)\n\n\n\nfunc\n \nmain\n()\n \n{\n\n    \nfmt\n.\nPrintln\n(\nv1\n,\n \np\n,\n \nv2\n,\n \nv3\n)\n\n    \nfmt\n.\nPrintf\n(\n%T\\n\n,\n \np\n)\n\n    \nfmt\n.\nPrintf\n(\n%T\\n\n,\n \n*\np\n)\n\n\n}\n\n\n\n\n\n\u8f93\u51fa\n\n\n{1 2} \n{1 2} {1 0} {0 0}\n*main.Vertex\nmain.Vertex\n\n\n\n\n\n\nNote\n\n\n\n\n\u58f0\u660e\u591a\u4e2a\u53d8\u91cf\u65f6\u5019\u53ef\u4ee5\u7528\nvar (...)\n\n\nv2 = Vertex{X: 1}\n\u8fd9\u6837\u8868\u793aX\u4e3a1\uff0c\u5176\u4ed6\u90fd\u4e3a\u7c7b\u578b\u63a8\u5bfc\u7684\u9ed8\u8ba4\u503c\n\n\n\u8fd9\u91ccstruct\u6307\u9488\u7c7b\u578b\u662f\n*main.Vertex", 
+            "title": "2.4. literal"
+        }, 
+        {
+            "location": "/datatype/struct_anon/", 
+            "text": "\u5982\u679c\u53ea\u662f\u4e34\u65f6\u4f7f\u7528struct\u4e00\u6b21\uff0c\u800c\u4e0d\u662f\u591a\u6b21\u4f7f\u7528\uff0c\u7528\u533f\u540dstruct\u5373\u53ef\n\n\npackage\n \nmain\n\n\n\nimport\n \nfmt\n\n\n\nfunc\n \nmain\n()\n \n{\n\n    \na\n \n:=\n \nstruct\n{\nname\n \nstring\n}{\nname\n:\n \nhello\n}\n\n    \nfmt\n.\nPrintf\n(\n%T\\n\n,\n \na\n)\n\n    \nfmt\n.\nPrintf\n(\n%v\\n\n,\n \na\n)\n\n    \nfmt\n.\nPrintln\n(\na\n.\nname\n)\n\n\n}\n\n\n\n\n\n\u8f93\u51fa\n\n\nstruct { name string }\n{hello}\nhello\n\n\n\n\n\n\n\u9664\u4e86\u57fa\u672c\u7c7b\u578b\uff0c\u5176\u4ed6\u590d\u5408\u7c7b\u578b\u90fd\u53ef\u4ee5\u7528: T{name:value} \u5b8c\u6210\u521d\u59cb\u5316\u3002\n\n\n\u6bd4\u5982\u4e0a\u9762\u4f8b\u5b50\u4e2d\u7684\nstruct{name string}\n\u5c31\u662fT\uff0c\n{name: \nhello\n}\n\u5c31\u662f{name:value}", 
+            "title": "2.2. \u533f\u540dstruct"
         }, 
         {
             "location": "/appendix/doc/", 

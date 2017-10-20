@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/struct/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/struct_literal/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>2. struct - Go语言学习 - cyent笔记</title>
+        <title>2.4. literal - Go语言学习 - cyent笔记</title>
       
     
     
@@ -87,8 +87,12 @@
                   五. 数据类型
                 </span>
               
+                <span class="md-header-nav__parent">
+                  2. struct
+                </span>
+              
             
-            2. struct
+            2.4. literal
           
         </span>
       </div>
@@ -615,15 +619,77 @@
   
 
 
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2" checked>
+    
+    <label class="md-nav__link" for="nav-5-2">
+      2. struct
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        2. struct
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../struct_main/" title="2.1. 声明" class="md-nav__link">
+      2.1. 声明
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../struct_pointer/" title="2.3. struct指针" class="md-nav__link">
+      2.3. struct指针
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
   <li class="md-nav__item md-nav__item--active">
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
-    <a href="./" title="2. struct" class="md-nav__link md-nav__link--active">
-      2. struct
+    <a href="./" title="2.4. literal" class="md-nav__link md-nav__link--active">
+      2.4. literal
     </a>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../struct_anon/" title="2.2. 匿名struct" class="md-nav__link">
+      2.2. 匿名struct
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -742,9 +808,40 @@
               
                 
                 
-                  <h1>2. struct</h1>
+                  <h1>2.4. literal</h1>
                 
-                
+                <div class="codehilite"><pre><span></span><span class="kd">type</span> <span class="nx">Vertex</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="p">(</span>
+    <span class="nx">v1</span> <span class="p">=</span> <span class="nx">Vertex</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>  <span class="c1">// has type Vertex</span>
+    <span class="nx">v2</span> <span class="p">=</span> <span class="nx">Vertex</span><span class="p">{</span><span class="nx">X</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>  <span class="c1">// Y:0 is implicit</span>
+    <span class="nx">v3</span> <span class="p">=</span> <span class="nx">Vertex</span><span class="p">{}</span>      <span class="c1">// X:0 and Y:0</span>
+    <span class="nx">p</span>  <span class="p">=</span> <span class="o">&amp;</span><span class="nx">Vertex</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span> <span class="c1">// has type *Vertex</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v1</span><span class="p">,</span> <span class="nx">p</span><span class="p">,</span> <span class="nx">v2</span><span class="p">,</span> <span class="nx">v3</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="o">*</span><span class="nx">p</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>{1 2} &amp;{1 2} {1 0} {0 0}
+*main.Vertex
+main.Vertex
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol>
+<li>声明多个变量时候可以用<code>var (...)</code></li>
+<li><code>v2 = Vertex{X: 1}</code>这样表示X为1，其他都为类型推导的默认值</li>
+<li>这里struct指针类型是<code>*main.Vertex</code></li>
+</ol>
+</div>
                 
                   
                 
@@ -763,7 +860,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../pointer/" title="1. 指针" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../struct_pointer/" title="2.3. struct指针" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -772,19 +869,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                1. 指针
+                2.3. struct指针
               </span>
             </div>
           </a>
         
         
-          <a href="../../appendix/doc/" title="1. 文档" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../struct_anon/" title="2.2. 匿名struct" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                1. 文档
+                2.2. 匿名struct
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
