@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/struct_literal/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/arr_sli_main/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>2.4. literal - Go语言学习 - cyent笔记</title>
+        <title>3.1. 介绍 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -88,11 +88,11 @@
                 </span>
               
                 <span class="md-header-nav__parent">
-                  2. struct
+                  3. 数组和切片
                 </span>
               
             
-            2.4. literal
+            3.1. 介绍
           
         </span>
       </div>
@@ -616,12 +616,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
     
     <label class="md-nav__link" for="nav-5-2">
       2. struct
@@ -661,18 +659,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="2.4. literal" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../struct_literal/" title="2.4. literal" class="md-nav__link">
       2.4. literal
     </a>
-    
   </li>
 
         
@@ -697,10 +688,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" checked>
     
     <label class="md-nav__link" for="nav-5-3">
       3. 数组和切片
@@ -716,11 +709,71 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../arr_sli_main/" title="3.1. 介绍" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        3.1. 介绍
+      </label>
+    
+    <a href="./" title="3.1. 介绍" class="md-nav__link md-nav__link--active">
       3.1. 介绍
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="声明赋值" class="md-nav__link">
+    声明赋值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="本质" class="md-nav__link">
+    本质
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="长度是否可变" class="md-nav__link">
+    长度是否可变
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" title="2种声明方式" class="md-nav__link">
+    2种声明方式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="类型" class="md-nav__link">
+    类型
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -833,6 +886,48 @@
   
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="声明赋值" class="md-nav__link">
+    声明赋值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="本质" class="md-nav__link">
+    本质
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="长度是否可变" class="md-nav__link">
+    长度是否可变
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" title="2种声明方式" class="md-nav__link">
+    2种声明方式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="类型" class="md-nav__link">
+    类型
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -844,40 +939,79 @@
               
                 
                 
-                  <h1>2.4. literal</h1>
+                  <h1>3.1. 介绍</h1>
                 
-                <div class="codehilite"><pre><span></span><span class="kd">type</span> <span class="nx">Vertex</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">int</span>
-<span class="p">}</span>
-
-<span class="kd">var</span> <span class="p">(</span>
-    <span class="nx">v1</span> <span class="p">=</span> <span class="nx">Vertex</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>  <span class="c1">// has type Vertex</span>
-    <span class="nx">v2</span> <span class="p">=</span> <span class="nx">Vertex</span><span class="p">{</span><span class="nx">X</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>  <span class="c1">// Y:0 is implicit</span>
-    <span class="nx">v3</span> <span class="p">=</span> <span class="nx">Vertex</span><span class="p">{}</span>      <span class="c1">// X:0 and Y:0</span>
-    <span class="nx">p</span>  <span class="p">=</span> <span class="o">&amp;</span><span class="nx">Vertex</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span> <span class="c1">// has type *Vertex</span>
-<span class="p">)</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v1</span><span class="p">,</span> <span class="nx">p</span><span class="p">,</span> <span class="nx">v2</span><span class="p">,</span> <span class="nx">v3</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="o">*</span><span class="nx">p</span><span class="p">)</span>
-<span class="p">}</span>
+                <p>在golang中有array（数组）和slice（切片）关系紧密，因此放在一个章节里阐述</p>
+<p>下面将array和slice从不同维度进行比较</p>
+<h2 id="_1"><strong>声明赋值</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
+<p>array</p>
+<div class="codehilite"><pre><span></span><span class="nx">arr</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">}</span>
 </pre></div>
 
-<p>输出</p>
-<div class="codehilite"><pre><span></span>{1 2} &amp;{1 2} {1 0} {0 0}
-*main.Vertex
-main.Vertex
+<p>slice</p>
+<div class="codehilite"><pre><span></span><span class="nx">sli</span> <span class="o">:=</span> <span class="nx">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<ol>
-<li>声明多个变量时候可以用<code>var (...)</code></li>
-<li><code>v2 = Vertex{X: 1}</code>这样表示X为1，其他都为类型推导的默认值</li>
-<li>这里struct指针类型是<code>*main.Vertex</code></li>
-</ol>
+<p>arr[1:4]就是对arr做的切片</p>
 </div>
+<h2 id="_2"><strong>本质</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<hr />
+<p>array就是array</p>
+<p>slice是array元素的引用，官方把slice叫做underlying array、Slices are like references to arrays</p>
+<div class="admonition note">
+<p>从使用效果上看，slice完全就像是array元素的指针</p>
+</div>
+<h2 id="_3"><strong>长度是否可变</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<hr />
+<p>array是固定长度，占用内存中固定的一块地址，因此不可能删除array元素来导致长度变化</p>
+<p>slice是可变长度，内存地址可扩展</p>
+<h2 id="2"><strong>2种声明方式</strong><a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<hr />
+<p>array</p>
+<ul>
+<li>
+<p>普通方式：</p>
+<div class="codehilite"><pre><span></span><span class="c1">//显式声明数组arr，长度为6，元素类型为int</span>
+<span class="kd">var</span> <span class="nx">arr</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="kt">int</span>
+<span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">2</span>
+<span class="nx">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="mi">3</span>
+<span class="nx">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">=</span> <span class="mi">5</span>
+<span class="nx">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">=</span> <span class="mi">7</span>
+<span class="nx">arr</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="p">=</span> <span class="mi">11</span>
+<span class="nx">arr</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="p">=</span> <span class="mi">13</span>
+</pre></div>
+
+</li>
+<li>
+<p>literal方式：</p>
+<div class="codehilite"><pre><span></span><span class="nx">arr</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">}</span>
+</pre></div>
+
+</li>
+</ul>
+<p>slice</p>
+<ul>
+<li>
+<p>普通方式：</p>
+<div class="codehilite"><pre><span></span><span class="c1">//显式声明切片sli，其中可见元素为arr的第2个元素地址到第4个元素地址，但容量为第2个元素地址到最后一个元素地址</span>
+<span class="kd">var</span> <span class="nx">sli</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">=</span> <span class="nx">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+
+</li>
+<li>
+<p>literal方式：</p>
+<div class="codehilite"><pre><span></span>sli := []int{2, 3, 5, 7, 11, 13}
+</pre></div>
+
+</li>
+</ul>
+<h2 id="_4"><strong>类型</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<hr />
+<p>array的类型示例：[6]int</p>
+<p>slice的类型示例：[]int</p>
+<p>因此slice也叫做数组类型（这个忘了为啥叫数组类型）</p>
                 
                   
                 
@@ -896,7 +1030,7 @@ main.Vertex
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../struct_pointer/" title="2.3. struct指针" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../struct_anon/" title="2.2. 匿名struct" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -905,19 +1039,19 @@ main.Vertex
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                2.3. struct指针
+                2.2. 匿名struct
               </span>
             </div>
           </a>
         
         
-          <a href="../struct_anon/" title="2.2. 匿名struct" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../appendix/doc/" title="1. 文档" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                2.2. 匿名struct
+                1. 文档
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
