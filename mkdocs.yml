@@ -88,6 +88,8 @@ pages:
             - 2.3. struct指针: datatype/struct_pointer.md
             - 2.4. literal: datatype/struct_literal.md
             - 2.2. 匿名struct: datatype/struct_anon.md
+        - 3. 数组和切片:
+            - 3.1. 介绍: datatype/arr_sli_main.md
     - 六. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md
