@@ -89,7 +89,10 @@ pages:
             - 2.4. literal: datatype/struct_literal.md
             - 2.2. 匿名struct: datatype/struct_anon.md
         - 3. 数组和切片:
-            - 3.1. 介绍: datatype/arr_sli_main.md
+            - 3.1. 介绍与比较: datatype/arr_sli_main.md
+            - 3.2. len()与cap(): datatype/arr_sli_len_cap.md
+            - 3.3. 下标: datatype/arr_sli_index.md
+            - 3.4. 深入理解: datatype/arr_sli_key.md
     - 六. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md
