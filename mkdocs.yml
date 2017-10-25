@@ -85,9 +85,9 @@ pages:
         - 1. 指针: datatype/pointer.md
         - 2. struct:
             - 2.1. 声明: datatype/struct_main.md
-            - 2.3. struct指针: datatype/struct_pointer.md
-            - 2.4. literal: datatype/struct_literal.md
-            - 2.2. 匿名struct: datatype/struct_anon.md
+            - 2.2. struct指针: datatype/struct_pointer.md
+            - 2.3. literal: datatype/struct_literal.md
+            - 2.4. 匿名struct: datatype/struct_anon.md
         - 3. 数组和切片:
             - 3.1. 介绍与比较: datatype/arr_sli_main.md
             - 3.2. len()与cap(): datatype/arr_sli_len_cap.md
@@ -95,7 +95,11 @@ pages:
             - 3.4. 深入理解: datatype/arr_sli_key.md
             - 3.5. nil与make: datatype/arr_sli_nil_make.md
             - 3.6. slice嵌套: datatype/arr_sli_nest.md
-    - 六. 附录:
+            - 3.7. slice扩容: datatype/arr_sli_expand.md
+            - 3.7. append添加元素: datatype/arr_sli_append.md
+    - 六. 文本处理:
+        - 1. 字符串处理: text/string.md
+    - 七. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md
         - 3. 命令行工具:
