@@ -1,42 +1,42 @@
-slice是这样:
+## **slice原理**
+
+---
 
 1. 在切片时候仅仅把原来元素的地址给拷贝过来了，即有当元素的值发生改变的时候，之前和之后引用的slice都可以看到变化
 
 2. 一个slice中元素被删掉后不会影响其他slice。比如有3个slice都是来自同一个array或者slice，那么当这个slice的元素被删掉后，那3个slice和原来的array不受影响。应该是当那个元素被删掉后，go发现有被引用了，于是内存中并没有去删掉，因此那3个slice才不受影响，但是那3个slice的元素依然是来自原来的地址
 
-还有一个特征也很重要，也表明了array和slice的区别：slice是地址，效果和指针相同，而array不是指针，举例说明：
+## **关于literal**
+
+---
+
+1. 即使原来slice已经声明了，依然可以用literal赋值，但类型必须是和声明时候相同类型
+
+2. 用literal赋值后，len和cap都是新的了，和原来没有关系了，如果原来有关联的slice，那么关联就解除了
 
 ```go
 package main
 
 import "fmt"
 
-func arrDo(x [6]int) {
-    x[2] = 333
-}
-
-func sliDo(x []int) {
-    x[2] = 333
-}
-
 func main() {
-    arr := [6]int{11, 22, 33, 44, 55, 66}
-    sli := []int{1, 2, 3, 4, 5, 6}
+	sli1 := []int{2, 3, 5, 7, 11, 13}
+	sli2 := sli1[1:4]
+	fmt.Println(sli1, len(sli1), cap(sli1))
+	fmt.Println(sli2, len(sli2), cap(sli2))
 
-    arrDo(arr)
-    sliDo(sli)
-
-    fmt.Println("arr:", arr)
-    fmt.Println("sli:", sli)
+	sli1 = []int{20, 30, 50, 70, 110, 130}
+	sli2[2] = 500
+	fmt.Println(sli1, len(sli1), cap(sli1))
+	fmt.Println(sli2, len(sli2), cap(sli2))
 }
 ```
 
 输出
 
 ```text
-arr: [11 22 33 44 55 66]
-sli: [1 2 333 4 5 6]
+[2 3 5 7 11 13] 6 6
+[3 5 7] 3 5
+[20 30 50 70 110 130] 6 6
+[3 5 500] 3 5
 ```
-
-!!! note ""
-	从上面例子可以看出通过函数传递的array，在函数里把值修改后在函数外看不到。而slice是可以看到

@@ -32,6 +32,42 @@ slice是array元素的引用，官方把slice叫做underlying array、Slices are
 !!! note ""
 	从使用效果上看，slice完全就像是array元素的指针
 
+用函数传递例子更可以看出区别：slice传递的是地址，效果和指针相同，而array是复制元素
+
+```go
+package main
+
+import "fmt"
+
+func arrDo(x [6]int) {
+    x[2] = 333
+}
+
+func sliDo(x []int) {
+    x[2] = 333
+}
+
+func main() {
+    arr := [6]int{11, 22, 33, 44, 55, 66}
+    sli := []int{1, 2, 3, 4, 5, 6}
+
+    arrDo(arr)
+    sliDo(sli)
+
+    fmt.Println("arr:", arr)
+    fmt.Println("sli:", sli)
+}
+```
+
+输出
+
+```text
+arr: [11 22 33 44 55 66]
+sli: [1 2 333 4 5 6]
+```
+
+可以看出通过函数传递的array，在函数里把值修改后在函数外看不到。而slice是可以看到
+
 ## **长度是否可变**
 
 ---

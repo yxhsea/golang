@@ -93,6 +93,8 @@ pages:
             - 3.2. len()与cap(): datatype/arr_sli_len_cap.md
             - 3.3. 下标: datatype/arr_sli_index.md
             - 3.4. 深入理解: datatype/arr_sli_key.md
+            - 3.5. nil与make: datatype/arr_sli_nil_make.md
+            - 3.6. slice嵌套: datatype/arr_sli_nest.md
     - 六. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md
