@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/organization/firstlib/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/arr_sli_nil_make/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>5. 第一个library - Go语言学习 - cyent笔记</title>
+        <title>3.5. nil与make - Go语言学习 - cyent笔记</title>
       
     
     
@@ -84,11 +84,15 @@
             
               
                 <span class="md-header-nav__parent">
-                  二. 代码组织
+                  五. 数据类型
+                </span>
+              
+                <span class="md-header-nav__parent">
+                  3. 数组和切片
                 </span>
               
             
-            5. 第一个library
+            3.5. nil与make
           
         </span>
       </div>
@@ -207,12 +211,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       二. 代码组织
@@ -230,7 +232,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../workspace/" title="1. workspace" class="md-nav__link">
+    <a href="../../organization/workspace/" title="1. workspace" class="md-nav__link">
       1. workspace
     </a>
   </li>
@@ -242,7 +244,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../gopath/" title="2. GOPATH" class="md-nav__link">
+    <a href="../../organization/gopath/" title="2. GOPATH" class="md-nav__link">
       2. GOPATH
     </a>
   </li>
@@ -254,7 +256,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../importpath/" title="3. import path" class="md-nav__link">
+    <a href="../../organization/importpath/" title="3. import path" class="md-nav__link">
       3. import path
     </a>
   </li>
@@ -266,7 +268,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../helloworld/" title="4. hello world" class="md-nav__link">
+    <a href="../../organization/helloworld/" title="4. hello world" class="md-nav__link">
       4. hello world
     </a>
   </li>
@@ -276,57 +278,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        5. 第一个library
-      </label>
-    
-    <a href="./" title="5. 第一个library" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../organization/firstlib/" title="5. 第一个library" class="md-nav__link">
       5. 第一个library
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#lib" title="创建lib" class="md-nav__link">
-    创建lib
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lib_1" title="调用lib" class="md-nav__link">
-    调用lib
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gopath" title="附: 此时GOPATH目录结构" class="md-nav__link">
-    附: 此时GOPATH目录结构
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -336,7 +292,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../test/" title="6. 内置的轻量级测试框架" class="md-nav__link">
+    <a href="../../organization/test/" title="6. 内置的轻量级测试框架" class="md-nav__link">
       6. 内置的轻量级测试框架
     </a>
   </li>
@@ -627,10 +583,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
     
     <label class="md-nav__link" for="nav-5">
       五. 数据类型
@@ -648,7 +606,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/pointer/" title="1. 指针" class="md-nav__link">
+    <a href="../pointer/" title="1. 指针" class="md-nav__link">
       1. 指针
     </a>
   </li>
@@ -679,7 +637,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/struct_main/" title="2.1. 声明" class="md-nav__link">
+    <a href="../struct_main/" title="2.1. 声明" class="md-nav__link">
       2.1. 声明
     </a>
   </li>
@@ -691,7 +649,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/struct_pointer/" title="2.3. struct指针" class="md-nav__link">
+    <a href="../struct_pointer/" title="2.3. struct指针" class="md-nav__link">
       2.3. struct指针
     </a>
   </li>
@@ -703,7 +661,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/struct_literal/" title="2.4. literal" class="md-nav__link">
+    <a href="../struct_literal/" title="2.4. literal" class="md-nav__link">
       2.4. literal
     </a>
   </li>
@@ -715,7 +673,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/struct_anon/" title="2.2. 匿名struct" class="md-nav__link">
+    <a href="../struct_anon/" title="2.2. 匿名struct" class="md-nav__link">
       2.2. 匿名struct
     </a>
   </li>
@@ -730,10 +688,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" checked>
     
     <label class="md-nav__link" for="nav-5-3">
       3. 数组和切片
@@ -751,7 +711,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_main/" title="3.1. 介绍与比较" class="md-nav__link">
+    <a href="../arr_sli_main/" title="3.1. 介绍与比较" class="md-nav__link">
       3.1. 介绍与比较
     </a>
   </li>
@@ -763,7 +723,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_len_cap/" title="3.2. len()与cap()" class="md-nav__link">
+    <a href="../arr_sli_len_cap/" title="3.2. len()与cap()" class="md-nav__link">
       3.2. len()与cap()
     </a>
   </li>
@@ -775,7 +735,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_index/" title="3.3. 下标" class="md-nav__link">
+    <a href="../arr_sli_index/" title="3.3. 下标" class="md-nav__link">
       3.3. 下标
     </a>
   </li>
@@ -787,7 +747,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_key/" title="3.4. 深入理解" class="md-nav__link">
+    <a href="../arr_sli_key/" title="3.4. 深入理解" class="md-nav__link">
       3.4. 深入理解
     </a>
   </li>
@@ -797,11 +757,50 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_nil_make/" title="3.5. nil与make" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        3.5. nil与make
+      </label>
+    
+    <a href="./" title="3.5. nil与make" class="md-nav__link md-nav__link--active">
       3.5. nil与make
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nil-slice" title="nil slice" class="md-nav__link">
+    nil slice
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make" title="make" class="md-nav__link">
+    make
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -811,7 +810,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_nest/" title="3.6. slice嵌套" class="md-nav__link">
+    <a href="../arr_sli_nest/" title="3.6. slice嵌套" class="md-nav__link">
       3.6. slice嵌套
     </a>
   </li>
@@ -930,22 +929,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lib" title="创建lib" class="md-nav__link">
-    创建lib
+  <a href="#nil-slice" title="nil slice" class="md-nav__link">
+    nil slice
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#lib_1" title="调用lib" class="md-nav__link">
-    调用lib
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gopath" title="附: 此时GOPATH目录结构" class="md-nav__link">
-    附: 此时GOPATH目录结构
+  <a href="#make" title="make" class="md-nav__link">
+    make
   </a>
   
 </li>
@@ -965,106 +957,127 @@
               
                 
                 
-                  <h1>5. 第一个library</h1>
+                  <h1>3.5. nil与make</h1>
                 
-                <h2 id="lib"><strong>创建lib</strong><a class="headerlink" href="#lib" title="Permanent link">&para;</a></h2>
+                <h2 id="nil-slice"><strong>nil slice</strong><a class="headerlink" href="#nil-slice" title="Permanent link">&para;</a></h2>
 <hr />
-<p>创建<code>$GOPATH/src/github.com/cyent/golang/example/stringutil</code>目录，并在目录里放置reverse.go，内容如下</p>
-<div class="codehilite"><pre><span></span><span class="c1">// Package stringutil contains utility functions for working with strings.</span>
-<span class="kn">package</span> <span class="nx">stringutil</span>
-
-<span class="c1">// Reverse returns its argument string reversed rune-wise left to right.</span>
-<span class="kd">func</span> <span class="nx">Reverse</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
-    <span class="nx">r</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">rune</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
-    <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="p">=</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nx">j</span><span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
-        <span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">r</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">r</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="nb">string</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
-<span class="p">}</span>
+<blockquote>
+<p>A nil slice has a length and capacity of 0 and has no underlying array.</p>
+</blockquote>
+<p>目前已知只有<code>var s []int</code>这1种方法才是nil slice。其他情况都不是，因为<mark class="critic">只有no underlying array才是nil slice</mark></p>
+<p>下面几种方法都不是nil slice</p>
+<ol>
+<li>
+<p><code>s := []int{}</code>不是nil</p>
+</li>
+<li>
+<p>删除所有元素也不算是nil，如</p>
+<div class="codehilite"><pre><span></span><span class="nx">sli</span> <span class="p">=</span> <span class="nx">sli</span><span class="p">[:</span><span class="nb">cap</span><span class="p">(</span><span class="nx">sli</span><span class="p">)]</span>
+<span class="nx">sli</span> <span class="p">=</span> <span class="nx">sli</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="nx">sli</span><span class="p">):]</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>go install github.com/cyent/golang/example/stringutil
-</pre></div>
-
-<p>会看到生成了<code>$GOPATH/pkg/darwin_amd64/github.com/cyent/golang/example/stringutil.a</code></p>
-<div class="admonition warning">
-<p class="admonition-title">注意这里的路径</p>
-<p>路径不是<code>cyent/golang/example/stringutil/stringutil.a</code>，而是<code>cyent/golang/example/stringutil.a</code>。</p>
-<p>上面<code>reverse.go</code>里的代码也可以除了放在<code>$GOPATH/src/github.com/cyent/golang/example/stringutil/reverse.go</code>，也可以放在<code>$GOPATH/src/github.com/cyent/golang/example/stringutil.go</code>。实际效果是一样的。</p>
-<p>用stringutil目录只是为了分隔代码，这样比较容易让人理解，而且如果stringutil包里的函数比较多的时候，就需要分成多个源码文件，用文件名来标识内容，提高可读性，比如函数名叫做Reverse，文件名就叫做reverse.go。如果所有函数都放在一个代码文件里，那么这个代码文件就太庞大，显得很乱，不利于维护</p>
-</div>
-<h2 id="lib_1"><strong>调用lib</strong><a class="headerlink" href="#lib_1" title="Permanent link">&para;</a></h2>
-<p>修改<a href="../../organization/helloworld/#hello-world">上一页</a>中的<code>hello.go</code>，改为：</p>
+</li>
+<li>
+<p>用<code>make([]int, 0, 0)</code>也不是nil</p>
+</li>
+</ol>
+<p>实践证明上面的阐述</p>
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&quot;fmt&quot;</span>
-    <span class="s">&quot;github.com/cyent/golang/example/stringutil&quot;</span>
-<span class="p">)</span>
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">stringutil</span><span class="p">.</span><span class="nx">Reverse</span><span class="p">(</span><span class="s">&quot;!oG ,olleH&quot;</span><span class="p">))</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="p">[]</span><span class="kt">int</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">a</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">a</span><span class="p">))</span>
+
+    <span class="nx">b</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">b</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">b</span><span class="p">))</span>
+
+    <span class="nx">c</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;c:&quot;</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">c</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">c</span><span class="p">))</span>
+
+    <span class="nx">d</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">}</span>
+    <span class="nx">d</span> <span class="p">=</span> <span class="nx">d</span><span class="p">[:</span><span class="nb">cap</span><span class="p">(</span><span class="nx">d</span><span class="p">)]</span>
+    <span class="nx">d</span> <span class="p">=</span> <span class="nx">d</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="nx">d</span><span class="p">):]</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;d:&quot;</span><span class="p">,</span> <span class="nx">d</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">d</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">d</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="nx">a</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a is nil&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="nx">b</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b is nil&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="nx">c</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;c is nil&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="nx">d</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;d is nil&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
-<p>执行</p>
-<div class="codehilite"><pre><span></span>go install github.com/cyent/golang/example/hello
+<p>输出</p>
+<div class="codehilite"><pre><span></span>a: [] 0 0
+b: [] 0 0
+c: [] 0 0
+d: [] 0 0
+a is nil
 </pre></div>
 
-<p>就会编译出可执行的二进制程序并自动放入<code>$GOPATH/bin</code>中，比如这个例子中生成的程序就是<code>$GOPATH/bin/hello</code></p>
-<p>执行</p>
-<div class="codehilite"><pre><span></span>$GOPATH/bin/hello
-</pre></div>
-
-<p>效果</p>
-<div class="codehilite"><pre><span></span>Hello, Go!
-</pre></div>
-
-<div class="admonition warning">
-<p class="admonition-title">注意生成的二进制路径</p>
-<p>这个hello二进制文件生成路径是<code>$GOPATH/bin/hello</code>，而不是<code>$GOPATH/bin/github.com/cyent/golang/example/hello</code>，说明一个workspace生成的二进制文件都在一起</p>
-<p>一个workspace里可执行程序名不能相同，因为都是放在bin目录下，这目录下没有任何子目录。即不能存在这样2个main package在一个workspace里：（假设下面2个hello.go都是package main）
-$GOPATH/src/github.com/cyent/example/repo1/hello.go
-$GOPATH/src/github.com/cyent/example/repo2/hello.go</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">自动搜索所有函数并集中到一个.a文件</p>
-<p>生成library时候是会自动把<code>$GOPATH/src/github.com/cyent/golang/example/stringutil/</code>下面所有.go文件里包含的函数集中到<code>stringutil.a</code>中（根据这些.go文件中的package xxx来自动加入到一个.a），因此如果存在相同的函数，会报错提示重复</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">$GOPATH/pkg路径</p>
-<p>注意<code>go install</code>会将<code>stringutil.a</code>对象放到<code>pkg/darwin_amd64</code>目录中，它会反映出其源码目录。 这就是在此之后调用go工具，能找到包对象并避免不必要的重新编译的原因。darwin_amd64这部分能帮助跨平台编译，并反映出你的操作系统和架构。</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">静态链接</p>
-<p>Go的可执行命令是静态链接的；在运行生成的可执行二进制程序时，包对象<code>stringutil.a</code>无需存在。</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">go源码文件第一行必须是package name</p>
-<p>package name就是调用时候import中/最后一段，比如想别的程序通过import "crypto/rot13"调用，那么就写package rot13</p>
-<p>生成可执行程序，package必须为main</p>
-</div>
-<h2 id="gopath"><strong>附: 此时GOPATH目录结构</strong><a class="headerlink" href="#gopath" title="Permanent link">&para;</a></h2>
+<h2 id="make"><strong>make</strong><a class="headerlink" href="#make" title="Permanent link">&para;</a></h2>
 <hr />
-<div class="codehilite"><pre><span></span>.
-├── bin
-│   └── hello
-├── pkg
-│   └── darwin_amd64
-│       └── github.com
-│           └── cyent
-│               └── golang
-│                   └── example
-│                       └── stringutil.a
-└── src
-    └── github.com
-        └── cyent
-            └── golang
-                └── example
-                    ├── hello
-                    │   └── hello.go
-                    └── stringutil
-                        └── reverse.go
+<p>make：在初始化时候就指定len和cap</p>
+<div class="codehilite"><pre><span></span><span class="nx">a</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1">// len(a)=5</span>
+<span class="nx">b</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">// len(b)=0, cap(b)=5</span>
+<span class="nx">b</span> <span class="p">=</span> <span class="nx">b</span><span class="p">[:</span><span class="nb">cap</span><span class="p">(</span><span class="nx">b</span><span class="p">)]</span> <span class="c1">// len(b)=5, cap(b)=5</span>
+<span class="nx">b</span> <span class="p">=</span> <span class="nx">b</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>      <span class="c1">// len(b)=4, cap(b)=4</span>
+</pre></div>
+
+<p>注意，在赋值时候，若超过len边界，则会报错，如</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">sli1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sli1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">sli1</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">sli1</span><span class="p">))</span>
+
+    <span class="nx">sli1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">3</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sli1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">sli1</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">sli1</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>报错</p>
+<div class="codehilite"><pre><span></span>[] 0 5
+panic: runtime error: index out of range
+
+goroutine 1 [running]:
+main.main()
+    /golang/example/slice.go:9 +0x2a3
+exit status 2
+</pre></div>
+
+<p>改成如下才可以</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">sli1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sli1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">sli1</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">sli1</span><span class="p">))</span>
+
+    <span class="nx">sli1</span> <span class="p">=</span> <span class="nx">sli1</span><span class="p">[:</span><span class="nb">cap</span><span class="p">(</span><span class="nx">sli1</span><span class="p">)]</span>
+    <span class="nx">sli1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">3</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sli1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">sli1</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">sli1</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>[] 0 5
+[3 0 0 0 0] 5 5
 </pre></div>
                 
                   
@@ -1084,7 +1097,7 @@ $GOPATH/src/github.com/cyent/example/repo2/hello.go</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../helloworld/" title="4. hello world" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../arr_sli_key/" title="3.4. 深入理解" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1093,19 +1106,19 @@ $GOPATH/src/github.com/cyent/example/repo2/hello.go</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                4. hello world
+                3.4. 深入理解
               </span>
             </div>
           </a>
         
         
-          <a href="../test/" title="6. 内置的轻量级测试框架" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../arr_sli_nest/" title="3.6. slice嵌套" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                6. 内置的轻量级测试框架
+                3.6. slice嵌套
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

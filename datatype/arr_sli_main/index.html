@@ -813,6 +813,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../arr_sli_nil_make/" title="3.5. nil与make" class="md-nav__link">
+      3.5. nil与make
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../arr_sli_nest/" title="3.6. slice嵌套" class="md-nav__link">
+      3.6. slice嵌套
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -999,6 +1023,37 @@
 <div class="admonition note">
 <p>从使用效果上看，slice完全就像是array元素的指针</p>
 </div>
+<p>用函数传递例子更可以看出区别：slice传递的是地址，效果和指针相同，而array是复制元素</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">arrDo</span><span class="p">(</span><span class="nx">x</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">=</span> <span class="mi">333</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">sliDo</span><span class="p">(</span><span class="nx">x</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">=</span> <span class="mi">333</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">arr</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">66</span><span class="p">}</span>
+    <span class="nx">sli</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">}</span>
+
+    <span class="nx">arrDo</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span>
+    <span class="nx">sliDo</span><span class="p">(</span><span class="nx">sli</span><span class="p">)</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;arr:&quot;</span><span class="p">,</span> <span class="nx">arr</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;sli:&quot;</span><span class="p">,</span> <span class="nx">sli</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>arr: [11 22 33 44 55 66]
+sli: [1 2 333 4 5 6]
+</pre></div>
+
+<p>可以看出通过函数传递的array，在函数里把值修改后在函数外看不到。而slice是可以看到</p>
 <h2 id="_3"><strong>长度是否可变</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <hr />
 <p>array是固定长度，占用内存中固定的一块地址，因此不可能删除array元素来导致长度变化</p>

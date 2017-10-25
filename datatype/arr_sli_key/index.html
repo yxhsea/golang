@@ -753,10 +753,66 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        3.4. 深入理解
+      </label>
+    
     <a href="./" title="3.4. 深入理解" class="md-nav__link md-nav__link--active">
       3.4. 深入理解
     </a>
     
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#slice" title="slice原理" class="md-nav__link">
+    slice原理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#literal" title="关于literal" class="md-nav__link">
+    关于literal
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../arr_sli_nil_make/" title="3.5. nil与make" class="md-nav__link">
+      3.5. nil与make
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../arr_sli_nest/" title="3.6. slice嵌套" class="md-nav__link">
+      3.6. slice嵌套
+    </a>
   </li>
 
         
@@ -869,6 +925,27 @@
   
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#slice" title="slice原理" class="md-nav__link">
+    slice原理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#literal" title="关于literal" class="md-nav__link">
+    关于literal
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -882,7 +959,8 @@
                 
                   <h1>3.4. 深入理解</h1>
                 
-                <p>slice是这样:</p>
+                <h2 id="slice"><strong>slice原理</strong><a class="headerlink" href="#slice" title="Permanent link">&para;</a></h2>
+<hr />
 <ol>
 <li>
 <p>在切片时候仅仅把原来元素的地址给拷贝过来了，即有当元素的值发生改变的时候，之前和之后引用的slice都可以看到变化</p>
@@ -891,39 +969,39 @@
 <p>一个slice中元素被删掉后不会影响其他slice。比如有3个slice都是来自同一个array或者slice，那么当这个slice的元素被删掉后，那3个slice和原来的array不受影响。应该是当那个元素被删掉后，go发现有被引用了，于是内存中并没有去删掉，因此那3个slice才不受影响，但是那3个slice的元素依然是来自原来的地址</p>
 </li>
 </ol>
-<p>还有一个特征也很重要，也表明了array和slice的区别：slice是地址，效果和指针相同，而array不是指针，举例说明：</p>
+<h2 id="literal"><strong>关于literal</strong><a class="headerlink" href="#literal" title="Permanent link">&para;</a></h2>
+<hr />
+<ol>
+<li>
+<p>即使原来slice已经声明了，依然可以用literal赋值，但类型必须是和声明时候相同类型</p>
+</li>
+<li>
+<p>用literal赋值后，len和cap都是新的了，和原来没有关系了，如果原来有关联的slice，那么关联就解除了</p>
+</li>
+</ol>
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 
-<span class="kd">func</span> <span class="nx">arrDo</span><span class="p">(</span><span class="nx">x</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">=</span> <span class="mi">333</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">sliDo</span><span class="p">(</span><span class="nx">x</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">=</span> <span class="mi">333</span>
-<span class="p">}</span>
-
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">arr</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">66</span><span class="p">}</span>
-    <span class="nx">sli</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">}</span>
+    <span class="nx">sli1</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">}</span>
+    <span class="nx">sli2</span> <span class="o">:=</span> <span class="nx">sli1</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sli1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">sli1</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">sli1</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sli2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">sli2</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">sli2</span><span class="p">))</span>
 
-    <span class="nx">arrDo</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span>
-    <span class="nx">sliDo</span><span class="p">(</span><span class="nx">sli</span><span class="p">)</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;arr:&quot;</span><span class="p">,</span> <span class="nx">arr</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;sli:&quot;</span><span class="p">,</span> <span class="nx">sli</span><span class="p">)</span>
+    <span class="nx">sli1</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">130</span><span class="p">}</span>
+    <span class="nx">sli2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">=</span> <span class="mi">500</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sli1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">sli1</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">sli1</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sli2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">sli2</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">sli2</span><span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
 
 <p>输出</p>
-<div class="codehilite"><pre><span></span>arr: [11 22 33 44 55 66]
-sli: [1 2 333 4 5 6]
+<div class="codehilite"><pre><span></span>[2 3 5 7 11 13] 6 6
+[3 5 7] 3 5
+[20 30 50 70 110 130] 6 6
+[3 5 500] 3 5
 </pre></div>
-
-<div class="admonition note">
-<p>从上面例子可以看出通过函数传递的array，在函数里把值修改后在函数外看不到。而slice是可以看到</p>
-</div>
                 
                   
                 
@@ -957,13 +1035,13 @@ sli: [1 2 333 4 5 6]
           </a>
         
         
-          <a href="../../appendix/doc/" title="1. 文档" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../arr_sli_nil_make/" title="3.5. nil与make" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                1. 文档
+                3.5. nil与make
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
