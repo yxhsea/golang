@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/struct_main/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/arr_sli_append/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>2.1. 声明 - Go语言学习 - cyent笔记</title>
+        <title>3.7. append添加元素 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -88,11 +88,11 @@
                 </span>
               
                 <span class="md-header-nav__parent">
-                  2. struct
+                  3. 数组和切片
                 </span>
               
             
-            2.1. 声明
+            3.7. append添加元素
           
         </span>
       </div>
@@ -616,12 +616,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
     
     <label class="md-nav__link" for="nav-5-2">
       2. struct
@@ -637,18 +635,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="2.1. 声明" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../struct_main/" title="2.1. 声明" class="md-nav__link">
       2.1. 声明
     </a>
-    
   </li>
 
         
@@ -697,10 +688,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" checked>
     
     <label class="md-nav__link" for="nav-5-3">
       3. 数组和切片
@@ -800,11 +793,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../arr_sli_append/" title="3.7. append添加元素" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="3.7. append添加元素" class="md-nav__link md-nav__link--active">
       3.7. append添加元素
     </a>
+    
   </li>
 
         
@@ -964,27 +964,118 @@
               
                 
                 
-                  <h1>2.1. 声明</h1>
+                  <h1>3.7. append添加元素</h1>
                 
-                <div class="codehilite"><pre><span></span><span class="kd">type</span> <span class="nx">vertex</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">x</span> <span class="kt">int</span>
-    <span class="nx">y</span> <span class="kt">int</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">vertex</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">})</span>   <span class="c1">//打印整个struct</span>
-    <span class="nx">v</span> <span class="o">:=</span> <span class="nx">vertex</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
-    <span class="nx">v</span><span class="p">.</span><span class="nx">x</span> <span class="p">=</span> <span class="mi">4</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">x</span><span class="p">)</span>            <span class="c1">//仅打印x这个字段</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-<span class="p">}</span>
+                <div class="codehilite"><pre><span></span>sli = append(sli, 元素)
 </pre></div>
 
-<p>输出</p>
-<div class="codehilite"><pre><span></span>{1 2}
-4
-main.vertex
+<p>注意：在添加元素时候，<mark class="critic">若原本slice的容量不够了，则会自动扩大一倍cap</mark>，在扩大cap时候是将原来元素复制一份（而不是引用）</p>
+<div class="admonition note">
+<p class="admonition-title">命令解读</p>
+<p>sli = append(sli, 元素)意思是先读取原有元素，然后cap扩容一倍，然后在末尾插入数字0这个元素，然后把插入完的赋值给sli（赋值给新变量也是可以的），因此和原有slice脱离关系。</p>
+</div>
+<details class="note"><summary>示例</summary><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">s</span> <span class="p">[]</span><span class="kt">int</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+
+    <span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+
+    <span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+
+    <span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+    <span class="nx">a</span> <span class="o">:=</span> <span class="nx">s</span>
+    <span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">88</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="nx">s</span>
+    <span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">888</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+
+    <span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">77</span>
+    <span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">777</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+
+    <span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">66</span>
+    <span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">666</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+
+    <span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">55</span>
+    <span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">555</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+
+    <span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">44</span>
+    <span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">444</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+
+    <span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+    <span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">33</span>
+    <span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">333</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+
+    <span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+    <span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">22</span>
+    <span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">222</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+
+    <span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+    <span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">11</span>
+    <span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">111</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">printSlice</span><span class="p">(</span><span class="nx">str</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">s</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s len=%d cap=%d %v\n&quot;</span><span class="p">,</span> <span class="nx">str</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s</span><span class="p">),</span> <span class="nx">s</span><span class="p">)</span>
+<span class="p">}</span>
 </pre></div>
+<p>输出</p><div class="codehilite"><pre><span></span>s len=0 cap=0 []
+s len=1 cap=1 [0]
+s len=2 cap=2 [0 1]
+s len=3 cap=4 [0 1 2]
+a len=3 cap=4 [888 1 2]
+b len=3 cap=4 [888 1 2]
+s len=4 cap=4 [777 1 2 3]
+a len=3 cap=4 [777 1 2]
+b len=3 cap=4 [777 1 2]
+s len=5 cap=8 [777 1 2 3 4]
+a len=3 cap=4 [666 1 2]
+b len=3 cap=4 [666 1 2]
+s len=6 cap=8 [777 1 2 3 4 5]
+a len=3 cap=4 [555 1 2]
+b len=3 cap=4 [555 1 2]
+s len=7 cap=8 [777 1 2 3 4 5 6]
+a len=3 cap=4 [444 1 2]
+b len=3 cap=4 [444 1 2]
+s len=8 cap=8 [777 1 2 3 4 5 6 7]
+a len=3 cap=4 [333 1 2]
+b len=3 cap=4 [333 1 2]
+s len=9 cap=16 [777 1 2 3 4 5 6 7 8]
+a len=3 cap=4 [222 1 2]
+b len=3 cap=4 [222 1 2]
+s len=10 cap=16 [777 1 2 3 4 5 6 7 8 9]
+a len=3 cap=4 [111 1 2]
+b len=3 cap=4 [111 1 2]
+</pre></div>
+<p>注意：虽然a是s的衍生出来的，但从上面红色部分开始，a和s就分道扬镳了</p></details>
                 
                   
                 
@@ -1003,7 +1094,7 @@ main.vertex
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../pointer/" title="1. 指针" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../arr_sli_expand/" title="3.7. slice扩容" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1012,19 +1103,19 @@ main.vertex
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                1. 指针
+                3.7. slice扩容
               </span>
             </div>
           </a>
         
         
-          <a href="../struct_pointer/" title="2.2. struct指针" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../text/string/" title="1. 字符串处理" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                2.2. struct指针
+                1. 字符串处理
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/struct_main/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/arr_sli_expand/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>2.1. 声明 - Go语言学习 - cyent笔记</title>
+        <title>3.7. slice扩容 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -88,11 +88,11 @@
                 </span>
               
                 <span class="md-header-nav__parent">
-                  2. struct
+                  3. 数组和切片
                 </span>
               
             
-            2.1. 声明
+            3.7. slice扩容
           
         </span>
       </div>
@@ -616,12 +616,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
     
     <label class="md-nav__link" for="nav-5-2">
       2. struct
@@ -637,18 +635,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="2.1. 声明" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../struct_main/" title="2.1. 声明" class="md-nav__link">
       2.1. 声明
     </a>
-    
   </li>
 
         
@@ -697,10 +688,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" checked>
     
     <label class="md-nav__link" for="nav-5-3">
       3. 数组和切片
@@ -788,11 +781,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../arr_sli_expand/" title="3.7. slice扩容" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="3.7. slice扩容" class="md-nav__link md-nav__link--active">
       3.7. slice扩容
     </a>
+    
   </li>
 
         
@@ -964,27 +964,18 @@
               
                 
                 
-                  <h1>2.1. 声明</h1>
+                  <h1>3.7. slice扩容</h1>
                 
-                <div class="codehilite"><pre><span></span><span class="kd">type</span> <span class="nx">vertex</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">x</span> <span class="kt">int</span>
-    <span class="nx">y</span> <span class="kt">int</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">vertex</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">})</span>   <span class="c1">//打印整个struct</span>
-    <span class="nx">v</span> <span class="o">:=</span> <span class="nx">vertex</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
-    <span class="nx">v</span><span class="p">.</span><span class="nx">x</span> <span class="p">=</span> <span class="mi">4</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">x</span><span class="p">)</span>            <span class="c1">//仅打印x这个字段</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-
-<p>输出</p>
-<div class="codehilite"><pre><span></span>{1 2}
-4
-main.vertex
-</pre></div>
+                <p>虽然slice不像array是永久不变的长度和容量，但是每次声明或赋值后容量是固定的。</p>
+<p>slice扩容有多种方法</p>
+<ol>
+<li>
+<p>literal赋值，但每次赋值之后，原来的元素就丢失了，详见<a href="../../datatype/arr_sli_key/#literal">关于literal</a></p>
+</li>
+<li>
+<p>使用append，详见<a href="../../datatype/arr_sli_append/">append添加元素</a></p>
+</li>
+</ol>
                 
                   
                 
@@ -1003,7 +994,7 @@ main.vertex
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../pointer/" title="1. 指针" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../arr_sli_nest/" title="3.6. slice嵌套" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1012,19 +1003,19 @@ main.vertex
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                1. 指针
+                3.6. slice嵌套
               </span>
             </div>
           </a>
         
         
-          <a href="../struct_pointer/" title="2.2. struct指针" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../arr_sli_append/" title="3.7. append添加元素" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                2.2. struct指针
+                3.7. append添加元素
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

@@ -649,8 +649,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_pointer/" title="2.3. struct指针" class="md-nav__link">
-      2.3. struct指针
+    <a href="../struct_pointer/" title="2.2. struct指针" class="md-nav__link">
+      2.2. struct指针
     </a>
   </li>
 
@@ -661,8 +661,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_literal/" title="2.4. literal" class="md-nav__link">
-      2.4. literal
+    <a href="../struct_literal/" title="2.3. literal" class="md-nav__link">
+      2.3. literal
     </a>
   </li>
 
@@ -673,8 +673,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_anon/" title="2.2. 匿名struct" class="md-nav__link">
-      2.2. 匿名struct
+    <a href="../struct_anon/" title="2.4. 匿名struct" class="md-nav__link">
+      2.4. 匿名struct
     </a>
   </li>
 
@@ -783,6 +783,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_1" title="关于关联脱离" class="md-nav__link">
+    关于关联脱离
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -816,6 +823,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../arr_sli_expand/" title="3.7. slice扩容" class="md-nav__link">
+      3.7. slice扩容
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../arr_sli_append/" title="3.7. append添加元素" class="md-nav__link">
+      3.7. append添加元素
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -836,11 +867,47 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
-      六. 附录
+      六. 文本处理
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-6">
-        六. 附录
+        六. 文本处理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../text/string/" title="1. 字符串处理" class="md-nav__link">
+      1. 字符串处理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      七. 附录
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        七. 附录
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -876,13 +943,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
     
-    <label class="md-nav__link" for="nav-6-3">
+    <label class="md-nav__link" for="nav-7-3">
       3. 命令行工具
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-6-3">
+      <label class="md-nav__title" for="nav-7-3">
         3. 命令行工具
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -942,6 +1009,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_1" title="关于关联脱离" class="md-nav__link">
+    关于关联脱离
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -976,7 +1050,7 @@
 <p>即使原来slice已经声明了，依然可以用literal赋值，但类型必须是和声明时候相同类型</p>
 </li>
 <li>
-<p>用literal赋值后，len和cap都是新的了，和原来没有关系了，如果原来有关联的slice，那么关联就解除了</p>
+<p>用literal赋值后（即使赋的值和原来的值一样），所有元素都是新的了，和原来没有关系了，如果原来有关联的slice，那么关联就解除了</p>
 </li>
 </ol>
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
@@ -1002,6 +1076,18 @@
 [20 30 50 70 110 130] 6 6
 [3 5 500] 3 5
 </pre></div>
+
+<h2 id="_1"><strong>关于关联脱离</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
+<p>经测试，如下几种方法可以脱离关联</p>
+<ol>
+<li>
+<p>literal赋值，详见<a href="../../datatype/arr_sli_key/#literal"></a></p>
+</li>
+<li>
+<p>append()，详见<a href=""></a></p>
+</li>
+</ol>
                 
                   
                 

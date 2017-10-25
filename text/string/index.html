@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/flow/if/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/text/string/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>2. if - Go语言学习 - cyent笔记</title>
+        <title>1. 字符串处理 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -84,11 +84,11 @@
             
               
                 <span class="md-header-nav__parent">
-                  四. 流控制
+                  六. 文本处理
                 </span>
               
             
-            2. if
+            1. 字符串处理
           
         </span>
       </div>
@@ -507,12 +507,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       四. 流控制
@@ -530,7 +528,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../for/" title="1. for" class="md-nav__link">
+    <a href="../../flow/for/" title="1. for" class="md-nav__link">
       1. for
     </a>
   </li>
@@ -540,57 +538,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        2. if
-      </label>
-    
-    <a href="./" title="2. if" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../flow/if/" title="2. if" class="md-nav__link">
       2. if
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="基本格式" class="md-nav__link">
-    基本格式
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="短声明" class="md-nav__link">
-    短声明
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="作用域" class="md-nav__link">
-    作用域
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -600,7 +552,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../switch/" title="3. switch" class="md-nav__link">
+    <a href="../../flow/switch/" title="3. switch" class="md-nav__link">
       3. switch
     </a>
   </li>
@@ -612,7 +564,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../defer/" title="4. defer" class="md-nav__link">
+    <a href="../../flow/defer/" title="4. defer" class="md-nav__link">
       4. defer
     </a>
   </li>
@@ -855,10 +807,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
     
     <label class="md-nav__link" for="nav-6">
       六. 文本处理
@@ -874,11 +828,43 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../text/string/" title="1. 字符串处理" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        1. 字符串处理
+      </label>
+    
+    <a href="./" title="1. 字符串处理" class="md-nav__link md-nav__link--active">
       1. 字符串处理
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="字符串拼接" class="md-nav__link">
+    字符串拼接
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -990,22 +976,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" title="基本格式" class="md-nav__link">
-    基本格式
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="短声明" class="md-nav__link">
-    短声明
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="作用域" class="md-nav__link">
-    作用域
+  <a href="#_1" title="字符串拼接" class="md-nav__link">
+    字符串拼接
   </a>
   
 </li>
@@ -1025,226 +997,19 @@
               
                 
                 
-                  <h1>2. if</h1>
+                  <h1>1. 字符串处理</h1>
                 
-                <h2 id="_1"><strong>基本格式</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+                <h2 id="_1"><strong>字符串拼接</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <hr />
-<div class="codehilite"><pre><span></span><span class="k">if</span> <span class="nx">x</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
-    <span class="o">...</span>
-<span class="p">}</span>
+<p>将string类型的slice中的元素用指定字符拼接起来</p>
+<div class="codehilite"><pre><span></span>strings.Join(sli, &quot; &quot;)
 </pre></div>
 
-<p><code>支持</code>
-<div class="codehilite"><pre><span></span><span class="k">if</span> <span class="nx">x</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
-    <span class="o">...</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">x</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
-    <span class="o">...</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="o">...</span>
-<span class="p">}</span>
-</pre></div></p>
-<h2 id="_2"><strong>短声明</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<hr />
-<div class="codehilite"><pre><span></span><span class="k">if</span> <span class="nx">v</span> <span class="o">:=</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Pow</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">n</span><span class="p">);</span> <span class="nx">v</span> <span class="p">&lt;</span> <span class="nx">lim</span> <span class="p">{</span>
-    <span class="o">...</span>
-<span class="p">}</span>
-</pre></div>
-
+<p>表示将sli中的各个元素用一个空格拼接在一起形成一个string</p>
 <div class="admonition warning">
-<p>v是局部变量，只在if语句里有效（包括else）</p>
+<p class="admonition-title">Warning</p>
+<p>仅支持[]string，不支持array，也不支持[]int</p>
 </div>
-<p>并不是必须要用短声明<code>:=</code>，比如下面这样也是可以的</p>
-<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">a</span> <span class="kt">int</span>
-<span class="k">if</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">a</span> <span class="p">&lt;</span> <span class="mi">2</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;yes&quot;</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-
-<div class="admonition error">
-<p class="admonition-title">注意</p>
-<p>无论a &lt; 2是否为true，a = 1都被执行了。因此谨慎在if条件句里引用外部变量做动作</p>
-</div>
-<p><code>else if</code>也可以带短声明，但<code>else</code>不能带短声明</p>
-<div class="codehilite"><pre><span></span><span class="k">if</span> <span class="nx">x</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">a</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
-    <span class="o">...</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">x</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">a</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
-    <span class="o">...</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="o">...</span>
-<span class="p">}</span>
-</pre></div>
-
-<p>if 条件可以用bool值，比如</p>
-<div class="codehilite"><pre><span></span><span class="k">if</span> <span class="kc">true</span> <span class="p">{</span>
-    <span class="o">...</span>
-<span class="p">}</span>
-</pre></div>
-
-<h2 id="_3"><strong>作用域</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<hr />
-<details class="note"><summary>例1. if的代码块是独立的作用域吗?</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">a</span> <span class="o">:=</span> <span class="mi">1</span>
-    <span class="nx">b</span> <span class="o">:=</span> <span class="mi">2</span>
-
-    <span class="k">if</span> <span class="mi">1</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
-        <span class="nx">a</span> <span class="p">=</span> <span class="mi">10</span>
-        <span class="nx">b</span> <span class="p">=</span> <span class="mi">20</span>
-        <span class="nx">a</span> <span class="o">:=</span> <span class="mi">100</span>
-        <span class="nx">b</span> <span class="o">:=</span> <span class="mi">200</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-<p>输出</p><div class="codehilite"><pre><span></span>a: 1
-b: 2
-a: 100
-b: 200
-a: 10
-b: 20
-</pre></div>
-<p>答: if的代码块是独立的作用域</p></details><details class="note"><summary>例2. if条件使用短声明时是独立的变量还是引用外部变量?</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">a</span> <span class="o">:=</span> <span class="mi">1</span>
-    <span class="nx">b</span> <span class="o">:=</span> <span class="mi">2</span>
-
-    <span class="k">if</span> <span class="nx">a</span> <span class="o">:=</span> <span class="mi">10000</span><span class="p">;</span> <span class="mi">1</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
-        <span class="nx">a</span> <span class="p">=</span> <span class="mi">10</span>
-        <span class="nx">b</span> <span class="p">=</span> <span class="mi">20</span>
-        <span class="nx">a</span> <span class="o">:=</span> <span class="mi">100</span>
-        <span class="nx">b</span> <span class="o">:=</span> <span class="mi">200</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-<p>输出</p><div class="codehilite"><pre><span></span>a: 10000
-b: 2
-a: 100
-b: 200
-a: 1
-b: 20
-</pre></div>
-<p>答: if条件使用短声明时是独立的变量。下面这个例子更能说明</p><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">b</span> <span class="o">:=</span> <span class="mi">2</span>
-
-    <span class="k">if</span> <span class="nx">a</span> <span class="o">:=</span> <span class="mi">10000</span><span class="p">;</span> <span class="mi">1</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
-        <span class="nx">a</span> <span class="p">=</span> <span class="mi">10</span>
-        <span class="nx">b</span> <span class="p">=</span> <span class="mi">20</span>
-        <span class="nx">a</span> <span class="o">:=</span> <span class="mi">100</span>
-        <span class="nx">b</span> <span class="o">:=</span> <span class="mi">200</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-<p>报错</p><div class="codehilite"><pre><span></span>./if.go:19: undefined: a
-</pre></div>
-<p>在if外引用变量a，提示未找到，因为a只在if作用域</p></details><details class="note"><summary>例3. if条件使用赋值语句时是独立的变量还是引用外部变量?</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">a</span> <span class="o">:=</span> <span class="mi">1</span>
-    <span class="nx">b</span> <span class="o">:=</span> <span class="mi">2</span>
-
-    <span class="k">if</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">10000</span><span class="p">;</span> <span class="mi">1</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
-        <span class="nx">a</span> <span class="p">=</span> <span class="mi">10</span>
-        <span class="nx">b</span> <span class="p">=</span> <span class="mi">20</span>
-        <span class="nx">a</span> <span class="o">:=</span> <span class="mi">100</span>
-        <span class="nx">b</span> <span class="o">:=</span> <span class="mi">200</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-<p>输出</p><div class="codehilite"><pre><span></span>a: 10000
-b: 2
-a: 100
-b: 200
-a: 10
-b: 20
-</pre></div>
-<p>答: if条件使用赋值语句时是引用外部变量</p></details><details class="note"><summary>例4. 若if条件不满足，那么条件句里的赋值语句是否有生效?</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">a</span> <span class="o">:=</span> <span class="mi">1</span>
-    <span class="nx">b</span> <span class="o">:=</span> <span class="mi">2</span>
-
-    <span class="k">if</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">10000</span><span class="p">;</span> <span class="kc">false</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;if-a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;if-b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-<p>输出</p><div class="codehilite"><pre><span></span>a: 10000
-b: 2
-</pre></div>
-<p>如果有else if呢</p><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">a</span> <span class="o">:=</span> <span class="mi">1</span>
-    <span class="nx">b</span> <span class="o">:=</span> <span class="mi">2</span>
-
-    <span class="k">if</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">10</span><span class="p">;</span> <span class="kc">false</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;if-a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;if-b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">20</span><span class="p">;</span> <span class="kc">true</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;if-a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;if-b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">30</span><span class="p">;</span> <span class="kc">false</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;if-a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;if-b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-<p>输出</p><div class="codehilite"><pre><span></span>if-a: 20
-if-b: 2
-a: 20
-b: 2
-</pre></div>
-<p>答: 若if条件不满足，那么条件句里的赋值语句依然生效。若有else if，则会依次执行，直到匹配到为止，因此谨慎在if条件句里引用外部变量。</p></details>
                 
                   
                 
@@ -1263,7 +1028,7 @@ b: 2
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../for/" title="1. for" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../datatype/arr_sli_append/" title="3.7. append添加元素" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1272,19 +1037,19 @@ b: 2
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                1. for
+                3.7. append添加元素
               </span>
             </div>
           </a>
         
         
-          <a href="../switch/" title="3. switch" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../appendix/doc/" title="1. 文档" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                3. switch
+                1. 文档
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
