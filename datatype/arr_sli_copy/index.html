@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/arr_sli_nest/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/arr_sli_copy/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>3.6. slice嵌套 - Go语言学习 - cyent笔记</title>
+        <title>3.9. copy复制元素 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -92,7 +92,7 @@
                 </span>
               
             
-            3.6. slice嵌套
+            3.9. copy复制元素
           
         </span>
       </div>
@@ -769,18 +769,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="3.6. slice嵌套" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../arr_sli_nest/" title="3.6. slice嵌套" class="md-nav__link">
       3.6. slice嵌套
     </a>
-    
   </li>
 
         
@@ -812,11 +805,50 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../arr_sli_copy/" title="3.9. copy复制元素" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        3.9. copy复制元素
+      </label>
+    
+    <a href="./" title="3.9. copy复制元素" class="md-nav__link md-nav__link--active">
       3.9. copy复制元素
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#copy" title="copy使用" class="md-nav__link">
+    copy使用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="当复制的元素和被复制的元素个数不一致时" class="md-nav__link">
+    当复制的元素和被复制的元素个数不一致时
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -965,6 +997,27 @@
   
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#copy" title="copy使用" class="md-nav__link">
+    copy使用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="当复制的元素和被复制的元素个数不一致时" class="md-nav__link">
+    当复制的元素和被复制的元素个数不一致时
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -976,51 +1029,88 @@
               
                 
                 
-                  <h1>3.6. slice嵌套</h1>
+                  <h1>3.9. copy复制元素</h1>
                 
-                <p>slice可以嵌套包含slice，并且可以嵌套多层</p>
-<p>嵌套一层</p>
-<div class="codehilite"><pre><span></span><span class="nx">board1</span> <span class="o">:=</span> <span class="p">[][]</span><span class="kt">string</span><span class="p">{</span>
-    <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">},</span>
-    <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">},</span>
-    <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">},</span>
+                <h2 id="copy"><strong>copy使用</strong><a class="headerlink" href="#copy" title="Permanent link">&para;</a></h2>
+<hr />
+<div class="codehilite"><pre><span></span><span class="nx">a</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">}</span>
+<span class="nx">d</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">a</span><span class="p">))</span>
+<span class="nb">copy</span><span class="p">(</span><span class="nx">d</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+</pre></div>
+
+<p>上面将a的元素复制给了d，是复制而不是引用</p>
+<ol>
+<li>
+<p>append和copy都是可以将元素内容拷贝给另一个slice（用于复制而不是引用），这样新生成的slice就和原来的slice彻底脱离关系了（复制元素内容到新的内存地址）</p>
+</li>
+<li>
+<p>append当容量不够时候会扩大cap，而扩大cap是将元素内容复制出来，因此从原来slice衍生出来的slice都将和这个slice脱离关系</p>
+</li>
+<li>
+<p>copy无法自己复制给自己，即<code>copy(a,a)</code>这样虽然不报错，但是没有任何效果（没有和衍生的slice脱离关系）</p>
+</li>
+<li>
+<p>copy里第2个参数也必须是slice，且类型要和第一个参数一致</p>
+</li>
+</ol>
+<h2 id="_1"><strong>当复制的元素和被复制的元素个数不一致时</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
+<ol>
+<li>
+<p>不会扩大被复制的cap</p>
+</li>
+<li>
+<p>会在len范围内产生覆盖</p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+
+    <span class="nx">s1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s1</span><span class="p">)</span>
+    <span class="nb">copy</span><span class="p">(</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s1</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s1</span><span class="p">))</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;-----&quot;</span><span class="p">)</span>
+
+    <span class="nx">s2</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s2</span><span class="p">)</span>
+    <span class="nb">copy</span><span class="p">(</span><span class="nx">s2</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s2</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s2</span><span class="p">))</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;-----&quot;</span><span class="p">)</span>
+
+    <span class="nx">s3</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s3</span><span class="p">)</span>
+    <span class="nb">copy</span><span class="p">(</span><span class="nx">s3</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s3</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s3</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s3</span><span class="p">))</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;-----&quot;</span><span class="p">)</span>
+
+    <span class="nx">s4</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s4</span><span class="p">)</span>
+    <span class="nb">copy</span><span class="p">(</span><span class="nx">s4</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s4</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s4</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s4</span><span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
 
-<p>嵌套两层</p>
-<div class="codehilite"><pre><span></span><span class="nx">board2</span> <span class="o">:=</span> <span class="p">[][][]</span><span class="kt">string</span><span class="p">{</span>
-    <span class="p">[][]</span><span class="kt">string</span><span class="p">{</span>
-        <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">},</span>
-        <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">},</span>
-        <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">},</span>
-    <span class="p">},</span>
-    <span class="p">[][]</span><span class="kt">string</span><span class="p">{</span>
-        <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">},</span>
-        <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">},</span>
-        <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">},</span>
-    <span class="p">},</span>
-    <span class="p">[][]</span><span class="kt">string</span><span class="p">{</span>
-        <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">},</span>
-        <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">},</span>
-        <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">},</span>
-    <span class="p">},</span>
-<span class="p">}</span>
+<p>输出</p>
+<div class="codehilite"><pre><span></span>[0 0 0 0 0]
+[1 2 3 4 5] 5 10
+-----
+[0 0 0]
+[1 2 3] 3 10
+-----
+[0 0 0 0 0 0 0]
+[1 2 3 4 5 0 0] 7 10
+-----
+[0 0 0]
+[1 2 3] 3 3
 </pre></div>
-
-<p>赋值</p>
-<div class="codehilite"><pre><span></span><span class="nx">board1</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;X&quot;</span>
-<span class="nx">board2</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;Y&quot;</span>
-</pre></div>
-
-<p>通过嵌套实现了高级数据结构，比如python中列表嵌套字典嵌套列表等等</p>
-<div class="admonition note">
-<p class="admonition-title">分解说明</p>
-<p><code>board1 := [][]string</code> 这里的<code>[][]string</code>可以分解成<code>[] []string来看</code>，比如<code>[]int</code>表示元素都是整型的slice，<code>[]string</code>表示元素都是字符串型的slice，那么<code>[][]string</code>就表示元素为<code>[]string</code>类型的slice</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">注意逗号</p>
-<p>可以看到，golang的数据结构，当表示多个元素的时候，若使用了逗号，则最后一个元素后也必须加逗号，否则会报错</p>
-</div>
                 
                   
                 
@@ -1039,7 +1129,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../arr_sli_nil_make/" title="3.5. nil与make" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../arr_sli_append/" title="3.8. append添加元素" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1048,19 +1138,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                3.5. nil与make
+                3.8. append添加元素
               </span>
             </div>
           </a>
         
         
-          <a href="../arr_sli_expand/" title="3.7. slice扩容" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../text/string/" title="1. 字符串处理" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                3.7. slice扩容
+                1. 字符串处理
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
