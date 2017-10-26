@@ -47,6 +47,8 @@ func main() {
 
 经测试，如下几种方法可以脱离关联
 
-1. literal赋值，详见[](/datatype/arr_sli_key/#literal)
+1. [literal赋值](/datatype/arr_sli_key/#literal)
 
-2. append()，详见[]()
+2. [append()](/datatype/arr_sli_append/)
+
+3. [copy()](/datatype/arr_sli_copy/#copy)
