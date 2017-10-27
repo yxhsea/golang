@@ -1069,6 +1069,32 @@
 <p>一个slice中元素被删掉后不会影响其他slice。比如有3个slice都是来自同一个array或者slice，那么当这个slice的元素被删掉后，那3个slice和原来的array不受影响。应该是当那个元素被删掉后，go发现有被引用了，于是内存中并没有去删掉，因此那3个slice才不受影响，但是那3个slice的元素依然是来自原来的地址</p>
 </li>
 </ol>
+<div class="admonition warning">
+<p class="admonition-title">python不是引用，而是复制</p>
+<div class="codehilite"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">arr</span>
+
+<span class="n">sli</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">sli</span>
+
+<span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">33</span>
+<span class="n">sli</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">55</span>
+<span class="k">print</span> <span class="n">arr</span>
+<span class="k">print</span> <span class="n">sli</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>[2, 3, 5, 7, 11, 13]
+[3, 5, 7]
+[2, 33, 5, 7, 11, 13]
+[3, 5, 55]
+</pre></div>
+
+<p>可以看到，修改arr的元素值没有影响到sli，同样，修改sli的元素值也没有影响到arr</p>
+</div>
 <h2 id="literal"><strong>关于literal</strong><a class="headerlink" href="#literal" title="Permanent link">&para;</a></h2>
 <hr />
 <ol>
