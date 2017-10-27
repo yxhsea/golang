@@ -6,6 +6,34 @@
 
 2. 一个slice中元素被删掉后不会影响其他slice。比如有3个slice都是来自同一个array或者slice，那么当这个slice的元素被删掉后，那3个slice和原来的array不受影响。应该是当那个元素被删掉后，go发现有被引用了，于是内存中并没有去删掉，因此那3个slice才不受影响，但是那3个slice的元素依然是来自原来的地址
 
+!!! warning "python不是引用，而是复制"
+	```python
+	#!/usr/bin/env python
+	# -*- coding: utf-8 -*-
+
+	arr = [2, 3, 5, 7, 11, 13]
+	print arr
+
+	sli = arr[1:4]
+	print sli
+
+	arr[1] = 33
+	sli[2] = 55
+	print arr
+	print sli
+	```
+
+	输出
+
+	```text
+	[2, 3, 5, 7, 11, 13]
+	[3, 5, 7]
+	[2, 33, 5, 7, 11, 13]
+	[3, 5, 55]
+	```
+
+	可以看到，修改arr的元素值没有影响到sli，同样，修改sli的元素值也没有影响到arr
+
 ## **关于literal**
 
 ---
