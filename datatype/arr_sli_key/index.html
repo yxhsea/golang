@@ -790,6 +790,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" title="可以被切片的数据类型" class="md-nav__link">
+    可以被切片的数据类型
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -1028,6 +1035,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" title="可以被切片的数据类型" class="md-nav__link">
+    可以被切片的数据类型
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -1091,7 +1105,7 @@
 
 <h2 id="_1"><strong>关于关联脱离</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <hr />
-<p>经测试，如下几种方法可以脱离关联</p>
+<p>经测试，如下几种方法可以和array、衍生slice等脱离关联</p>
 <ol>
 <li>
 <p><a href="../../datatype/arr_sli_key/#literal">literal赋值</a></p>
@@ -1102,6 +1116,47 @@
 <li>
 <p><a href="../../datatype/arr_sli_copy/#copy">copy()</a></p>
 </li>
+</ol>
+<h2 id="_2"><strong>可以被切片的数据类型</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<hr />
+<ol>
+<li>
+<p>array</p>
+<div class="codehilite"><pre><span></span><span class="nx">arr</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">}</span>
+<span class="nx">sli</span> <span class="o">:=</span> <span class="nx">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+
+</li>
+<li>
+<p>slice</p>
+<div class="codehilite"><pre><span></span><span class="nx">sli1</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">}</span>
+<span class="nx">sli2</span> <span class="o">:=</span> <span class="nx">sli1</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+
+</li>
+<li>
+<p>string</p>
+<div class="codehilite"><pre><span></span><span class="nx">str</span> <span class="o">:=</span> <span class="s">&quot;hello, world!&quot;</span>
+<span class="nx">sli</span> <span class="o">:=</span> <span class="nx">str</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+
+<details class="note"><summary>示例</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">str</span> <span class="o">:=</span> <span class="s">&quot;hello, world!&quot;</span>
+    <span class="nx">res</span> <span class="o">:=</span> <span class="nx">str</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<p>输出</p><div class="codehilite"><pre><span></span>hello, world!
+llo, world!
+hello, world!
+</pre></div>
+</details></li>
 </ol>
                 
                   
