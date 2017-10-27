@@ -45,10 +45,58 @@ func main() {
 
 ---
 
-经测试，如下几种方法可以脱离关联
+经测试，如下几种方法可以和array、衍生slice等脱离关联
 
 1. [literal赋值](/datatype/arr_sli_key/#literal)
 
 2. [append()](/datatype/arr_sli_append/)
 
 3. [copy()](/datatype/arr_sli_copy/#copy)
+
+## **可以被切片的数据类型**
+
+---
+
+1. array
+
+	```go
+	arr := [6]int{2, 3, 5, 7, 11, 13}
+	sli := arr[1:4]
+	```
+
+2. slice
+
+	```go
+	sli1 := []int{2, 3, 5, 7, 11, 13}
+	sli2 := sli1[1:4]
+	```
+
+3. string
+
+	```go
+	str := "hello, world!"
+	sli := str[1:4]
+	```
+
+	??? note "示例"
+		```go
+		package main
+
+		import "fmt"
+
+		func main() {
+		    str := "hello, world!"
+		    res := str[2:]
+		    fmt.Println(str)
+		    fmt.Println(res)
+		    fmt.Println(str)
+		}
+		```
+
+		输出
+
+		```text
+		hello, world!
+		llo, world!
+		hello, world!
+		```
