@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/struct_pointer/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/arr_sli_range/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>2.2. struct指针 - Go语言学习 - cyent笔记</title>
+        <title>3.10. range迭代获取 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -88,11 +88,11 @@
                 </span>
               
                 <span class="md-header-nav__parent">
-                  2. struct
+                  3. 数组和切片
                 </span>
               
             
-            2.2. struct指针
+            3.10. range迭代获取
           
         </span>
       </div>
@@ -616,12 +616,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
     
     <label class="md-nav__link" for="nav-5-2">
       2. struct
@@ -649,18 +647,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="2.2. struct指针" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../struct_pointer/" title="2.2. struct指针" class="md-nav__link">
       2.2. struct指针
     </a>
-    
   </li>
 
         
@@ -697,10 +688,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" checked>
     
     <label class="md-nav__link" for="nav-5-3">
       3. 数组和切片
@@ -824,11 +817,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../arr_sli_range/" title="3.10. range迭代获取" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="3.10. range迭代获取" class="md-nav__link md-nav__link--active">
       3.10. range迭代获取
     </a>
+    
   </li>
 
         
@@ -1000,22 +1000,65 @@
               
                 
                 
-                  <h1>2.2. struct指针</h1>
+                  <h1>3.10. range迭代获取</h1>
                 
-                <div class="codehilite"><pre><span></span><span class="kd">type</span> <span class="nx">Vertex</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">X</span> <span class="kt">int</span>
-    <span class="nx">Y</span> <span class="kt">int</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">v</span> <span class="o">:=</span> <span class="nx">Vertex</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
-    <span class="nx">p</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">v</span>
-    <span class="nx">p</span><span class="p">.</span><span class="nx">X</span> <span class="p">=</span> <span class="mf">1e9</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>
+                <p>range主要用于for循环，用来迭代取出slice或map的元素</p>
+<p>用于slice时候，会返回2个值：</p>
+<ol>
+<li>
+<p>第一个值是元素下标，比如第一个元素的下标是0</p>
+</li>
+<li>
+<p>第二个值是元素内容</p>
+</li>
+</ol>
+<div class="admonition warning">
+<p>对slice用range时候取的是可见元素，即不超过len范围，而不是cap元素。因为可见元素才有值，cap只是容量，超出可见部分是没有值的。</p>
+</div>
+<p>举例</p>
+<div class="codehilite"><pre><span></span><span class="nx">pow</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">}</span>
+<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">pow</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;index=%d, value=%d\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
-<p><code>p.X</code>原本应该写成<code>(*p).X</code>，但golang支持<code>p.X</code>这样写法，因此这2种写法的效果是一样的</p>
+<p>输出</p>
+<div class="codehilite"><pre><span></span>index=0, value=2
+index=1, value=3
+index=2, value=5
+index=3, value=7
+index=4, value=11
+index=5, value=13
+</pre></div>
+
+<p>可以用下划线_作为占位符，表示不需要取值</p>
+<p>如果只想取index，不想取value，可以不写<code>, value</code>，比如</p>
+<div class="codehilite"><pre><span></span><span class="nx">pow</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">pow</span> <span class="p">{</span>
+    <span class="nx">pow</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="c1">// == 2**i</span>
+<span class="p">}</span>
+<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">value</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">pow</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d\n&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>1
+2
+4
+8
+16
+32
+64
+128
+256
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">关于左移和右移运算符</p>
+<p><a href="../../appendix/binary_operation/#_1">左移运算符</a></p>
+<p><a href="../../appendix/binary_operation/#_2">右移运算符</a></p>
+</div>
                 
                   
                 
@@ -1034,7 +1077,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../struct_main/" title="2.1. 声明" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../arr_sli_copy/" title="3.9. copy复制元素" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1043,19 +1086,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                2.1. 声明
+                3.9. copy复制元素
               </span>
             </div>
           </a>
         
         
-          <a href="../struct_literal/" title="2.3. literal" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../text/string/" title="1. 字符串处理" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                2.3. literal
+                1. 字符串处理
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
