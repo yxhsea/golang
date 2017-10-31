@@ -104,6 +104,8 @@ pages:
             - 4.2. nil map: datatype/map_nil.md
             - 4.3. key和value可以用struct: datatype/map_struct.md
             - 4.4. literal: datatype/map_literal.md
+            - 4.5. 检索、添加和修改元素: datatype/map_get_insert_update.md
+            - 4.6. delete删除元素: datatype/map_delete.md
     - 六. 其他:
         - 1. 字符串处理: other/string.md
         - 2. range: other/range.md
