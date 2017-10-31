@@ -476,24 +476,34 @@
             "title": "\u5f53\u590d\u5236\u7684\u5143\u7d20\u548c\u88ab\u590d\u5236\u7684\u5143\u7d20\u4e2a\u6570\u4e0d\u4e00\u81f4\u65f6"
         }, 
         {
-            "location": "/datatype/map/", 
-            "text": "map\u5c31\u662f\u952e\u503c\u5bf9(key-\nvalue)\uff0c\u5728\u5176\u4ed6\u8bed\u8a00\u4e2d\u901a\u5e38\u53ebhash\u6216\u8005\u5b57\u5178\n\n\n\u58f0\u660e\n\n\n\n\n\n\n\n\n\u5b8c\u6574\u5199\u6cd5\n\n\nvar m map[key_type]value_type\nm = make(map[key_type]value_type)\n\n\n\n\n\u4f8b\u5b50\n\n\nvar m map[string]int\nm = make(map[string]int)\n\n\n\n\n\n\n\u7b80\u5199\n\n\nvar m map[key_type]value_type = make(map[key_type]value_type)\n\n\n\n\n\u4f8b\u5b50\n\n\nvar m map[string]int = make(make[string]int)\n\n\n\n\n\n\n\n\n\n\n\u77ed\u58f0\u660e\u5199\u6cd5\n\n\nm := make(map[key_type]value_type)\n\n\n\n\n\u4f8b\u5b50\n\n\nm := make(map[string]int)\n\n\n\n\n\n\n\n\nnil map\n\n\n\n\n\u53ea\u6709\u4ec5\u5199\nvar m map[key_type]value_type\n\u624d\u80fd\u5f97\u5230nil map\uff0c\u4e00\u65e6\u521d\u59cb\u5316\uff0c\u5373\nm = make(map[key_type]value_type)\n\u5c31\u4e0d\u662fnil map\u4e86\n\n\n\n\nNote\n\n\nnil map\u662f\u65e0\u6cd5\u901a\u8fc7%T\u770b\u5230\uff0c%T\u770b\u5230\u7684\u90fd\u662fmap[key_type]value_type\uff0c\u6bd4\u5982map[string]int\n\n\n\u82e5\u5f80nil map\uff08\u5373\u672amake\u7684map\uff09\u4e2d\u63d2\u5165\u952e\u503c\u5bf9\uff0c\u5219\u4f1a\u62a5\u9519\npanic: assignment to entry in nil map\n\n\n\n\nkey\u548cvalue\u53ef\u4ee5\u7528struct\n\n\n\n\ntype\n \nKey\n \nstruct\n \n{\n\n    \na\n,\n \nb\n \nstring\n\n\n}\n\n\n\ntype\n \nValue\n \nstruct\n \n{\n\n    \nc\n,\n \nd\n \nint\n\n\n}\n\n\n\nvar\n \nm\n \nmap\n[\nKey\n]\nValue\n\n\n\nfunc\n \nmain\n()\n \n{\n\n    \nm\n \n=\n \nmake\n(\nmap\n[\nKey\n]\nValue\n)\n\n    \nm\n[\nKey\n{\n\n        \nA\n,\n \nB\n,\n\n    \n}]\n \n=\n \nValue\n{\n\n        \n1\n,\n \n2\n,\n\n    \n}\n\n    \nfmt\n.\nPrintln\n(\nm\n[\nKey\n{\n\n        \nA\n,\nB\n,\n\n    \n}])\n\n    \nfmt\n.\nPrintln\n(\nm\n)\n\n    \nfmt\n.\nPrintf\n(\n%T\\n\n,\n \nm\n)\n\n\n}\n\n\n\n\n\n\u8f93\u51fa\n\n\n{1 2}\nmap[{A B}:{1 2}]\nmap[main.Key]main.Value\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nKey\u3001Value\u5199\u5728\u51fd\u6570\u5916\u548c\u5199\u5728main\u51fd\u6570\u91cc\uff0c\u90fd\u662fmain.key\u3001main.Value\n\n\n\n\n\n\n\u4e0a\u9762\u7684Key\u3001Value\u3001m\u7684\u58f0\u660e\u90fd\u53ef\u4ee5\u653e\u5230main\u51fd\u6570\u91cc\u5199", 
-            "title": "4. map"
+            "location": "/datatype/map_main/", 
+            "text": "map\u5c31\u662f\u952e\u503c\u5bf9(key-\nvalue)\uff0c\u5728\u5176\u4ed6\u8bed\u8a00\u4e2d\u901a\u5e38\u53ebhash\u6216\u8005\u5b57\u5178\n\n\n\u5b8c\u6574\u5199\u6cd5\n\n\n\n\nvar m map[key_type]value_type\nm = make(map[key_type]value_type)\n\n\n\n\n\u4f8b\u5b50\n\n\nvar m map[string]int\nm = make(map[string]int)\n\n\n\n\n\n\n\u7b80\u5199\n\n\nvar m map[key_type]value_type = make(map[key_type]value_type)\n\n\n\n\n\u4f8b\u5b50\n\n\nvar m map[string]int = make(make[string]int)\n\n\n\n\n\n\n\u77ed\u58f0\u660e\u5199\u6cd5\n\n\n\n\nm := make(map[key_type]value_type)\n\n\n\n\n\u4f8b\u5b50\n\n\nm := make(map[string]int)", 
+            "title": "4.1. \u58f0\u660e"
         }, 
         {
-            "location": "/datatype/map/#_1", 
-            "text": "\u5b8c\u6574\u5199\u6cd5  var m map[key_type]value_type\nm = make(map[key_type]value_type)  \u4f8b\u5b50  var m map[string]int\nm = make(map[string]int)   \u7b80\u5199  var m map[key_type]value_type = make(map[key_type]value_type)  \u4f8b\u5b50  var m map[string]int = make(make[string]int)     \u77ed\u58f0\u660e\u5199\u6cd5  m := make(map[key_type]value_type)  \u4f8b\u5b50  m := make(map[string]int)", 
-            "title": "\u58f0\u660e"
+            "location": "/datatype/map_main/#_1", 
+            "text": "var m map[key_type]value_type\nm = make(map[key_type]value_type)  \u4f8b\u5b50  var m map[string]int\nm = make(map[string]int)   \u7b80\u5199  var m map[key_type]value_type = make(map[key_type]value_type)  \u4f8b\u5b50  var m map[string]int = make(make[string]int)", 
+            "title": "\u5b8c\u6574\u5199\u6cd5"
         }, 
         {
-            "location": "/datatype/map/#nil-map", 
-            "text": "\u53ea\u6709\u4ec5\u5199 var m map[key_type]value_type \u624d\u80fd\u5f97\u5230nil map\uff0c\u4e00\u65e6\u521d\u59cb\u5316\uff0c\u5373 m = make(map[key_type]value_type) \u5c31\u4e0d\u662fnil map\u4e86   Note  nil map\u662f\u65e0\u6cd5\u901a\u8fc7%T\u770b\u5230\uff0c%T\u770b\u5230\u7684\u90fd\u662fmap[key_type]value_type\uff0c\u6bd4\u5982map[string]int  \u82e5\u5f80nil map\uff08\u5373\u672amake\u7684map\uff09\u4e2d\u63d2\u5165\u952e\u503c\u5bf9\uff0c\u5219\u4f1a\u62a5\u9519 panic: assignment to entry in nil map", 
-            "title": "nil map"
+            "location": "/datatype/map_main/#_2", 
+            "text": "m := make(map[key_type]value_type)  \u4f8b\u5b50  m := make(map[string]int)", 
+            "title": "\u77ed\u58f0\u660e\u5199\u6cd5"
         }, 
         {
-            "location": "/datatype/map/#keyvaluestruct", 
-            "text": "type   Key   struct   { \n     a ,   b   string  }  type   Value   struct   { \n     c ,   d   int  }  var   m   map [ Key ] Value  func   main ()   { \n     m   =   make ( map [ Key ] Value ) \n     m [ Key { \n         A ,   B , \n     }]   =   Value { \n         1 ,   2 , \n     } \n     fmt . Println ( m [ Key { \n         A , B , \n     }]) \n     fmt . Println ( m ) \n     fmt . Printf ( %T\\n ,   m )  }   \u8f93\u51fa  {1 2}\nmap[{A B}:{1 2}]\nmap[main.Key]main.Value   Note    Key\u3001Value\u5199\u5728\u51fd\u6570\u5916\u548c\u5199\u5728main\u51fd\u6570\u91cc\uff0c\u90fd\u662fmain.key\u3001main.Value    \u4e0a\u9762\u7684Key\u3001Value\u3001m\u7684\u58f0\u660e\u90fd\u53ef\u4ee5\u653e\u5230main\u51fd\u6570\u91cc\u5199", 
-            "title": "key\u548cvalue\u53ef\u4ee5\u7528struct"
+            "location": "/datatype/map_nil/", 
+            "text": "\u53ea\u6709\u4ec5\u5199\nvar m map[key_type]value_type\n\u624d\u80fd\u5f97\u5230nil map\n\n\n\u4e00\u65e6\u521d\u59cb\u5316\uff0c\u5373\nm = make(map[key_type]value_type)\n\u5c31\u4e0d\u662fnil map\u4e86\n\n\n\n\nNote\n\n\nnil map\u662f\u65e0\u6cd5\u901a\u8fc7%T\u770b\u5230\uff0c%T\u770b\u5230\u7684\u90fd\u662fmap[key_type]value_type\uff0c\u6bd4\u5982map[string]int\n\n\n\u82e5\u5f80nil map\uff08\u5373\u672amake\u7684map\uff09\u4e2d\u63d2\u5165\u952e\u503c\u5bf9\uff0c\u5219\u4f1a\u62a5\u9519\npanic: assignment to entry in nil map", 
+            "title": "4.2. nil map"
+        }, 
+        {
+            "location": "/datatype/map_struct/", 
+            "text": "type\n \nKey\n \nstruct\n \n{\n\n    \na\n,\n \nb\n \nstring\n\n\n}\n\n\n\ntype\n \nValue\n \nstruct\n \n{\n\n    \nc\n,\n \nd\n \nint\n\n\n}\n\n\n\nvar\n \nm\n \nmap\n[\nKey\n]\nValue\n\n\n\nfunc\n \nmain\n()\n \n{\n\n    \nm\n \n=\n \nmake\n(\nmap\n[\nKey\n]\nValue\n)\n\n    \nm\n[\nKey\n{\n\n        \nA\n,\n \nB\n,\n\n    \n}]\n \n=\n \nValue\n{\n\n        \n1\n,\n \n2\n,\n\n    \n}\n\n    \nfmt\n.\nPrintln\n(\nm\n[\nKey\n{\n\n        \nA\n,\nB\n,\n\n    \n}])\n\n    \nfmt\n.\nPrintln\n(\nm\n)\n\n    \nfmt\n.\nPrintf\n(\n%T\\n\n,\n \nm\n)\n\n\n}\n\n\n\n\n\n\u8f93\u51fa\n\n\n{1 2}\nmap[{A B}:{1 2}]\nmap[main.Key]main.Value\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nKey\u3001Value\u5199\u5728\u51fd\u6570\u5916\u548c\u5199\u5728main\u51fd\u6570\u91cc\uff0c\u90fd\u662fmain.key\u3001main.Value\n\n\n\n\n\n\n\u4e0a\u9762\u7684Key\u3001Value\u3001m\u7684\u58f0\u660e\u90fd\u53ef\u4ee5\u653e\u5230main\u51fd\u6570\u91cc\u5199", 
+            "title": "4.3. key\u548cvalue\u53ef\u4ee5\u7528struct"
+        }, 
+        {
+            "location": "/datatype/map_literal/", 
+            "text": "type\n \nVertex\n \nstruct\n \n{\n\n    \nLat\n,\n \nLong\n \nfloat64\n\n\n}\n\n\n\nvar\n \nm\n \n=\n \nmap\n[\nstring\n]\nVertex\n{\n\n    \nBell Labs\n:\n \nVertex\n{\n\n        \n40.68433\n,\n \n-\n74.39967\n,\n\n    \n},\n\n    \nGoogle\n:\n \nVertex\n{\n\n        \n37.42202\n,\n \n-\n122.08408\n,\n\n    \n},\n\n\n}\n\n\n\nfunc\n \nmain\n()\n \n{\n\n    \nfmt\n.\nPrintln\n(\nm\n)\n\n    \nfmt\n.\nPrintf\n(\n%T\\n\n,\n \nm\n)\n\n\n}\n\n\n\n\n\n\u8f93\u51fa\n\n\nmap[Bell Labs:{40.68433 -74.39967} Google:{37.42202 -122.08408}]\nmap[string]main.Vertex\n\n\n\n\n\n\n\u7b80\u5199\u65b9\u5f0f\n\n\n\n\nIf the top-level type is just a type name, you can omit it from the elements of the literal.\n\n\n\n\nvar\n \nm\n \n=\n \nmap\n[\nstring\n]\nVertex\n{\n\n    \nBell Labs\n:\n \nVertex\n{\n\n        \n40.68433\n,\n \n-\n74.39967\n,\n\n    \n},\n\n    \nGoogle\n:\n \nVertex\n{\n\n        \n37.42202\n,\n \n-\n122.08408\n,\n\n    \n},\n\n\n}\n\n\n\n\u53ef\u4ee5\u7b80\u5199\u4e3a\n\n\nvar\n \nm\n \n=\n \nmap\n[\nstring\n]\nVertex\n{\n\n    \nBell Labs\n:\n \n{\n40.68433\n,\n \n-\n74.39967\n},\n\n    \nGoogle\n:\n    \n{\n37.42202\n,\n \n-\n122.08408\n},\n\n\n}", 
+            "title": "4.4. literal"
         }, 
         {
             "location": "/other/string/", 

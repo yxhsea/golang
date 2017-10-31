@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/map/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/map_literal/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>4. map - Go语言学习 - cyent笔记</title>
+        <title>4.4. literal - Go语言学习 - cyent笔记</title>
       
     
     
@@ -87,8 +87,12 @@
                   五. 数据类型
                 </span>
               
+                <span class="md-header-nav__parent">
+                  4. map
+                </span>
+              
             
-            4. map
+            4.4. literal
           
         </span>
       </div>
@@ -831,54 +835,77 @@
   
 
 
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" checked>
+    
+    <label class="md-nav__link" for="nav-5-4">
+      4. map
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        4. map
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../map_main/" title="4.1. 声明" class="md-nav__link">
+      4.1. 声明
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../map_nil/" title="4.2. nil map" class="md-nav__link">
+      4.2. nil map
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../map_struct/" title="4.3. key和value可以用struct" class="md-nav__link">
+      4.3. key和value可以用struct
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
   <li class="md-nav__item md-nav__item--active">
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        4. map
-      </label>
-    
-    <a href="./" title="4. map" class="md-nav__link md-nav__link--active">
-      4. map
+    <a href="./" title="4.4. literal" class="md-nav__link md-nav__link--active">
+      4.4. literal
     </a>
     
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="声明" class="md-nav__link">
-    声明
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#nil-map" title="nil map" class="md-nav__link">
-    nil map
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#keyvaluestruct" title="key和value可以用struct" class="md-nav__link">
-    key和value可以用struct
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1058,34 +1085,6 @@
   
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="声明" class="md-nav__link">
-    声明
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#nil-map" title="nil map" class="md-nav__link">
-    nil map
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#keyvaluestruct" title="key和value可以用struct" class="md-nav__link">
-    key和value可以用struct
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1097,96 +1096,53 @@
               
                 
                 
-                  <h1>4. map</h1>
+                  <h1>4.4. literal</h1>
                 
-                <p>map就是键值对(key-&gt;value)，在其他语言中通常叫hash或者字典</p>
-<h2 id="_1"><strong>声明</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<hr />
-<ol>
-<li>
-<p>完整写法</p>
-<div class="codehilite"><pre><span></span>var m map[key_type]value_type
-m = make(map[key_type]value_type)
-</pre></div>
-
-<p>例子</p>
-<div class="codehilite"><pre><span></span>var m map[string]int
-m = make(map[string]int)
-</pre></div>
-
-<div class="admonition note">
-<p class="admonition-title">简写</p>
-<div class="codehilite"><pre><span></span>var m map[key_type]value_type = make(map[key_type]value_type)
-</pre></div>
-
-<p>例子</p>
-<div class="codehilite"><pre><span></span>var m map[string]int = make(make[string]int)
-</pre></div>
-
-</div>
-</li>
-<li>
-<p>短声明写法</p>
-<div class="codehilite"><pre><span></span>m := make(map[key_type]value_type)
-</pre></div>
-
-<p>例子</p>
-<div class="codehilite"><pre><span></span>m := make(map[string]int)
-</pre></div>
-
-</li>
-</ol>
-<h2 id="nil-map"><strong>nil map</strong><a class="headerlink" href="#nil-map" title="Permanent link">&para;</a></h2>
-<hr />
-<p>只有仅写<code>var m map[key_type]value_type</code>才能得到nil map，一旦初始化，即<code>m = make(map[key_type]value_type)</code>就不是nil map了</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>nil map是无法通过%T看到，%T看到的都是map[key_type]value_type，比如map[string]int</p>
-<p>若往nil map（即未make的map）中插入键值对，则会报错<code>panic: assignment to entry in nil map</code></p>
-</div>
-<h2 id="keyvaluestruct"><strong>key和value可以用struct</strong><a class="headerlink" href="#keyvaluestruct" title="Permanent link">&para;</a></h2>
-<hr />
-<div class="codehilite"><pre><span></span><span class="kd">type</span> <span class="nx">Key</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">string</span>
+                <div class="codehilite"><pre><span></span><span class="kd">type</span> <span class="nx">Vertex</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Lat</span><span class="p">,</span> <span class="nx">Long</span> <span class="kt">float64</span>
 <span class="p">}</span>
 
-<span class="kd">type</span> <span class="nx">Value</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">c</span><span class="p">,</span> <span class="nx">d</span> <span class="kt">int</span>
+<span class="kd">var</span> <span class="nx">m</span> <span class="p">=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">Vertex</span><span class="p">{</span>
+    <span class="s">&quot;Bell Labs&quot;</span><span class="p">:</span> <span class="nx">Vertex</span><span class="p">{</span>
+        <span class="mf">40.68433</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.39967</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s">&quot;Google&quot;</span><span class="p">:</span> <span class="nx">Vertex</span><span class="p">{</span>
+        <span class="mf">37.42202</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.08408</span><span class="p">,</span>
+    <span class="p">},</span>
 <span class="p">}</span>
-
-<span class="kd">var</span> <span class="nx">m</span> <span class="kd">map</span><span class="p">[</span><span class="nx">Key</span><span class="p">]</span><span class="nx">Value</span>
 
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">m</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="nx">Key</span><span class="p">]</span><span class="nx">Value</span><span class="p">)</span>
-    <span class="nx">m</span><span class="p">[</span><span class="nx">Key</span><span class="p">{</span>
-        <span class="s">&quot;A&quot;</span><span class="p">,</span> <span class="s">&quot;B&quot;</span><span class="p">,</span>
-    <span class="p">}]</span> <span class="p">=</span> <span class="nx">Value</span><span class="p">{</span>
-        <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">[</span><span class="nx">Key</span><span class="p">{</span>
-        <span class="s">&quot;A&quot;</span><span class="p">,</span><span class="s">&quot;B&quot;</span><span class="p">,</span>
-    <span class="p">}])</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
 <p>输出</p>
-<div class="codehilite"><pre><span></span>{1 2}
-map[{A B}:{1 2}]
-map[main.Key]main.Value
+<div class="codehilite"><pre><span></span>map[Bell Labs:{40.68433 -74.39967} Google:{37.42202 -122.08408}]
+map[string]main.Vertex
 </pre></div>
 
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<ol>
-<li>
-<p>Key、Value写在函数外和写在main函数里，都是main.key、main.Value</p>
-</li>
-<li>
-<p>上面的Key、Value、m的声明都可以放到main函数里写</p>
-</li>
-</ol>
+<p class="admonition-title">简写方式</p>
+<blockquote>
+<p>If the top-level type is just a type name, you can omit it from the elements of the literal.</p>
+</blockquote>
+<p><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">m</span> <span class="p">=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">Vertex</span><span class="p">{</span>
+    <span class="s">&quot;Bell Labs&quot;</span><span class="p">:</span> <span class="nx">Vertex</span><span class="p">{</span>
+        <span class="mf">40.68433</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.39967</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s">&quot;Google&quot;</span><span class="p">:</span> <span class="nx">Vertex</span><span class="p">{</span>
+        <span class="mf">37.42202</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.08408</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+可以简写为</p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">m</span> <span class="p">=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">Vertex</span><span class="p">{</span>
+    <span class="s">&quot;Bell Labs&quot;</span><span class="p">:</span> <span class="p">{</span><span class="mf">40.68433</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.39967</span><span class="p">},</span>
+    <span class="s">&quot;Google&quot;</span><span class="p">:</span>    <span class="p">{</span><span class="mf">37.42202</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.08408</span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+
 </div>
                 
                   
@@ -1206,7 +1162,7 @@ map[main.Key]main.Value
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../arr_sli_copy/" title="3.9. copy复制元素" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../map_struct/" title="4.3. key和value可以用struct" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1215,7 +1171,7 @@ map[main.Key]main.Value
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                3.9. copy复制元素
+                4.3. key和value可以用struct
               </span>
             </div>
           </a>
