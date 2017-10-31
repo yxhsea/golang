@@ -83,13 +83,13 @@ pages:
         - 3. switch: flow/switch.md
         - 4. defer: flow/defer.md
     - 五. 数据类型:
-        - 1. 指针: datatype/pointer.md
+        - 1. pointer: datatype/pointer.md
         - 2. struct:
             - 2.1. 声明: datatype/struct_main.md
             - 2.2. struct指针: datatype/struct_pointer.md
             - 2.3. literal: datatype/struct_literal.md
             - 2.4. 匿名struct: datatype/struct_anon.md
-        - 3. 数组和切片:
+        - 3. array和slice:
             - 3.1. 介绍与比较: datatype/arr_sli_main.md
             - 3.2. len()与cap(): datatype/arr_sli_len_cap.md
             - 3.3. 下标: datatype/arr_sli_index.md
@@ -99,10 +99,10 @@ pages:
             - 3.7. slice扩容: datatype/arr_sli_expand.md
             - 3.8. append添加元素: datatype/arr_sli_append.md
             - 3.9. copy复制元素: datatype/arr_sli_copy.md
-        - 4. range: datatype/range.md
-        - 5. map: datatype/map.md
-    - 六. 文本处理:
-        - 1. 字符串处理: text/string.md
+        - 4. map: datatype/map.md
+    - 六. 其他:
+        - 1. 字符串处理: other/string.md
+        - 2. range: other/range.md
     - 七. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md
