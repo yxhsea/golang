@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/arr_sli_len_cap/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/map_get_insert_update/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>3.2. len()与cap() - Go语言学习 - cyent笔记</title>
+        <title>4.5. 检索、添加和修改元素 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -88,11 +88,11 @@
                 </span>
               
                 <span class="md-header-nav__parent">
-                  3. array和slice
+                  4. map
                 </span>
               
             
-            3.2. len()与cap()
+            4.5. 检索、添加和修改元素
           
         </span>
       </div>
@@ -700,12 +700,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
     
     <label class="md-nav__link" for="nav-5-3">
       3. array和slice
@@ -733,18 +731,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="3.2. len()与cap()" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../arr_sli_len_cap/" title="3.2. len()与cap()" class="md-nav__link">
       3.2. len()与cap()
     </a>
-    
   </li>
 
         
@@ -841,10 +832,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" checked>
     
     <label class="md-nav__link" for="nav-5-4">
       4. map
@@ -908,11 +901,50 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../map_get_insert_update/" title="4.5. 检索、添加和修改元素" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        4.5. 检索、添加和修改元素
+      </label>
+    
+    <a href="./" title="4.5. 检索、添加和修改元素" class="md-nav__link md-nav__link--active">
       4.5. 检索、添加和修改元素
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="检索值" class="md-nav__link">
+    检索值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="插入或更新值" class="md-nav__link">
+    插入或更新值
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -1109,6 +1141,27 @@
   
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="检索值" class="md-nav__link">
+    检索值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="插入或更新值" class="md-nav__link">
+    插入或更新值
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1120,35 +1173,30 @@
               
                 
                 
-                  <h1>3.2. len()与cap()</h1>
+                  <h1>4.5. 检索、添加和修改元素</h1>
                 
-                <p>有2个很重要的内置函数：<code>len()</code>和<code>cap()</code></p>
-<p><code>len()</code>可以用来查看数组或slice的长度</p>
-<p><code>cap()</code>可以用来查看数组或slice的容量</p>
-<p>在数组中由于长度固定不可变，因此<code>len(arr)</code>和<code>cap(arr)</code>的输出永远相同</p>
-<p>在slice中，<code>len(sli)</code>表示可见元素有几个（也即直接打印元素看到的元素个数），而<code>cap(sli)</code>表示所有元素有几个，比如：</p>
-<div class="codehilite"><pre><span></span><span class="nx">arr</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">}</span>
-<span class="nx">sli</span> <span class="o">:=</span> <span class="nx">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sli</span><span class="p">)</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">sli</span><span class="p">))</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">cap</span><span class="p">(</span><span class="nx">sli</span><span class="p">))</span>
+                <h2 id="_1"><strong>检索值</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
+<div class="codehilite"><pre><span></span>m[key]
 </pre></div>
 
-<p>输出</p>
-<div class="codehilite"><pre><span></span>[3 5 7]
-3
-5
+<p>比如</p>
+<div class="codehilite"><pre><span></span>a := m[key]
 </pre></div>
 
-<p>查看一共有几个元素的方法：</p>
-<div class="codehilite"><pre><span></span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sli</span><span class="p">[:</span><span class="nb">cap</span><span class="p">(</span><span class="nx">sli</span><span class="p">)])</span>
+<div class="admonition warning">
+<p>当检索不到时候，不会报错，而是a的值就是value类型的默认值，比如value是int类型，那a就是0</p>
+</div>
+<p>two-value写法：</p>
+<div class="codehilite"><pre><span></span>a, ok := m[key]
 </pre></div>
 
-<p>输出</p>
-<div class="codehilite"><pre><span></span>[3 5 7 11 13]
+<p>当key存在时，ok是true，否则是false</p>
+<h2 id="_2"><strong>插入或更新值</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<hr />
+<p>当key不存在时候就是插入新的key-value：</p>
+<div class="codehilite"><pre><span></span>m[key] = value
 </pre></div>
-
-<p>这样查看有个好处就是对sli没有影响，包括元素内容、len、cap</p>
                 
                   
                 
@@ -1167,7 +1215,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../arr_sli_main/" title="3.1. 介绍与比较" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../map_literal/" title="4.4. literal" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1176,19 +1224,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                3.1. 介绍与比较
+                4.4. literal
               </span>
             </div>
           </a>
         
         
-          <a href="../arr_sli_index/" title="3.3. 下标" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../map_delete/" title="4.6. delete删除元素" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                3.3. 下标
+                4.6. delete删除元素
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

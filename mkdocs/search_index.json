@@ -506,6 +506,26 @@
             "title": "4.4. literal"
         }, 
         {
+            "location": "/datatype/map_get_insert_update/", 
+            "text": "\u68c0\u7d22\u503c\n\n\n\n\nm[key]\n\n\n\n\n\u6bd4\u5982\n\n\na := m[key]\n\n\n\n\n\n\n\u5f53\u68c0\u7d22\u4e0d\u5230\u65f6\u5019\uff0c\u4e0d\u4f1a\u62a5\u9519\uff0c\u800c\u662fa\u7684\u503c\u5c31\u662fvalue\u7c7b\u578b\u7684\u9ed8\u8ba4\u503c\uff0c\u6bd4\u5982value\u662fint\u7c7b\u578b\uff0c\u90a3a\u5c31\u662f0\n\n\n\n\ntwo-value\u5199\u6cd5\uff1a\n\n\na, ok := m[key]\n\n\n\n\n\u5f53key\u5b58\u5728\u65f6\uff0cok\u662ftrue\uff0c\u5426\u5219\u662ffalse\n\n\n\u63d2\u5165\u6216\u66f4\u65b0\u503c\n\n\n\n\n\u5f53key\u4e0d\u5b58\u5728\u65f6\u5019\u5c31\u662f\u63d2\u5165\u65b0\u7684key-value\uff1a\n\n\nm[key] = value", 
+            "title": "4.5. \u68c0\u7d22\u3001\u6dfb\u52a0\u548c\u4fee\u6539\u5143\u7d20"
+        }, 
+        {
+            "location": "/datatype/map_get_insert_update/#_1", 
+            "text": "m[key]  \u6bd4\u5982  a := m[key]   \u5f53\u68c0\u7d22\u4e0d\u5230\u65f6\u5019\uff0c\u4e0d\u4f1a\u62a5\u9519\uff0c\u800c\u662fa\u7684\u503c\u5c31\u662fvalue\u7c7b\u578b\u7684\u9ed8\u8ba4\u503c\uff0c\u6bd4\u5982value\u662fint\u7c7b\u578b\uff0c\u90a3a\u5c31\u662f0   two-value\u5199\u6cd5\uff1a  a, ok := m[key]  \u5f53key\u5b58\u5728\u65f6\uff0cok\u662ftrue\uff0c\u5426\u5219\u662ffalse", 
+            "title": "\u68c0\u7d22\u503c"
+        }, 
+        {
+            "location": "/datatype/map_get_insert_update/#_2", 
+            "text": "\u5f53key\u4e0d\u5b58\u5728\u65f6\u5019\u5c31\u662f\u63d2\u5165\u65b0\u7684key-value\uff1a  m[key] = value", 
+            "title": "\u63d2\u5165\u6216\u66f4\u65b0\u503c"
+        }, 
+        {
+            "location": "/datatype/map_delete/", 
+            "text": "delete(m, key)\n\n\n\n\n\u6bd4\u5982\n\n\ndelete(m, \nAnswer\n)\n\n\n\n\n\n\n\u5f53Answer\u4e0d\u5b58\u5728\u65f6\u5019\u4e0d\u4f1a\u63d0\u793a\u62a5\u9519", 
+            "title": "4.6. delete\u5220\u9664\u5143\u7d20"
+        }, 
+        {
             "location": "/other/string/", 
             "text": "\u5b57\u7b26\u4e32\u62fc\u63a5\n\n\n\n\n\u5c06string\u7c7b\u578b\u7684slice\u4e2d\u7684\u5143\u7d20\u7528\u6307\u5b9a\u5b57\u7b26\u62fc\u63a5\u8d77\u6765\n\n\nstrings.Join(sli, \n \n)\n\n\n\n\n\u8868\u793a\u5c06sli\u4e2d\u7684\u5404\u4e2a\u5143\u7d20\u7528\u4e00\u4e2a\u7a7a\u683c\u62fc\u63a5\u5728\u4e00\u8d77\u5f62\u6210\u4e00\u4e2astring\n\n\n\n\nWarning\n\n\n\u4ec5\u652f\u6301[]string\uff0c\u4e0d\u652f\u6301array\uff0c\u4e5f\u4e0d\u652f\u6301[]int", 
             "title": "1. \u5b57\u7b26\u4e32\u5904\u7406"

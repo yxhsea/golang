@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/arr_sli_len_cap/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/map_delete/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>3.2. len()与cap() - Go语言学习 - cyent笔记</title>
+        <title>4.6. delete删除元素 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -88,11 +88,11 @@
                 </span>
               
                 <span class="md-header-nav__parent">
-                  3. array和slice
+                  4. map
                 </span>
               
             
-            3.2. len()与cap()
+            4.6. delete删除元素
           
         </span>
       </div>
@@ -700,12 +700,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
     
     <label class="md-nav__link" for="nav-5-3">
       3. array和slice
@@ -733,18 +731,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="3.2. len()与cap()" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../arr_sli_len_cap/" title="3.2. len()与cap()" class="md-nav__link">
       3.2. len()与cap()
     </a>
-    
   </li>
 
         
@@ -841,10 +832,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" checked>
     
     <label class="md-nav__link" for="nav-5-4">
       4. map
@@ -920,11 +913,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../map_delete/" title="4.6. delete删除元素" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="4.6. delete删除元素" class="md-nav__link md-nav__link--active">
       4.6. delete删除元素
     </a>
+    
   </li>
 
         
@@ -1120,35 +1120,18 @@
               
                 
                 
-                  <h1>3.2. len()与cap()</h1>
+                  <h1>4.6. delete删除元素</h1>
                 
-                <p>有2个很重要的内置函数：<code>len()</code>和<code>cap()</code></p>
-<p><code>len()</code>可以用来查看数组或slice的长度</p>
-<p><code>cap()</code>可以用来查看数组或slice的容量</p>
-<p>在数组中由于长度固定不可变，因此<code>len(arr)</code>和<code>cap(arr)</code>的输出永远相同</p>
-<p>在slice中，<code>len(sli)</code>表示可见元素有几个（也即直接打印元素看到的元素个数），而<code>cap(sli)</code>表示所有元素有几个，比如：</p>
-<div class="codehilite"><pre><span></span><span class="nx">arr</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">}</span>
-<span class="nx">sli</span> <span class="o">:=</span> <span class="nx">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sli</span><span class="p">)</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">sli</span><span class="p">))</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">cap</span><span class="p">(</span><span class="nx">sli</span><span class="p">))</span>
+                <div class="codehilite"><pre><span></span>delete(m, key)
 </pre></div>
 
-<p>输出</p>
-<div class="codehilite"><pre><span></span>[3 5 7]
-3
-5
+<p>比如</p>
+<div class="codehilite"><pre><span></span>delete(m, &quot;Answer&quot;)
 </pre></div>
 
-<p>查看一共有几个元素的方法：</p>
-<div class="codehilite"><pre><span></span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sli</span><span class="p">[:</span><span class="nb">cap</span><span class="p">(</span><span class="nx">sli</span><span class="p">)])</span>
-</pre></div>
-
-<p>输出</p>
-<div class="codehilite"><pre><span></span>[3 5 7 11 13]
-</pre></div>
-
-<p>这样查看有个好处就是对sli没有影响，包括元素内容、len、cap</p>
+<div class="admonition note">
+<p>当Answer不存在时候不会提示报错</p>
+</div>
                 
                   
                 
@@ -1167,7 +1150,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../arr_sli_main/" title="3.1. 介绍与比较" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../map_get_insert_update/" title="4.5. 检索、添加和修改元素" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1176,19 +1159,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                3.1. 介绍与比较
+                4.5. 检索、添加和修改元素
               </span>
             </div>
           </a>
         
         
-          <a href="../arr_sli_index/" title="3.3. 下标" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../other/string/" title="1. 字符串处理" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                3.3. 下标
+                1. 字符串处理
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
