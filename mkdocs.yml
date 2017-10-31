@@ -76,6 +76,7 @@ pages:
             - 7.2. 默认值: basic/type_default.md
             - 7.3. 类型转换: basic/type_change.md
             - 7.4. 类型推导: basic/type_guess.md
+            - 7.5. 自定义类型: basic/type_custom.md
     - 四. 流控制:
         - 1. for: flow/for.md
         - 2. if: flow/if.md
@@ -98,7 +99,8 @@ pages:
             - 3.7. slice扩容: datatype/arr_sli_expand.md
             - 3.8. append添加元素: datatype/arr_sli_append.md
             - 3.9. copy复制元素: datatype/arr_sli_copy.md
-            - 3.10. range迭代获取: datatype/arr_sli_range.md
+        - 4. range: datatype/range.md
+        - 5. map: datatype/map.md
     - 六. 文本处理:
         - 1. 字符串处理: text/string.md
     - 七. 附录:
@@ -107,3 +109,4 @@ pages:
         - 3. 命令行工具:
             - 3.1. go get: cli/go_get.md
         - 4. 位运算: appendix/binary_operation.md
+        - 5. 特点: appendix/differ.md
