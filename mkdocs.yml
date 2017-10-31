@@ -111,6 +111,6 @@ pages:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md
         - 3. 命令行工具:
-            - 3.1. go get: cli/go_get.md
+            - 3.1. go get: appendix/cli_go_get.md
         - 4. 位运算: appendix/binary_operation.md
         - 5. 特点: appendix/differ.md
