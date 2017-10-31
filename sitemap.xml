@@ -144,12 +144,6 @@
     </url>
         
     <url>
-     <loc>https://cyent.github.io/markdown-with-mkdocs-material//datatype/range/</loc>
-     <lastmod>2017-10-31</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
      <loc>https://cyent.github.io/markdown-with-mkdocs-material//datatype/map/</loc>
      <lastmod>2017-10-31</lastmod>
      <changefreq>daily</changefreq>
@@ -160,7 +154,13 @@
     
         
     <url>
-     <loc>https://cyent.github.io/markdown-with-mkdocs-material//text/string/</loc>
+     <loc>https://cyent.github.io/markdown-with-mkdocs-material//other/string/</loc>
+     <lastmod>2017-10-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://cyent.github.io/markdown-with-mkdocs-material//other/range/</loc>
      <lastmod>2017-10-31</lastmod>
      <changefreq>daily</changefreq>
     </url>
