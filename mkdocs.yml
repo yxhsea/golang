@@ -106,6 +106,9 @@ pages:
             - 4.4. literal: datatype/map_literal.md
             - 4.5. 检索、添加和修改元素: datatype/map_get_insert_update.md
             - 4.6. delete删除元素: datatype/map_delete.md
+        - 5. 函数值:
+            - 5.1. 介绍: datatype/funcvalue_main.md
+            - 5.2. 函数作为参数传递给另一个函数: datatype/funcvalue_parameter.md
     - 六. 其他:
         - 1. 字符串处理: other/string.md
         - 2. range: other/range.md
