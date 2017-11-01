@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/arr_sli_index/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/funcvalue_main/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>3.3. 下标 - Go语言学习 - cyent笔记</title>
+        <title>5.1. 介绍 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -88,11 +88,11 @@
                 </span>
               
                 <span class="md-header-nav__parent">
-                  3. array和slice
+                  5. 函数值
                 </span>
               
             
-            3.3. 下标
+            5.1. 介绍
           
         </span>
       </div>
@@ -700,12 +700,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
     
     <label class="md-nav__link" for="nav-5-3">
       3. array和slice
@@ -745,57 +743,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        3.3. 下标
-      </label>
-    
-    <a href="./" title="3.3. 下标" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../arr_sli_index/" title="3.3. 下标" class="md-nav__link">
       3.3. 下标
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#startindexendindex" title="startIndex和endIndex" class="md-nav__link">
-    startIndex和endIndex
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="下标举例说明" class="md-nav__link">
-    下标举例说明
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="下标边界写法" class="md-nav__link">
-    下标边界写法
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -976,10 +928,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" checked>
     
     <label class="md-nav__link" for="nav-5-5">
       5. 函数值
@@ -995,11 +949,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../funcvalue_main/" title="5.1. 介绍" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="5.1. 介绍" class="md-nav__link md-nav__link--active">
       5.1. 介绍
     </a>
+    
   </li>
 
         
@@ -1196,34 +1157,6 @@
   
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#startindexendindex" title="startIndex和endIndex" class="md-nav__link">
-    startIndex和endIndex
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="下标举例说明" class="md-nav__link">
-    下标举例说明
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="下标边界写法" class="md-nav__link">
-    下标边界写法
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1235,105 +1168,45 @@
               
                 
                 
-                  <h1>3.3. 下标</h1>
+                  <h1>5.1. 介绍</h1>
                 
-                <h2 id="startindexendindex"><strong>startIndex和endIndex</strong><a class="headerlink" href="#startindexendindex" title="Permanent link">&para;</a></h2>
-<hr />
-<p>[startIndex:endIndex]</p>
-<p>表示的是从第startIndex下标的元素开始，直到endIndex-1下标的元素结束。</p>
-<p>其中元素下标是从0开始计数。如果用通俗的话来记忆就是从第startIndex+1开始，到第endIndex结束。</p>
-<p>注意：这里的endIndex是指可见元素到哪为止，即影响len()，<mark class="critic">而不影响cap()，其中cap()都是到最后一个元素</mark></p>
-<h2 id="_1"><strong>下标举例说明</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<hr />
-<ul>
-<li>
-<p>[1:5] 从第二个元素开始（0为第一个元素，1为第二个元素），取到第5个元素（下标为5-1=4，下标4表示第5个元素）出来，同时删除第一个元素，但cap依然是到最后一个元素</p>
-</li>
-<li>
-<p>[:] 取所有元素，没有删除元素</p>
-</li>
-<li>
-<p>[1:] 从第二个元素开始取所有元素，同时删除第一个元素</p>
-</li>
-<li>
-<p>[:5] 等同于[0:5]，即从第一个元素开始，取到第5个元素出来，但cap依然是到最后一个元素</p>
-</li>
-</ul>
-<h2 id="_2"><strong>下标边界写法</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<hr />
-<p>首先说下，边界这2个字是我自己取的</p>
-<p>若声明一个变量<code>var a [10]int</code>，则下面的语句是相同的</p>
-<div class="codehilite"><pre><span></span>a[0:10]
-a[:10]
-a[0:]
-a[:]
-a[:cap(a)]
-</pre></div>
-
-<p>举例如下:</p>
+                <p>函数值(Function values): 函数也是值。他们可以像其他值一样传递，比如，函数值可以作为函数的参数或者返回值。</p>
+<p>举例</p>
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 
+<span class="kd">func</span> <span class="nx">bb</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span>
+<span class="p">}</span>
+
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">arr</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">}</span>
-    <span class="nx">sli1</span> <span class="o">:=</span> <span class="nx">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;[1:4]&quot;</span><span class="p">,</span> <span class="nx">sli1</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;[1:4]&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">sli1</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;[1:4]&quot;</span><span class="p">,</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">sli1</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;-----&quot;</span><span class="p">)</span>
-    <span class="nx">sli2</span> <span class="o">:=</span> <span class="nx">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;[1:3]&quot;</span><span class="p">,</span> <span class="nx">sli2</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;[1:3]&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">sli2</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;[1:3]&quot;</span><span class="p">,</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">sli2</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;-----&quot;</span><span class="p">)</span>
-    <span class="nx">sli3</span> <span class="o">:=</span> <span class="nx">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;[1:2]&quot;</span><span class="p">,</span> <span class="nx">sli3</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;[1:2]&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">sli3</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;[1:2]&quot;</span><span class="p">,</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">sli3</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;-----&quot;</span><span class="p">)</span>
-    <span class="nx">sli4</span> <span class="o">:=</span> <span class="nx">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;[1:1]&quot;</span><span class="p">,</span> <span class="nx">sli4</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;[1:1]&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">sli4</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;[1:1]&quot;</span><span class="p">,</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">sli4</span><span class="p">))</span>
+    <span class="nx">cc</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span>
+    <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="nx">bb</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="nx">cc</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">bb</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">cc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
 
 <p>输出</p>
-<div class="codehilite"><pre><span></span>[1:4] [3 5 7]
-[1:4] 3
-[1:4] 5
------
-[1:3] [3 5]
-[1:3] 2
-[1:3] 5
------
-[1:2] [3]
-[1:2] 1
-[1:2] 5
------
-[1:1] []
-[1:1] 0
-[1:1] 5
+<div class="codehilite"><pre><span></span>func(int, int) int
+func(int, int) int
+3
+3
 </pre></div>
 
-<p>当endIndex超出边界时候则会报错</p>
-<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">arr</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">}</span>
-    <span class="nx">sli1</span> <span class="o">:=</span> <span class="nx">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;[1:0]&quot;</span><span class="p">,</span> <span class="nx">sli1</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;[1:0]&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">sli1</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;[1:0]&quot;</span><span class="p">,</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">sli1</span><span class="p">))</span>
-<span class="p">}</span>
-</pre></div>
-
-<p>报错</p>
-<div class="codehilite"><pre><span></span>./slice.go:7: invalid slice index: 1 &gt; 0
-</pre></div>
+<p>结论:</p>
+<ol>
+<li>
+<p>函数bb的类型和变量cc的类型相同，都是func(int, int) int</p>
+</li>
+<li>
+<p>说明bb和cc是相同的，只是写法不同，但实质是相同的，而且使用起来效果也一样</p>
+</li>
+</ol>
                 
                   
                 
@@ -1352,7 +1225,7 @@ a[:cap(a)]
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../arr_sli_len_cap/" title="3.2. len()与cap()" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../map_delete/" title="4.6. delete删除元素" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1361,19 +1234,19 @@ a[:cap(a)]
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                3.2. len()与cap()
+                4.6. delete删除元素
               </span>
             </div>
           </a>
         
         
-          <a href="../arr_sli_key/" title="3.4. 深入理解" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../funcvalue_parameter/" title="5.2. 函数作为参数传递给另一个函数" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                3.4. 深入理解
+                5.2. 函数作为参数传递给另一个函数
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
