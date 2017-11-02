@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/map_delete/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/datatype/funcvalue_callback/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>4.6. delete删除元素 - Go语言学习 - cyent笔记</title>
+        <title>5.3. 用途1-回调函数 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -88,11 +88,11 @@
                 </span>
               
                 <span class="md-header-nav__parent">
-                  4. map
+                  5. 函数值
                 </span>
               
             
-            4.6. delete删除元素
+            5.3. 用途1-回调函数
           
         </span>
       </div>
@@ -832,12 +832,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
     
     <label class="md-nav__link" for="nav-5-4">
       4. map
@@ -913,18 +911,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="4.6. delete删除元素" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../map_delete/" title="4.6. delete删除元素" class="md-nav__link">
       4.6. delete删除元素
     </a>
-    
   </li>
 
         
@@ -937,10 +928,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" checked>
     
     <label class="md-nav__link" for="nav-5-5">
       5. 函数值
@@ -980,11 +973,50 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../funcvalue_callback/" title="5.3. 用途1-回调函数" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        5.3. 用途1-回调函数
+      </label>
+    
+    <a href="./" title="5.3. 用途1-回调函数" class="md-nav__link md-nav__link--active">
       5.3. 用途1-回调函数
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="什么是回调函数" class="md-nav__link">
+    什么是回调函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="回调函数类型" class="md-nav__link">
+    回调函数类型
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -1181,6 +1213,27 @@
   
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="什么是回调函数" class="md-nav__link">
+    什么是回调函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="回调函数类型" class="md-nav__link">
+    回调函数类型
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1192,18 +1245,45 @@
               
                 
                 
-                  <h1>4.6. delete删除元素</h1>
+                  <h1>5.3. 用途1-回调函数</h1>
                 
-                <div class="codehilite"><pre><span></span>delete(m, key)
-</pre></div>
-
-<p>比如</p>
-<div class="codehilite"><pre><span></span>delete(m, &quot;Answer&quot;)
-</pre></div>
-
+                <h2 id="_1"><strong>什么是回调函数</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
+<p>关于回调的理解，知乎上有个不错，这里贴出来: <a href="https://www.zhihu.com/question/19801131">https://www.zhihu.com/question/19801131</a></p>
+<p>函数值可用于回调，下面是关于回调函数的理解:</p>
+<p>回调函数英文叫做callback，技术本质是就是一个通过函数指针（只不过在golang里叫函数值，不叫函数指针）调用的函数。比如将函数A作为参数传递给函数B，那么A就叫做 <strong><em>回调函数</em></strong> ，B就叫做 <strong><em>中间函数</em></strong>，调用B的函数叫做 <strong><em>起始函数</em></strong></p>
 <div class="admonition note">
-<p>当Answer不存在时候不会提示报错</p>
+<p class="admonition-title">Note</p>
+<p>中间函数：什么时间、做什么</p>
+<p>回调函数：怎么做</p>
 </div>
+<p>回调示例（来自知乎）：</p>
+<ul>
+<li>
+<p>有一家旅馆提供叫醒服务，但是要求旅客自己决定叫醒的方法。可以是打客房电话，也可以是派服务员去敲门，睡得死怕耽误事的，还可以要求往自己头上浇盆水。这里，“叫醒”这个行为是旅馆提供的，相当于中间函数，但是叫醒的方式是由旅客决定并告诉旅馆的，也就是回调函数。而旅客告诉旅馆怎么叫醒自己的动作，也就是把回调函数传入中间函数的动作，称为登记回调函数（to register a callback function）</p>
+</li>
+<li>
+<p>你到一个商店买东西，刚好你要的东西没有货，于是你在店员那里留下了你的电话，过了几天店里有货了，店员就打了你的电话，然后你接到电话后就到店里去取了货。在这个例子里， 你的电话号码就叫 <strong><em>回调函数</em></strong> ，你把电话留给店员就叫 <strong><em>登记回调函数</em></strong> ，店里后来有货了叫做 <strong><em>触发了回调关联的事件</em></strong> ，店员给你打电话叫做 <strong><em>调用回调函数</em></strong> ，你到店里去取货叫做 <strong><em>响应回调事件</em></strong>  。</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">回调: 回过头来调用</p>
+<p>回调函数这4个字容易让人理解为调用别人，这是错误的，如果在前面加上一个"被"字就好理解了，即等着被中间函数调用，只不过回调函数是主程序写的，也就是自己的意思，所以叫回调。</p>
+<p>我是这么记忆的：我把我写的函数，传递给你，希望你在某个时候 <strong>回过头来调用</strong> 我的这个函数。那么这个函数就称为回调函数</p>
+</div>
+<p>下面是一个代码例子，可以比较下python和golang在回调编码使用方面的区别</p>
+<h2 id="_2"><strong>回调函数类型</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<hr />
+<p>有两种类型的回调函数：</p>
+<ol>
+<li>
+<p>阻塞式回调，即blocking callbacks (also known as synchronous callbacks or just callbacks)</p>
+</li>
+<li>
+<p>延迟式回调，deferred callbacks (also known as asynchronous callbacks)</p>
+</li>
+</ol>
+<p>我们前面的例子都是阻塞式回调</p>
                 
                   
                 
@@ -1222,7 +1302,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../map_get_insert_update/" title="4.5. 检索、添加和修改元素" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../funcvalue_parameter/" title="5.2. 函数作为参数传递给另一个函数" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1231,19 +1311,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                4.5. 检索、添加和修改元素
+                5.2. 函数作为参数传递给另一个函数
               </span>
             </div>
           </a>
         
         
-          <a href="../funcvalue_main/" title="5.1. 介绍" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../funcvalue_closure/" title="5.4. 用途2-闭包" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                5.1. 介绍
+                5.4. 用途2-闭包
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
