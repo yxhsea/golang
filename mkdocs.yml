@@ -109,6 +109,8 @@ pages:
         - 5. 函数值:
             - 5.1. 介绍: datatype/funcvalue_main.md
             - 5.2. 函数作为参数传递给另一个函数: datatype/funcvalue_parameter.md
+            - 5.3. 用途1-回调函数: datatype/funcvalue_callback.md
+            - 5.4. 用途2-闭包: datatype/funcvalue_closure.md
     - 六. 其他:
         - 1. 字符串处理: other/string.md
         - 2. range: other/range.md
