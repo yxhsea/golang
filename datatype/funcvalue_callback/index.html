@@ -1271,7 +1271,103 @@
 <p>回调函数这4个字容易让人理解为调用别人，这是错误的，如果在前面加上一个"被"字就好理解了，即等着被中间函数调用，只不过回调函数是主程序写的，也就是自己的意思，所以叫回调。</p>
 <p>我是这么记忆的：我把我写的函数，传递给你，希望你在某个时候 <strong>回过头来调用</strong> 我的这个函数。那么这个函数就称为回调函数</p>
 </div>
-<p>下面是一个代码例子，可以比较下python和golang在回调编码使用方面的区别</p>
+<p>下面是一个代码例子，可以比较下python和golang在回调方面的编码区别</p>
+<ul>
+<li>
+<p>python示例</p>
+<details class="note"><summary>even.py</summary><div class="codehilite"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="c1">#回调函数1</span>
+<span class="c1">#生成一个2k形式的偶数</span>
+<span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+
+<span class="c1">#回调函数2</span>
+<span class="c1">#生成一个4k形式的偶数</span>
+<span class="k">def</span> <span class="nf">quadruple</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">4</span>
+</pre></div>
+</details><details class="note"><summary>main.py</summary><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">even</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1">#中间函数</span>
+<span class="c1">#接受一个生成偶数的函数作为参数</span>
+<span class="c1">#返回一个奇数</span>
+<span class="k">def</span> <span class="nf">getOddNumber</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">getEvenNumber</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">getEvenNumber</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+
+<span class="c1">#起始函数，这里是程序的主函数</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1">#当需要生成一个2k+1形式的奇数时</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">getOddNumber</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">double</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="c1">#当需要一个4k+1形式的奇数时</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">getOddNumber</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">quadruple</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</details><div class="codehilite"><pre><span></span>&gt; python main.py
+&gt; 3
+&gt; 5
+</pre></div>
+
+</li>
+<li>
+<p>golang示例</p>
+<details class="note"><summary>$GOPATH/src/github.com/cyent/golang/example/even/even.go</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">even</span>
+
+<span class="c1">//回调函数1</span>
+<span class="c1">//生成一个2k形式的偶数</span>
+<span class="kd">func</span> <span class="nx">Double</span><span class="p">(</span><span class="nx">x</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="p">}</span>
+
+<span class="c1">//回调函数2</span>
+<span class="c1">//生成一个4k形式的偶数</span>
+<span class="kd">func</span> <span class="nx">Quadruple</span><span class="p">(</span><span class="nx">x</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">4</span>
+<span class="p">}</span>
+</pre></div>
+</details><details class="note"><summary>main.go</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;github.com/cyent/golang/example/even&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">//中间函数</span>
+<span class="c1">//接受一个生成偶数的函数作为参数</span>
+<span class="c1">//返回一个奇数</span>
+<span class="kd">func</span> <span class="nx">getOddNumber</span><span class="p">(</span><span class="nx">k</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">getEvenNumber</span> <span class="kd">func</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="nx">getEvenNumber</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">//起始函数，这里是程序的主函数</span>
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">k</span> <span class="o">:=</span> <span class="mi">1</span>
+
+    <span class="c1">//当需要生成一个2k+1形式的奇数时</span>
+    <span class="nx">i</span> <span class="o">:=</span> <span class="nx">getOddNumber</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">even</span><span class="p">.</span><span class="nx">Double</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+
+    <span class="c1">//当需要一个4k+1形式的奇数时</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="nx">getOddNumber</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">even</span><span class="p">.</span><span class="nx">Quadruple</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</details><div class="codehilite"><pre><span></span>&gt; go run main.go
+&gt; 3
+&gt; 5
+</pre></div>
+
+</li>
+</ul>
+<p>可以看出，python是隐式函数指针，而golang是显式函数指针（函数值）</p>
 <h2 id="_2"><strong>回调函数类型</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <hr />
 <p>有两种类型的回调函数：</p>
@@ -1280,7 +1376,7 @@
 <p>阻塞式回调，即blocking callbacks (also known as synchronous callbacks or just callbacks)</p>
 </li>
 <li>
-<p>延迟式回调，deferred callbacks (also known as asynchronous callbacks)</p>
+<p>延时式回调，deferred callbacks (also known as asynchronous callbacks)</p>
 </li>
 </ol>
 <p>我们前面的例子都是阻塞式回调</p>
