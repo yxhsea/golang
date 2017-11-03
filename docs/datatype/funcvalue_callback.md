@@ -24,7 +24,114 @@
 
 	我是这么记忆的：我把我写的函数，传递给你，希望你在某个时候 **回过头来调用** 我的这个函数。那么这个函数就称为回调函数
 
-下面是一个代码例子，可以比较下python和golang在回调编码使用方面的区别
+下面是一个代码例子，可以比较下python和golang在回调方面的编码区别
+
+- python示例
+
+	??? note "even.py"
+		```python
+		#!/usr/bin/env python
+		# -*- coding: utf-8 -*-
+
+		#回调函数1
+		#生成一个2k形式的偶数
+		def double(x):
+		    return x * 2
+
+		#回调函数2
+		#生成一个4k形式的偶数
+		def quadruple(x):
+		    return x * 4
+		```
+
+	??? note "main.py"
+		```python
+		from even import *
+
+		#中间函数
+		#接受一个生成偶数的函数作为参数
+		#返回一个奇数
+		def getOddNumber(k, getEvenNumber):
+		    return 1 + getEvenNumber(k)
+
+		#起始函数，这里是程序的主函数
+		def main():
+		    k = 1
+
+		    #当需要生成一个2k+1形式的奇数时
+		    i = getOddNumber(k, double)
+		    print(i)
+
+		    #当需要一个4k+1形式的奇数时
+		    i = getOddNumber(k, quadruple)
+		    print(i)
+
+		if __name__ == "__main__":
+		    main()
+		```
+
+	```text
+	> python main.py
+	> 3
+	> 5
+	```
+
+- golang示例
+
+	??? note "$GOPATH/src/github.com/cyent/golang/example/even/even.go"
+		```go
+		package even
+
+		//回调函数1
+		//生成一个2k形式的偶数
+		func Double(x int) int {
+			return x * 2
+		}
+
+		//回调函数2
+		//生成一个4k形式的偶数
+		func Quadruple(x int) int {
+			return x * 4
+		}
+		```
+
+	??? note "main.go"
+		```go
+		package main
+
+		import (
+			"fmt"
+			"github.com/cyent/golang/example/even"
+		)
+
+		//中间函数
+		//接受一个生成偶数的函数作为参数
+		//返回一个奇数
+		func getOddNumber(k int, getEvenNumber func(int) int) int {
+			return 1 + getEvenNumber(k)
+		}
+
+		//起始函数，这里是程序的主函数
+		func main() {
+			k := 1
+
+			//当需要生成一个2k+1形式的奇数时
+			i := getOddNumber(k, even.Double)
+			fmt.Println(i)
+
+			//当需要一个4k+1形式的奇数时
+			i = getOddNumber(k, even.Quadruple)
+			fmt.Println(i)
+		}
+		```
+
+	```text
+	> go run main.go
+	> 3
+	> 5
+	```
+
+可以看出，python是隐式函数指针，而golang是显式函数指针（函数值）
 
 ## **回调函数类型**
 
@@ -34,6 +141,6 @@
 
 1. 阻塞式回调，即blocking callbacks (also known as synchronous callbacks or just callbacks)
 
-2. 延迟式回调，deferred callbacks (also known as asynchronous callbacks)
+2. 延时式回调，deferred callbacks (also known as asynchronous callbacks)
 
 我们前面的例子都是阻塞式回调
