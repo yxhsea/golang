@@ -141,6 +141,6 @@
 
 1. 阻塞式回调，即blocking callbacks (also known as synchronous callbacks or just callbacks)
 
-2. 延时式回调，deferred callbacks (also known as asynchronous callbacks)
+2. 延迟式回调，deferred callbacks (also known as asynchronous callbacks)
 
 我们前面的例子都是阻塞式回调
