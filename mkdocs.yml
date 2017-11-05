@@ -114,6 +114,7 @@ pages:
     - 六. 其他:
         - 1. 字符串处理: other/string.md
         - 2. range: other/range.md
+        - 3. 同步异步与阻塞非阻塞的关系: other/sync_block.md
     - 七. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md
