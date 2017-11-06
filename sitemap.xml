@@ -160,6 +160,22 @@
     
         
     <url>
+     <loc>https://cyent.github.io/markdown-with-mkdocs-material//method/main/</loc>
+     <lastmod>2017-11-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://cyent.github.io/markdown-with-mkdocs-material/</loc>
+     <lastmod></lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
      <loc>https://cyent.github.io/markdown-with-mkdocs-material//other/string/</loc>
      <lastmod>2017-11-06</lastmod>
      <changefreq>daily</changefreq>
@@ -173,6 +189,18 @@
         
     <url>
      <loc>https://cyent.github.io/markdown-with-mkdocs-material//other/sync_block/</loc>
+     <lastmod>2017-11-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://cyent.github.io/markdown-with-mkdocs-material//other/binary_operation/</loc>
+     <lastmod>2017-11-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://cyent.github.io/markdown-with-mkdocs-material//other/loop_iterate_traversal_recursion/</loc>
      <lastmod>2017-11-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -196,18 +224,6 @@
     <url>
      <loc>https://cyent.github.io/markdown-with-mkdocs-material/</loc>
      <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://cyent.github.io/markdown-with-mkdocs-material//appendix/binary_operation/</loc>
-     <lastmod>2017-11-06</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://cyent.github.io/markdown-with-mkdocs-material//appendix/differ/</loc>
-     <lastmod>2017-11-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
