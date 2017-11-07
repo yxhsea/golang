@@ -34,7 +34,7 @@ type Person struct {
 	name string
 }
 
-func (p Person) printName() {
+func (p *Person) printName() {
 	fmt.Println(p.name)
 }
 
