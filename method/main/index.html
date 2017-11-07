@@ -1028,9 +1028,34 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        1. 概念汇总
+      </label>
+    
     <a href="./" title="1. 概念汇总" class="md-nav__link md-nav__link--active">
       1. 概念汇总
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pythongo" title="比较python和go的面向对象写法" class="md-nav__link">
+    比较python和go的面向对象写法
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -1155,6 +1180,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/go_python/" title="6. go和python的比较" class="md-nav__link">
+      6. go和python的比较
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1259,6 +1296,20 @@
   
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pythongo" title="比较python和go的面向对象写法" class="md-nav__link">
+    比较python和go的面向对象写法
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1272,14 +1323,47 @@
                 
                   <h1>1. 概念汇总</h1>
                 
-                <ul>
-<li>
-<p>Golang 中没有 class 的概念，而是通过 interface 类型转换支持在动态类型语言中常见的鸭子类型从而达到运行时多态的效果。</p>
-</li>
-<li>
+                <p>Golang 中没有 class 的概念，而是通过 interface 类型转换支持在动态类型语言中常见的鸭子类型从而达到运行时多态的效果。</p>
 <p>go没有类，但是在type上定义method，这样效果和类用起来很相似</p>
-</li>
-</ul>
+<h2 id="pythongo"><strong>比较python和go的面向对象写法</strong><a class="headerlink" href="#pythongo" title="Permanent link">&para;</a></h2>
+<hr />
+<p>python</p>
+<div class="codehilite"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">printName</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+<span class="n">me</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;cyent&#39;</span><span class="p">)</span>
+<span class="n">me</span><span class="o">.</span><span class="n">printName</span><span class="p">()</span>
+</pre></div>
+
+<p>go</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">Person</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">name</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="nx">Person</span><span class="p">)</span> <span class="nx">printName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">me</span> <span class="o">:=</span> <span class="nx">Person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;cyent&quot;</span><span class="p">}</span>
+    <span class="nx">me</span><span class="p">.</span><span class="nx">printName</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出都是</p>
+<div class="codehilite"><pre><span></span>cyent
+</pre></div>
                 
                   
                 

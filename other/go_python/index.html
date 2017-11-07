@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/other/range/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/other/go_python/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>2. range - Go语言学习 - cyent笔记</title>
+        <title>6. go和python的比较 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -88,7 +88,7 @@
                 </span>
               
             
-            2. range
+            6. go和python的比较
           
         </span>
       </div>
@@ -1104,18 +1104,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="2. range" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../range/" title="2. range" class="md-nav__link">
       2. range
     </a>
-    
   </li>
 
         
@@ -1159,11 +1152,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../go_python/" title="6. go和python的比较" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="6. go和python的比较" class="md-nav__link md-nav__link--active">
       6. go和python的比较
     </a>
+    
   </li>
 
         
@@ -1282,65 +1282,16 @@
               
                 
                 
-                  <h1>2. range</h1>
+                  <h1>6. go和python的比较</h1>
                 
-                <p>range主要用于for循环，用来迭代取出slice或map的元素</p>
-<p>用于slice时候，会返回2个值：</p>
-<ol>
+                <ol>
 <li>
-<p>第一个值是元素下标，比如第一个元素的下标是0</p>
+<p><a href="../../datatype/funcvalue_callback/#_1">回调函数</a></p>
 </li>
 <li>
-<p>第二个值是元素内容</p>
+<p><a href="../../method/main/#pythongo">面向对象</a></p>
 </li>
 </ol>
-<div class="admonition warning">
-<p>对slice用range时候取的是可见元素，即不超过len范围，而不是cap元素。因为可见元素才有值，cap只是容量，超出可见部分是没有值的。</p>
-</div>
-<p>举例</p>
-<div class="codehilite"><pre><span></span><span class="nx">pow</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">}</span>
-<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">pow</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;index=%d, value=%d\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-
-<p>输出</p>
-<div class="codehilite"><pre><span></span>index=0, value=2
-index=1, value=3
-index=2, value=5
-index=3, value=7
-index=4, value=11
-index=5, value=13
-</pre></div>
-
-<p>可以用下划线_作为占位符，表示不需要取值</p>
-<p>如果只想取index，不想取value，可以不写<code>, value</code>，比如</p>
-<div class="codehilite"><pre><span></span><span class="nx">pow</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">pow</span> <span class="p">{</span>
-    <span class="nx">pow</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="c1">// == 2**i</span>
-<span class="p">}</span>
-<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">value</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">pow</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d\n&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-
-<p>输出</p>
-<div class="codehilite"><pre><span></span>1
-2
-4
-8
-16
-32
-64
-128
-256
-</pre></div>
-
-<div class="admonition note">
-<p class="admonition-title">关于左移和右移运算符</p>
-<p><a href="../../appendix/binary_operation/#_1">左移运算符</a></p>
-<p><a href="../../appendix/binary_operation/#_2">右移运算符</a></p>
-</div>
                 
                   
                 
@@ -1359,7 +1310,7 @@ index=5, value=13
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../string/" title="1. 字符串处理" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../loop_iterate_traversal_recursion/" title="5. 循环、迭代、遍历、递归的区别" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1368,19 +1319,19 @@ index=5, value=13
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                1. 字符串处理
+                5. 循环、迭代、遍历、递归的区别
               </span>
             </div>
           </a>
         
         
-          <a href="../sync_block/" title="3. 同步异步与阻塞非阻塞的关系" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../appendix/doc/" title="1. 文档" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                3. 同步异步与阻塞非阻塞的关系
+                1. 文档
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
