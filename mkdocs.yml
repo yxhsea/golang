@@ -86,9 +86,10 @@ pages:
         - 1. pointer: datatype/pointer.md
         - 2. struct:
             - 2.1. 声明: datatype/struct_main.md
-            - 2.2. struct指针: datatype/struct_pointer.md
-            - 2.3. literal: datatype/struct_literal.md
-            - 2.4. 匿名struct: datatype/struct_anon.md
+            - 2.2. 导出名: datatype/struct_export.md
+            - 2.3. struct指针: datatype/struct_pointer.md
+            - 2.4. literal: datatype/struct_literal.md
+            - 2.5. 匿名struct: datatype/struct_anon.md
         - 3. array和slice:
             - 3.1. 介绍与比较: datatype/arr_sli_main.md
             - 3.2. len()与cap(): datatype/arr_sli_len_cap.md

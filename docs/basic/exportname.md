@@ -71,3 +71,5 @@ func main() {
 ```
 
 这样编译就不会报错了
+
+**另外，struct中的元素也是遵守首字母大写才可导出的原则，详见[struct-导出名](/datatype/struct_export/)**
