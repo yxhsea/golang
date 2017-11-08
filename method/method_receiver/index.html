@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/method/define/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/method/method_receiver/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>2.1. 声明 - Go语言学习 - cyent笔记</title>
+        <title>2.2. 指针receiver - Go语言学习 - cyent笔记</title>
       
     
     
@@ -92,7 +92,7 @@
                 </span>
               
             
-            2.1. 声明
+            2.2. 指针receiver
           
         </span>
       </div>
@@ -1069,6 +1069,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../method_main/" title="2.1. 声明" class="md-nav__link">
+      2.1. 声明
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -1077,10 +1089,54 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
-    <a href="./" title="2.1. 声明" class="md-nav__link md-nav__link--active">
-      2.1. 声明
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        2.2. 指针receiver
+      </label>
+    
+    <a href="./" title="2.2. 指针receiver" class="md-nav__link md-nav__link--active">
+      2.2. 指针receiver
     </a>
     
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#receiver" title="receiver可以使用指针" class="md-nav__link">
+    receiver可以使用指针
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#function-argumentmethod-receivermethod-argumentpointer" title="function argument、method receiver、method argument关于pointer的区别" class="md-nav__link">
+    function argument、method receiver、method argument关于pointer的区别
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#receiver_1" title="如何判断receiver是否要用指针" class="md-nav__link">
+    如何判断receiver是否要用指针
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1089,9 +1145,28 @@
           
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      3. 接口
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        3. 接口
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
   <li class="md-nav__item">
-    <a href="../receiver/" title="2.2. 指针receiver" class="md-nav__link">
-      2.2. 指针receiver
+    <a href="../interface_main/" title="3.1. 声明" class="md-nav__link">
+      3.1. 声明
     </a>
   </li>
 
@@ -1301,6 +1376,34 @@
   
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#receiver" title="receiver可以使用指针" class="md-nav__link">
+    receiver可以使用指针
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#function-argumentmethod-receivermethod-argumentpointer" title="function argument、method receiver、method argument关于pointer的区别" class="md-nav__link">
+    function argument、method receiver、method argument关于pointer的区别
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#receiver_1" title="如何判断receiver是否要用指针" class="md-nav__link">
+    如何判断receiver是否要用指针
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1312,107 +1415,104 @@
               
                 
                 
-                  <h1>2.1. 声明</h1>
+                  <h1>2.2. 指针receiver</h1>
                 
-                <p>method就是函数，只不过拥有receiver参数（普通函数没有receiver参数）</p>
-<p>recevier写在func和method名字之间，比如：</p>
-<div class="codehilite"><pre><span></span><span class="kd">type</span> <span class="nx">Vertex</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">float64</span>
-<span class="p">}</span>
-
-<span class="hll"><span class="kd">func</span> <span class="p">(</span><span class="nx">v</span> <span class="nx">Vertex</span><span class="p">)</span> <span class="nx">Abs</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
-</span>    <span class="k">return</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Sqrt</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">X</span><span class="o">*</span><span class="nx">v</span><span class="p">.</span><span class="nx">X</span> <span class="o">+</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Y</span><span class="o">*</span><span class="nx">v</span><span class="p">.</span><span class="nx">Y</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">a</span> <span class="o">:=</span> <span class="nx">Vertex</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">Abs</span><span class="p">())</span>
-<span class="p">}</span>
-</pre></div>
-
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>上面v Vertex就是recevier</p>
-<p>高亮的这行代码可以解读为：Abs method拥有一个类型为Vertex，名字为v的receiver</p>
-</div>
-<p>注意：</p>
-<ol>
-<li>
-<p>内置type不能作为receiver</p>
-<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="nx">foo</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span>
-    <span class="nx">f</span> <span class="o">:=</span> <span class="nx">i</span><span class="p">.</span><span class="nx">foo</span><span class="p">()</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-
-<p>报错</p>
-<div class="codehilite"><pre><span></span>cannot define new methods on non-local type int
-</pre></div>
-
-</li>
-<li>
-<p>同一个包里自定义的type，才能作为method的receiver</p>
-<p>$GOPATH/src/github.com/cyent/golang/example/foo.go</p>
-<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">foo</span>
-
-<span class="kd">type</span> <span class="nx">MyInt</span> <span class="kt">int</span>
-</pre></div>
-
-<p>bar.go</p>
+                <h2 id="receiver"><strong>receiver可以使用指针</strong><a class="headerlink" href="#receiver" title="Permanent link">&para;</a></h2>
+<hr />
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&quot;fmt&quot;</span>
-    <span class="s">&quot;github.com/cyent/golang/example/foo&quot;</span>
-<span class="p">)</span>
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">x</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="nx">MyStruct</span><span class="p">)</span> <span class="nx">Set1</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">m</span><span class="p">.</span><span class="nx">x</span> <span class="p">=</span> <span class="mi">1</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">MyStruct</span><span class="p">)</span> <span class="nx">Set2</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">m</span><span class="p">.</span><span class="nx">x</span> <span class="p">=</span> <span class="mi">2</span>
+<span class="p">}</span>
 
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">a</span> <span class="o">:=</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">MyInt</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">MyStruct</span><span class="p">{</span><span class="nx">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">Set1</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">x</span><span class="p">)</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">Set2</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">x</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
 <p>输出</p>
-<div class="codehilite"><pre><span></span>1
+<div class="codehilite"><pre><span></span>0
+2
 </pre></div>
 
-<p>但如果把bar.go改成</p>
+<p>可以看出，Set1并没有修改值，Set2才修改了值，是因为指针receiver才是修改原来的值，否则只是复制变量出来成为函数里的局部变量</p>
+<h2 id="function-argumentmethod-receivermethod-argumentpointer"><strong>function argument、method receiver、method argument关于pointer的区别</strong><a class="headerlink" href="#function-argumentmethod-receivermethod-argumentpointer" title="Permanent link">&para;</a></h2>
+<hr />
+<p>function的argument和method的receiver都能接收pointer，区别：</p>
+<ol>
+<li>
+<p>function的argument类型必须和传入的类型一致，比如argument是pointer类型，则传入参数也必须是pointer，如果传入参数不是pointer类型，则传入参数不能是pointer。</p>
+</li>
+<li>
+<p>method的receiver类型比较智能，如果receiver类型是pointer，那么当传入参数类型不是pointer时候，go会自动转为pointer。如果receiver类型不是pointer，那么当传入参数类型是pointer，会自动将pointer转换为pointer所对应的值。</p>
+<p>如果将上面的例子稍微修改下</p>
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&quot;fmt&quot;</span>
-    <span class="s">&quot;github.com/cyent/golang/example/foo&quot;</span>
-<span class="p">)</span>
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 
-<span class="kd">func</span> <span class="p">(</span><span class="nx">x</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">MyInt</span><span class="p">)</span> <span class="nx">mymethod</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nx">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">x</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="nx">MyStruct</span><span class="p">)</span> <span class="nx">Set1</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">m</span><span class="p">.</span><span class="nx">x</span> <span class="p">=</span> <span class="mi">1</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">MyStruct</span><span class="p">)</span> <span class="nx">Set2</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">m</span><span class="p">.</span><span class="nx">x</span> <span class="p">=</span> <span class="mi">2</span>
 <span class="p">}</span>
 
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">a</span> <span class="o">:=</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">MyInt</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
-
-    <span class="nx">b</span> <span class="o">:=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">mymethod</span><span class="p">()</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span>
+<span class="hll">    <span class="nx">s</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">MyStruct</span><span class="p">{</span><span class="nx">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+</span>    <span class="nx">s</span><span class="p">.</span><span class="nx">Set1</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">x</span><span class="p">)</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">Set2</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">x</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
-<p>报错</p>
-<div class="codehilite"><pre><span></span>./bar.go:8: cannot define new methods on non-local type foo.MyInt
-./bar.go:16: a.mymethod undefined (type foo.MyInt has no field or method mymethod)
+<p>输出不变，也是</p>
+<div class="codehilite"><pre><span></span>0
+2
 </pre></div>
 
-<p>上面这个例子说明了导入的包里的自定义type可以用（type首字母大写），但不能作为method的receiver</p>
-</li>
-<li>
-<p>只有放在包级别的type，并且首字母大写的，才能被导入给其他模块引用，详见<a href="http://127.0.0.1:8000/basic/type_custom/#_3">数据类型章节-自定义类型</a>的第4点</p>
+<p>上面的<code>s.Set1()</code>会被go自动转为<code>(*s).Set1()</code></p>
+<p>同理，如果改为<code>s := MyStruct{x: 0}</code>，那么<code>s.Set2()</code>会被go自动转为<code>(&amp;s).Set2()</code></p>
 </li>
 </ol>
+<p>method argument和function argument是相同的，类型必须一致</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>receiver在其他语言以及go语言里也叫做 <strong>函数签名</strong>（函数签名是最普遍的叫法）</p>
+</div>
+<h2 id="receiver_1"><strong>如何判断receiver是否要用指针</strong><a class="headerlink" href="#receiver_1" title="Permanent link">&para;</a></h2>
+<hr />
+<p>method的value receiver和pointer receiver怎么选择，官方说了2个原因来使用pointer receiver</p>
+<ol>
+<li>
+<p>需要修改原来的值</p>
+</li>
+<li>
+<p>防止每次调用method时候都拷贝value，比如当struct很大的时候每次都拷贝value会降低效率</p>
+</li>
+</ol>
+<p>下面是我个人理解，不一定准确：</p>
+<p>实际应用中，有一个情况是不能用pointer receiver：pointer可能造成安全风险，例如某个method只是要获取金额，而不是修改金额，那么使用pointer的话就存在当内存被泄露等情况导致金额被修改。</p>
+<p>因此，若没有涉及性能问题，且method的功能是读，而非写的时候，首选value receiver</p>
                 
                   
                 
@@ -1431,7 +1531,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../overview/" title="1. 概念汇总" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../method_main/" title="2.1. 声明" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1440,19 +1540,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                1. 概念汇总
+                2.1. 声明
               </span>
             </div>
           </a>
         
         
-          <a href="../receiver/" title="2.2. 指针receiver" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../interface_main/" title="3.1. 声明" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                2.2. 指针receiver
+                3.1. 声明
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

@@ -171,6 +171,12 @@
      <changefreq>daily</changefreq>
     </url>
         
+    <url>
+     <loc>https://cyent.github.io/markdown-with-mkdocs-material/</loc>
+     <lastmod></lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
     
