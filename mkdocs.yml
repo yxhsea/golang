@@ -126,6 +126,7 @@ pages:
         - 4. 位运算: other/binary_operation.md
         - 5. 循环、迭代、遍历、递归的区别: other/loop_iterate_traversal_recursion.md
         - 6. go和python的比较: other/go_python.md
+        - 7. 面向对象: other/oo.md
     - 八. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md
