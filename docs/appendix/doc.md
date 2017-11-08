@@ -13,4 +13,8 @@ golang官方FAQ https://golang.org/doc/faq（当对某个概念有疑问或者�
 
 go例子（非官方）https://gobyexample.com（上面有很多例子，比如学习json时候可以在上面看下是否有相关例子）
 
-go interface的3种用途和讲解：http://legendtkl.com/2017/06/12/understanding-golang-interface/
+go interface
+
+- 3种用途和讲解：http://legendtkl.com/2017/06/12/understanding-golang-interface/
+
+- 关于interface的理解: http://www.itnose.net/detail/6079953.html
