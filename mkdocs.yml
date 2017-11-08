@@ -115,8 +115,10 @@ pages:
     - 六. 方法与接口:
         - 1. 概念汇总: method/overview.md
         - 2. 方法:
-            - 2.1. 声明: method/define.md
-            - 2.2. 指针receiver: method/receiver.md
+            - 2.1. 声明: method/method_main.md
+            - 2.2. 指针receiver: method/method_receiver.md
+        - 3. 接口:
+            - 3.1. 声明: method/interface_main.md
     - 七. 其他:
         - 1. 字符串处理: other/string.md
         - 2. range: other/range.md
