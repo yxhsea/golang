@@ -1263,7 +1263,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" title="抽象类与接口" class="md-nav__link">
+  <a href="#_2" title="鸭子类型" class="md-nav__link">
+    鸭子类型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="泛型编程" class="md-nav__link">
+    泛型编程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="抽象类与接口" class="md-nav__link">
     抽象类与接口
   </a>
   
@@ -1400,7 +1414,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" title="抽象类与接口" class="md-nav__link">
+  <a href="#_2" title="鸭子类型" class="md-nav__link">
+    鸭子类型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="泛型编程" class="md-nav__link">
+    泛型编程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="抽象类与接口" class="md-nav__link">
     抽象类与接口
   </a>
   
@@ -1427,8 +1455,10 @@
 <hr />
 <p><a href="http://developer.51cto.com/art/201106/266705.htm">http://developer.51cto.com/art/201106/266705.htm</a></p>
 <p>Overload是重载的意思，Override是覆盖的意思，也就是重写。</p>
-<p>重载Overload表示同一个类中可以有多个名称相同的方法，但这些方法的参数列表各不相同（即参数个数或类型不同）。
-重写Override表示子类中的方法可以与父类中的某个方法的名称和参数完全相同，通过子类创建的实例对象调用这个方法时，将调用子类中的定义方法，这相当于把父类中定义的那个完全相同的方法给覆盖了，这也是面向对象编程的多态性的一种表现。</p>
+<p>重载Overload表示同一个类中可以有多个名称相同的方法，但这些方法的参数列表各不相同（即参数个数或类型不同）。</p>
+<p>重写Override表示子类中的方法可以与父类中的某个方法的名称和参数完全相同，通过子类创建的实例对象调用这个方法时，将调用子类中的定义方法，这相当于把父类中定义的那个完全相同的方法给覆盖了，这也是面向对象编程的多态性的一种表现。</p>
+<p>【这句话不是很理解】重写override是父类与子类之间多态性的一种表现，重载overload是一个类中多态性的一种表现</p>
+<p>python没有overload，是因为python是动态语言，python的函数可以传入任意类型和任意数量的参数（可以用*args或**kwargs）。因此python不需要overload【这句话理解不完全对，主要是说明python比较智能和灵活，可以传入任意数量的参数】。</p>
 <h2 id="_1"><strong>多态</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <hr />
 <p><a href="http://bbs.itheima.com/thread-119448-1-1.html">http://bbs.itheima.com/thread-119448-1-1.html</a></p>
@@ -1446,7 +1476,55 @@
 </pre></div>
 
 <p>即用本类类型引用指向本类类型实例。</p>
-<h2 id="_2"><strong>抽象类与接口</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">关于java中的多态</p>
+<p>下面2个都是多态：</p>
+<ol>
+<li>
+<p>父类的引用类型变量指向了子类的对象</p>
+</li>
+<li>
+<p>接口类型的引用类型变量指向了接口实现类 的对象。</p>
+</li>
+</ol>
+<p>以下是第2点的例子：</p>
+<p>实现关系下的多态：
+接口 变量 = new 接口实现类的对象。</p>
+<div class="codehilite"><pre><span></span><span class="c1">//接口的方法全部都是非静态的方法</span>
+<span class="kd">interface</span> <span class="nc">Dao</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">();</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="o">();</span>  
+<span class="o">}</span>  
+
+<span class="c1">//接口的实现类  </span>
+<span class="kd">class</span> <span class="nc">UserDao</span> <span class="kd">implements</span> <span class="n">Dao</span><span class="o">{</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">(){</span>  
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;添加员工成功！！&quot;</span><span class="o">);</span>  
+    <span class="o">}</span>   
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="o">(){</span>  
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;删除员工成功！！&quot;</span><span class="o">);</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>  
+
+<span class="kd">class</span> <span class="nc">Demo3</span>   
+<span class="o">{</span>  
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>   
+    <span class="o">{</span>  
+        <span class="c1">//实现关系下的多态  </span>
+        <span class="n">Dao</span> <span class="n">d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserDao</span><span class="o">();</span> <span class="c1">//接口的引用类型变量指向了接口实现类的对象。  </span>
+        <span class="n">d</span><span class="o">.</span><span class="na">add</span><span class="o">();</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</pre></div>
+
+</div>
+<h2 id="_2"><strong>鸭子类型</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<hr />
+<p><a href="https://zh.wikipedia.org/wiki/鸭子类型">https://zh.wikipedia.org/wiki/鸭子类型</a></p>
+<h2 id="_3"><strong>泛型编程</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<hr />
+<p><a href="http://legendtkl.com/2015/11/25/go-generic-programming/">http://legendtkl.com/2015/11/25/go-generic-programming/</a></p>
+<h2 id="_4"><strong>抽象类与接口</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <hr />
 <p>抽象类（也叫基类）：</p>
 <ul>
