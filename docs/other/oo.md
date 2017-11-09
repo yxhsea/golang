@@ -7,7 +7,12 @@ http://developer.51cto.com/art/201106/266705.htm
 Overload是重载的意思，Override是覆盖的意思，也就是重写。
 
 重载Overload表示同一个类中可以有多个名称相同的方法，但这些方法的参数列表各不相同（即参数个数或类型不同）。
+
 重写Override表示子类中的方法可以与父类中的某个方法的名称和参数完全相同，通过子类创建的实例对象调用这个方法时，将调用子类中的定义方法，这相当于把父类中定义的那个完全相同的方法给覆盖了，这也是面向对象编程的多态性的一种表现。
+
+【这句话不是很理解】重写override是父类与子类之间多态性的一种表现，重载overload是一个类中多态性的一种表现
+
+python没有overload，是因为python是动态语言，python的函数可以传入任意类型和任意数量的参数（可以用*args或**kwargs）。因此python不需要overload【这句话理解不完全对，主要是说明python比较智能和灵活，可以传入任意数量的参数】。
 
 ## **多态**
 
@@ -38,6 +43,60 @@ String s=new String("a");
 ```
 
 即用本类类型引用指向本类类型实例。
+
+!!! note "关于java中的多态"
+	下面2个都是多态：
+
+	1. 父类的引用类型变量指向了子类的对象
+
+	2. 接口类型的引用类型变量指向了接口实现类 的对象。
+
+	以下是第2点的例子：
+
+	实现关系下的多态：
+	接口 变量 = new 接口实现类的对象。
+
+	```java
+	//接口的方法全部都是非静态的方法
+	interface Dao{
+	    public void add();  
+	    public void delete();  
+	}  
+
+	//接口的实现类  
+	class UserDao implements Dao{  
+	    public void add(){  
+	        System.out.println("添加员工成功！！");  
+	    }   
+	    public void delete(){  
+	        System.out.println("删除员工成功！！");  
+	    }  
+	}  
+
+	class Demo3   
+	{  
+	    public static void main(String[] args)   
+	    {  
+	        //实现关系下的多态  
+	        Dao d = new UserDao(); //接口的引用类型变量指向了接口实现类的对象。  
+	        d.add();  
+	    }  
+	}
+	```
+
+## **鸭子类型**
+
+---
+
+https://zh.wikipedia.org/wiki/鸭子类型
+
+
+
+## **泛型编程**
+
+---
+
+http://legendtkl.com/2015/11/25/go-generic-programming/
 
 ## **抽象类与接口**
 
