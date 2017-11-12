@@ -183,6 +183,8 @@ game()
 
 golang中没有class的概念，而是通过interface类型转换支持动态类型语言中常见的鸭子类型，来达到运行时多态的效果。
 
+接口可以提供鸭子类型的一些益处，但鸭子类型与之不同的是没有显式定义任何接口。
+
 上面python的例子用go可以这么写：
 
 ```go
@@ -279,3 +281,23 @@ http://legendtkl.com/2015/11/25/go-generic-programming/
 ---
 
 [详见接口章节](/method/interface_main/#_2)
+
+## **3种代码风格**
+
+---
+
+来自：https://docs.python.org/3/glossary.html 中提到的
+
+1. duck typing
+
+2. EAFP（Easier to ask for forgiveness than permission）
+
+3. LBYL（Look before you leap）
+
+## **泛型编程、鸭子类型、interface关系**
+
+---
+
+这段话为个人理解，不保证准确性鸭子类型是一个老外提出的构想，是一种动态的代码风格，某个开发语言支持了这个构想而产生的编程风格或规范，叫做泛型编程，interface是go对泛型编程的实现（准确说是go不支持泛型编程，但go的interface可以实现类似泛型编程的效果）
+
+泛型编程：像类一样，泛型也是一种抽象数据类型，但是泛型不属于面向对象，它是面向对象的补充和发展。

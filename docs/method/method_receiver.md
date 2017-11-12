@@ -47,6 +47,9 @@ function的argument和method的receiver都能接收pointer，区别：
 
 2. method的receiver类型比较智能，如果receiver类型是pointer，那么当传入参数类型不是pointer时候，go会自动转为pointer。如果receiver类型不是pointer，那么当传入参数类型是pointer，会自动将pointer转换为pointer所对应的值。
 
+	!!! warning
+		接口的receiver类型必须和实现接口一致，否则会报错，详见[接口章节部分](/method/interface_main/#receiver)
+
 	如果将上面的例子稍微修改下
 
 	```go hl_lines="18"
