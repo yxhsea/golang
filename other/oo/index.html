@@ -1317,6 +1317,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#3" title="3种代码风格" class="md-nav__link">
+    3种代码风格
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interface" title="泛型编程、鸭子类型、interface关系" class="md-nav__link">
+    泛型编程、鸭子类型、interface关系
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -1502,6 +1516,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#3" title="3种代码风格" class="md-nav__link">
+    3种代码风格
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interface" title="泛型编程、鸭子类型、interface关系" class="md-nav__link">
+    泛型编程、鸭子类型、interface关系
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -1662,6 +1690,7 @@ apples and oranges, apples and oranges, apples and oranges,
 
 <h3 id="go"><strong>go鸭子类型</strong><a class="headerlink" href="#go" title="Permanent link">&para;</a></h3>
 <p>golang中没有class的概念，而是通过interface类型转换支持动态类型语言中常见的鸭子类型，来达到运行时多态的效果。</p>
+<p>接口可以提供鸭子类型的一些益处，但鸭子类型与之不同的是没有显式定义任何接口。</p>
 <p>上面python的例子用go可以这么写：</p>
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
@@ -1757,6 +1786,24 @@ apples and oranges, apples and oranges, apples and oranges,
 <h2 id="golang"><strong>golang里的"面向对象"</strong><a class="headerlink" href="#golang" title="Permanent link">&para;</a></h2>
 <hr />
 <p><a href="../../method/interface_main/#_2">详见接口章节</a></p>
+<h2 id="3"><strong>3种代码风格</strong><a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<hr />
+<p>来自：<a href="https://docs.python.org/3/glossary.html">https://docs.python.org/3/glossary.html</a> 中提到的</p>
+<ol>
+<li>
+<p>duck typing</p>
+</li>
+<li>
+<p>EAFP（Easier to ask for forgiveness than permission）</p>
+</li>
+<li>
+<p>LBYL（Look before you leap）</p>
+</li>
+</ol>
+<h2 id="interface"><strong>泛型编程、鸭子类型、interface关系</strong><a class="headerlink" href="#interface" title="Permanent link">&para;</a></h2>
+<hr />
+<p>这段话为个人理解，不保证准确性鸭子类型是一个老外提出的构想，是一种动态的代码风格，某个开发语言支持了这个构想而产生的编程风格或规范，叫做泛型编程，interface是go对泛型编程的实现（准确说是go不支持泛型编程，但go的interface可以实现类似泛型编程的效果）</p>
+<p>泛型编程：像类一样，泛型也是一种抽象数据类型，但是泛型不属于面向对象，它是面向对象的补充和发展。</p>
                 
                   
                 

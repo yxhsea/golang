@@ -1176,6 +1176,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#receiver" title="接口receiver参数类型不会自动转换" class="md-nav__link">
+    接口receiver参数类型不会自动转换
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -1440,6 +1447,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#receiver" title="接口receiver参数类型不会自动转换" class="md-nav__link">
+    接口receiver参数类型不会自动转换
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -1666,6 +1680,45 @@
 </pre></div>
 
 </div>
+<h2 id="receiver"><strong>接口receiver参数类型不会自动转换</strong><a class="headerlink" href="#receiver" title="Permanent link">&para;</a></h2>
+<hr />
+<p>用interface.method和直接用自定义TYPE.method()有一点不同要注意：</p>
+<p>如果用interface.method()，那么method的receiver参数类型必须和实现interface时候的类型相同，比如：</p>
+<div class="codehilite"><pre><span></span><span class="kd">type</span> <span class="nx">I</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">M</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">T</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">S</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">T</span><span class="p">)</span> <span class="nx">M</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">S</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">i</span> <span class="nx">I</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">T</span><span class="p">{</span><span class="s">&quot;hello&quot;</span><span class="p">}</span> <span class="c1">//不能写成i = T{&quot;hello&quot;}</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">M</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>但如果是直接用method()，就不用类型一致，会自动判断，比如：</p>
+<div class="codehilite"><pre><span></span><span class="kd">type</span> <span class="nx">T</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">S</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">T</span><span class="p">)</span> <span class="nx">M</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">S</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">i</span> <span class="o">:=</span> <span class="nx">T</span><span class="p">{</span><span class="s">&quot;hello&quot;</span><span class="p">}</span> <span class="c1">//也可以写成i := &amp;T{&quot;hello&quot;}</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">M</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>这2个例子的输出都是hello</p>
                 
                   
                 
