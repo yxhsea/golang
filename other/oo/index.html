@@ -1267,17 +1267,44 @@
     鸭子类型
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="介绍" class="md-nav__link">
+    介绍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python" title="python鸭子类型" class="md-nav__link">
+    python鸭子类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go" title="go鸭子类型" class="md-nav__link">
+    go鸭子类型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" title="泛型编程" class="md-nav__link">
+  <a href="#_4" title="泛型编程" class="md-nav__link">
     泛型编程
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" title="抽象类与接口" class="md-nav__link">
+  <a href="#_5" title="抽象类与接口" class="md-nav__link">
     抽象类与接口
   </a>
   
@@ -1418,17 +1445,44 @@
     鸭子类型
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="介绍" class="md-nav__link">
+    介绍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python" title="python鸭子类型" class="md-nav__link">
+    python鸭子类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go" title="go鸭子类型" class="md-nav__link">
+    go鸭子类型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" title="泛型编程" class="md-nav__link">
+  <a href="#_4" title="泛型编程" class="md-nav__link">
     泛型编程
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" title="抽象类与接口" class="md-nav__link">
+  <a href="#_5" title="抽象类与接口" class="md-nav__link">
     抽象类与接口
   </a>
   
@@ -1520,11 +1574,142 @@
 </div>
 <h2 id="_2"><strong>鸭子类型</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <hr />
+<h3 id="_3"><strong>介绍</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p><a href="https://zh.wikipedia.org/wiki/鸭子类型">https://zh.wikipedia.org/wiki/鸭子类型</a></p>
-<h2 id="_3"><strong>泛型编程</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p><a href="http://www.jb51.net/article/116025.htm">http://www.jb51.net/article/116025.htm</a>（鸭子类型与多态）</p>
+<p>当看到一只鸟走起来像鸭子、游泳起来像鸭子、叫起来也像鸭子，那么这只鸟就可以被称为鸭子</p>
+<p>在程序设计中，鸭子类型（英语：Duck typing）是动态类型和某些静态语言的一种对象推断风格。</p>
+<p>在鸭子类型中，关注的不是对象的类型本身，而是它是如何使用的。</p>
+<p>鸭子类型通常得益于不测试方法和函数中参数的类型，而是依赖文档、清晰的代码和测试来确保正确使用。</p>
+<p>个人理解鸭子类型是多态的一种实现方式</p>
+<h3 id="python"><strong>python鸭子类型</strong><a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
+<p><a href="https://docs.python.org/3/glossary.html#term-duck-typing">https://docs.python.org/3/glossary.html#term-duck-typing</a></p>
+<p>Python不支持多态，也不用支持多态，python是一种多态语言，崇尚鸭子类型</p>
+<p>例1</p>
+<div class="codehilite"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">c</span>
+
+<span class="n">example1</span> <span class="o">=</span> <span class="n">calculate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">example2</span> <span class="o">=</span> <span class="n">calculate</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">example3</span> <span class="o">=</span> <span class="n">calculate</span><span class="p">(</span><span class="s1">&#39;apples &#39;</span><span class="p">,</span> <span class="s1">&#39;and oranges, &#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">example1</span>
+<span class="k">print</span> <span class="n">example2</span>
+<span class="k">print</span> <span class="n">example3</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>9
+[1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6]
+apples and oranges, apples and oranges, apples and oranges,
+</pre></div>
+
+<div class="admonition note">
+<p>该例子鸭子类型在不使用继承的情况下使用了多态</p>
+</div>
+<p>例2</p>
+<div class="codehilite"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="k">class</span> <span class="nc">Duck</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">quack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s2">&quot;这鸭子在呱呱叫&quot;</span>
+    <span class="k">def</span> <span class="nf">feathers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s2">&quot;这鸭子拥有白色与灰色羽毛&quot;</span>
+
+<span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">quack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s2">&quot;这人正在模仿鸭子&quot;</span>
+    <span class="k">def</span> <span class="nf">feathers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s2">&quot;这人在地上拿起1根羽毛然后給其他人看&quot;</span>
+
+<span class="k">def</span> <span class="nf">in_the_forest</span><span class="p">(</span><span class="n">duck</span><span class="p">):</span>
+    <span class="n">duck</span><span class="o">.</span><span class="n">quack</span><span class="p">()</span>
+    <span class="n">duck</span><span class="o">.</span><span class="n">feathers</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">game</span><span class="p">():</span>
+    <span class="n">donald</span> <span class="o">=</span> <span class="n">Duck</span><span class="p">()</span>
+    <span class="n">john</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
+    <span class="n">in_the_forest</span><span class="p">(</span><span class="n">donald</span><span class="p">)</span>
+    <span class="n">in_the_forest</span><span class="p">(</span><span class="n">john</span><span class="p">)</span>
+
+<span class="n">game</span><span class="p">()</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>这鸭子在呱呱叫
+这鸭子拥有白色与灰色羽毛
+这人正在模仿鸭子
+这人在地上拿起1根羽毛然后給其他人看
+</pre></div>
+
+<h3 id="go"><strong>go鸭子类型</strong><a class="headerlink" href="#go" title="Permanent link">&para;</a></h3>
+<p>golang中没有class的概念，而是通过interface类型转换支持动态类型语言中常见的鸭子类型，来达到运行时多态的效果。</p>
+<p>上面python的例子用go可以这么写：</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">Ducker</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">quack</span><span class="p">()</span>
+    <span class="nx">feathers</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Duck</span> <span class="kd">struct</span><span class="p">{}</span>
+<span class="kd">type</span> <span class="nx">Person</span> <span class="kd">struct</span><span class="p">{}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">Duck</span><span class="p">)</span> <span class="nx">quack</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;这鸭子在呱呱叫&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">Duck</span><span class="p">)</span> <span class="nx">feathers</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;这鸭子拥有白色与灰色羽毛&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">Person</span><span class="p">)</span> <span class="nx">quack</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;这人正在模仿鸭子&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">Person</span><span class="p">)</span> <span class="nx">feathers</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;这人在地上拿起1根羽毛然后給其他人看&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">in_the_forest</span><span class="p">(</span><span class="nx">d</span> <span class="nx">Ducker</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">d</span><span class="p">.</span><span class="nx">quack</span><span class="p">()</span>
+    <span class="nx">d</span><span class="p">.</span><span class="nx">feathers</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">donald</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Duck</span><span class="p">{}</span>
+    <span class="nx">john</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Person</span><span class="p">{}</span>
+    <span class="nx">in_the_forest</span><span class="p">(</span><span class="nx">donald</span><span class="p">)</span>
+    <span class="nx">in_the_forest</span><span class="p">(</span><span class="nx">john</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出也是</p>
+<div class="codehilite"><pre><span></span>这鸭子在呱呱叫
+这鸭子拥有白色与灰色羽毛
+这人正在模仿鸭子
+这人在地上拿起1根羽毛然后給其他人看
+</pre></div>
+
+<p>这2个例子对比，可以直接看出几点区别:</p>
+<ol>
+<li>
+<p>python无需接口（python是动态语言，没有接口），而go需要接口</p>
+</li>
+<li>
+<p>python的in_the_forest无需指定传入参数类型，而go需要（传入参数时候实现了接口）</p>
+</li>
+</ol>
+<h2 id="_4"><strong>泛型编程</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <hr />
 <p><a href="http://legendtkl.com/2015/11/25/go-generic-programming/">http://legendtkl.com/2015/11/25/go-generic-programming/</a></p>
-<h2 id="_4"><strong>抽象类与接口</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_5"><strong>抽象类与接口</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <hr />
 <p>抽象类（也叫基类）：</p>
 <ul>
