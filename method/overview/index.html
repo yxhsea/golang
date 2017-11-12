@@ -1068,6 +1068,26 @@
     比较python和go的面向对象写法
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" title="无基类（无接口）" class="md-nav__link">
+    无基类（无接口）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="有基类（使用接口）" class="md-nav__link">
+    有基类（使用接口）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -1390,6 +1410,26 @@
     比较python和go的面向对象写法
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" title="无基类（无接口）" class="md-nav__link">
+    无基类（无接口）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="有基类（使用接口）" class="md-nav__link">
+    有基类（使用接口）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -1429,6 +1469,7 @@
 </ul>
 <h2 id="pythongo"><strong>比较python和go的面向对象写法</strong><a class="headerlink" href="#pythongo" title="Permanent link">&para;</a></h2>
 <hr />
+<h3 id="_1"><strong>无基类（无接口）</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p>python</p>
 <div class="codehilite"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
@@ -1465,6 +1506,91 @@
 
 <p>输出都是</p>
 <div class="codehilite"><pre><span></span>cyent
+</pre></div>
+
+<h3 id="_2"><strong>有基类（使用接口）</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>python</p>
+<div class="codehilite"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="k">class</span> <span class="nc">SchoolMember</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+
+    <span class="k">def</span> <span class="nf">tell</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Teacher</span><span class="p">(</span><span class="n">SchoolMember</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">salary</span><span class="p">):</span>
+        <span class="n">SchoolMember</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">salary</span> <span class="o">=</span> <span class="n">salary</span>
+
+    <span class="k">def</span> <span class="nf">tell</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">SchoolMember</span><span class="o">.</span><span class="n">tell</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s1">&#39;Salary: &quot;</span><span class="si">%d</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">salary</span>
+
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">SchoolMember</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">marks</span><span class="p">):</span>
+        <span class="n">SchoolMember</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">marks</span> <span class="o">=</span> <span class="n">marks</span>
+
+    <span class="k">def</span> <span class="nf">tell</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">SchoolMember</span><span class="o">.</span><span class="n">tell</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s1">&#39;Marks: &quot;</span><span class="si">%d</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">marks</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">Teacher</span><span class="p">(</span><span class="s1">&#39;Mrs. Shrividya&#39;</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">30000</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="s1">&#39;Swaroop&#39;</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">75</span><span class="p">)</span>
+
+<span class="n">t</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>
+<span class="n">s</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>Salary: &quot;30000&quot;
+Marks: &quot;75&quot;
+</pre></div>
+
+<p>go</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">SchoolMember</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">tell</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Teacher</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">name</span> <span class="kt">string</span>
+    <span class="nx">age</span> <span class="kt">int</span>
+    <span class="nx">salary</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Student</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">name</span> <span class="kt">string</span>
+    <span class="nx">age</span> <span class="kt">int</span>
+    <span class="nx">marks</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">Teacher</span><span class="p">)</span> <span class="nx">tell</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Salary: %d\n&quot;</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">salary</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">Student</span><span class="p">)</span> <span class="nx">tell</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Marks: %d\n&quot;</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">marks</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">t</span> <span class="nx">SchoolMember</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">Teacher</span><span class="p">{</span><span class="s">&quot;Mrs. Shrividya&quot;</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">30000</span><span class="p">}</span>
+    <span class="kd">var</span> <span class="nx">s</span> <span class="nx">SchoolMember</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">Student</span><span class="p">{</span><span class="s">&quot;Swaroop&quot;</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">75</span><span class="p">}</span>
+    <span class="nx">t</span><span class="p">.</span><span class="nx">tell</span><span class="p">()</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">tell</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>Salary: 30000
+Marks: 75
 </pre></div>
                 
                   

@@ -1142,7 +1142,21 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" title="应用场景" class="md-nav__link">
+  <a href="#_1" title="接口是什么" class="md-nav__link">
+    接口是什么
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="接口和面向对象的关系" class="md-nav__link">
+    接口和面向对象的关系
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="应用场景" class="md-nav__link">
     应用场景
   </a>
   
@@ -1156,7 +1170,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" title="传入和传出参数要带上" class="md-nav__link">
+  <a href="#_4" title="传入和传出参数要带上" class="md-nav__link">
     传入和传出参数要带上
   </a>
   
@@ -1392,7 +1406,21 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" title="应用场景" class="md-nav__link">
+  <a href="#_1" title="接口是什么" class="md-nav__link">
+    接口是什么
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="接口和面向对象的关系" class="md-nav__link">
+    接口和面向对象的关系
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="应用场景" class="md-nav__link">
     应用场景
   </a>
   
@@ -1406,7 +1434,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" title="传入和传出参数要带上" class="md-nav__link">
+  <a href="#_4" title="传入和传出参数要带上" class="md-nav__link">
     传入和传出参数要带上
   </a>
   
@@ -1429,9 +1457,29 @@
                 
                   <h1>3.1. 声明</h1>
                 
-                <p>接口类型是由一组方法定义的集合。</p>
+                <h2 id="_1"><strong>接口是什么</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
+<p>接口类型是由一组方法定义的集合。</p>
 <p>接口类型的值可以存放实现这些方法的任何值。</p>
-<h2 id="_1"><strong>应用场景</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="_2"><strong>接口和面向对象的关系</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<hr />
+<p>golang中没有面向对象，但却可以实现面向对象的基础功能，类比如下：</p>
+<ul>
+<li>
+<p>基类：golang中的接口相当于面向对象中的基类（虽然接口并不完全是基类的概念，但在某些情况下，会把接口当作基类来使用），只不过继承基类需要显式，而golang的接口是隐式，并且只是方法名和传入传出参数相同即可</p>
+</li>
+<li>
+<p>类：golang中的struct相当于面向对象中的类</p>
+</li>
+<li>
+<p>类的属性：golang中struct的元素相当于面向对象中类的属性</p>
+</li>
+<li>
+<p>类的方法：golang中struct的方法（就叫method，在某些语言里叫签名函数）相当于面向中的类的方法</p>
+</li>
+</ul>
+<p>例子详见<a href="../../method/overview/#_2">比较python和go的面向对象写法</a></p>
+<h2 id="_3"><strong>应用场景</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <hr />
 <p>interface的使用要满足2个条件才有意义：</p>
 <ol>
@@ -1550,7 +1598,7 @@
 <div class="codehilite"><pre><span></span>7
 </pre></div>
 
-<h2 id="_2"><strong>传入和传出参数要带上</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_4"><strong>传入和传出参数要带上</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <hr />
 <p>如果实现接口的签名函数有传入参数或传出参数，则接口定义时候要带上，比如：</p>
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
