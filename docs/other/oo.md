@@ -88,9 +88,159 @@ String s=new String("a");
 
 ---
 
+### **介绍**
+
 https://zh.wikipedia.org/wiki/鸭子类型
 
+http://www.jb51.net/article/116025.htm（鸭子类型与多态）
 
+当看到一只鸟走起来像鸭子、游泳起来像鸭子、叫起来也像鸭子，那么这只鸟就可以被称为鸭子
+
+在程序设计中，鸭子类型（英语：Duck typing）是动态类型和某些静态语言的一种对象推断风格。
+
+在鸭子类型中，关注的不是对象的类型本身，而是它是如何使用的。
+
+鸭子类型通常得益于不测试方法和函数中参数的类型，而是依赖文档、清晰的代码和测试来确保正确使用。
+
+个人理解鸭子类型是多态的一种实现方式
+
+### **python鸭子类型**
+
+https://docs.python.org/3/glossary.html#term-duck-typing
+
+Python不支持多态，也不用支持多态，python是一种多态语言，崇尚鸭子类型
+
+例1
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+def calculate(a, b, c):
+	return (a+b)*c
+
+example1 = calculate(1, 2, 3)
+example2 = calculate([1, 2, 3], [4, 5, 6], 2)
+example3 = calculate('apples ', 'and oranges, ', 3)
+
+print example1
+print example2
+print example3
+```
+
+输出
+
+```text
+9
+[1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6]
+apples and oranges, apples and oranges, apples and oranges,
+```
+
+!!! note ""
+	该例子鸭子类型在不使用继承的情况下使用了多态
+
+例2
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+class Duck:
+    def quack(self):
+        print "这鸭子在呱呱叫"
+    def feathers(self):
+        print "这鸭子拥有白色与灰色羽毛"
+
+class Person:
+    def quack(self):
+        print "这人正在模仿鸭子"
+    def feathers(self):
+        print "这人在地上拿起1根羽毛然后給其他人看"
+
+def in_the_forest(duck):
+    duck.quack()
+    duck.feathers()
+
+def game():
+    donald = Duck()
+    john = Person()
+    in_the_forest(donald)
+    in_the_forest(john)
+
+game()
+```
+
+输出
+
+```text
+这鸭子在呱呱叫
+这鸭子拥有白色与灰色羽毛
+这人正在模仿鸭子
+这人在地上拿起1根羽毛然后給其他人看
+```
+
+### **go鸭子类型**
+
+golang中没有class的概念，而是通过interface类型转换支持动态类型语言中常见的鸭子类型，来达到运行时多态的效果。
+
+上面python的例子用go可以这么写：
+
+```go
+package main
+
+import "fmt"
+
+type Ducker interface {
+	quack()
+	feathers()
+}
+
+type Duck struct{}
+type Person struct{}
+
+func (this *Duck) quack() {
+	fmt.Println("这鸭子在呱呱叫")
+}
+
+func (this *Duck) feathers() {
+	fmt.Println("这鸭子拥有白色与灰色羽毛")
+}
+
+func (this *Person) quack() {
+	fmt.Println("这人正在模仿鸭子")
+}
+
+func (this *Person) feathers() {
+	fmt.Println("这人在地上拿起1根羽毛然后給其他人看")
+}
+
+func in_the_forest(d Ducker) {
+	d.quack()
+	d.feathers()
+}
+
+func main() {
+	donald := &Duck{}
+	john := &Person{}
+	in_the_forest(donald)
+	in_the_forest(john)
+}
+```
+
+输出也是
+
+```text
+这鸭子在呱呱叫
+这鸭子拥有白色与灰色羽毛
+这人正在模仿鸭子
+这人在地上拿起1根羽毛然后給其他人看
+```
+
+这2个例子对比，可以直接看出几点区别:
+
+1. python无需接口（python是动态语言，没有接口），而go需要接口
+
+2. python的in_the_forest无需指定传入参数类型，而go需要（传入参数时候实现了接口）
 
 ## **泛型编程**
 
