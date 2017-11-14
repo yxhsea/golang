@@ -1183,6 +1183,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#why-interface" title="Why interface" class="md-nav__link">
+    Why interface
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -1454,6 +1461,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#why-interface" title="Why interface" class="md-nav__link">
+    Why interface
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -1719,6 +1733,47 @@
 </pre></div>
 
 <p>这2个例子的输出都是hello</p>
+<h2 id="why-interface"><strong>Why interface</strong><a class="headerlink" href="#why-interface" title="Permanent link">&para;</a></h2>
+<hr />
+<ol>
+<li>
+<p>没有interface时候:</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">Driver</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Name</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Benz</span> <span class="kd">struct</span><span class="p">{}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">Benz</span><span class="p">)</span> <span class="nx">Drive</span><span class="p">(</span><span class="nx">dr</span> <span class="nx">Driver</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s drives Benz.\n&quot;</span><span class="p">,</span> <span class="nx">dr</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">me</span> <span class="o">:=</span> <span class="nx">Driver</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span> <span class="s">&quot;Cyent&quot;</span><span class="p">}</span>
+
+    <span class="c1">// 开Benz</span>
+    <span class="nx">car</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Benz</span><span class="p">{}</span>
+    <span class="nx">car</span><span class="p">.</span><span class="nx">Drive</span><span class="p">(</span><span class="nx">me</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="p">!!!</span> <span class="nx">note</span> <span class="s">&quot;&quot;</span>
+    <span class="nx">注意上面main函数里写了多少行</span><span class="err">，</span><span class="nx">这里一共有3行有效代码</span>
+
+<span class="nx">输出</span>
+
+<span class="s">``</span><span class="err">`</span><span class="nx">text</span>
+<span class="nx">Cyent</span> <span class="nx">drives</span> <span class="nx">Benz</span><span class="p">.</span>
+</pre></div>
+
+</li>
+<li>
+<p>现在增加一辆Audi</p>
+</li>
+</ol>
                 
                   
                 
