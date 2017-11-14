@@ -288,3 +288,43 @@ func main() {
 ```
 
 这2个例子的输出都是hello
+
+## **Why interface**
+
+---
+
+1. 没有interface时候:
+
+	```go
+	package main
+
+	import "fmt"
+
+	type Driver struct {
+		Name string
+	}
+
+	type Benz struct{}
+
+	func (this *Benz) Drive(dr Driver) {
+		fmt.Printf("%s drives Benz.\n", dr.Name)
+	}
+
+	func main() {
+		me := Driver{Name: "Cyent"}
+
+		// 开Benz
+		car := &Benz{}
+		car.Drive(me)
+	}
+
+	!!! note ""
+		注意上面main函数里写了多少行，这里一共有3行有效代码
+
+	输出
+
+	```text
+	Cyent drives Benz.
+	```
+
+2. 现在增加一辆Audi
