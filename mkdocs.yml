@@ -118,7 +118,13 @@ pages:
             - 2.1. 声明: method/method_main.md
             - 2.2. 指针receiver: method/method_receiver.md
         - 3. 接口:
-            - 3.1. 声明: method/interface_main.md
+            - 3.1. 什么是接口: method/interface_main.md
+            - 3.2. 接口语法: method/interface_syntax.md
+            - 3.3. Why interface: method/interface_why.md
+            - 3.4. 接口和面向对象的关系: method/interface_oo.md
+            - 3.5. 应用场景: method/interface_application.md
+            - 3.6. 传入和传出参数要带上: method/interface_argv.md
+            - 3.7. 接口receiver参数类型不会自动转换: method/interface_receiver.md
     - 七. 其他:
         - 1. 字符串处理: other/string.md
         - 2. range: other/range.md

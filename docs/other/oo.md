@@ -280,7 +280,7 @@ http://legendtkl.com/2015/11/25/go-generic-programming/
 
 ---
 
-[详见接口章节](/method/interface_main/#_2)
+[详见接口章节](/method/interface_oo/)
 
 ## **3种代码风格**
 
