@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/basic/function/">
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/method/interface_nil/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>4. 函数 - Go语言学习 - cyent笔记</title>
+        <title>3.9. nil interface - Go语言学习 - cyent笔记</title>
       
     
     
@@ -84,11 +84,15 @@
             
               
                 <span class="md-header-nav__parent">
-                  三. 基础
+                  六. 方法与接口
+                </span>
+              
+                <span class="md-header-nav__parent">
+                  3. 接口
                 </span>
               
             
-            4. 函数
+            3.9. nil interface
           
         </span>
       </div>
@@ -303,12 +307,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
       三. 基础
@@ -326,7 +328,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../packages/" title="1. Packages" class="md-nav__link">
+    <a href="../../basic/packages/" title="1. Packages" class="md-nav__link">
       1. Packages
     </a>
   </li>
@@ -338,7 +340,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../imports/" title="2. Imports" class="md-nav__link">
+    <a href="../../basic/imports/" title="2. Imports" class="md-nav__link">
       2. Imports
     </a>
   </li>
@@ -350,7 +352,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../exportname/" title="3. 导出名" class="md-nav__link">
+    <a href="../../basic/exportname/" title="3. 导出名" class="md-nav__link">
       3. 导出名
     </a>
   </li>
@@ -360,50 +362,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        4. 函数
-      </label>
-    
-    <a href="./" title="4. 函数" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../basic/function/" title="4. 函数" class="md-nav__link">
       4. 函数
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="入参" class="md-nav__link">
-    入参
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="出参" class="md-nav__link">
-    出参
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -432,7 +395,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../variable_declare/" title="5.1. 声明" class="md-nav__link">
+    <a href="../../basic/variable_declare/" title="5.1. 声明" class="md-nav__link">
       5.1. 声明
     </a>
   </li>
@@ -444,7 +407,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../variable_affect/" title="5.2. 作用域" class="md-nav__link">
+    <a href="../../basic/variable_affect/" title="5.2. 作用域" class="md-nav__link">
       5.2. 作用域
     </a>
   </li>
@@ -461,7 +424,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../const/" title="6. 常量" class="md-nav__link">
+    <a href="../../basic/const/" title="6. 常量" class="md-nav__link">
       6. 常量
     </a>
   </li>
@@ -492,7 +455,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../type_main/" title="7.1. 介绍" class="md-nav__link">
+    <a href="../../basic/type_main/" title="7.1. 介绍" class="md-nav__link">
       7.1. 介绍
     </a>
   </li>
@@ -504,7 +467,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../type_default/" title="7.2. 默认值" class="md-nav__link">
+    <a href="../../basic/type_default/" title="7.2. 默认值" class="md-nav__link">
       7.2. 默认值
     </a>
   </li>
@@ -516,7 +479,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../type_change/" title="7.3. 类型转换" class="md-nav__link">
+    <a href="../../basic/type_change/" title="7.3. 类型转换" class="md-nav__link">
       7.3. 类型转换
     </a>
   </li>
@@ -528,7 +491,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../type_guess/" title="7.4. 类型推导" class="md-nav__link">
+    <a href="../../basic/type_guess/" title="7.4. 类型推导" class="md-nav__link">
       7.4. 类型推导
     </a>
   </li>
@@ -540,7 +503,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../type_custom/" title="7.5. 自定义类型" class="md-nav__link">
+    <a href="../../basic/type_custom/" title="7.5. 自定义类型" class="md-nav__link">
       7.5. 自定义类型
     </a>
   </li>
@@ -1052,10 +1015,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
     
     <label class="md-nav__link" for="nav-6">
       六. 方法与接口
@@ -1073,7 +1038,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/overview/" title="1. 概念汇总" class="md-nav__link">
+    <a href="../overview/" title="1. 概念汇总" class="md-nav__link">
       1. 概念汇总
     </a>
   </li>
@@ -1104,7 +1069,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/method_main/" title="2.1. 声明" class="md-nav__link">
+    <a href="../method_main/" title="2.1. 声明" class="md-nav__link">
       2.1. 声明
     </a>
   </li>
@@ -1116,7 +1081,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/method_receiver/" title="2.2. 指针receiver" class="md-nav__link">
+    <a href="../method_receiver/" title="2.2. 指针receiver" class="md-nav__link">
       2.2. 指针receiver
     </a>
   </li>
@@ -1131,10 +1096,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3" checked>
     
     <label class="md-nav__link" for="nav-6-3">
       3. 接口
@@ -1152,7 +1119,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_main/" title="3.1. 什么是接口" class="md-nav__link">
+    <a href="../interface_main/" title="3.1. 什么是接口" class="md-nav__link">
       3.1. 什么是接口
     </a>
   </li>
@@ -1164,7 +1131,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_syntax/" title="3.2. 接口语法" class="md-nav__link">
+    <a href="../interface_syntax/" title="3.2. 接口语法" class="md-nav__link">
       3.2. 接口语法
     </a>
   </li>
@@ -1176,7 +1143,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_why/" title="3.3. Why interface" class="md-nav__link">
+    <a href="../interface_why/" title="3.3. Why interface" class="md-nav__link">
       3.3. Why interface
     </a>
   </li>
@@ -1188,7 +1155,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_oo/" title="3.4. 接口和面向对象的关系" class="md-nav__link">
+    <a href="../interface_oo/" title="3.4. 接口和面向对象的关系" class="md-nav__link">
       3.4. 接口和面向对象的关系
     </a>
   </li>
@@ -1200,7 +1167,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_application/" title="3.5. 应用场景" class="md-nav__link">
+    <a href="../interface_application/" title="3.5. 应用场景" class="md-nav__link">
       3.5. 应用场景
     </a>
   </li>
@@ -1212,7 +1179,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_argv/" title="3.6. 传入和传出参数要带上" class="md-nav__link">
+    <a href="../interface_argv/" title="3.6. 传入和传出参数要带上" class="md-nav__link">
       3.6. 传入和传出参数要带上
     </a>
   </li>
@@ -1224,7 +1191,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_receiver/" title="3.7. 接口receiver参数类型不会自动转换" class="md-nav__link">
+    <a href="../interface_receiver/" title="3.7. 接口receiver参数类型不会自动转换" class="md-nav__link">
       3.7. 接口receiver参数类型不会自动转换
     </a>
   </li>
@@ -1236,7 +1203,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_implement/" title="3.8. 各种实现" class="md-nav__link">
+    <a href="../interface_implement/" title="3.8. 各种实现" class="md-nav__link">
       3.8. 各种实现
     </a>
   </li>
@@ -1246,11 +1213,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../method/interface_nil/" title="3.9. nil interface" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="3.9. nil interface" class="md-nav__link md-nav__link--active">
       3.9. nil interface
     </a>
+    
   </li>
 
         
@@ -1471,27 +1445,6 @@
   
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="入参" class="md-nav__link">
-    入参
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="出参" class="md-nav__link">
-    出参
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1503,66 +1456,120 @@
               
                 
                 
-                  <h1>4. 函数</h1>
+                  <h1>3.9. nil interface</h1>
                 
-                <h2 id="_1"><strong>入参</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<hr />
-<p>函数可以接收0个或多个参数，参数需要指定类型，返回值也需要指定类型，比如</p>
-<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">add</span><span class="p">(</span><span class="nx">x</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span>
+                <blockquote>
+<p>Interface values with nil underlying values</p>
+</blockquote>
+<p>如果interface的值是空的，那么这个interface的值类型就是<nil>，这时候.method()来调用方法的话，传递进去的receiver的值类型也将是nil</p>
+<p>注意，这种情况下，如果method里再调用，就会抛出运行时异常</p>
+<p>举例：</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">I</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">M</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">T</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">S</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">T</span><span class="p">)</span> <span class="nx">M</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">t</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;&lt;nil&gt;&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">S</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">i</span> <span class="nx">I</span>
+
+    <span class="kd">var</span> <span class="nx">t</span> <span class="o">*</span><span class="nx">T</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="nx">t</span>
+    <span class="nx">describe</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">M</span><span class="p">()</span>
+
+    <span class="nx">i</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">T</span><span class="p">{</span><span class="s">&quot;hello&quot;</span><span class="p">}</span>
+    <span class="nx">describe</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">M</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">describe</span><span class="p">(</span><span class="nx">i</span> <span class="nx">I</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;(%v, %T)\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
-<p>上面表示声明一个函数add，接收2个参数，分别都是int类型，返回的类型也是int。</p>
-<div class="admonition warning">
-<ol>
-<li>main函数不用指定返回类型</li>
-<li>函数里如果没有<code>return</code>，而是<code>fmt.Println</code>之类的，就不用指定返回类型</li>
-</ol>
-</div>
-<p>类型：类型跟在变量名后面，比如<code class="codehilite"><span class="nx">x</span> <span class="kt">int</span></code>，表示声明一个int类型的变量x</p>
-<div class="admonition note">
-<p>如果想了解为什么长这样，可以看 <a href="https://blog.golang.org/gos-declaration-syntax">https://blog.golang.org/gos-declaration-syntax</a></p>
-</div>
-<div class="admonition success">
-<p class="admonition-title">参数类型相同可以简写</p>
-<p>如果声明的多个参数类型是相同的，可以只写最后一个参数类型，比如上面的<code class="codehilite"><span class="nx">x</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span></code>也可以写成<code class="codehilite"><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span></code></p>
-</div>
-<h2 id="_2"><strong>出参</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<hr />
-<p>返回类型必须指定，比如本页最开始的例子中，如果改成</p>
-<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">add</span><span class="p">(</span><span class="nx">x</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span>
+<p>输出</p>
+<div class="codehilite"><pre><span></span>(&lt;nil&gt;, *main.T)
+&lt;nil&gt;
+(&amp;{hello}, *main.T)
+hello
+</pre></div>
+
+<p>如果把上面M()里面的return这行注释掉，则会输出</p>
+<div class="codehilite"><pre><span></span>(&lt;nil&gt;, *main.T)
+&lt;nil&gt;
+panic: runtime error: invalid memory address or nil pointer dereference
+[signal SIGSEGV: segmentation violation code=0xffffffff addr=0x0 pc=0xc8971]
+
+goroutine 1 [running]:
+main.(*T).M(0x0, 0x0)
+    /tmp/sandbox104196984/main.go:18 +0x31
+main.main()
+    /tmp/sandbox104196984/main.go:27 +0x60
+</pre></div>
+
+<blockquote>
+<p>If the concrete value inside the interface itself is nil, the method will be called with a nil receiver.</p>
+<p>In some languages this would trigger a null pointer exception, but in Go it is common to write methods that gracefully handle being called with a nil receiver (as with the method M in this example.)</p>
+<p>Note that an interface value that holds a nil concrete value is itself non-nil.</p>
+</blockquote>
+<p>上面是官网的话，其中最后一句，是说当声明一个interface时候，这个interface是nil，然后给这个interface赋了一个为nil的变量时候，这个interface就不是nil。测试例子：</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">I</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">M</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">T</span> <span class="p">[]</span><span class="kt">int</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">t</span> <span class="nx">T</span><span class="p">)</span> <span class="nx">M</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="nx">t</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">t</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;&lt;nil&gt;&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="nx">T</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T %v\n&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">a</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a is nil&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">var</span> <span class="nx">i</span> <span class="nx">I</span>
+    <span class="k">if</span> <span class="nx">i</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;i is nil&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">i</span> <span class="p">=</span> <span class="nx">a</span>
+    <span class="k">if</span> <span class="nx">i</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;i is nil also.&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
-<p>则报错:</p>
-<div class="codehilite"><pre><span></span>too many arguments to return
-    have (int)
-    want ()
+<p>输出</p>
+<div class="codehilite"><pre><span></span>main.T []
+a is nil
+i is nil
 </pre></div>
-
-<p>多返回值：</p>
-<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">swap</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span>
-</pre></div>
-
-<p>返回值命名：</p>
-<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">swap</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">string</span><span class="p">)</span><span class="err">，</span><span class="nx">这种通常用于return不跟参数</span>
-</pre></div>
-
-<p>return不跟参数：</p>
-<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">split</span><span class="p">(</span><span class="nx">sum</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">x</span> <span class="p">=</span> <span class="nx">sum</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">/</span> <span class="mi">9</span>
-    <span class="nx">y</span> <span class="p">=</span> <span class="nx">sum</span> <span class="o">-</span> <span class="nx">x</span>
-    <span class="k">return</span>
-<span class="p">}</span>
-</pre></div>
-
-<p>上面return没有跟任何参数，实际等同于<code>return x, y</code></p>
-<p>即根据<code>func split(sum int) <mark class="critic">(x, y int)</mark></code>顺序来定</p>
-<div class="admonition note">
-<p>这种return不跟参数方式不推荐，这种方式仅适用于比较短的函数，如果函数比较长，这样可读性就很不好了</p>
-</div>
                 
                   
                 
@@ -1581,7 +1588,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../exportname/" title="3. 导出名" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../interface_implement/" title="3.8. 各种实现" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1590,19 +1597,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                3. 导出名
+                3.8. 各种实现
               </span>
             </div>
           </a>
         
         
-          <a href="../variable_declare/" title="5.1. 声明" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../other/string/" title="1. 字符串处理" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                5.1. 声明
+                1. 字符串处理
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
