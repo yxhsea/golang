@@ -1,7 +1,7 @@
 site_name: Go语言学习 - cyent笔记
 site_description: 关于Go语言学习，包含许多个人理解
 site_author: cyent
-site_url: https://cyent.github.io/markdown-with-mkdocs-material/
+site_url: https://cyent.github.io/golang/
 
 repo_name: 'cyent/golang'
 repo_url: 'https://github.com/cyent/golang'
