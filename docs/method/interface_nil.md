@@ -1,6 +1,12 @@
-> Interface values with nil underlying values
+nil interface的官方解释：Interface values with nil underlying values
 
-如果interface的值是空的，那么这个interface的值类型就是<nil>，这时候.method()来调用方法的话，传递进去的receiver的值类型也将是nil
+只有声明了但没赋值的interface才是nil interface，只要赋值了，即使赋了一个nil类型，也不是nil interface了
+
+> Calling a method on a nil interface is a run-time error because there is no type inside the interface tuple to indicate which concrete method to call.
+
+nil interface是不能调用方法的，如果调用方法，比如xxx是个nil interface，那么xxx.M()会runtime error。
+
+另外，如果interface的值是空的，那么这个interface的值类型就是<nil>，这时候.method()来调用方法的话，传递进去的receiver的值类型也将是nil
 
 注意，这种情况下，如果method里再调用，就会抛出运行时异常
 
