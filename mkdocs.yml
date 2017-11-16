@@ -95,11 +95,12 @@ pages:
             - 3.2. len()与cap(): datatype/arr_sli_len_cap.md
             - 3.3. 下标: datatype/arr_sli_index.md
             - 3.4. 深入理解: datatype/arr_sli_key.md
-            - 3.5. nil与make: datatype/arr_sli_nil_make.md
-            - 3.6. slice嵌套: datatype/arr_sli_nest.md
-            - 3.7. slice扩容: datatype/arr_sli_expand.md
-            - 3.8. append添加元素: datatype/arr_sli_append.md
-            - 3.9. copy复制元素: datatype/arr_sli_copy.md
+            - 3.5. nil: datatype/arr_sli_nil.md
+            - 3.6. make: datatype/arr_sli_make.md
+            - 3.7. slice嵌套: datatype/arr_sli_nest.md
+            - 3.8. slice扩容: datatype/arr_sli_expand.md
+            - 3.9. append添加元素: datatype/arr_sli_append.md
+            - 3.10. copy复制元素: datatype/arr_sli_copy.md
         - 4. map:
             - 4.1. 声明: datatype/map_main.md
             - 4.2. nil map: datatype/map_nil.md
@@ -135,6 +136,8 @@ pages:
         - 5. 循环、迭代、遍历、递归的区别: other/loop_iterate_traversal_recursion.md
         - 6. go和python的比较: other/go_python.md
         - 7. 面向对象: other/oo.md
+        - 8. nil: other/nil.md
+        - 9. make: other/make.md
     - 八. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md
