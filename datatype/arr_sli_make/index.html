@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/golang/datatype/map_delete/">
+        <link rel="canonical" href="https://cyent.github.io/golang/datatype/arr_sli_make/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>4.6. delete删除元素 - Go语言学习 - cyent笔记</title>
+        <title>3.6. make - Go语言学习 - cyent笔记</title>
       
     
     
@@ -88,11 +88,11 @@
                 </span>
               
                 <span class="md-header-nav__parent">
-                  4. map
+                  3. array和slice
                 </span>
               
             
-            4.6. delete删除元素
+            3.6. make
           
         </span>
       </div>
@@ -712,10 +712,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" checked>
     
     <label class="md-nav__link" for="nav-5-3">
       3. array和slice
@@ -791,11 +793,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../arr_sli_make/" title="3.6. make" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="3.6. make" class="md-nav__link md-nav__link--active">
       3.6. make
     </a>
+    
   </li>
 
         
@@ -856,12 +865,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
     
     <label class="md-nav__link" for="nav-5-4">
       4. map
@@ -937,18 +944,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="4.6. delete删除元素" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../map_delete/" title="4.6. delete删除元素" class="md-nav__link">
       4.6. delete删除元素
     </a>
-    
   </li>
 
         
@@ -1492,18 +1492,58 @@
               
                 
                 
-                  <h1>4.6. delete删除元素</h1>
+                  <h1>3.6. make</h1>
                 
-                <div class="codehilite"><pre><span></span>delete(m, key)
+                <p>make：在初始化时候就指定len和cap</p>
+<div class="codehilite"><pre><span></span><span class="nx">a</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1">// len(a)=5</span>
+<span class="nx">b</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">// len(b)=0, cap(b)=5</span>
+<span class="nx">b</span> <span class="p">=</span> <span class="nx">b</span><span class="p">[:</span><span class="nb">cap</span><span class="p">(</span><span class="nx">b</span><span class="p">)]</span> <span class="c1">// len(b)=5, cap(b)=5</span>
+<span class="nx">b</span> <span class="p">=</span> <span class="nx">b</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>      <span class="c1">// len(b)=4, cap(b)=4</span>
 </pre></div>
 
-<p>比如</p>
-<div class="codehilite"><pre><span></span>delete(m, &quot;Answer&quot;)
+<p>注意，在赋值时候，若超过len边界，则会报错，如</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">sli1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sli1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">sli1</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">sli1</span><span class="p">))</span>
+
+    <span class="nx">sli1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">3</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sli1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">sli1</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">sli1</span><span class="p">))</span>
+<span class="p">}</span>
 </pre></div>
 
-<div class="admonition note">
-<p>当Answer不存在时候不会提示报错</p>
-</div>
+<p>报错</p>
+<div class="codehilite"><pre><span></span>[] 0 5
+panic: runtime error: index out of range
+
+goroutine 1 [running]:
+main.main()
+    /golang/example/slice.go:9 +0x2a3
+exit status 2
+</pre></div>
+
+<p>改成如下才可以</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">sli1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sli1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">sli1</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">sli1</span><span class="p">))</span>
+
+    <span class="nx">sli1</span> <span class="p">=</span> <span class="nx">sli1</span><span class="p">[:</span><span class="nb">cap</span><span class="p">(</span><span class="nx">sli1</span><span class="p">)]</span>
+    <span class="nx">sli1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">3</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sli1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">sli1</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">sli1</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>[] 0 5
+[3 0 0 0 0] 5 5
+</pre></div>
                 
                   
                 
@@ -1522,7 +1562,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../map_get_insert_update/" title="4.5. 检索、添加和修改元素" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../arr_sli_nil/" title="3.5. nil" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1531,19 +1571,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                4.5. 检索、添加和修改元素
+                3.5. nil
               </span>
             </div>
           </a>
         
         
-          <a href="../funcvalue_main/" title="5.1. 介绍" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../arr_sli_nest/" title="3.7. slice嵌套" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                5.1. 介绍
+                3.7. slice嵌套
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
