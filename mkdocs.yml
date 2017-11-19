@@ -128,6 +128,9 @@ pages:
             - 3.7. 接口receiver参数类型不会自动转换: method/interface_receiver.md
             - 3.8. 各种实现: method/interface_implement.md
             - 3.9. nil interface: method/interface_nil.md
+            - 3.10. 空接口: method/interface_empty.md
+            - 3.11. 类型断言: method/interface_assertion.md
+            - 3.12. type switch: method/interface_typeswitch.md
     - 七. 其他:
         - 1. 字符串处理: other/string.md
         - 2. range: other/range.md
