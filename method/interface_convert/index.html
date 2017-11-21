@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/golang/basic/type_guess/">
+        <link rel="canonical" href="https://cyent.github.io/golang/method/interface_convert/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>7.4. 类型推导 - Go语言学习 - cyent笔记</title>
+        <title>3.15. 用类型转换来实现接口 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -84,15 +84,15 @@
             
               
                 <span class="md-header-nav__parent">
-                  三. 基础
+                  六. 方法与接口
                 </span>
               
                 <span class="md-header-nav__parent">
-                  7. 数据类型
+                  3. 接口
                 </span>
               
             
-            7.4. 类型推导
+            3.15. 用类型转换来实现接口
           
         </span>
       </div>
@@ -307,12 +307,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
       三. 基础
@@ -330,7 +328,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../packages/" title="1. Packages" class="md-nav__link">
+    <a href="../../basic/packages/" title="1. Packages" class="md-nav__link">
       1. Packages
     </a>
   </li>
@@ -342,7 +340,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../imports/" title="2. Imports" class="md-nav__link">
+    <a href="../../basic/imports/" title="2. Imports" class="md-nav__link">
       2. Imports
     </a>
   </li>
@@ -354,7 +352,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../exportname/" title="3. 导出名" class="md-nav__link">
+    <a href="../../basic/exportname/" title="3. 导出名" class="md-nav__link">
       3. 导出名
     </a>
   </li>
@@ -366,7 +364,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../function/" title="4. 函数" class="md-nav__link">
+    <a href="../../basic/function/" title="4. 函数" class="md-nav__link">
       4. 函数
     </a>
   </li>
@@ -397,7 +395,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../variable_declare/" title="5.1. 声明" class="md-nav__link">
+    <a href="../../basic/variable_declare/" title="5.1. 声明" class="md-nav__link">
       5.1. 声明
     </a>
   </li>
@@ -409,7 +407,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../variable_affect/" title="5.2. 作用域" class="md-nav__link">
+    <a href="../../basic/variable_affect/" title="5.2. 作用域" class="md-nav__link">
       5.2. 作用域
     </a>
   </li>
@@ -426,7 +424,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../const/" title="6. 常量" class="md-nav__link">
+    <a href="../../basic/const/" title="6. 常量" class="md-nav__link">
       6. 常量
     </a>
   </li>
@@ -436,12 +434,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-7" type="checkbox" id="nav-3-7" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-7" type="checkbox" id="nav-3-7">
     
     <label class="md-nav__link" for="nav-3-7">
       7. 数据类型
@@ -459,7 +455,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../type_main/" title="7.1. 介绍" class="md-nav__link">
+    <a href="../../basic/type_main/" title="7.1. 介绍" class="md-nav__link">
       7.1. 介绍
     </a>
   </li>
@@ -471,7 +467,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../type_default/" title="7.2. 默认值" class="md-nav__link">
+    <a href="../../basic/type_default/" title="7.2. 默认值" class="md-nav__link">
       7.2. 默认值
     </a>
   </li>
@@ -483,7 +479,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../type_change/" title="7.3. 类型转换" class="md-nav__link">
+    <a href="../../basic/type_change/" title="7.3. 类型转换" class="md-nav__link">
       7.3. 类型转换
     </a>
   </li>
@@ -493,18 +489,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="7.4. 类型推导" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../basic/type_guess/" title="7.4. 类型推导" class="md-nav__link">
       7.4. 类型推导
     </a>
-    
   </li>
 
         
@@ -514,7 +503,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../type_custom/" title="7.5. 自定义类型" class="md-nav__link">
+    <a href="../../basic/type_custom/" title="7.5. 自定义类型" class="md-nav__link">
       7.5. 自定义类型
     </a>
   </li>
@@ -1038,10 +1027,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
     
     <label class="md-nav__link" for="nav-6">
       六. 方法与接口
@@ -1059,7 +1050,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/overview/" title="1. 概念汇总" class="md-nav__link">
+    <a href="../overview/" title="1. 概念汇总" class="md-nav__link">
       1. 概念汇总
     </a>
   </li>
@@ -1090,7 +1081,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/method_main/" title="2.1. 声明" class="md-nav__link">
+    <a href="../method_main/" title="2.1. 声明" class="md-nav__link">
       2.1. 声明
     </a>
   </li>
@@ -1102,7 +1093,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/method_receiver/" title="2.2. 指针receiver" class="md-nav__link">
+    <a href="../method_receiver/" title="2.2. 指针receiver" class="md-nav__link">
       2.2. 指针receiver
     </a>
   </li>
@@ -1117,10 +1108,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3" checked>
     
     <label class="md-nav__link" for="nav-6-3">
       3. 接口
@@ -1138,7 +1131,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_main/" title="3.1. 什么是接口" class="md-nav__link">
+    <a href="../interface_main/" title="3.1. 什么是接口" class="md-nav__link">
       3.1. 什么是接口
     </a>
   </li>
@@ -1150,7 +1143,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_syntax/" title="3.2. 接口语法" class="md-nav__link">
+    <a href="../interface_syntax/" title="3.2. 接口语法" class="md-nav__link">
       3.2. 接口语法
     </a>
   </li>
@@ -1162,7 +1155,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_why/" title="3.3. Why interface" class="md-nav__link">
+    <a href="../interface_why/" title="3.3. Why interface" class="md-nav__link">
       3.3. Why interface
     </a>
   </li>
@@ -1174,7 +1167,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_oo/" title="3.4. 接口和面向对象的关系" class="md-nav__link">
+    <a href="../interface_oo/" title="3.4. 接口和面向对象的关系" class="md-nav__link">
       3.4. 接口和面向对象的关系
     </a>
   </li>
@@ -1186,7 +1179,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_application/" title="3.5. 应用场景" class="md-nav__link">
+    <a href="../interface_application/" title="3.5. 应用场景" class="md-nav__link">
       3.5. 应用场景
     </a>
   </li>
@@ -1198,7 +1191,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_argv/" title="3.6. 传入和传出参数要带上" class="md-nav__link">
+    <a href="../interface_argv/" title="3.6. 传入和传出参数要带上" class="md-nav__link">
       3.6. 传入和传出参数要带上
     </a>
   </li>
@@ -1210,7 +1203,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_receiver/" title="3.7. 接口receiver参数类型不会自动转换" class="md-nav__link">
+    <a href="../interface_receiver/" title="3.7. 接口receiver参数类型不会自动转换" class="md-nav__link">
       3.7. 接口receiver参数类型不会自动转换
     </a>
   </li>
@@ -1222,7 +1215,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_implement/" title="3.8. 各种实现" class="md-nav__link">
+    <a href="../interface_implement/" title="3.8. 各种实现" class="md-nav__link">
       3.8. 各种实现
     </a>
   </li>
@@ -1234,7 +1227,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_nil/" title="3.9. nil interface" class="md-nav__link">
+    <a href="../interface_nil/" title="3.9. nil interface" class="md-nav__link">
       3.9. nil interface
     </a>
   </li>
@@ -1246,7 +1239,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_empty/" title="3.10. 空接口" class="md-nav__link">
+    <a href="../interface_empty/" title="3.10. 空接口" class="md-nav__link">
       3.10. 空接口
     </a>
   </li>
@@ -1258,7 +1251,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_assertion/" title="3.11. 类型断言" class="md-nav__link">
+    <a href="../interface_assertion/" title="3.11. 类型断言" class="md-nav__link">
       3.11. 类型断言
     </a>
   </li>
@@ -1270,7 +1263,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_typeswitch/" title="3.12. type switch" class="md-nav__link">
+    <a href="../interface_typeswitch/" title="3.12. type switch" class="md-nav__link">
       3.12. type switch
     </a>
   </li>
@@ -1282,7 +1275,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_stringer/" title="3.13. Stringer" class="md-nav__link">
+    <a href="../interface_stringer/" title="3.13. Stringer" class="md-nav__link">
       3.13. Stringer
     </a>
   </li>
@@ -1294,7 +1287,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_argv_interface/" title="3.14. 函数的传入传出参数来实现接口" class="md-nav__link">
+    <a href="../interface_argv_interface/" title="3.14. 函数的传入传出参数来实现接口" class="md-nav__link">
       3.14. 函数的传入传出参数来实现接口
     </a>
   </li>
@@ -1304,11 +1297,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../method/interface_convert/" title="3.15. 用类型转换来实现接口" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="3.15. 用类型转换来实现接口" class="md-nav__link md-nav__link--active">
       3.15. 用类型转换来实现接口
     </a>
+    
   </li>
 
         
@@ -1576,23 +1576,97 @@
               
                 
                 
-                  <h1>7.4. 类型推导</h1>
+                  <h1>3.15. 用类型转换来实现接口</h1>
                 
-                <p>当定义一个变量却不显式指定类型时候，类型由值推导而出</p>
-<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">i</span> <span class="kt">int</span>
-<span class="nx">j</span> <span class="o">:=</span> <span class="nx">i</span>  <span class="c1">//j是int类型</span>
-<span class="nx">k</span> <span class="o">:=</span> <span class="mi">0</span>  <span class="c1">//k是int类型</span>
+                <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">Sumer</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">Sum</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">MyStruct</span><span class="p">)</span> <span class="nx">Sum</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">X</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">Y</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">MyStruct</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+<span class="hll">    <span class="kd">var</span> <span class="nx">i</span> <span class="p">=</span> <span class="nx">Sumer</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span>    <span class="nx">i</span><span class="p">.</span><span class="nx">Sum</span><span class="p">()</span>
+<span class="p">}</span>
 </pre></div>
 
-<p>但是如果值是数字时候，则新的变量可能是int、float64、complex128，这取决于常量的精度</p>
-<div class="codehilite"><pre><span></span><span class="nx">i</span> <span class="o">:=</span> <span class="mi">42</span>           <span class="c1">// int</span>
-<span class="nx">f</span> <span class="o">:=</span> <span class="mf">3.142</span>        <span class="c1">// float64</span>
-<span class="nx">g</span> <span class="o">:=</span> <span class="mf">0.867</span> <span class="o">+</span> <span class="m">0.5i</span> <span class="c1">// complex128</span>
+<p>输出</p>
+<div class="codehilite"><pre><span></span>7
 </pre></div>
 
-<p><code>%T</code>可以查看类型</p>
-<div class="codehilite"><pre><span></span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>返回类型可以用来实现接口，但在内部并不等于类型转换：</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">Sumer</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">Sum</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Fooer</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">Foo</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">MyStruct</span><span class="p">)</span> <span class="nx">Sum</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">X</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">Y</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">run</span><span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">MyStruct</span><span class="p">)</span> <span class="nx">Sumer</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">m</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">run1</span><span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">MyStruct</span><span class="p">)</span> <span class="nx">Fooer</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">m</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">MyStruct</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+    <span class="nx">res</span> <span class="o">:=</span> <span class="nx">run</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">Sum</span><span class="p">()</span>
+
+    <span class="nx">s1</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">MyStruct</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+    <span class="kd">var</span> <span class="nx">i1</span> <span class="nx">Sumer</span> <span class="p">=</span> <span class="nx">s1</span>
+    <span class="nx">i1</span><span class="p">.</span><span class="nx">Sum</span><span class="p">()</span>
+
+    <span class="nx">s2</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">MyStruct</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+    <span class="kd">var</span> <span class="nx">i2</span> <span class="p">=</span> <span class="nx">Sumer</span><span class="p">(</span><span class="nx">s2</span><span class="p">)</span>
+    <span class="nx">i2</span><span class="p">.</span><span class="nx">Sum</span><span class="p">()</span>
+
+    <span class="nx">s3</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">MyStruct</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+    <span class="nx">res3</span> <span class="o">:=</span> <span class="nx">run1</span><span class="p">(</span><span class="nx">s3</span><span class="p">)</span>
+    <span class="nx">res3</span><span class="p">.</span><span class="nx">Sum</span><span class="p">()</span>
+<span class="p">}</span>
 </pre></div>
+
+<p>报错：</p>
+<div class="codehilite"><pre><span></span>./example.go:26: cannot use m (type *MyStruct) as type Fooer in return argument:
+    *MyStruct does not implement Fooer (missing Foo method)
+./example.go:44: res3.Sum undefined (type Fooer has no field or method Sum)
+</pre></div>
+
+<p>附类型转换的报错：
+<div class="codehilite"><pre><span></span>./test.go:39: cannot convert s3 (type *MyStruct) to type Fooer:
+*MyStruct does not implement Fooer (missing Foo method)
+</pre></div></p>
+<p>比较上面2个错误可以发现报错内容是不一样的，虽然第二行的提示是一样的，都是没有实现，并且括号里说明了没有实现的原因，但第一行的前者是提示类型不对，后者是不能转换。这说明了返回类型可以用来实现接口，但在内部并不等于类型转换</p>
+</div>
                 
                   
                 
@@ -1611,7 +1685,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../type_change/" title="7.3. 类型转换" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../interface_argv_interface/" title="3.14. 函数的传入传出参数来实现接口" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1620,19 +1694,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                7.3. 类型转换
+                3.14. 函数的传入传出参数来实现接口
               </span>
             </div>
           </a>
         
         
-          <a href="../type_custom/" title="7.5. 自定义类型" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../other/string/" title="1. 字符串处理" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                7.5. 自定义类型
+                1. 字符串处理
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

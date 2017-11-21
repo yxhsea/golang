@@ -1288,6 +1288,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_argv_interface/" title="3.14. 函数的传入传出参数来实现接口" class="md-nav__link">
+      3.14. 函数的传入传出参数来实现接口
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_convert/" title="3.15. 用类型转换来实现接口" class="md-nav__link">
+      3.15. 用类型转换来实现接口
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1554,7 +1578,76 @@
                 
                   <h1>3.13. Stringer</h1>
                 
-                
+                <p>在fmt包里有一个interface叫做Stringer：</p>
+<div class="codehilite"><pre><span></span>type Stringer interface {
+    String() string
+}
+</pre></div>
+
+<p>作用：fmt.Println或打印一个变量的值的时候，会判断这个变量是否实现了Stringer接口，如果实现了，则调用这个变量的String()方法，并将返回值打印到屏幕上</p>
+<div class="admonition note">
+<p>fmt.Printf的%v也会读取Stringer</p>
+</div>
+<p>例子：</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">Person</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Name</span> <span class="kt">string</span>
+    <span class="nx">Age</span>  <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="nx">Person</span><span class="p">)</span> <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;(Name: %v) (Age: %v)&quot;</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">Age</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">:=</span> <span class="nx">Person</span><span class="p">{</span><span class="s">&quot;benz&quot;</span><span class="p">,</span> <span class="mi">21</span><span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v\n&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>(Name: benz) (Age: 21)
+(Name: benz) (Age: 21)
+</pre></div>
+
+<p>可以看出，用String()修改了输出格式</p>
+<p>再举个例子：</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">IPAddr</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="kt">byte</span>
+
+<span class="cm">/*</span>
+<span class="cm">func (ip IPAddr) String() string {</span>
+<span class="cm">    return fmt.Sprintf(&quot;%v.%v.%v.%v&quot;, ip[0], ip[1], ip[2], ip[3])</span>
+<span class="cm">}</span>
+<span class="cm">*/</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">hosts</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">IPAddr</span><span class="p">{</span>
+        <span class="s">&quot;loopback&quot;</span><span class="p">:</span>  <span class="p">{</span><span class="mi">127</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">},</span>
+        <span class="s">&quot;googleDNS&quot;</span><span class="p">:</span> <span class="p">{</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">},</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">ip</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">hosts</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v: %v\n&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">ip</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>loopback: [127 0 0 1]
+googleDNS: [8 8 8 8]
+</pre></div>
+
+<p>如果把上面的String的注释去掉，输出则是</p>
+<div class="codehilite"><pre><span></span>loopback: 127.0.0.1
+googleDNS: 8.8.8.8
+</pre></div>
                 
                   
                 
@@ -1588,13 +1681,13 @@
           </a>
         
         
-          <a href="../../other/string/" title="1. 字符串处理" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../interface_argv_interface/" title="3.14. 函数的传入传出参数来实现接口" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                1. 字符串处理
+                3.14. 函数的传入传出参数来实现接口
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
