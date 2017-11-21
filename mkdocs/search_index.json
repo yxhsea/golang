@@ -696,6 +696,11 @@
             "title": "3.12. type switch"
         }, 
         {
+            "location": "/method/interface_stringer/", 
+            "text": "", 
+            "title": "3.13. Stringer"
+        }, 
+        {
             "location": "/other/string/", 
             "text": "字符串拼接\n\n\n\n\n将string类型的slice中的元素用指定字符拼接起来\n\n\nstrings.Join(sli, \n \n)\n\n\n\n\n表示将sli中的各个元素用一个空格拼接在一起形成一个string\n\n\n\n\nWarning\n\n\n仅支持[]string，不支持array，也不支持[]int", 
             "title": "1. 字符串处理"
@@ -884,6 +889,11 @@
             "location": "/appendix/cli_go_get/#_4", 
             "text": "如果只想下载依赖包，不想做install，则：go get -d -v /path/to\n下载依赖包，并对依赖包做install：go get -v /path/to\n（如果不加/path/to，则需要先cd进入当前目录，当然如果当前目录在本地上就没有存在就还是要加/path/to）  下载成功后再手动install当前包：go install -v（如果原来已经存在bin/二进制文件，会自动判断和原来的是否一致，如果一致不会自动编译，如果有更改，会重新编译。即对这个命令不用操心）  如果网络不好，比如需要翻墙才能下载，则只能人工去下载，然后放到指定路径下了", 
             "title": "最佳实践"
+        }, 
+        {
+            "location": "/contact/", 
+            "text": "E-mail地址:", 
+            "title": "九. 联系方式"
         }
     ]
 }
