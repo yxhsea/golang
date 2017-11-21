@@ -131,6 +131,7 @@ pages:
             - 3.10. 空接口: method/interface_empty.md
             - 3.11. 类型断言: method/interface_assertion.md
             - 3.12. type switch: method/interface_typeswitch.md
+            - 3.13. Stringer: method/interface_stringer.md
     - 七. 其他:
         - 1. 字符串处理: other/string.md
         - 2. range: other/range.md
@@ -146,3 +147,4 @@ pages:
         - 2. 编码规范: appendix/code.md
         - 3. 命令行工具:
             - 3.1. go get: appendix/cli_go_get.md
+    - 九. 联系方式: contact.md
