@@ -101,6 +101,7 @@ pages:
             - 3.8. slice扩容: datatype/arr_sli_expand.md
             - 3.9. append添加元素: datatype/arr_sli_append.md
             - 3.10. copy复制元素: datatype/arr_sli_copy.md
+            - 3.11. 空接口对切片的影响: datatype/arr_empty_interface.md
         - 4. map:
             - 4.1. 声明: datatype/map_main.md
             - 4.2. nil map: datatype/map_nil.md
@@ -134,6 +135,7 @@ pages:
             - 3.13. Stringer: method/interface_stringer.md
             - 3.14. 函数的传入传出参数来实现接口: method/interface_argv_interface.md
             - 3.15. 用类型转换来实现接口: method/interface_convert.md
+            - 3.16. error: method/interface_error.md
     - 七. 其他:
         - 1. 字符串处理: other/string.md
         - 2. range: other/range.md
