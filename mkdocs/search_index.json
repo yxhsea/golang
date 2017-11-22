@@ -476,6 +476,11 @@
             "title": "当复制的元素和被复制的元素个数不一致时"
         }, 
         {
+            "location": "/datatype/arr_empty_interface/", 
+            "text": "详见\n接口章节", 
+            "title": "3.11. 空接口对切片的影响"
+        }, 
+        {
             "location": "/datatype/map_main/", 
             "text": "map就是键值对(key-\nvalue)，在其他语言中通常叫hash或者字典\n\n\n完整写法\n\n\n\n\nvar m map[key_type]value_type\nm = make(map[key_type]value_type)\n\n\n\n\n例子\n\n\nvar m map[string]int\nm = make(map[string]int)\n\n\n\n\n\n\n简写\n\n\nvar m map[key_type]value_type = make(map[key_type]value_type)\n\n\n\n\n例子\n\n\nvar m map[string]int = make(make[string]int)\n\n\n\n\n\n\n短声明写法\n\n\n\n\nm := make(map[key_type]value_type)\n\n\n\n\n例子\n\n\nm := make(map[string]int)", 
             "title": "4.1. 声明"
@@ -682,8 +687,18 @@
         }, 
         {
             "location": "/method/interface_empty/", 
-            "text": "empty interface空接口\n\n\n前面学习的变量都要在声明时候确定类型，虽然用:=可以不用指定类型，但实际是类型推倒，在赋值后类型就确定下来不能改了。\n\n\n空接口的作用：不用指定类型变量，并且类型可变。比如：\n\n\nvar i interface{}\ni = 42  //这个时候i就是int类型\ni = \nhello\n //这个时候i就是string类型\n\n\n\n\n\n\nNote\n\n\ninterface{}这么写比较方便，当然也写成2行：\n\n\ntype I interface {\n}\n\n\n\n\n\n\n完整例子\n\n\npackage\n \nmain\n\n\n\nimport\n \nfmt\n\n\n\ntype\n \nI\n \ninterface\n{}\n\n\n\nfunc\n \nmain\n()\n \n{\n\n    \nvar\n \ni\n \nI\n\n    \ni\n \n=\n \n42\n \n//这个时候i就是int类型\n\n    \nfmt\n.\nPrintf\n(\n%v,%T\\n\n,\n \ni\n,\n \ni\n)\n\n    \ni\n \n=\n \nhello\n \n//这个时候i就是string类型\n\n    \nfmt\n.\nPrintf\n(\n%v,%T\\n\n,\n \ni\n,\n \ni\n)\n\n\n}\n\n\n\n\n\n输出\n\n\n42,int\nhello,string", 
+            "text": "empty interface空接口\n\n\n\n\n前面学习的变量都要在声明时候确定类型，虽然用:=可以不用指定类型，但实际是类型推倒，在赋值后类型就确定下来不能改了。\n\n\n空接口的作用：不用指定类型变量，并且类型可变。比如：\n\n\nvar i interface{}\ni = 42  //这个时候i就是int类型\ni = \nhello\n //这个时候i就是string类型\n\n\n\n\n\n\nNote\n\n\ninterface{}这么写比较方便，当然也写成2行：\n\n\ntype I interface {\n}\n\n\n\n\n\n\n完整例子\n\n\npackage\n \nmain\n\n\n\nimport\n \nfmt\n\n\n\ntype\n \nI\n \ninterface\n{}\n\n\n\nfunc\n \nmain\n()\n \n{\n\n    \nvar\n \ni\n \nI\n\n    \ni\n \n=\n \n42\n \n//这个时候i就是int类型\n\n    \nfmt\n.\nPrintf\n(\n%v,%T\\n\n,\n \ni\n,\n \ni\n)\n\n    \ni\n \n=\n \nhello\n \n//这个时候i就是string类型\n\n    \nfmt\n.\nPrintf\n(\n%v,%T\\n\n,\n \ni\n,\n \ni\n)\n\n\n}\n\n\n\n\n\n输出\n\n\n42,int\nhello,string\n\n\n\n\n空接口对切片的影响\n\n\n\n\n\n\n\n\n若将一个array或slice赋值给空接口，这个空接口无法再进行切片\n\n\n\n\n\n\narray或slice赋值给空接口的行为不是复制，而是类似指针效果，只不过无法再进行切片，但元素和原来的array、slice及其衍生的，都有关联\n\n\n\n\n\n\npackage\n \nmain\n\n\n\nimport\n \nfmt\n\n\n\nfunc\n \nmain\n()\n \n{\n\n    \nsli\n \n:=\n \n[]\nint\n{\n2\n,\n \n3\n,\n \n5\n,\n \n7\n,\n \n11\n,\n \n13\n}\n\n\n    \nvar\n \ne\n \ninterface\n{}\n\n    \ne\n \n=\n \nsli\n\n\n    \nf\n \n:=\n \nsli\n[\n0\n:\n3\n]\n\n    \nf\n[\n2\n]\n \n=\n \n55\n\n\n    \nfmt\n.\nPrintf\n(\n%T,%v\\n\n,\n \nsli\n,\n \nsli\n)\n\n    \nfmt\n.\nPrintf\n(\n%T,%v\\n\n,\n \ne\n,\n \ne\n)\n\n    \nfmt\n.\nPrintf\n(\n%T,%v\\n\n,\n \nf\n,\n \nf\n)\n\n\n}\n\n\n\n\n\n输出\n\n\n[]int,[2 3 55 7 11 13]\n[]int,[2 3 55 7 11 13]\n[]int,[2 3 55]\n\n\n\n\n若改为\n\n\npackage main\n\nimport \nfmt\n\n\nfunc main() {\n    sli := []int{2, 3, 5, 7, 11, 13}\n\n    var e interface{}\n    e = sli\n\n    g := e[1:3]\n    fmt.Println(g)\n}\n\n\n\n\n报错\n\n\n./example.go:11: cannot slice e (type interface {})", 
             "title": "3.10. 空接口"
+        }, 
+        {
+            "location": "/method/interface_empty/#empty-interface", 
+            "text": "前面学习的变量都要在声明时候确定类型，虽然用:=可以不用指定类型，但实际是类型推倒，在赋值后类型就确定下来不能改了。  空接口的作用：不用指定类型变量，并且类型可变。比如：  var i interface{}\ni = 42  //这个时候i就是int类型\ni =  hello  //这个时候i就是string类型   Note  interface{}这么写比较方便，当然也写成2行：  type I interface {\n}   完整例子  package   main  import   fmt  type   I   interface {}  func   main ()   { \n     var   i   I \n     i   =   42   //这个时候i就是int类型 \n     fmt . Printf ( %v,%T\\n ,   i ,   i ) \n     i   =   hello   //这个时候i就是string类型 \n     fmt . Printf ( %v,%T\\n ,   i ,   i )  }   输出  42,int\nhello,string", 
+            "title": "empty interface空接口"
+        }, 
+        {
+            "location": "/method/interface_empty/#_1", 
+            "text": "若将一个array或slice赋值给空接口，这个空接口无法再进行切片    array或slice赋值给空接口的行为不是复制，而是类似指针效果，只不过无法再进行切片，但元素和原来的array、slice及其衍生的，都有关联    package   main  import   fmt  func   main ()   { \n     sli   :=   [] int { 2 ,   3 ,   5 ,   7 ,   11 ,   13 } \n\n     var   e   interface {} \n     e   =   sli \n\n     f   :=   sli [ 0 : 3 ] \n     f [ 2 ]   =   55 \n\n     fmt . Printf ( %T,%v\\n ,   sli ,   sli ) \n     fmt . Printf ( %T,%v\\n ,   e ,   e ) \n     fmt . Printf ( %T,%v\\n ,   f ,   f )  }   输出  []int,[2 3 55 7 11 13]\n[]int,[2 3 55 7 11 13]\n[]int,[2 3 55]  若改为  package main\n\nimport  fmt \n\nfunc main() {\n    sli := []int{2, 3, 5, 7, 11, 13}\n\n    var e interface{}\n    e = sli\n\n    g := e[1:3]\n    fmt.Println(g)\n}  报错  ./example.go:11: cannot slice e (type interface {})", 
+            "title": "空接口对切片的影响"
         }, 
         {
             "location": "/method/interface_assertion/", 
@@ -729,6 +744,21 @@
             "location": "/method/interface_convert/", 
             "text": "package\n \nmain\n\n\n\nimport\n \nfmt\n\n\n\ntype\n \nSumer\n \ninterface\n \n{\n\n    \nSum\n()\n\n\n}\n\n\n\ntype\n \nMyStruct\n \nstruct\n \n{\n\n    \nX\n,\n \nY\n \nint\n\n\n}\n\n\n\nfunc\n \n(\nm\n \n*\nMyStruct\n)\n \nSum\n()\n \n{\n\n    \nfmt\n.\nPrintln\n(\nm\n.\nX\n \n+\n \nm\n.\nY\n)\n\n\n}\n\n\n\nfunc\n \nmain\n()\n \n{\n\n    \ns\n \n:=\n \nMyStruct\n{\n3\n,\n \n4\n}\n\n\n    \nvar\n \ni\n \n=\n \nSumer\n(\ns\n)\n\n\n    \ni\n.\nSum\n()\n\n\n}\n\n\n\n\n\n输出\n\n\n7\n\n\n\n\n\n\nWarning\n\n\n返回类型可以用来实现接口，但在内部并不等于类型转换：\n\n\npackage\n \nmain\n\n\n\nimport\n \nfmt\n\n\n\ntype\n \nSumer\n \ninterface\n \n{\n\n    \nSum\n()\n\n\n}\n\n\n\ntype\n \nFooer\n \ninterface\n \n{\n\n    \nFoo\n()\n\n\n}\n\n\n\ntype\n \nMyStruct\n \nstruct\n \n{\n\n    \nX\n,\n \nY\n \nint\n\n\n}\n\n\n\nfunc\n \n(\nm\n \n*\nMyStruct\n)\n \nSum\n()\n \n{\n\n    \nfmt\n.\nPrintln\n(\nm\n.\nX\n \n+\n \nm\n.\nY\n)\n\n\n}\n\n\n\nfunc\n \nrun\n(\nm\n \n*\nMyStruct\n)\n \nSumer\n \n{\n\n    \nreturn\n \nm\n\n\n}\n\n\n\nfunc\n \nrun1\n(\nm\n \n*\nMyStruct\n)\n \nFooer\n \n{\n\n    \nreturn\n \nm\n\n\n}\n\n\n\nfunc\n \nmain\n()\n \n{\n\n    \ns\n \n:=\n \nMyStruct\n{\n3\n,\n \n4\n}\n\n    \nres\n \n:=\n \nrun\n(\ns\n)\n\n    \nres\n.\nSum\n()\n\n\n    \ns1\n \n:=\n \nMyStruct\n{\n3\n,\n \n4\n}\n\n    \nvar\n \ni1\n \nSumer\n \n=\n \ns1\n\n    \ni1\n.\nSum\n()\n\n\n    \ns2\n \n:=\n \nMyStruct\n{\n3\n,\n \n4\n}\n\n    \nvar\n \ni2\n \n=\n \nSumer\n(\ns2\n)\n\n    \ni2\n.\nSum\n()\n\n\n    \ns3\n \n:=\n \nMyStruct\n{\n3\n,\n \n4\n}\n\n    \nres3\n \n:=\n \nrun1\n(\ns3\n)\n\n    \nres3\n.\nSum\n()\n\n\n}\n\n\n\n\n\n报错：\n\n\n./example.go:26: cannot use m (type *MyStruct) as type Fooer in return argument:\n    *MyStruct does not implement Fooer (missing Foo method)\n./example.go:44: res3.Sum undefined (type Fooer has no field or method Sum)\n\n\n\n\n附类型转换的报错：\n\n./test.go:39: cannot convert s3 (type *MyStruct) to type Fooer:\n*MyStruct does not implement Fooer (missing Foo method)\n\n\n\n比较上面2个错误可以发现报错内容是不一样的，虽然第二行的提示是一样的，都是没有实现，并且括号里说明了没有实现的原因，但第一行的前者是提示类型不对，后者是不能转换。这说明了返回类型可以用来实现接口，但在内部并不等于类型转换", 
             "title": "3.15. 用类型转换来实现接口"
+        }, 
+        {
+            "location": "/method/interface_error/", 
+            "text": "error\n\n\n\n\npackage\n \nmain\n\n\n\nimport\n \n(\n\n    \nfmt\n\n    \ntime\n\n\n)\n\n\n\ntype\n \nMyError\n \nstruct\n \n{\n\n    \nWhen\n \ntime\n.\nTime\n\n    \nWhat\n \nstring\n\n\n}\n\n\n\nfunc\n \n(\ne\n \n*\nMyError\n)\n \nError\n()\n \nstring\n \n{\n\n    \nreturn\n \nfmt\n.\nSprintf\n(\nat %v, %s\n,\n\n        \ne\n.\nWhen\n,\n \ne\n.\nWhat\n)\n\n\n}\n\n\n\nfunc\n \nmain\n()\n \n{\n\n    \nm\n \n:=\n \nMyError\n{\ntime\n.\nNow\n(),\n \nit didn\nt work\n}\n\n\n    \nvar\n \nerr\n \nerror\n\n    \nerr\n \n=\n \nm\n\n    \nfmt\n.\nPrintln\n(\nerr\n)\n\n\n}\n\n\n\n\n\n输出\n\n\nat 2017-07-20 23:29:25.612912934 +0800 CST, it didn\nt work\n\n\n\n\n可以看出，error和stringer功能相似\n\n\nString()和Error()谁优先\n\n\n\n\n当String()和Error()同时存在的时候，Error()优先，例如：\n\n\npackage\n \nmain\n\n\n\nimport\n \nfmt\n\n\n\ntype\n \nMyStruct\n \nstruct\n \n{\n\n    \nX\n,\n \nY\n \nint\n\n\n}\n\n\n\nfunc\n \n(\ns\n \n*\nMyStruct\n)\n \nString\n()\n \nstring\n \n{\n\n    \nreturn\n \nfmt\n.\nSprintf\n(\nString-X: %v, Y: %v\n,\n \ns\n.\nX\n,\n \ns\n.\nY\n)\n\n\n}\n\n\n\nfunc\n \n(\ns\n \n*\nMyStruct\n)\n \nError\n()\n \nstring\n \n{\n\n    \nreturn\n \nfmt\n.\nSprintf\n(\nError-X: %v, Y: %v\n,\n \ns\n.\nX\n,\n \ns\n.\nY\n)\n\n\n}\n\n\n\nfunc\n \nmain\n()\n \n{\n\n    \ns1\n \n:=\n \nMyStruct\n{\n1\n,\n \n2\n}\n\n    \nfmt\n.\nPrintln\n(\ns1\n)\n\n\n}\n\n\n\n\n\n输出\n\n\nError-X: 1, Y: 2\n\n\n\n\n并不是因为Error()在代码中的位置靠下所以优先，若把上面String()和Error()对调，输出依然是Error", 
+            "title": "3.16. error"
+        }, 
+        {
+            "location": "/method/interface_error/#error", 
+            "text": "package   main  import   ( \n     fmt \n     time  )  type   MyError   struct   { \n     When   time . Time \n     What   string  }  func   ( e   * MyError )   Error ()   string   { \n     return   fmt . Sprintf ( at %v, %s , \n         e . When ,   e . What )  }  func   main ()   { \n     m   :=   MyError { time . Now (),   it didn t work } \n\n     var   err   error \n     err   =   m \n     fmt . Println ( err )  }   输出  at 2017-07-20 23:29:25.612912934 +0800 CST, it didn t work  可以看出，error和stringer功能相似", 
+            "title": "error"
+        }, 
+        {
+            "location": "/method/interface_error/#stringerror", 
+            "text": "当String()和Error()同时存在的时候，Error()优先，例如：  package   main  import   fmt  type   MyStruct   struct   { \n     X ,   Y   int  }  func   ( s   * MyStruct )   String ()   string   { \n     return   fmt . Sprintf ( String-X: %v, Y: %v ,   s . X ,   s . Y )  }  func   ( s   * MyStruct )   Error ()   string   { \n     return   fmt . Sprintf ( Error-X: %v, Y: %v ,   s . X ,   s . Y )  }  func   main ()   { \n     s1   :=   MyStruct { 1 ,   2 } \n     fmt . Println ( s1 )  }   输出  Error-X: 1, Y: 2  并不是因为Error()在代码中的位置靠下所以优先，若把上面String()和Error()对调，输出依然是Error", 
+            "title": "String()和Error()谁优先"
         }, 
         {
             "location": "/other/string/", 

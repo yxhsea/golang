@@ -845,6 +845,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/arr_empty_interface/" title="3.11. 空接口对切片的影响" class="md-nav__link">
+      3.11. 空接口对切片的影响
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1245,9 +1257,41 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        3.10. 空接口
+      </label>
+    
     <a href="./" title="3.10. 空接口" class="md-nav__link md-nav__link--active">
       3.10. 空接口
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#empty-interface" title="empty interface空接口" class="md-nav__link">
+    empty interface空接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="空接口对切片的影响" class="md-nav__link">
+    空接口对切片的影响
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -1308,6 +1352,18 @@
   <li class="md-nav__item">
     <a href="../interface_convert/" title="3.15. 用类型转换来实现接口" class="md-nav__link">
       3.15. 用类型转换来实现接口
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_error/" title="3.16. error" class="md-nav__link">
+      3.16. error
     </a>
   </li>
 
@@ -1565,6 +1621,27 @@
   
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#empty-interface" title="empty interface空接口" class="md-nav__link">
+    empty interface空接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="空接口对切片的影响" class="md-nav__link">
+    空接口对切片的影响
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1578,7 +1655,8 @@
                 
                   <h1>3.10. 空接口</h1>
                 
-                <p>empty interface空接口</p>
+                <h2 id="empty-interface"><strong>empty interface空接口</strong><a class="headerlink" href="#empty-interface" title="Permanent link">&para;</a></h2>
+<hr />
 <p>前面学习的变量都要在声明时候确定类型，虽然用:=可以不用指定类型，但实际是类型推倒，在赋值后类型就确定下来不能改了。</p>
 <p>空接口的作用：不用指定类型变量，并且类型可变。比如：</p>
 <div class="codehilite"><pre><span></span>var i interface{}
@@ -1613,6 +1691,61 @@ i = &quot;hello&quot; //这个时候i就是string类型
 <p>输出</p>
 <div class="codehilite"><pre><span></span>42,int
 hello,string
+</pre></div>
+
+<h2 id="_1"><strong>空接口对切片的影响</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
+<ol>
+<li>
+<p>若将一个array或slice赋值给空接口，这个空接口无法再进行切片</p>
+</li>
+<li>
+<p>array或slice赋值给空接口的行为不是复制，而是类似指针效果，只不过无法再进行切片，但元素和原来的array、slice及其衍生的，都有关联</p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">sli</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">}</span>
+
+    <span class="kd">var</span> <span class="nx">e</span> <span class="kd">interface</span><span class="p">{}</span>
+    <span class="nx">e</span> <span class="p">=</span> <span class="nx">sli</span>
+
+    <span class="nx">f</span> <span class="o">:=</span> <span class="nx">sli</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+    <span class="nx">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">=</span> <span class="mi">55</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T,%v\n&quot;</span><span class="p">,</span> <span class="nx">sli</span><span class="p">,</span> <span class="nx">sli</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T,%v\n&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T,%v\n&quot;</span><span class="p">,</span> <span class="nx">f</span><span class="p">,</span> <span class="nx">f</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>[]int,[2 3 55 7 11 13]
+[]int,[2 3 55 7 11 13]
+[]int,[2 3 55]
+</pre></div>
+
+<p>若改为</p>
+<div class="codehilite"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+func main() {
+    sli := []int{2, 3, 5, 7, 11, 13}
+
+    var e interface{}
+    e = sli
+
+    g := e[1:3]
+    fmt.Println(g)
+}
+</pre></div>
+
+<p>报错</p>
+<div class="codehilite"><pre><span></span>./example.go:11: cannot slice e (type interface {})
 </pre></div>
                 
                   

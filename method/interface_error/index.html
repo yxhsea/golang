@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/golang/flow/defer/">
+        <link rel="canonical" href="https://cyent.github.io/golang/method/interface_error/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>4. defer - Go语言学习 - cyent笔记</title>
+        <title>3.16. error - Go语言学习 - cyent笔记</title>
       
     
     
@@ -84,11 +84,15 @@
             
               
                 <span class="md-header-nav__parent">
-                  四. 流控制
+                  六. 方法与接口
+                </span>
+              
+                <span class="md-header-nav__parent">
+                  3. 接口
                 </span>
               
             
-            4. defer
+            3.16. error
           
         </span>
       </div>
@@ -519,12 +523,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       四. 流控制
@@ -542,7 +544,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../for/" title="1. for" class="md-nav__link">
+    <a href="../../flow/for/" title="1. for" class="md-nav__link">
       1. for
     </a>
   </li>
@@ -554,7 +556,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../if/" title="2. if" class="md-nav__link">
+    <a href="../../flow/if/" title="2. if" class="md-nav__link">
       2. if
     </a>
   </li>
@@ -566,7 +568,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../switch/" title="3. switch" class="md-nav__link">
+    <a href="../../flow/switch/" title="3. switch" class="md-nav__link">
       3. switch
     </a>
   </li>
@@ -576,18 +578,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="4. defer" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../flow/defer/" title="4. defer" class="md-nav__link">
       4. defer
     </a>
-    
   </li>
 
         
@@ -1044,10 +1039,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
     
     <label class="md-nav__link" for="nav-6">
       六. 方法与接口
@@ -1065,7 +1062,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/overview/" title="1. 概念汇总" class="md-nav__link">
+    <a href="../overview/" title="1. 概念汇总" class="md-nav__link">
       1. 概念汇总
     </a>
   </li>
@@ -1096,7 +1093,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/method_main/" title="2.1. 声明" class="md-nav__link">
+    <a href="../method_main/" title="2.1. 声明" class="md-nav__link">
       2.1. 声明
     </a>
   </li>
@@ -1108,7 +1105,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/method_receiver/" title="2.2. 指针receiver" class="md-nav__link">
+    <a href="../method_receiver/" title="2.2. 指针receiver" class="md-nav__link">
       2.2. 指针receiver
     </a>
   </li>
@@ -1123,10 +1120,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3" checked>
     
     <label class="md-nav__link" for="nav-6-3">
       3. 接口
@@ -1144,7 +1143,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_main/" title="3.1. 什么是接口" class="md-nav__link">
+    <a href="../interface_main/" title="3.1. 什么是接口" class="md-nav__link">
       3.1. 什么是接口
     </a>
   </li>
@@ -1156,7 +1155,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_syntax/" title="3.2. 接口语法" class="md-nav__link">
+    <a href="../interface_syntax/" title="3.2. 接口语法" class="md-nav__link">
       3.2. 接口语法
     </a>
   </li>
@@ -1168,7 +1167,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_why/" title="3.3. Why interface" class="md-nav__link">
+    <a href="../interface_why/" title="3.3. Why interface" class="md-nav__link">
       3.3. Why interface
     </a>
   </li>
@@ -1180,7 +1179,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_oo/" title="3.4. 接口和面向对象的关系" class="md-nav__link">
+    <a href="../interface_oo/" title="3.4. 接口和面向对象的关系" class="md-nav__link">
       3.4. 接口和面向对象的关系
     </a>
   </li>
@@ -1192,7 +1191,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_application/" title="3.5. 应用场景" class="md-nav__link">
+    <a href="../interface_application/" title="3.5. 应用场景" class="md-nav__link">
       3.5. 应用场景
     </a>
   </li>
@@ -1204,7 +1203,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_argv/" title="3.6. 传入和传出参数要带上" class="md-nav__link">
+    <a href="../interface_argv/" title="3.6. 传入和传出参数要带上" class="md-nav__link">
       3.6. 传入和传出参数要带上
     </a>
   </li>
@@ -1216,7 +1215,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_receiver/" title="3.7. 接口receiver参数类型不会自动转换" class="md-nav__link">
+    <a href="../interface_receiver/" title="3.7. 接口receiver参数类型不会自动转换" class="md-nav__link">
       3.7. 接口receiver参数类型不会自动转换
     </a>
   </li>
@@ -1228,7 +1227,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_implement/" title="3.8. 各种实现" class="md-nav__link">
+    <a href="../interface_implement/" title="3.8. 各种实现" class="md-nav__link">
       3.8. 各种实现
     </a>
   </li>
@@ -1240,7 +1239,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_nil/" title="3.9. nil interface" class="md-nav__link">
+    <a href="../interface_nil/" title="3.9. nil interface" class="md-nav__link">
       3.9. nil interface
     </a>
   </li>
@@ -1252,7 +1251,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_empty/" title="3.10. 空接口" class="md-nav__link">
+    <a href="../interface_empty/" title="3.10. 空接口" class="md-nav__link">
       3.10. 空接口
     </a>
   </li>
@@ -1264,7 +1263,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_assertion/" title="3.11. 类型断言" class="md-nav__link">
+    <a href="../interface_assertion/" title="3.11. 类型断言" class="md-nav__link">
       3.11. 类型断言
     </a>
   </li>
@@ -1276,7 +1275,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_typeswitch/" title="3.12. type switch" class="md-nav__link">
+    <a href="../interface_typeswitch/" title="3.12. type switch" class="md-nav__link">
       3.12. type switch
     </a>
   </li>
@@ -1288,7 +1287,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_stringer/" title="3.13. Stringer" class="md-nav__link">
+    <a href="../interface_stringer/" title="3.13. Stringer" class="md-nav__link">
       3.13. Stringer
     </a>
   </li>
@@ -1300,7 +1299,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_argv_interface/" title="3.14. 函数的传入传出参数来实现接口" class="md-nav__link">
+    <a href="../interface_argv_interface/" title="3.14. 函数的传入传出参数来实现接口" class="md-nav__link">
       3.14. 函数的传入传出参数来实现接口
     </a>
   </li>
@@ -1312,7 +1311,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_convert/" title="3.15. 用类型转换来实现接口" class="md-nav__link">
+    <a href="../interface_convert/" title="3.15. 用类型转换来实现接口" class="md-nav__link">
       3.15. 用类型转换来实现接口
     </a>
   </li>
@@ -1322,11 +1321,50 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../method/interface_error/" title="3.16. error" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        3.16. error
+      </label>
+    
+    <a href="./" title="3.16. error" class="md-nav__link md-nav__link--active">
       3.16. error
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#error" title="error" class="md-nav__link">
+    error
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stringerror" title="String()和Error()谁优先" class="md-nav__link">
+    String()和Error()谁优先
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -1583,6 +1621,27 @@
   
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#error" title="error" class="md-nav__link">
+    error
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stringerror" title="String()和Error()谁优先" class="md-nav__link">
+    String()和Error()谁优先
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1594,62 +1653,71 @@
               
                 
                 
-                  <h1>4. defer</h1>
+                  <h1>3.16. error</h1>
                 
-                <p>defer，顾名思义，就是推迟执行的意思</p>
-<p>defer使得后面跟的函数在当前函数结束之后执行（如果有return，就是在reutrn之前执行）</p>
+                <h2 id="error"><strong>error</strong><a class="headerlink" href="#error" title="Permanent link">&para;</a></h2>
+<hr />
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
 
-<span class="kd">func</span> <span class="nx">func1</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="kd">type</span> <span class="nx">MyError</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">When</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+    <span class="nx">What</span> <span class="kt">string</span>
 <span class="p">}</span>
 
-<span class="kd">func</span> <span class="nx">func2</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func1</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;aa&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">e</span> <span class="o">*</span><span class="nx">MyError</span><span class="p">)</span> <span class="nx">Error</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;at %v, %s&quot;</span><span class="p">,</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">When</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">What</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func2</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+    <span class="nx">m</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">MyError</span><span class="p">{</span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">(),</span> <span class="s">&quot;it didn&#39;t work&quot;</span><span class="p">}</span>
+
+    <span class="kd">var</span> <span class="nx">err</span> <span class="kt">error</span>
+    <span class="nx">err</span> <span class="p">=</span> <span class="nx">m</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
 <p>输出</p>
-<div class="codehilite"><pre><span></span>aa
-101
-11
+<div class="codehilite"><pre><span></span>at 2017-07-20 23:29:25.612912934 +0800 CST, it didn&#39;t work
 </pre></div>
 
-<p><strong>defer栈：如果有多个defer，则是从后往前执行</strong>（原话：延迟的函数调用被压入一个栈中。当函数返回时， 会按照后进先出的顺序调用被延迟的函数调用。），比如：</p>
+<p>可以看出，error和stringer功能相似</p>
+<h2 id="stringerror"><strong>String()和Error()谁优先</strong><a class="headerlink" href="#stringerror" title="Permanent link">&para;</a></h2>
+<hr />
+<p>当String()和Error()同时存在的时候，Error()优先，例如：</p>
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 
-<span class="kd">func</span> <span class="nx">func1</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">int</span>
 <span class="p">}</span>
 
-<span class="kd">func</span> <span class="nx">func2</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func1</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func1</span><span class="p">(</span><span class="mi">200</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;aa&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">MyStruct</span><span class="p">)</span> <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;String-X: %v, Y: %v&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">X</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Y</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">MyStruct</span><span class="p">)</span> <span class="nx">Error</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Error-X: %v, Y: %v&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">X</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Y</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func2</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+    <span class="nx">s1</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">MyStruct</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s1</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
 <p>输出</p>
-<div class="codehilite"><pre><span></span>aa
-201
-101
-11
+<div class="codehilite"><pre><span></span>Error-X: 1, Y: 2
 </pre></div>
+
+<p>并不是因为Error()在代码中的位置靠下所以优先，若把上面String()和Error()对调，输出依然是Error</p>
                 
                   
                 
@@ -1668,7 +1736,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../switch/" title="3. switch" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../interface_convert/" title="3.15. 用类型转换来实现接口" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1677,19 +1745,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                3. switch
+                3.15. 用类型转换来实现接口
               </span>
             </div>
           </a>
         
         
-          <a href="../../datatype/pointer/" title="1. pointer" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../other/string/" title="1. 字符串处理" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                1. pointer
+                1. 字符串处理
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

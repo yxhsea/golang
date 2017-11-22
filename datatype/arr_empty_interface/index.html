@@ -10,7 +10,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/golang/flow/defer/">
+        <link rel="canonical" href="https://cyent.github.io/golang/datatype/arr_empty_interface/">
       
       
         <meta name="author" content="cyent">
@@ -22,7 +22,7 @@
     
     
       
-        <title>4. defer - Go语言学习 - cyent笔记</title>
+        <title>3.11. 空接口对切片的影响 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -84,11 +84,15 @@
             
               
                 <span class="md-header-nav__parent">
-                  四. 流控制
+                  五. 数据类型
+                </span>
+              
+                <span class="md-header-nav__parent">
+                  3. array和slice
                 </span>
               
             
-            4. defer
+            3.11. 空接口对切片的影响
           
         </span>
       </div>
@@ -519,12 +523,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       四. 流控制
@@ -542,7 +544,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../for/" title="1. for" class="md-nav__link">
+    <a href="../../flow/for/" title="1. for" class="md-nav__link">
       1. for
     </a>
   </li>
@@ -554,7 +556,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../if/" title="2. if" class="md-nav__link">
+    <a href="../../flow/if/" title="2. if" class="md-nav__link">
       2. if
     </a>
   </li>
@@ -566,7 +568,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../switch/" title="3. switch" class="md-nav__link">
+    <a href="../../flow/switch/" title="3. switch" class="md-nav__link">
       3. switch
     </a>
   </li>
@@ -576,18 +578,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="4. defer" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../flow/defer/" title="4. defer" class="md-nav__link">
       4. defer
     </a>
-    
   </li>
 
         
@@ -600,10 +595,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
     
     <label class="md-nav__link" for="nav-5">
       五. 数据类型
@@ -621,7 +618,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/pointer/" title="1. pointer" class="md-nav__link">
+    <a href="../pointer/" title="1. pointer" class="md-nav__link">
       1. pointer
     </a>
   </li>
@@ -652,7 +649,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/struct_main/" title="2.1. 声明" class="md-nav__link">
+    <a href="../struct_main/" title="2.1. 声明" class="md-nav__link">
       2.1. 声明
     </a>
   </li>
@@ -664,7 +661,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/struct_export/" title="2.2. 导出名" class="md-nav__link">
+    <a href="../struct_export/" title="2.2. 导出名" class="md-nav__link">
       2.2. 导出名
     </a>
   </li>
@@ -676,7 +673,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/struct_pointer/" title="2.3. struct指针" class="md-nav__link">
+    <a href="../struct_pointer/" title="2.3. struct指针" class="md-nav__link">
       2.3. struct指针
     </a>
   </li>
@@ -688,7 +685,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/struct_literal/" title="2.4. literal" class="md-nav__link">
+    <a href="../struct_literal/" title="2.4. literal" class="md-nav__link">
       2.4. literal
     </a>
   </li>
@@ -700,7 +697,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/struct_anon/" title="2.5. 匿名struct" class="md-nav__link">
+    <a href="../struct_anon/" title="2.5. 匿名struct" class="md-nav__link">
       2.5. 匿名struct
     </a>
   </li>
@@ -715,10 +712,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" checked>
     
     <label class="md-nav__link" for="nav-5-3">
       3. array和slice
@@ -736,7 +735,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_main/" title="3.1. 介绍与比较" class="md-nav__link">
+    <a href="../arr_sli_main/" title="3.1. 介绍与比较" class="md-nav__link">
       3.1. 介绍与比较
     </a>
   </li>
@@ -748,7 +747,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_len_cap/" title="3.2. len()与cap()" class="md-nav__link">
+    <a href="../arr_sli_len_cap/" title="3.2. len()与cap()" class="md-nav__link">
       3.2. len()与cap()
     </a>
   </li>
@@ -760,7 +759,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_index/" title="3.3. 下标" class="md-nav__link">
+    <a href="../arr_sli_index/" title="3.3. 下标" class="md-nav__link">
       3.3. 下标
     </a>
   </li>
@@ -772,7 +771,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_key/" title="3.4. 深入理解" class="md-nav__link">
+    <a href="../arr_sli_key/" title="3.4. 深入理解" class="md-nav__link">
       3.4. 深入理解
     </a>
   </li>
@@ -784,7 +783,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_nil/" title="3.5. nil" class="md-nav__link">
+    <a href="../arr_sli_nil/" title="3.5. nil" class="md-nav__link">
       3.5. nil
     </a>
   </li>
@@ -796,7 +795,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_make/" title="3.6. make" class="md-nav__link">
+    <a href="../arr_sli_make/" title="3.6. make" class="md-nav__link">
       3.6. make
     </a>
   </li>
@@ -808,7 +807,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_nest/" title="3.7. slice嵌套" class="md-nav__link">
+    <a href="../arr_sli_nest/" title="3.7. slice嵌套" class="md-nav__link">
       3.7. slice嵌套
     </a>
   </li>
@@ -820,7 +819,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_expand/" title="3.8. slice扩容" class="md-nav__link">
+    <a href="../arr_sli_expand/" title="3.8. slice扩容" class="md-nav__link">
       3.8. slice扩容
     </a>
   </li>
@@ -832,7 +831,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_append/" title="3.9. append添加元素" class="md-nav__link">
+    <a href="../arr_sli_append/" title="3.9. append添加元素" class="md-nav__link">
       3.9. append添加元素
     </a>
   </li>
@@ -844,7 +843,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_copy/" title="3.10. copy复制元素" class="md-nav__link">
+    <a href="../arr_sli_copy/" title="3.10. copy复制元素" class="md-nav__link">
       3.10. copy复制元素
     </a>
   </li>
@@ -854,11 +853,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../datatype/arr_empty_interface/" title="3.11. 空接口对切片的影响" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="3.11. 空接口对切片的影响" class="md-nav__link md-nav__link--active">
       3.11. 空接口对切片的影响
     </a>
+    
   </li>
 
         
@@ -892,7 +898,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/map_main/" title="4.1. 声明" class="md-nav__link">
+    <a href="../map_main/" title="4.1. 声明" class="md-nav__link">
       4.1. 声明
     </a>
   </li>
@@ -904,7 +910,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/map_nil/" title="4.2. nil map" class="md-nav__link">
+    <a href="../map_nil/" title="4.2. nil map" class="md-nav__link">
       4.2. nil map
     </a>
   </li>
@@ -916,7 +922,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/map_struct/" title="4.3. key和value可以用struct" class="md-nav__link">
+    <a href="../map_struct/" title="4.3. key和value可以用struct" class="md-nav__link">
       4.3. key和value可以用struct
     </a>
   </li>
@@ -928,7 +934,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/map_literal/" title="4.4. literal" class="md-nav__link">
+    <a href="../map_literal/" title="4.4. literal" class="md-nav__link">
       4.4. literal
     </a>
   </li>
@@ -940,7 +946,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/map_get_insert_update/" title="4.5. 检索、添加和修改元素" class="md-nav__link">
+    <a href="../map_get_insert_update/" title="4.5. 检索、添加和修改元素" class="md-nav__link">
       4.5. 检索、添加和修改元素
     </a>
   </li>
@@ -952,7 +958,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/map_delete/" title="4.6. delete删除元素" class="md-nav__link">
+    <a href="../map_delete/" title="4.6. delete删除元素" class="md-nav__link">
       4.6. delete删除元素
     </a>
   </li>
@@ -988,7 +994,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/funcvalue_main/" title="5.1. 介绍" class="md-nav__link">
+    <a href="../funcvalue_main/" title="5.1. 介绍" class="md-nav__link">
       5.1. 介绍
     </a>
   </li>
@@ -1000,7 +1006,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/funcvalue_parameter/" title="5.2. 函数作为参数传递给另一个函数" class="md-nav__link">
+    <a href="../funcvalue_parameter/" title="5.2. 函数作为参数传递给另一个函数" class="md-nav__link">
       5.2. 函数作为参数传递给另一个函数
     </a>
   </li>
@@ -1012,7 +1018,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/funcvalue_callback/" title="5.3. 用途1-回调函数" class="md-nav__link">
+    <a href="../funcvalue_callback/" title="5.3. 用途1-回调函数" class="md-nav__link">
       5.3. 用途1-回调函数
     </a>
   </li>
@@ -1024,7 +1030,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/funcvalue_closure/" title="5.4. 用途2-闭包" class="md-nav__link">
+    <a href="../funcvalue_closure/" title="5.4. 用途2-闭包" class="md-nav__link">
       5.4. 用途2-闭包
     </a>
   </li>
@@ -1594,62 +1600,9 @@
               
                 
                 
-                  <h1>4. defer</h1>
+                  <h1>3.11. 空接口对切片的影响</h1>
                 
-                <p>defer，顾名思义，就是推迟执行的意思</p>
-<p>defer使得后面跟的函数在当前函数结束之后执行（如果有return，就是在reutrn之前执行）</p>
-<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="kd">func</span> <span class="nx">func1</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">func2</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func1</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;aa&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func2</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-<span class="p">}</span>
-</pre></div>
-
-<p>输出</p>
-<div class="codehilite"><pre><span></span>aa
-101
-11
-</pre></div>
-
-<p><strong>defer栈：如果有多个defer，则是从后往前执行</strong>（原话：延迟的函数调用被压入一个栈中。当函数返回时， 会按照后进先出的顺序调用被延迟的函数调用。），比如：</p>
-<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="kd">func</span> <span class="nx">func1</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">func2</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func1</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func1</span><span class="p">(</span><span class="mi">200</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;aa&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">func2</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-<span class="p">}</span>
-</pre></div>
-
-<p>输出</p>
-<div class="codehilite"><pre><span></span>aa
-201
-101
-11
-</pre></div>
+                <p>详见<a href="../../method/interface_empty/#_1">接口章节</a></p>
                 
                   
                 
@@ -1668,7 +1621,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../switch/" title="3. switch" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../arr_sli_copy/" title="3.10. copy复制元素" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1677,19 +1630,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                3. switch
+                3.10. copy复制元素
               </span>
             </div>
           </a>
         
         
-          <a href="../../datatype/pointer/" title="1. pointer" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../map_main/" title="4.1. 声明" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                1. pointer
+                4.1. 声明
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
