@@ -2,6 +2,10 @@
 
 ---
 
+> It represents the empty set of methods and is satisfied by any value at all, since any value has zero or more methods.
+
+interface{}叫做空接口，空接口表示包含了0个方法的集合，由于任何类型都至少实现了0个或多个方法，所以空接口可以承接任意类型。
+
 前面学习的变量都要在声明时候确定类型，虽然用:=可以不用指定类型，但实际是类型推倒，在赋值后类型就确定下来不能改了。
 
 空接口的作用：不用指定类型变量，并且类型可变。比如：
