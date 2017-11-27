@@ -6,20 +6,24 @@ site_url: https://cyent.github.io/golang/
 repo_name: 'cyent/golang'
 repo_url: 'https://github.com/cyent/golang'
 
-theme: material
-
-extra:
+theme:
+  name: material
   palette:
     primary: 'Blue Grey'
     accent: 'Pink'
   feature:
     tabs: false
-  social:
-    - type: github
-      link: https://github.com/cyent
   #font:
     #text: 'Ubuntu'
     #code: 'Ubuntu Mono'
+  language: 'zh'
+
+extra:
+  social:
+    - type: github
+      link: https://github.com/cyent
+  search:
+    language: 'jp'
 
 markdown_extensions:
     - admonition
