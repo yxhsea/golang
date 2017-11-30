@@ -1769,6 +1769,17 @@
 </ol>
 </li>
 </ol>
+<p>也可以这么声明</p>
+<div class="codehilite"><pre><span></span>var (
+    A int = 100
+    B string
+)
+</pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">和const区别</p>
+<p>var可以不赋值（会自动赋值初始值），而const必须赋值</p>
+</div>
 <h2 id="_1"><strong>:=</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <hr />
 <p><code>:=</code>是短声明变量，也叫简洁赋值语句</p>

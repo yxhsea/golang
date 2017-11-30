@@ -1693,6 +1693,17 @@
 <p>上面声明一个常量，常量名叫foo，值是"bar"，foo的类型自动推导为string</p>
 <p>也可以<code class="codehilite"><span class="kd">const</span> <span class="nx">foo</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&quot;bar&quot;</span></code>来直接指定类型</p>
 <p>注意%T是查看类型，即string还是int，而看不出是常量还是变量</p>
+<p>也可以这么声明</p>
+<div class="codehilite"><pre><span></span>const (
+    A int = 100
+    B = &quot;hello&quot;
+)
+</pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">和var的区别</p>
+<p>var可以不赋值（会自动赋值初始值），而const必须赋值</p>
+</div>
 <h2 id="_2"><strong>作用域</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <hr />
 <p>经测试，常量作用域和变量作用域相同。</p>
