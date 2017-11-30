@@ -1639,6 +1639,52 @@ int
 0 false
 float64
 </pre></div>
+
+<p><strong>类型断言是个好东西，可以将空接口变量hold的变量重新赋值给非空接口</strong></p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">Adder</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">Add</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="nx">MyStruct</span><span class="p">)</span> <span class="nx">Add</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">this</span><span class="p">.</span><span class="nx">X</span> <span class="o">+</span> <span class="nx">this</span><span class="p">.</span><span class="nx">Y</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">MyStruct</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+    <span class="kd">var</span> <span class="nx">e</span> <span class="kd">interface</span><span class="p">{}</span>
+    <span class="nx">e</span> <span class="p">=</span> <span class="nx">s</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;e: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span>
+
+    <span class="nx">x</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">e</span><span class="p">.(</span><span class="nx">MyStruct</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">ok</span> <span class="o">==</span> <span class="kc">true</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;x: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span>
+        <span class="nx">x</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="kd">var</span> <span class="nx">i</span> <span class="nx">Adder</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="nx">x</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;i: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>e: main.MyStruct {3 4}
+x: main.MyStruct {3 4}
+7
+i: main.MyStruct {3 4}
+7
+</pre></div>
                 
                   
                 
