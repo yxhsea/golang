@@ -1664,25 +1664,47 @@ float64
     <span class="kd">var</span> <span class="nx">e</span> <span class="kd">interface</span><span class="p">{}</span>
     <span class="nx">e</span> <span class="p">=</span> <span class="nx">s</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;e: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;-----&quot;</span><span class="p">)</span>
 
+    <span class="c1">// 写法1: 类型断言写法</span>
     <span class="nx">x</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">e</span><span class="p">.(</span><span class="nx">MyStruct</span><span class="p">)</span>
     <span class="k">if</span> <span class="nx">ok</span> <span class="o">==</span> <span class="kc">true</span> <span class="p">{</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;x: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span>
         <span class="nx">x</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
     <span class="p">}</span>
-
     <span class="kd">var</span> <span class="nx">i</span> <span class="nx">Adder</span>
     <span class="nx">i</span> <span class="p">=</span> <span class="nx">x</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;i: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
     <span class="nx">i</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;-----&quot;</span><span class="p">)</span>
+
+    <span class="c1">// 写法2: 类型断言+实现接口写法，支持空接口。该写法是写法1的简写方式</span>
+    <span class="kd">var</span> <span class="nx">j</span> <span class="nx">Adder</span>
+    <span class="nx">j</span> <span class="p">=</span> <span class="nx">e</span><span class="p">.(</span><span class="nx">Adder</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;j: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">j</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span>
+    <span class="nx">j</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;-----&quot;</span><span class="p">)</span>
+
+    <span class="c1">// 写法3: 类型断言+实现接口写法，支持非空接口</span>
+    <span class="kd">var</span> <span class="nx">k</span> <span class="nx">Adder</span>
+    <span class="nx">k</span> <span class="p">=</span> <span class="nx">i</span><span class="p">.(</span><span class="nx">Adder</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;k: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">k</span><span class="p">)</span>
+    <span class="nx">k</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
 <span class="p">}</span>
 </pre></div>
 
 <p>输出</p>
 <div class="codehilite"><pre><span></span>e: main.MyStruct {3 4}
+-----
 x: main.MyStruct {3 4}
 7
 i: main.MyStruct {3 4}
+7
+-----
+j: main.MyStruct {3 4}
+7
+-----
+k: main.MyStruct {3 4}
 7
 </pre></div>
                 
