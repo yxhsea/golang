@@ -49,37 +49,52 @@ float64
 package main
 
 import (
-    "fmt"
+	"fmt"
 )
 
 type Adder interface {
-    Add()
+	Add()
 }
 
 type MyStruct struct {
-    X, Y int
+	X, Y int
 }
 
 func (this MyStruct) Add() {
-    fmt.Println(this.X + this.Y)
+	fmt.Println(this.X + this.Y)
 }
 
 func main() {
-    s := MyStruct{3, 4}
-    var e interface{}
-    e = s
-    fmt.Printf("e: %T %v\n", e, e)
+	s := MyStruct{3, 4}
+	var e interface{}
+	e = s
+	fmt.Printf("e: %T %v\n", e, e)
+	fmt.Println("-----")
 
-    x, ok := e.(MyStruct)
-    if ok == true {
-        fmt.Printf("x: %T %v\n", x, x)
-        x.Add()
-    }
+	// 写法1: 类型断言写法
+	x, ok := e.(MyStruct)
+	if ok == true {
+		fmt.Printf("x: %T %v\n", x, x)
+		x.Add()
+	}
+	var i Adder
+	i = x
+	fmt.Printf("i: %T %v\n", i, i)
+	i.Add()
+	fmt.Println("-----")
 
-    var i Adder
-    i = x
-    fmt.Printf("i: %T %v\n", i, i)
-    i.Add()
+	// 写法2: 类型断言+实现接口写法，支持空接口。该写法是写法1的简写方式
+	var j Adder
+	j = e.(Adder)
+	fmt.Printf("j: %T %v\n", j, j)
+	j.Add()
+	fmt.Println("-----")
+
+	// 写法3: 类型断言+实现接口写法，支持非空接口
+	var k Adder
+	k = i.(Adder)
+	fmt.Printf("k: %T %v\n", k, k)
+	k.Add()
 }
 ```
 
@@ -87,8 +102,15 @@ func main() {
 
 ```text
 e: main.MyStruct {3 4}
+-----
 x: main.MyStruct {3 4}
 7
 i: main.MyStruct {3 4}
+7
+-----
+j: main.MyStruct {3 4}
+7
+-----
+k: main.MyStruct {3 4}
 7
 ```
