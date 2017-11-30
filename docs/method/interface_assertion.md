@@ -42,3 +42,53 @@ int
 0 false
 float64
 ```
+
+**类型断言是个好东西，可以将空接口变量hold的变量重新赋值给非空接口**
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+type Adder interface {
+    Add()
+}
+
+type MyStruct struct {
+    X, Y int
+}
+
+func (this MyStruct) Add() {
+    fmt.Println(this.X + this.Y)
+}
+
+func main() {
+    s := MyStruct{3, 4}
+    var e interface{}
+    e = s
+    fmt.Printf("e: %T %v\n", e, e)
+
+    x, ok := e.(MyStruct)
+    if ok == true {
+        fmt.Printf("x: %T %v\n", x, x)
+        x.Add()
+    }
+
+    var i Adder
+    i = x
+    fmt.Printf("i: %T %v\n", i, i)
+    i.Add()
+}
+```
+
+输出
+
+```text
+e: main.MyStruct {3 4}
+x: main.MyStruct {3 4}
+7
+i: main.MyStruct {3 4}
+7
+```
