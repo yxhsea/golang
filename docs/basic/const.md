@@ -16,6 +16,18 @@ const foo = "bar"
 
 注意%T是查看类型，即string还是int，而看不出是常量还是变量
 
+也可以这么声明
+
+```text
+const (
+	A int = 100
+	B = "hello"
+)
+```
+
+!!! warning "和var的区别"
+	var可以不赋值（会自动赋值初始值），而const必须赋值
+
 ## **作用域**
 
 ---

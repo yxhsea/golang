@@ -64,6 +64,17 @@ var是否跟类型（包括var单个变量或者var多个变量）：
 
 		多个变量例子：`#!go var i, j`，会报错
 
+也可以这么声明
+
+```text
+var (
+	A int = 100
+	B string
+)
+```
+
+!!! warning "和const区别"
+	var可以不赋值（会自动赋值初始值），而const必须赋值
 
 ## **:=**
 
