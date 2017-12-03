@@ -13,7 +13,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/golang/method/interface_convert/">
+        <link rel="canonical" href="https://cyent.github.io/golang/method/interface_implement_interface/">
       
       
         <meta name="author" content="cyent">
@@ -38,7 +38,7 @@
     
     
       
-        <title>3.15. 用类型转换来实现接口 - Go语言学习 - cyent笔记</title>
+        <title>3.15. 实现接口的多种方法汇集 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                3.15. 用类型转换来实现接口
+                3.15. 实现接口的多种方法汇集
               </span>
             
           
@@ -1331,9 +1331,62 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
-    <a href="./" title="3.15. 用类型转换来实现接口" class="md-nav__link md-nav__link--active">
-      3.15. 用类型转换来实现接口
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        3.15. 实现接口的多种方法汇集
+      </label>
+    
+    <a href="./" title="3.15. 实现接口的多种方法汇集" class="md-nav__link md-nav__link--active">
+      3.15. 实现接口的多种方法汇集
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="赋值实现接口(传统)" class="md-nav__link">
+    赋值实现接口(传统)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="函数传入参数实现接口" class="md-nav__link">
+    函数传入参数实现接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="函数传出参数实现接口" class="md-nav__link">
+    函数传出参数实现接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="类型转换实现接口" class="md-nav__link">
+    类型转换实现接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="类型断言实现接口" class="md-nav__link">
+    类型断言实现接口
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -1346,6 +1399,18 @@
   <li class="md-nav__item">
     <a href="../interface_error/" title="3.16. error" class="md-nav__link">
       3.16. error
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_deep/" title="3.17. 深入理解" class="md-nav__link">
+      3.17. 深入理解
     </a>
   </li>
 
@@ -1370,10 +1435,82 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
     
     <label class="md-nav__link" for="nav-7">
-      七. 其他
+      七. 反射
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-7">
+        七. 反射
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reflect/main/" title="1. 什么是反射" class="md-nav__link">
+      1. 什么是反射
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reflect/law1/" title="2. 反射机制1" class="md-nav__link">
+      2. 反射机制1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reflect/law2/" title="3. 反射机制2" class="md-nav__link">
+      3. 反射机制2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reflect/law3/" title="4. 反射机制3" class="md-nav__link">
+      4. 反射机制3
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      七. 其他
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
         七. 其他
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1487,18 +1624,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../other/reflect/" title="10. reflect反射" class="md-nav__link">
-      10. reflect反射
-    </a>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -1511,13 +1636,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
     
-    <label class="md-nav__link" for="nav-8">
+    <label class="md-nav__link" for="nav-9">
       八. 附录
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-8">
+      <label class="md-nav__title" for="nav-9">
         八. 附录
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1554,13 +1679,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-3" type="checkbox" id="nav-9-3">
     
-    <label class="md-nav__link" for="nav-8-3">
+    <label class="md-nav__link" for="nav-9-3">
       3. 命令行工具
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-8-3">
+      <label class="md-nav__title" for="nav-9-3">
         3. 命令行工具
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1607,17 +1732,112 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="赋值实现接口(传统)" class="md-nav__link">
+    赋值实现接口(传统)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="函数传入参数实现接口" class="md-nav__link">
+    函数传入参数实现接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="函数传出参数实现接口" class="md-nav__link">
+    函数传出参数实现接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="类型转换实现接口" class="md-nav__link">
+    类型转换实现接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="类型断言实现接口" class="md-nav__link">
+    类型断言实现接口
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cyent/golang/edit/master/docs/method/interface_convert.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/cyent/golang/edit/master/docs/method/interface_implement_interface.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>3.15. 用类型转换来实现接口</h1>
+                  <h1>3.15. 实现接口的多种方法汇集</h1>
                 
-                <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+                <h2 id="_1"><strong>赋值实现接口(传统)</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">Adder</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">Add</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="nx">MyStruct</span><span class="p">)</span> <span class="nx">Add</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">this</span><span class="p">.</span><span class="nx">X</span> <span class="o">+</span> <span class="nx">this</span><span class="p">.</span><span class="nx">Y</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">i</span> <span class="nx">Adder</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">MyStruct</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+<span class="hll">    <span class="nx">i</span> <span class="p">=</span> <span class="nx">s</span>
+</span>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;s: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;i: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>s: main.MyStruct {3 4}
+i: main.MyStruct {3 4}
+</pre></div>
+
+<h2 id="_2"><strong>函数传入参数实现接口</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<hr />
+<p><a href="../../method/interface_argv_interface/#_1">点击查看</a></p>
+<h2 id="_3"><strong>函数传出参数实现接口</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<hr />
+<p><a href="../../method/interface_argv_interface/#_2">点击查看</a></p>
+<h2 id="_4"><strong>类型转换实现接口</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<hr />
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 
@@ -1706,6 +1926,65 @@
 </pre></div></p>
 <p>比较上面2个错误可以发现报错内容是不一样的，虽然第二行的提示是一样的，都是没有实现，并且括号里说明了没有实现的原因，但第一行的前者是提示类型不对，后者是不能转换。这说明了返回类型可以用来实现接口，但在内部并不等于类型转换</p>
 </div>
+<h2 id="_5"><strong>类型断言实现接口</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<hr />
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">Adder</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">Add</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Suber</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">Sub</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="nx">MyStruct</span><span class="p">)</span> <span class="nx">Add</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">this</span><span class="p">.</span><span class="nx">X</span> <span class="o">+</span> <span class="nx">this</span><span class="p">.</span><span class="nx">Y</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="nx">MyStruct</span><span class="p">)</span> <span class="nx">Sub</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">this</span><span class="p">.</span><span class="nx">X</span> <span class="o">-</span> <span class="nx">this</span><span class="p">.</span><span class="nx">Y</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">i1</span> <span class="nx">Adder</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">MyStruct</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+    <span class="nx">i1</span> <span class="p">=</span> <span class="nx">s</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;s:\t%T %v\n&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;i1:\t%T %v\n&quot;</span><span class="p">,</span> <span class="nx">i1</span><span class="p">,</span> <span class="nx">i1</span><span class="p">)</span>
+
+<span class="hll">    <span class="nx">i2</span> <span class="o">:=</span> <span class="nx">i1</span><span class="p">.(</span><span class="nx">Suber</span><span class="p">)</span>
+</span>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;i2:\t%T %v\n&quot;</span><span class="p">,</span> <span class="nx">i2</span><span class="p">,</span> <span class="nx">i2</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>s:  main.MyStruct {3 4}
+i1: main.MyStruct {3 4}
+i2: main.MyStruct {3 4}
+</pre></div>
+
+<p>注意：类型断言只能用于接口变量，<code>非接口变量.(interface{})</code>是不行的</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="hll">    <span class="nx">b</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">a</span><span class="p">.(</span><span class="kd">interface</span><span class="p">{})</span>
+</span>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">b</span><span class="p">,</span> <span class="nx">ok</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>报错</p>
+<div class="codehilite"><pre><span></span>./example.go:7: invalid type assertion: a.(&lt;inter&gt;) (non-interface type int on left)
+</pre></div>
                 
                   
                 

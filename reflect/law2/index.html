@@ -13,7 +13,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/golang/other/reflect/">
+        <link rel="canonical" href="https://cyent.github.io/golang/reflect/law2/">
       
       
         <meta name="author" content="cyent">
@@ -38,7 +38,7 @@
     
     
       
-        <title>10. reflect反射 - Go语言学习 - cyent笔记</title>
+        <title>3. 反射机制2 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                10. reflect反射
+                3. 反射机制2
               </span>
             
           
@@ -1321,8 +1321,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_convert/" title="3.15. 用类型转换来实现接口" class="md-nav__link">
-      3.15. 用类型转换来实现接口
+    <a href="../../method/interface_implement_interface/" title="3.15. 实现接口的多种方法汇集" class="md-nav__link">
+      3.15. 实现接口的多种方法汇集
     </a>
   </li>
 
@@ -1335,6 +1335,18 @@
   <li class="md-nav__item">
     <a href="../../method/interface_error/" title="3.16. error" class="md-nav__link">
       3.16. error
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../method/interface_deep/" title="3.17. 深入理解" class="md-nav__link">
+      3.17. 深入理解
     </a>
   </li>
 
@@ -1361,11 +1373,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
     
     <label class="md-nav__link" for="nav-7">
-      七. 其他
+      七. 反射
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-7">
-        七. 其他
+        七. 反射
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1376,8 +1388,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../string/" title="1. 字符串处理" class="md-nav__link">
-      1. 字符串处理
+    <a href="../main/" title="1. 什么是反射" class="md-nav__link">
+      1. 什么是反射
     </a>
   </li>
 
@@ -1388,92 +1400,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../range/" title="2. range" class="md-nav__link">
-      2. range
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../sync_block/" title="3. 同步异步与阻塞非阻塞的关系" class="md-nav__link">
-      3. 同步异步与阻塞非阻塞的关系
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../binary_operation/" title="4. 位运算" class="md-nav__link">
-      4. 位运算
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../loop_iterate_traversal_recursion/" title="5. 循环、迭代、遍历、递归的区别" class="md-nav__link">
-      5. 循环、迭代、遍历、递归的区别
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../go_python/" title="6. go和python的比较" class="md-nav__link">
-      6. go和python的比较
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../oo/" title="7. 面向对象" class="md-nav__link">
-      7. 面向对象
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../nil/" title="8. nil" class="md-nav__link">
-      8. nil
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../make/" title="9. make" class="md-nav__link">
-      9. make
+    <a href="../law1/" title="2. 反射机制1" class="md-nav__link">
+      2. 反射机制1
     </a>
   </li>
 
@@ -1490,110 +1418,22 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        10. reflect反射
-      </label>
-    
-    <a href="./" title="10. reflect反射" class="md-nav__link md-nav__link--active">
-      10. reflect反射
+    <a href="./" title="3. 反射机制2" class="md-nav__link md-nav__link--active">
+      3. 反射机制2
     </a>
     
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="官网文档地址" class="md-nav__link">
-    官网文档地址
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="接口赋值的术语" class="md-nav__link">
-    接口赋值的术语
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="学习反射前需要掌握的基础知识" class="md-nav__link">
-    学习反射前需要掌握的基础知识
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
+  </li>
+
         
-          <li class="md-nav__item">
-  <a href="#go" title="go语言是静态类型" class="md-nav__link">
-    go语言是静态类型
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" title="基类型" class="md-nav__link">
-    基类型
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#go_1" title="go接口类型" class="md-nav__link">
-    go接口类型
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" title="什么是反射" class="md-nav__link">
-    什么是反射
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#go_2" title="go语言的反射" class="md-nav__link">
-    go语言的反射
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#go_3" title="go反射机制建立在类型系统之上" class="md-nav__link">
-    go反射机制建立在类型系统之上
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" title="接口类型的变量存储了一对值" class="md-nav__link">
-    接口类型的变量存储了一对值
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../law3/" title="4. 反射机制3" class="md-nav__link">
+      4. 反射机制3
+    </a>
   </li>
 
         
@@ -1612,10 +1452,142 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
     
     <label class="md-nav__link" for="nav-8">
-      八. 附录
+      七. 其他
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-8">
+        七. 其他
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/string/" title="1. 字符串处理" class="md-nav__link">
+      1. 字符串处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/range/" title="2. range" class="md-nav__link">
+      2. range
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/sync_block/" title="3. 同步异步与阻塞非阻塞的关系" class="md-nav__link">
+      3. 同步异步与阻塞非阻塞的关系
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/binary_operation/" title="4. 位运算" class="md-nav__link">
+      4. 位运算
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/loop_iterate_traversal_recursion/" title="5. 循环、迭代、遍历、递归的区别" class="md-nav__link">
+      5. 循环、迭代、遍历、递归的区别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/go_python/" title="6. go和python的比较" class="md-nav__link">
+      6. go和python的比较
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/oo/" title="7. 面向对象" class="md-nav__link">
+      7. 面向对象
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/nil/" title="8. nil" class="md-nav__link">
+      8. nil
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/make/" title="9. make" class="md-nav__link">
+      9. make
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      八. 附录
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
         八. 附录
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1652,13 +1624,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-3" type="checkbox" id="nav-9-3">
     
-    <label class="md-nav__link" for="nav-8-3">
+    <label class="md-nav__link" for="nav-9-3">
       3. 命令行工具
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-8-3">
+      <label class="md-nav__title" for="nav-9-3">
         3. 命令行工具
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1705,231 +1677,17 @@
               </div>
             
             
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="官网文档地址" class="md-nav__link">
-    官网文档地址
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="接口赋值的术语" class="md-nav__link">
-    接口赋值的术语
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="学习反射前需要掌握的基础知识" class="md-nav__link">
-    学习反射前需要掌握的基础知识
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#go" title="go语言是静态类型" class="md-nav__link">
-    go语言是静态类型
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" title="基类型" class="md-nav__link">
-    基类型
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#go_1" title="go接口类型" class="md-nav__link">
-    go接口类型
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" title="什么是反射" class="md-nav__link">
-    什么是反射
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#go_2" title="go语言的反射" class="md-nav__link">
-    go语言的反射
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#go_3" title="go反射机制建立在类型系统之上" class="md-nav__link">
-    go反射机制建立在类型系统之上
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" title="接口类型的变量存储了一对值" class="md-nav__link">
-    接口类型的变量存储了一对值
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cyent/golang/edit/master/docs/other/reflect.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/cyent/golang/edit/master/docs/reflect/law2.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>10. reflect反射</h1>
+                  <h1>3. 反射机制2</h1>
                 
-                <h2 id="_1"><strong>官网文档地址</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<hr />
-<p>官网: <a href="https://blog.golang.org/laws-of-reflection">https://blog.golang.org/laws-of-reflection</a></p>
-<p>中文翻译: <a href="http://m.blog.csdn.net/xiaohu50/article/details/49496819">http://m.blog.csdn.net/xiaohu50/article/details/49496819</a></p>
-<h2 id="_2"><strong>接口赋值的术语</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<hr />
-<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="kd">type</span> <span class="nx">Adder</span> <span class="kd">interface</span> <span class="p">{</span>
-    <span class="nx">Add</span><span class="p">()</span>
-<span class="p">}</span>
-
-<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">int</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">MyStruct</span><span class="p">)</span> <span class="nx">Add</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">this</span><span class="p">.</span><span class="nx">X</span> <span class="o">+</span> <span class="nx">this</span><span class="p">.</span><span class="nx">Y</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">i</span> <span class="nx">Adder</span>
-    <span class="nx">s</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">MyStruct</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
-<span class="hll">    <span class="nx">i</span> <span class="p">=</span> <span class="nx">s</span>
-</span>    <span class="nx">i</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
-<span class="p">}</span>
-</pre></div>
-
-<p>输出</p>
-<div class="codehilite"><pre><span></span>7
-</pre></div>
-
-<p>上面<code>i = s</code>可以用3个维度来阐述：</p>
-<ul>
-<li>
-<p>assignment：赋值，将s赋值给i</p>
-</li>
-<li>
-<p>hold：存储的值，变量i hold s表示i存储的值是s</p>
-</li>
-<li>
-<p>item inside：和hold一样的意思（只不过主谓相反而已）比如item inside i中item表示s，因此可以理解为s inside i，即i包含了s</p>
-</li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>这3个维度的意思其实是一样的，在官方文档中可以看到交替出现</p>
-</div>
-<p>另外还有个单词implement：实现，由于*MyStruct拥有方法Add()，因此*MyStruct implement Adder接口（*MyStruct实现了Adder接口）</p>
-<h2 id="_3">学习反射前需要掌握的基础知识<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<hr />
-<h3 id="go"><strong>go语言是静态类型</strong><a class="headerlink" href="#go" title="Permanent link">&para;</a></h3>
-<p>切起：GO语言是静态类型语言，所有变量类型都是静态的：每个变量都有一个静态类型，每个变量的类型在编译时都是确定的，如int，float32, *MyType, []byte等等。包括接口变量本身也是静态类型，接口变量的类型就是其接口（可以理解为接口名）。比如：</p>
-<div class="codehilite"><pre><span></span>var r io.Reader
-r = os.Stdin
-r = bufio.NewReader(r)
-r = new(bytes.Buffer)
-</pre></div>
-
-<p>这里的r变量的类型始终是io.Reader</p>
-<p>即接口变量的类型始终这个接口类型 ，而不是实现了这个接口变量的某type，无论这个接口变量hold哪个type</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>目前还不找到办法查询到这个接口变量的类型，比如是io.Reader而不是io.Writer</p>
-</div>
-<h3 id="_4"><strong>基类型</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span>type MyInt int
-var i int
-var j MyInt
-</pre></div>
-
-<p>这里i和j是不同的静态类型，尽管都拥有相同的underlying type（基类型），他们互相之间如果不进行转换是不能互相赋值的</p>
-<h3 id="go_1"><strong>go接口类型</strong><a class="headerlink" href="#go_1" title="Permanent link">&para;</a></h3>
-<p>接口类型是十分重要的类型，接口变量可以存储任意的具体（除了接口）值，只要该值实现了接口的方法</p>
-<p>有一个非常重要的接口类型叫做empty interface，即空接口：interface{}</p>
-<p>有的人认为go接口是动态类型，这是错误的，go接口也是静态类型，go的类型都是静态</p>
-<p>要始终记住go是静态类型语言</p>
-<h2 id="_5"><strong>什么是反射</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<hr />
-<p>反射用于检查自身的结构，属于元程序编程</p>
-<p>每个语言的反射机制都是不同的，有的语言没有反射</p>
-<h2 id="go_2"><strong>go语言的反射</strong><a class="headerlink" href="#go_2" title="Permanent link">&para;</a></h2>
-<hr />
-<h3 id="go_3"><strong>go反射机制建立在类型系统之上</strong><a class="headerlink" href="#go_3" title="Permanent link">&para;</a></h3>
-<h3 id="_6"><strong>接口类型的变量存储了一对值</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>英文叫pair</p>
-<blockquote>
-<p>A variable of interface type stores a pair: the concrete value assigned to the variable, and that value's type descriptor. To be more precise, the value is the underlying concrete data item that implements the interface and the type describes the full type of that item.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span>(value, type)
-</pre></div>
-
-<p>可以理解为(该接口变量hold的变量的值,该接口变量hold的变量的类型)</p>
-<div class="admonition warning">
-<p class="admonition-title">type是concrete type</p>
-<p>接口变量逻辑上存储的值是(value, concrete type)而不是(value, interface type)，接口类型变量的值不能存储接口变量类型本身的类型。</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">不用太在意pair</p>
-<p>这个pair是底层的存储，是让人更加了解接口变量，实际使用的时候是不会看到的</p>
-</div>
-<p>例子</p>
-<div class="codehilite"><pre><span></span>var r io.Reader
-tty, err := os.OpenFile(&quot;/dev/tty&quot;, os.O_RDWR, 0) //tty的类型是*os.File，而*os.File拥有Read()方法，io.Reader的方法集就是Read()
-if err != nil {
-    return nil, err
-}
-r = tty //tty实现了接口r，或者叫做tty赋值给了接口r
-</pre></div>
-
-<p>这里的(value, type)是(tty, *os.File)</p>
+                
                 
                   
                 
@@ -1948,7 +1706,7 @@ r = tty //tty实现了接口r，或者叫做tty赋值给了接口r
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../make/" title="9. make" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../law1/" title="2. 反射机制1" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1957,19 +1715,19 @@ r = tty //tty实现了接口r，或者叫做tty赋值给了接口r
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                9. make
+                2. 反射机制1
               </span>
             </div>
           </a>
         
         
-          <a href="../../appendix/doc/" title="1. 文档" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../law3/" title="4. 反射机制3" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                1. 文档
+                4. 反射机制3
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
