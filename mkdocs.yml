@@ -138,8 +138,14 @@ pages:
             - 3.12. type switch: method/interface_typeswitch.md
             - 3.13. Stringer: method/interface_stringer.md
             - 3.14. 函数的传入传出参数来实现接口: method/interface_argv_interface.md
-            - 3.15. 用类型转换来实现接口: method/interface_convert.md
+            - 3.15. 实现接口的多种方法汇集: method/interface_implement_interface.md
             - 3.16. error: method/interface_error.md
+            - 3.17. 深入理解: method/interface_deep.md
+    - 七. 反射:
+        - 1. 什么是反射: reflect/main.md
+        - 2. 反射机制1: reflect/law1.md
+        - 3. 反射机制2: reflect/law2.md
+        - 4. 反射机制3: reflect/law3.md
     - 七. 其他:
         - 1. 字符串处理: other/string.md
         - 2. range: other/range.md
@@ -150,7 +156,6 @@ pages:
         - 7. 面向对象: other/oo.md
         - 8. nil: other/nil.md
         - 9. make: other/make.md
-        - 10. reflect反射: other/reflect.md
     - 八. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md
