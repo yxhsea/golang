@@ -38,7 +38,7 @@
     
     
       
-        <title>1. 什么是反射 - Go语言学习 - cyent笔记</title>
+        <title>1. 介绍 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                1. 什么是反射
+                1. 介绍
               </span>
             
           
@@ -1395,11 +1395,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="toc">
-        1. 什么是反射
+        1. 介绍
       </label>
     
-    <a href="./" title="1. 什么是反射" class="md-nav__link md-nav__link--active">
-      1. 什么是反射
+    <a href="./" title="1. 介绍" class="md-nav__link md-nav__link--active">
+      1. 介绍
     </a>
     
       
@@ -1424,26 +1424,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#go" title="go语言的反射" class="md-nav__link">
-    go语言的反射
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#go_1" title="go反射机制建立在类型系统之上" class="md-nav__link">
-    go反射机制建立在类型系统之上
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
       
       
     </ul>
@@ -1458,9 +1438,28 @@
           
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      2. reflect(反射包)
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        2. reflect(反射包)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
   <li class="md-nav__item">
-    <a href="../law1/" title="2. 反射机制1" class="md-nav__link">
-      2. 反射机制1
+    <a href="../pkg_type_value/" title="2.1. Type和Value" class="md-nav__link">
+      2.1. Type和Value
     </a>
   </li>
 
@@ -1471,8 +1470,25 @@
 
 
   <li class="md-nav__item">
-    <a href="../law2/" title="3. 反射机制2" class="md-nav__link">
-      3. 反射机制2
+    <a href="../pkg_typeof_valueof/" title="2.2. TypeOf()与ValueOf()" class="md-nav__link">
+      2.2. TypeOf()与ValueOf()
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../law1/" title="3. 法则1" class="md-nav__link">
+      3. 法则1
     </a>
   </li>
 
@@ -1483,8 +1499,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../law3/" title="4. 反射机制3" class="md-nav__link">
-      4. 反射机制3
+    <a href="../law2/" title="4. 法则2" class="md-nav__link">
+      4. 法则2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../law3/" title="5. 法则3" class="md-nav__link">
+      5. 法则3
     </a>
   </li>
 
@@ -1754,26 +1782,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#go" title="go语言的反射" class="md-nav__link">
-    go语言的反射
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#go_1" title="go反射机制建立在类型系统之上" class="md-nav__link">
-    go反射机制建立在类型系统之上
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
       
       
     </ul>
@@ -1791,7 +1799,7 @@
                   <a href="https://github.com/cyent/golang/edit/master/docs/reflect/main.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>1. 什么是反射</h1>
+                  <h1>1. 介绍</h1>
                 
                 <p>学习反射前必须要掌握的知识，详见<a href="../../method/interface_deep/">接口-深入理解</a></p>
 <h2 id="_1"><strong>官网文档地址</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
@@ -1802,9 +1810,7 @@
 <hr />
 <p>反射用于检查自身的结构，属于元程序编程</p>
 <p>每个语言的反射机制都是不同的，有的语言没有反射</p>
-<h2 id="go"><strong>go语言的反射</strong><a class="headerlink" href="#go" title="Permanent link">&para;</a></h2>
-<hr />
-<h3 id="go_1"><strong>go反射机制建立在类型系统之上</strong><a class="headerlink" href="#go_1" title="Permanent link">&para;</a></h3>
+<p><strong>go语言的反射机制建立在类型系统之上</strong></p>
                 
                   
                 
@@ -1838,13 +1844,13 @@
           </a>
         
         
-          <a href="../law1/" title="2. 反射机制1" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../pkg_type_value/" title="2.1. Type和Value" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                2. 反射机制1
+                2.1. Type和Value
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

@@ -1301,6 +1301,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" title="空接口承接指针变量" class="md-nav__link">
+    空接口承接指针变量
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -1429,8 +1436,39 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/main/" title="1. 什么是反射" class="md-nav__link">
-      1. 什么是反射
+    <a href="../../reflect/main/" title="1. 介绍" class="md-nav__link">
+      1. 介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      2. reflect(反射包)
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        2. reflect(反射包)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reflect/pkg_type_value/" title="2.1. Type和Value" class="md-nav__link">
+      2.1. Type和Value
     </a>
   </li>
 
@@ -1441,8 +1479,25 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/law1/" title="2. 反射机制1" class="md-nav__link">
-      2. 反射机制1
+    <a href="../../reflect/pkg_typeof_valueof/" title="2.2. TypeOf()与ValueOf()" class="md-nav__link">
+      2.2. TypeOf()与ValueOf()
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reflect/law1/" title="3. 法则1" class="md-nav__link">
+      3. 法则1
     </a>
   </li>
 
@@ -1453,8 +1508,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/law2/" title="3. 反射机制2" class="md-nav__link">
-      3. 反射机制2
+    <a href="../../reflect/law2/" title="4. 法则2" class="md-nav__link">
+      4. 法则2
     </a>
   </li>
 
@@ -1465,8 +1520,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/law3/" title="4. 反射机制3" class="md-nav__link">
-      4. 反射机制3
+    <a href="../../reflect/law3/" title="5. 法则3" class="md-nav__link">
+      5. 法则3
     </a>
   </li>
 
@@ -1736,6 +1791,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" title="空接口承接指针变量" class="md-nav__link">
+    空接口承接指针变量
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -1851,6 +1913,48 @@ func main() {
 <p>报错</p>
 <div class="codehilite"><pre><span></span>./example.go:11: cannot slice e (type interface {})
 </pre></div>
+
+<h2 id="_2"><strong>空接口承接指针变量</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<hr />
+<div class="codehilite"><pre><span></span>var empty interface{}
+empty = w
+</pre></div>
+
+<p>由于空接口一定能够承接成功，因此这里不需要类型断言</p>
+<p>下面这个例子是关于空接口承接了指针变量后如何获得承接的变量（指针）指向的值</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">10</span>
+    <span class="nx">p</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">a</span>
+    <span class="kd">var</span> <span class="nx">e</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">=</span> <span class="nx">p</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;p %T %v\n&quot;</span><span class="p">,</span> <span class="nx">p</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;*p %T %v\n&quot;</span><span class="p">,</span> <span class="o">*</span><span class="nx">p</span><span class="p">,</span> <span class="o">*</span><span class="nx">p</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;e %T %v\n&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;e.(*int) %T %v\n&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">.(</span><span class="o">*</span><span class="kt">int</span><span class="p">),</span> <span class="nx">e</span><span class="p">.(</span><span class="o">*</span><span class="kt">int</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;*e.(*int) %T %v\n&quot;</span><span class="p">,</span> <span class="o">*</span><span class="nx">e</span><span class="p">.(</span><span class="o">*</span><span class="kt">int</span><span class="p">),</span> <span class="o">*</span><span class="nx">e</span><span class="p">.(</span><span class="o">*</span><span class="kt">int</span><span class="p">))</span> <span class="c1">// *e.(*int)可以写为*(e.(*int))，前者是后者的简写方式</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>p *int 0xc42000e248
+*p int 10
+e *int 0xc42000e248
+e.(*int) *int 0xc42000e248
+*e.(*int) int 10
+</pre></div>
+
+<p>上面这个例子是空接口的时候用类型断言来获得指针指向的值</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>如果直接打印*e会报错</p>
+<div class="codehilite"><pre><span></span>invalid indirect of e (type interface {})
+</pre></div>
+
+</div>
                 
                   
                 

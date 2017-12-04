@@ -1485,8 +1485,39 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/main/" title="1. 什么是反射" class="md-nav__link">
-      1. 什么是反射
+    <a href="../../reflect/main/" title="1. 介绍" class="md-nav__link">
+      1. 介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      2. reflect(反射包)
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        2. reflect(反射包)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reflect/pkg_type_value/" title="2.1. Type和Value" class="md-nav__link">
+      2.1. Type和Value
     </a>
   </li>
 
@@ -1497,8 +1528,25 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/law1/" title="2. 反射机制1" class="md-nav__link">
-      2. 反射机制1
+    <a href="../../reflect/pkg_typeof_valueof/" title="2.2. TypeOf()与ValueOf()" class="md-nav__link">
+      2.2. TypeOf()与ValueOf()
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reflect/law1/" title="3. 法则1" class="md-nav__link">
+      3. 法则1
     </a>
   </li>
 
@@ -1509,8 +1557,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/law2/" title="3. 反射机制2" class="md-nav__link">
-      3. 反射机制2
+    <a href="../../reflect/law2/" title="4. 法则2" class="md-nav__link">
+      4. 法则2
     </a>
   </li>
 
@@ -1521,8 +1569,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/law3/" title="4. 反射机制3" class="md-nav__link">
-      4. 反射机制3
+    <a href="../../reflect/law3/" title="5. 法则3" class="md-nav__link">
+      5. 法则3
     </a>
   </li>
 
@@ -1974,6 +2022,7 @@ r = tty //tty实现了接口r，或者叫做tty赋值给了接口r
 <p>这里的(value, type)是(tty, *os.File)</p>
 <h2 id="_5"><strong>类型断言</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <hr />
+<p><a href="../../method/interface_assertion/#_2">点击查看</a></p>
 <h2 id="_6"><strong>:=</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <hr />
 <p>用短声明，将一个接口赋值给一个新变量，这个新变量则是一个接口类型的变量，而不是接口hold的变量类型，例如：</p>
@@ -2015,11 +2064,47 @@ b:  main.MyStruct {3 4} true
 
 <h2 id="_7"><strong>空接口</strong><a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <hr />
+<p><a href="../../method/interface_empty/#_2">点击查看</a></p>
 <h2 id="_8"><strong>值传递</strong><a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <hr />
+<p>需要注意：被接口承接的值是值传递，接口类型对内部值得存储是值传递，即一个变量赋值给了一个接口变量，如果改变了原始的变量，其由接口存储的值也不会改变。</p>
+<p>比如把变量A赋值给接口变量i后，变量A的值更改了，接口变量i的值不会改，因为这种承接是将变量A的值复制后赋值给接口。当然如果把指针赋值给接口，那是可以改的</p>
+<p>举例如下：</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">e1</span> <span class="kd">interface</span><span class="p">{}</span>
+    <span class="nx">s1</span> <span class="o">:=</span> <span class="nx">MyStruct</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+    <span class="nx">e1</span> <span class="p">=</span> <span class="nx">s1</span>
+    <span class="nx">s1</span><span class="p">.</span><span class="nx">X</span> <span class="p">=</span> <span class="mi">33</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;s1 %T %v\n&quot;</span><span class="p">,</span> <span class="nx">s1</span><span class="p">,</span> <span class="nx">s1</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;e1 %T %v\n&quot;</span><span class="p">,</span> <span class="nx">e1</span><span class="p">,</span> <span class="nx">e1</span><span class="p">)</span>
+
+    <span class="kd">var</span> <span class="nx">e2</span> <span class="kd">interface</span><span class="p">{}</span>
+    <span class="nx">s2</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">MyStruct</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+    <span class="nx">e2</span> <span class="p">=</span> <span class="nx">s2</span>
+    <span class="nx">s2</span><span class="p">.</span><span class="nx">X</span> <span class="p">=</span> <span class="mi">33</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;s2 %T %v\n&quot;</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s2</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;e2 %T %v\n&quot;</span><span class="p">,</span> <span class="nx">e2</span><span class="p">,</span> <span class="nx">e2</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>s1 main.MyStruct {33 4}
+e1 main.MyStruct {3 4}
+s2 *main.MyStruct &amp;{33 4}
+e2 *main.MyStruct &amp;{33 4}
+</pre></div>
+
 <h2 id="_9"><strong>进阶</strong><a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <hr />
-<p>详见 <a href="http://research.swtch.com/2009/12/go-data-structures-interfaces.html">http://research.swtch.com/2009/12/go-data-structures-interfaces.html</a></p>
+<p>详见: <a href="http://research.swtch.com/2009/12/go-data-structures-interfaces.html">http://research.swtch.com/2009/12/go-data-structures-interfaces.html</a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>可能需要科学上网才能看得到</p>
@@ -2057,13 +2142,13 @@ b:  main.MyStruct {3 4} true
           </a>
         
         
-          <a href="../../reflect/main/" title="1. 什么是反射" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../reflect/main/" title="1. 介绍" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                1. 什么是反射
+                1. 介绍
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

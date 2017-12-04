@@ -13,7 +13,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/golang/organization/importpath/">
+        <link rel="canonical" href="https://cyent.github.io/golang/reflect/pkg_type_value/">
       
       
         <meta name="author" content="cyent">
@@ -38,7 +38,7 @@
     
     
       
-        <title>3. import path - Go语言学习 - cyent笔记</title>
+        <title>2.1. Type和Value - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                3. import path
+                2.1. Type和Value
               </span>
             
           
@@ -225,12 +225,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       二. 代码组织
@@ -248,7 +246,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../workspace/" title="1. workspace" class="md-nav__link">
+    <a href="../../organization/workspace/" title="1. workspace" class="md-nav__link">
       1. workspace
     </a>
   </li>
@@ -260,7 +258,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../gopath/" title="2. GOPATH" class="md-nav__link">
+    <a href="../../organization/gopath/" title="2. GOPATH" class="md-nav__link">
       2. GOPATH
     </a>
   </li>
@@ -270,57 +268,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        3. import path
-      </label>
-    
-    <a href="./" title="3. import path" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../organization/importpath/" title="3. import path" class="md-nav__link">
       3. import path
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="简介" class="md-nav__link">
-    简介
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="组成" class="md-nav__link">
-    组成
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="例子" class="md-nav__link">
-    例子
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -330,7 +282,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../helloworld/" title="4. hello world" class="md-nav__link">
+    <a href="../../organization/helloworld/" title="4. hello world" class="md-nav__link">
       4. hello world
     </a>
   </li>
@@ -342,7 +294,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../firstlib/" title="5. 第一个library" class="md-nav__link">
+    <a href="../../organization/firstlib/" title="5. 第一个library" class="md-nav__link">
       5. 第一个library
     </a>
   </li>
@@ -354,7 +306,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../test/" title="6. 内置的轻量级测试框架" class="md-nav__link">
+    <a href="../../organization/test/" title="6. 内置的轻量级测试框架" class="md-nav__link">
       6. 内置的轻量级测试框架
     </a>
   </li>
@@ -1413,10 +1365,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
     
     <label class="md-nav__link" for="nav-7">
       七. 反射
@@ -1434,7 +1388,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/main/" title="1. 介绍" class="md-nav__link">
+    <a href="../main/" title="1. 介绍" class="md-nav__link">
       1. 介绍
     </a>
   </li>
@@ -1444,10 +1398,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2" checked>
     
     <label class="md-nav__link" for="nav-7-2">
       2. reflect(反射包)
@@ -1463,11 +1419,57 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../reflect/pkg_type_value/" title="2.1. Type和Value" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        2.1. Type和Value
+      </label>
+    
+    <a href="./" title="2.1. Type和Value" class="md-nav__link md-nav__link--active">
       2.1. Type和Value
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reflecttype" title="reflect.Type" class="md-nav__link">
+    reflect.Type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reflectvalue" title="reflect.Value" class="md-nav__link">
+    reflect.Value
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#string" title="String()" class="md-nav__link">
+    String()
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -1477,7 +1479,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/pkg_typeof_valueof/" title="2.2. TypeOf()与ValueOf()" class="md-nav__link">
+    <a href="../pkg_typeof_valueof/" title="2.2. TypeOf()与ValueOf()" class="md-nav__link">
       2.2. TypeOf()与ValueOf()
     </a>
   </li>
@@ -1494,7 +1496,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/law1/" title="3. 法则1" class="md-nav__link">
+    <a href="../law1/" title="3. 法则1" class="md-nav__link">
       3. 法则1
     </a>
   </li>
@@ -1506,7 +1508,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/law2/" title="4. 法则2" class="md-nav__link">
+    <a href="../law2/" title="4. 法则2" class="md-nav__link">
       4. 法则2
     </a>
   </li>
@@ -1518,7 +1520,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/law3/" title="5. 法则3" class="md-nav__link">
+    <a href="../law3/" title="5. 法则3" class="md-nav__link">
       5. 法则3
     </a>
   </li>
@@ -1776,22 +1778,22 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" title="简介" class="md-nav__link">
-    简介
+  <a href="#reflecttype" title="reflect.Type" class="md-nav__link">
+    reflect.Type
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" title="组成" class="md-nav__link">
-    组成
+  <a href="#reflectvalue" title="reflect.Value" class="md-nav__link">
+    reflect.Value
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" title="例子" class="md-nav__link">
-    例子
+  <a href="#string" title="String()" class="md-nav__link">
+    String()
   </a>
   
 </li>
@@ -1810,38 +1812,120 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cyent/golang/edit/master/docs/organization/importpath.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/cyent/golang/edit/master/docs/reflect/pkg_type_value.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>3. import path</h1>
+                  <h1>2.1. Type和Value</h1>
                 
-                <h2 id="_1"><strong>简介</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+                <h2 id="reflecttype"><strong>reflect.Type</strong><a class="headerlink" href="#reflecttype" title="Permanent link">&para;</a></h2>
 <hr />
-<p>一个import path（包路径）唯一标识一个package，一个package的import path相当于他所处于workspace中的相对路径。</p>
-<p>导入路径可以是本地也可以是在远程，比如开源代码通常放在github.com。当编译时候会自动将远程文件载到本地目录上进行读取</p>
-<h2 id="_2"><strong>组成</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<hr />
-<p>import path由base path和package path组成</p>
-<p>base path指repository路径，比如<code>github.com/cyent/golang/example</code>（对应本地workspace中的路径<code>$GOPATH/src/github.com/cyent/golang/example</code>）</p>
-<p>package path指具体包的路径，比如有个hello包，那么其import path就是github.com/cyent/golang/example/hello</p>
-<div class="admonition note">
-<p class="admonition-title">github.com也有类似workspace的概念，叫做Organizations</p>
-<p>比如在github上注册了一个账户叫做cyent（账户主页:<code>github.com/cyent</code>），之后创建的repo都可以放在这下面，比如<code>github.com/cyent/golang</code></p>
-<p>通常个人用户会像上面这么用，但是对于团队或者公司来说，cyent只是一个注册账号，不作为品牌推广，因此会用团队名，公司名，或产品系列名等，比如<code>github.com/mycompany</code>，这就是建立了一个organization，organization名字叫做mycompany，之后repo都放在这下面，比如<code>github.com/mycompany/myproduct</code></p>
-</div>
-<h2 id="_3"><strong>例子</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<hr />
-<p>举例说明：假设<code>GOPATH=/opt/cyent/golang</code>，那么本地目录结构:</p>
-<div class="codehilite"><pre><span></span>/opt/cyent/golang/src/
-    github.com/organization1/repo
-    github.com/organization2/repo
-    github.com/cyent/golang
+<p>reflect.Type：是一个interface，在go源码/src/reflect/type.go里定义：</p>
+<div class="codehilite"><pre><span></span>// Type is the representation of a Go type.
 </pre></div>
 
-<p>上面这种目录结构解读：
-<code>/opt/cyent/golang</code>是放置我的所有go代码的根路径</p>
-<p>其中我自己的代码在<code>/opt/cyent/golang/src/github.com/cyent/golang</code>下</p>
-<p><code>organization1/repo</code>和<code>organization2/repo</code>是我代码中会依赖的库（编译时候会自动载到本地来）</p>
+<h2 id="reflectvalue"><strong>reflect.Value</strong><a class="headerlink" href="#reflectvalue" title="Permanent link">&para;</a></h2>
+<hr />
+<p>reflect.Value：是一个struct，在go源码/src/reflect/value.go里定义：</p>
+<div class="codehilite"><pre><span></span>// Value is the reflection interface to a Go value.
+</pre></div>
+
+<h2 id="string"><strong>String()</strong><a class="headerlink" href="#string" title="Permanent link">&para;</a></h2>
+<hr />
+<ul>
+<li>
+<p>reflect.Type(实际是reflect.*rtype)的String()方法：将接口变量hold的变量的类型名转为字符串输出，即输出的变量是类型为string，值为hold的类型名</p>
+</li>
+<li>
+<p>reflect.Value的String()方法:</p>
+<ul>
+<li>
+<p>若hold的变量类型是string则输出值</p>
+</li>
+<li>
+<p>若hold的变量类型不是string则输出<code>&lt;接口hold的变量的类型名 Value&gt;</code></p>
+<details class="note"><summary>例子</summary><div class="codehilite"><pre><span></span>var x float64 = 3.4
+fmt.Println(&quot;value:&quot;, reflect.ValueOf(x).String())
+</pre></div>
+<p>输出</p><div class="codehilite"><pre><span></span>value: &lt;float64 Value&gt;
+</pre></div>
+</details><details class="note"><summary>附String()定义</summary><div class="codehilite"><pre><span></span><span class="c1">// String returns the string v&#39;s underlying value, as a string.</span>
+<span class="c1">// String is a special case because of Go&#39;s String method convention.</span>
+<span class="c1">// Unlike the other getters, it does not panic if v&#39;s Kind is not String.</span>
+<span class="c1">// Instead, it returns a string of the form &quot;&lt;T value&gt;&quot; where T is v&#39;s type.</span>
+<span class="c1">// The fmt package treats Values specially. It does not call their String</span>
+<span class="c1">// method implicitly but instead prints the concrete values they hold.</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">v</span> <span class="nx">Value</span><span class="p">)</span> <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="nx">k</span> <span class="o">:=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">kind</span><span class="p">();</span> <span class="nx">k</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">Invalid</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">&quot;&lt;invalid Value&gt;&quot;</span>
+    <span class="k">case</span> <span class="nx">String</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="kt">string</span><span class="p">)(</span><span class="nx">v</span><span class="p">.</span><span class="nx">ptr</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="c1">// If you call String on a reflect.Value of other type, it&#39;s better to</span>
+    <span class="c1">// print something than to panic. Useful in debugging.</span>
+    <span class="k">return</span> <span class="s">&quot;&lt;&quot;</span> <span class="o">+</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Type</span><span class="p">().</span><span class="nx">String</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; Value&gt;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</details><p>为什么要输出<code>&lt;接口hold的变量的类型名 Value&gt;</code>，是因为在go里非string类型无法转化为string，若直接panic又不太友好，同时为了便于调试，干脆就打印类型好了（即调用<code>.Type()</code>）</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>例子</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;reflect&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">Adder</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">Add</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="nx">MyStruct</span><span class="p">)</span> <span class="nx">Add</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">this</span><span class="p">.</span><span class="nx">X</span> <span class="o">+</span> <span class="nx">this</span><span class="p">.</span><span class="nx">Y</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">i</span> <span class="nx">Adder</span> <span class="p">=</span> <span class="nx">MyStruct</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+    <span class="nx">t1</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">TypeOf</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+    <span class="nx">v1</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+    <span class="nx">st1</span> <span class="o">:=</span> <span class="nx">t1</span><span class="p">.</span><span class="nx">String</span><span class="p">()</span>
+    <span class="nx">sv1</span> <span class="o">:=</span> <span class="nx">v1</span><span class="p">.</span><span class="nx">String</span><span class="p">()</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;i:\t%T\t%v\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;t1:\t%T\t%v\n&quot;</span><span class="p">,</span> <span class="nx">t1</span><span class="p">,</span> <span class="nx">t1</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;v1:\t%T\t%v\n&quot;</span><span class="p">,</span> <span class="nx">v1</span><span class="p">,</span> <span class="nx">v1</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;st1:\t%T\t\t%v\n&quot;</span><span class="p">,</span> <span class="nx">st1</span><span class="p">,</span> <span class="nx">st1</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;sv1:\t%T\t\t%v\n&quot;</span><span class="p">,</span> <span class="nx">sv1</span><span class="p">,</span> <span class="nx">sv1</span><span class="p">)</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;-----&quot;</span><span class="p">)</span>
+
+    <span class="kd">var</span> <span class="nx">e</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">=</span> <span class="s">&quot;hello, world&quot;</span>
+    <span class="nx">v2</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+    <span class="nx">sv2</span> <span class="o">:=</span> <span class="nx">v2</span><span class="p">.</span><span class="nx">String</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;e:\t%T\t\t%v\n&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;v2:\t%T\t%v\n&quot;</span><span class="p">,</span> <span class="nx">v2</span><span class="p">,</span> <span class="nx">v2</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;sv2:\t%T\t\t%v\n&quot;</span><span class="p">,</span> <span class="nx">sv2</span><span class="p">,</span> <span class="nx">sv2</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>i:      main.MyStruct   {3 4}
+t1:     *reflect.rtype  main.MyStruct
+v1:     reflect.Value   {3 4}
+st1:    string          main.MyStruct
+sv1:    string          &lt;main.MyStruct Value&gt;
+-----
+e:      string          hello, world
+v2:     reflect.Value   hello, world
+sv2:    string          hello, world
+</pre></div>
                 
                   
                 
@@ -1860,7 +1944,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../gopath/" title="2. GOPATH" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../main/" title="1. 介绍" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1869,19 +1953,19 @@
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                2. GOPATH
+                1. 介绍
               </span>
             </div>
           </a>
         
         
-          <a href="../helloworld/" title="4. hello world" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../pkg_typeof_valueof/" title="2.2. TypeOf()与ValueOf()" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                4. hello world
+                2.2. TypeOf()与ValueOf()
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

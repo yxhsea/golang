@@ -1283,9 +1283,48 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        3.11. 类型断言
+      </label>
+    
     <a href="./" title="3.11. 类型断言" class="md-nav__link md-nav__link--active">
       3.11. 类型断言
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="基础" class="md-nav__link">
+    基础
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="类型断言实现接口" class="md-nav__link">
+    类型断言实现接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="类型断言获得承接的指针变量指向的值" class="md-nav__link">
+    类型断言获得承接的指针变量指向的值
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -1397,8 +1436,39 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/main/" title="1. 什么是反射" class="md-nav__link">
-      1. 什么是反射
+    <a href="../../reflect/main/" title="1. 介绍" class="md-nav__link">
+      1. 介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      2. reflect(反射包)
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        2. reflect(反射包)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reflect/pkg_type_value/" title="2.1. Type和Value" class="md-nav__link">
+      2.1. Type和Value
     </a>
   </li>
 
@@ -1409,8 +1479,25 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/law1/" title="2. 反射机制1" class="md-nav__link">
-      2. 反射机制1
+    <a href="../../reflect/pkg_typeof_valueof/" title="2.2. TypeOf()与ValueOf()" class="md-nav__link">
+      2.2. TypeOf()与ValueOf()
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reflect/law1/" title="3. 法则1" class="md-nav__link">
+      3. 法则1
     </a>
   </li>
 
@@ -1421,8 +1508,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/law2/" title="3. 反射机制2" class="md-nav__link">
-      3. 反射机制2
+    <a href="../../reflect/law2/" title="4. 法则2" class="md-nav__link">
+      4. 法则2
     </a>
   </li>
 
@@ -1433,8 +1520,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/law3/" title="4. 反射机制3" class="md-nav__link">
-      4. 反射机制3
+    <a href="../../reflect/law3/" title="5. 法则3" class="md-nav__link">
+      5. 法则3
     </a>
   </li>
 
@@ -1679,6 +1766,47 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="基础" class="md-nav__link">
+    基础
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="类型断言实现接口" class="md-nav__link">
+    类型断言实现接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="类型断言获得承接的指针变量指向的值" class="md-nav__link">
+    类型断言获得承接的指针变量指向的值
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -1689,7 +1817,9 @@
                 
                   <h1>3.11. 类型断言</h1>
                 
-                <p>type assertions类型断言：</p>
+                <h2 id="_1"><strong>基础</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
+<p>type assertions类型断言：</p>
 <p>限制：<strong>只能用于interface的值</strong></p>
 <div class="codehilite"><pre><span></span>t := i.(T)
 </pre></div>
@@ -1791,6 +1921,14 @@ j: main.MyStruct {3 4}
 k: main.MyStruct {3 4}
 7
 </pre></div>
+
+<h2 id="_2"><strong>类型断言实现接口</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<hr />
+<p><a href="../../method/interface_implement_interface/#_5">点击查看</a></p>
+<h2 id="_3"><strong>类型断言获得承接的指针变量指向的值</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<hr />
+<p>空接口承接了指针变量后如何获得承接的变量（指针）指向的值</p>
+<p><a href="../../method/interface_empty/#_2">点击查看</a></p>
                 
                   
                 
