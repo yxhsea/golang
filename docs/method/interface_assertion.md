@@ -1,3 +1,7 @@
+## **基础**
+
+---
+
 type assertions类型断言：
 
 限制：**只能用于interface的值**
@@ -114,3 +118,17 @@ j: main.MyStruct {3 4}
 k: main.MyStruct {3 4}
 7
 ```
+
+## **类型断言实现接口**
+
+---
+
+[点击查看](/method/interface_implement_interface/#_5)
+
+## **类型断言获得承接的指针变量指向的值**
+
+---
+
+空接口承接了指针变量后如何获得承接的变量（指针）指向的值
+
+[点击查看](/method/interface_empty/#_2)

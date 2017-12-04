@@ -142,10 +142,13 @@ pages:
             - 3.16. error: method/interface_error.md
             - 3.17. 深入理解: method/interface_deep.md
     - 七. 反射:
-        - 1. 什么是反射: reflect/main.md
-        - 2. 反射机制1: reflect/law1.md
-        - 3. 反射机制2: reflect/law2.md
-        - 4. 反射机制3: reflect/law3.md
+        - 1. 介绍: reflect/main.md
+        - 2. reflect(反射包):
+            - 2.1. Type和Value: reflect/pkg_type_value.md
+            - 2.2. TypeOf()与ValueOf(): reflect/pkg_typeof_valueof.md
+        - 3. 法则1: reflect/law1.md
+        - 4. 法则2: reflect/law2.md
+        - 5. 法则3: reflect/law3.md
     - 七. 其他:
         - 1. 字符串处理: other/string.md
         - 2. range: other/range.md

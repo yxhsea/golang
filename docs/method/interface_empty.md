@@ -108,3 +108,53 @@ func main() {
 ```text
 ./example.go:11: cannot slice e (type interface {})
 ```
+
+## **空接口承接指针变量**
+
+---
+
+```text
+var empty interface{}
+empty = w
+```
+
+由于空接口一定能够承接成功，因此这里不需要类型断言
+
+下面这个例子是关于空接口承接了指针变量后如何获得承接的变量（指针）指向的值
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    var a int = 10
+    p := &a
+    var e interface{} = p
+
+    fmt.Printf("p %T %v\n", p, p)
+    fmt.Printf("*p %T %v\n", *p, *p)
+    fmt.Printf("e %T %v\n", e, e)
+    fmt.Printf("e.(*int) %T %v\n", e.(*int), e.(*int))
+    fmt.Printf("*e.(*int) %T %v\n", *e.(*int), *e.(*int)) // *e.(*int)可以写为*(e.(*int))，前者是后者的简写方式
+}
+```
+
+输出
+
+```text
+p *int 0xc42000e248
+*p int 10
+e *int 0xc42000e248
+e.(*int) *int 0xc42000e248
+*e.(*int) int 10
+```
+
+上面这个例子是空接口的时候用类型断言来获得指针指向的值
+
+!!! warning
+	如果直接打印*e会报错
+
+	```text
+	invalid indirect of e (type interface {})
+	```

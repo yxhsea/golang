@@ -129,6 +129,8 @@ r = tty //tty实现了接口r，或者叫做tty赋值给了接口r
 
 ---
 
+[点击查看](/method/interface_assertion/#_2)
+
 ## **:=**
 
 ---
@@ -178,15 +180,58 @@ b:	main.MyStruct {3 4} true
 
 ---
 
+[点击查看](/method/interface_empty/#_2)
+
 ## **值传递**
 
 ---
+
+需要注意：被接口承接的值是值传递，接口类型对内部值得存储是值传递，即一个变量赋值给了一个接口变量，如果改变了原始的变量，其由接口存储的值也不会改变。
+
+比如把变量A赋值给接口变量i后，变量A的值更改了，接口变量i的值不会改，因为这种承接是将变量A的值复制后赋值给接口。当然如果把指针赋值给接口，那是可以改的
+
+举例如下：
+
+```go
+package main
+
+import "fmt"
+
+type MyStruct struct {
+    X, Y int
+}
+
+func main() {
+    var e1 interface{}
+    s1 := MyStruct{3, 4}
+    e1 = s1
+    s1.X = 33
+    fmt.Printf("s1 %T %v\n", s1, s1)
+    fmt.Printf("e1 %T %v\n", e1, e1)
+
+    var e2 interface{}
+    s2 := &MyStruct{3, 4}
+    e2 = s2
+    s2.X = 33
+    fmt.Printf("s2 %T %v\n", s2, s2)
+    fmt.Printf("e2 %T %v\n", e2, e2)
+}
+```
+
+输出
+
+```text
+s1 main.MyStruct {33 4}
+e1 main.MyStruct {3 4}
+s2 *main.MyStruct &{33 4}
+e2 *main.MyStruct &{33 4}
+```
 
 ## **进阶**
 
 ---
 
-详见 http://research.swtch.com/2009/12/go-data-structures-interfaces.html
+详见: http://research.swtch.com/2009/12/go-data-structures-interfaces.html
 
 !!! note
 	可能需要科学上网才能看得到
