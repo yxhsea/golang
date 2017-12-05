@@ -34,7 +34,7 @@ Type和Value都有Kind()方法用来返回一个常量（Type和Value返回的�
 
 例如
 
-```text
+```go
 package main
 
 import (
@@ -58,6 +58,33 @@ int
 ```
 
 目前暂时没有找到办法获得中间类型
+
+Kind()方法返回的变量类型是reflect.Kind，值是
+.Kind()返回的变量类型是reflect.Kind，
+
+**Kind底层研究**
+
+```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+func main() {
+	var x float64 = 3.4
+	v := reflect.ValueOf(x)
+	fmt.Println(v.Kind() == reflect.Float64)
+}
+```
+??????????
+输出
+reflect.Uint、reflect.Struct这种的类型是reflect.Kind，而值就是uint、struct（不是字符串"uint"、"struct"，而是go的类型uint、struct）
+
+reflect.Kind支持String()，就是将对应的go类型转为字符串，比如
+reflect.Ptr.String() == "ptr"
+reflect.Ptr == k
 
 ??? note "附Kind()定义"
 	下面是Type和Value的Kind()方法中都有提及的核心部分（type Kind）
