@@ -1909,7 +1909,8 @@
                 
                   <h1>2.1. Type和Value</h1>
                 
-                <h2 id="reflecttype"><strong>reflect.Type</strong><a class="headerlink" href="#reflecttype" title="Permanent link">&para;</a></h2>
+                <p>reflect.Type和reflect.Value都有许多方法用来检验和操作它们</p>
+<h2 id="reflecttype"><strong>reflect.Type</strong><a class="headerlink" href="#reflecttype" title="Permanent link">&para;</a></h2>
 <hr />
 <p>reflect.Type：是一个interface，对应的struct是reflect.*rtype，在go源码/src/reflect/type.go里定义：</p>
 <div class="codehilite"><pre><span></span>// Type is the representation of a Go type.
@@ -1953,7 +1954,7 @@ func main() {
 <div class="codehilite"><pre><span></span>int
 </pre></div>
 
-<p>？？？如何获得中间类型？？？</p>
+<p>目前暂时没有找到办法获得中间类型</p>
 <details class="note"><summary>附Kind()定义</summary><p>下面是Type和Value的Kind()方法中都有提及的核心部分（type Kind）</p><div class="codehilite"><pre><span></span><span class="c1">// A Kind represents the specific kind of type that a Type represents.</span>
 <span class="c1">// The zero Kind is not a valid kind.</span>
 <span class="kd">type</span> <span class="nx">Kind</span> <span class="kt">uint</span>
