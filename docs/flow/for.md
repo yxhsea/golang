@@ -105,7 +105,7 @@ func main() {
 }
 ```
 
-点击查看[range详解](/other/range/)
+[详见range详解](/other/range/)
 
 ## **作用域**
 

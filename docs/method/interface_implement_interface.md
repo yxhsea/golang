@@ -39,13 +39,13 @@ i: main.MyStruct {3 4}
 
 ---
 
-[点击查看](/method/interface_argv_interface/#_1)
+[详见函数的传入参数实现接口](/method/interface_argv_interface/#_1)
 
 ## **函数传出参数实现接口**
 
 ---
 
-[点击查看](/method/interface_argv_interface/#_2)
+[详见函数的传出参数实现接口](/method/interface_argv_interface/#_2)
 
 ## **类型转换实现接口**
 

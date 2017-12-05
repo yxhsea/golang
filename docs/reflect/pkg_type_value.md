@@ -1,3 +1,5 @@
+reflect.Type和reflect.Value都有许多方法用来检验和操作它们
+
 ## **reflect.Type**
 
 ---
@@ -55,8 +57,7 @@ func main() {
 int
 ```
 
-
-？？？如何获得中间类型？？？
+目前暂时没有找到办法获得中间类型
 
 ??? note "附Kind()定义"
 	下面是Type和Value的Kind()方法中都有提及的核心部分（type Kind）

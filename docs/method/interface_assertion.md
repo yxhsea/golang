@@ -123,12 +123,10 @@ k: main.MyStruct {3 4}
 
 ---
 
-[点击查看](/method/interface_implement_interface/#_5)
+[详见各种实现章节](/method/interface_implement_interface/#_5)
 
 ## **类型断言获得承接的指针变量指向的值**
 
 ---
 
-空接口承接了指针变量后如何获得承接的变量（指针）指向的值
-
-[点击查看](/method/interface_empty/#_2)
+[详见空接口承接指针变量](/method/interface_empty/#_2)
