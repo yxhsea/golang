@@ -1934,20 +1934,20 @@
 <p>Type和Value都有Kind()方法用来返回一个常量（Type和Value返回的是相同的）</p>
 <p>这个常量指示了所hold的值是什么类型 <strong>（这个类型是最终类型，而不是中间类型）</strong></p>
 <p>例如</p>
-<div class="codehilite"><pre><span></span>package main
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
-import (
-    &quot;fmt&quot;
-    &quot;reflect&quot;
-)
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;reflect&quot;</span>
+<span class="p">)</span>
 
-type AInt int
-type BInt AInt
+<span class="kd">type</span> <span class="nx">AInt</span> <span class="kt">int</span>
+<span class="kd">type</span> <span class="nx">BInt</span> <span class="nx">AInt</span>
 
-func main() {
-    var e interface{} = BInt(10)
-    fmt.Println(reflect.TypeOf(e).Kind())
-}
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">e</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">=</span> <span class="nx">BInt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">reflect</span><span class="p">.</span><span class="nx">TypeOf</span><span class="p">(</span><span class="nx">e</span><span class="p">).</span><span class="nx">Kind</span><span class="p">())</span>
+<span class="p">}</span>
 </pre></div>
 
 <p>输出</p>
@@ -1955,6 +1955,28 @@ func main() {
 </pre></div>
 
 <p>目前暂时没有找到办法获得中间类型</p>
+<p>Kind()方法返回的变量类型是reflect.Kind，值是
+.Kind()返回的变量类型是reflect.Kind，</p>
+<p><strong>Kind底层研究</strong></p>
+<p><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;reflect&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">x</span> <span class="kt">float64</span> <span class="p">=</span> <span class="mf">3.4</span>
+    <span class="nx">v</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Kind</span><span class="p">()</span> <span class="o">==</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Float64</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+??????????
+输出
+reflect.Uint、reflect.Struct这种的类型是reflect.Kind，而值就是uint、struct（不是字符串"uint"、"struct"，而是go的类型uint、struct）</p>
+<p>reflect.Kind支持String()，就是将对应的go类型转为字符串，比如
+reflect.Ptr.String() == "ptr"
+reflect.Ptr == k</p>
 <details class="note"><summary>附Kind()定义</summary><p>下面是Type和Value的Kind()方法中都有提及的核心部分（type Kind）</p><div class="codehilite"><pre><span></span><span class="c1">// A Kind represents the specific kind of type that a Type represents.</span>
 <span class="c1">// The zero Kind is not a valid kind.</span>
 <span class="kd">type</span> <span class="nx">Kind</span> <span class="kt">uint</span>
