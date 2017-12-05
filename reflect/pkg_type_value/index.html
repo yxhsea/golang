@@ -1448,6 +1448,26 @@
     reflect.Type
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#string" title="String()" class="md-nav__link">
+    String()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kind" title="Kind()" class="md-nav__link">
+    Kind()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1455,12 +1475,32 @@
     reflect.Value
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#string" title="String()" class="md-nav__link">
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#string_1" title="String()" class="md-nav__link">
     String()
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kind_1" title="Kind()" class="md-nav__link">
+    Kind()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type" title="Type()" class="md-nav__link">
+    Type()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1481,6 +1521,18 @@
   <li class="md-nav__item">
     <a href="../pkg_typeof_valueof/" title="2.2. TypeOf()与ValueOf()" class="md-nav__link">
       2.2. TypeOf()与ValueOf()
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pkg_fmt/" title="2.3. fmt" class="md-nav__link">
+      2.3. fmt
     </a>
   </li>
 
@@ -1782,6 +1834,26 @@
     reflect.Type
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#string" title="String()" class="md-nav__link">
+    String()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kind" title="Kind()" class="md-nav__link">
+    Kind()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1789,12 +1861,32 @@
     reflect.Value
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#string" title="String()" class="md-nav__link">
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#string_1" title="String()" class="md-nav__link">
     String()
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kind_1" title="Kind()" class="md-nav__link">
+    Kind()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type" title="Type()" class="md-nav__link">
+    Type()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1819,23 +1911,90 @@
                 
                 <h2 id="reflecttype"><strong>reflect.Type</strong><a class="headerlink" href="#reflecttype" title="Permanent link">&para;</a></h2>
 <hr />
-<p>reflect.Type：是一个interface，在go源码/src/reflect/type.go里定义：</p>
+<p>reflect.Type：是一个interface，对应的struct是reflect.*rtype，在go源码/src/reflect/type.go里定义：</p>
 <div class="codehilite"><pre><span></span>// Type is the representation of a Go type.
 </pre></div>
 
-<h2 id="reflectvalue"><strong>reflect.Value</strong><a class="headerlink" href="#reflectvalue" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>本文提到的reflect.Type实际均是reflect.*rtype</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>这个reflect.Type是接口hold的变量的类型，而不是追根溯源的最底层类型。比如说</p>
+<div class="codehilite"><pre><span></span>type MyStruct struct {}
+</pre></div>
+
+<p>这里reflect.Type就是"MyStruct"，而非"struct"。如果想获得struct只能使用Kind()</p>
+</div>
+<h3 id="string"><strong>String()</strong><a class="headerlink" href="#string" title="Permanent link">&para;</a></h3>
+<p>reflect.Type(实际是reflect.*rtype)的String()方法：将接口变量hold的变量的类型名转为字符串输出，即输出的变量是类型为string，值为hold的类型名</p>
+<h3 id="kind"><strong>Kind()</strong><a class="headerlink" href="#kind" title="Permanent link">&para;</a></h3>
+<p>Type和Value都有Kind()方法用来返回一个常量（Type和Value返回的是相同的）</p>
+<p>这个常量指示了所hold的值是什么类型 <strong>（这个类型是最终类型，而不是中间类型）</strong></p>
+<p>例如</p>
+<div class="codehilite"><pre><span></span>package main
+
+import (
+    &quot;fmt&quot;
+    &quot;reflect&quot;
+)
+
+type AInt int
+type BInt AInt
+
+func main() {
+    var e interface{} = BInt(10)
+    fmt.Println(reflect.TypeOf(e).Kind())
+}
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>int
+</pre></div>
+
+<p>？？？如何获得中间类型？？？</p>
+<details class="note"><summary>附Kind()定义</summary><p>下面是Type和Value的Kind()方法中都有提及的核心部分（type Kind）</p><div class="codehilite"><pre><span></span><span class="c1">// A Kind represents the specific kind of type that a Type represents.</span>
+<span class="c1">// The zero Kind is not a valid kind.</span>
+<span class="kd">type</span> <span class="nx">Kind</span> <span class="kt">uint</span>
+
+<span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">Invalid</span> <span class="nx">Kind</span> <span class="p">=</span> <span class="kc">iota</span>
+    <span class="nx">Bool</span>
+    <span class="nx">Int</span>
+    <span class="nx">Int8</span>
+    <span class="nx">Int16</span>
+    <span class="nx">Int32</span>
+    <span class="nx">Int64</span>
+    <span class="nx">Uint</span>
+    <span class="nx">Uint8</span>
+    <span class="nx">Uint16</span>
+    <span class="nx">Uint32</span>
+    <span class="nx">Uint64</span>
+    <span class="nx">Uintptr</span>
+    <span class="nx">Float32</span>
+    <span class="nx">Float64</span>
+    <span class="nx">Complex64</span>
+    <span class="nx">Complex128</span>
+    <span class="nx">Array</span>
+    <span class="nx">Chan</span>
+    <span class="nx">Func</span>
+    <span class="nx">Interface</span>
+    <span class="nx">Map</span>
+    <span class="nx">Ptr</span>
+    <span class="nx">Slice</span>
+    <span class="nx">String</span>
+    <span class="nx">Struct</span>
+    <span class="nx">UnsafePointer</span>
+<span class="p">)</span>
+</pre></div>
+</details><h2 id="reflectvalue"><strong>reflect.Value</strong><a class="headerlink" href="#reflectvalue" title="Permanent link">&para;</a></h2>
 <hr />
 <p>reflect.Value：是一个struct，在go源码/src/reflect/value.go里定义：</p>
 <div class="codehilite"><pre><span></span>// Value is the reflection interface to a Go value.
 </pre></div>
 
-<h2 id="string"><strong>String()</strong><a class="headerlink" href="#string" title="Permanent link">&para;</a></h2>
-<hr />
-<ul>
-<li>
-<p>reflect.Type(实际是reflect.*rtype)的String()方法：将接口变量hold的变量的类型名转为字符串输出，即输出的变量是类型为string，值为hold的类型名</p>
-</li>
-<li>
+<h3 id="string_1"><strong>String()</strong><a class="headerlink" href="#string_1" title="Permanent link">&para;</a></h3>
 <p>reflect.Value的String()方法:</p>
 <ul>
 <li>
@@ -1869,9 +2028,7 @@ fmt.Println(&quot;value:&quot;, reflect.ValueOf(x).String())
 </details><p>为什么要输出<code>&lt;接口hold的变量的类型名 Value&gt;</code>，是因为在go里非string类型无法转化为string，若直接panic又不太友好，同时为了便于调试，干脆就打印类型好了（即调用<code>.Type()</code>）</p>
 </li>
 </ul>
-</li>
-</ul>
-<p>例子</p>
+<p><strong>String()例子，包含reflect.Type.String()和reflect.Value.String()</strong></p>
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
@@ -1925,6 +2082,32 @@ sv1:    string          &lt;main.MyStruct Value&gt;
 e:      string          hello, world
 v2:     reflect.Value   hello, world
 sv2:    string          hello, world
+</pre></div>
+
+<h3 id="kind_1"><strong>Kind()</strong><a class="headerlink" href="#kind_1" title="Permanent link">&para;</a></h3>
+<p><a href="../../reflect/pkg_type_value/#kind">同reflec.Type.Kind()</a></p>
+<h3 id="type"><strong>Type()</strong><a class="headerlink" href="#type" title="Permanent link">&para;</a></h3>
+<p>reflect.Value有Type()方法，用于得到reflect.Type</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;reflect&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">e</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">=</span> <span class="nx">MyStruct</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">e</span><span class="p">).</span><span class="nx">Type</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T %v\n&quot;</span><span class="p">,</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">t</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>*reflect.rtype main.MyStruct
 </pre></div>
                 
                   

@@ -13,7 +13,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/golang/basic/variable_declare/">
+        <link rel="canonical" href="https://cyent.github.io/golang/reflect/pkg_fmt/">
       
       
         <meta name="author" content="cyent">
@@ -38,7 +38,7 @@
     
     
       
-        <title>5.1. 声明 - Go语言学习 - cyent笔记</title>
+        <title>2.3. fmt - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                5.1. 声明
+                2.3. fmt
               </span>
             
           
@@ -321,12 +321,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
       三. 基础
@@ -344,7 +342,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../packages/" title="1. Packages" class="md-nav__link">
+    <a href="../../basic/packages/" title="1. Packages" class="md-nav__link">
       1. Packages
     </a>
   </li>
@@ -356,7 +354,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../imports/" title="2. Imports" class="md-nav__link">
+    <a href="../../basic/imports/" title="2. Imports" class="md-nav__link">
       2. Imports
     </a>
   </li>
@@ -368,7 +366,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../exportname/" title="3. 导出名" class="md-nav__link">
+    <a href="../../basic/exportname/" title="3. 导出名" class="md-nav__link">
       3. 导出名
     </a>
   </li>
@@ -380,7 +378,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../function/" title="4. 函数" class="md-nav__link">
+    <a href="../../basic/function/" title="4. 函数" class="md-nav__link">
       4. 函数
     </a>
   </li>
@@ -390,12 +388,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-5" type="checkbox" id="nav-3-5" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-5" type="checkbox" id="nav-3-5">
     
     <label class="md-nav__link" for="nav-3-5">
       5. 变量
@@ -411,50 +407,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        5.1. 声明
-      </label>
-    
-    <a href="./" title="5.1. 声明" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../basic/variable_declare/" title="5.1. 声明" class="md-nav__link">
       5.1. 声明
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#var" title="var" class="md-nav__link">
-    var
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title=":=" class="md-nav__link">
-    :=
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -464,7 +421,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../variable_affect/" title="5.2. 作用域" class="md-nav__link">
+    <a href="../../basic/variable_affect/" title="5.2. 作用域" class="md-nav__link">
       5.2. 作用域
     </a>
   </li>
@@ -481,7 +438,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../const/" title="6. 常量" class="md-nav__link">
+    <a href="../../basic/const/" title="6. 常量" class="md-nav__link">
       6. 常量
     </a>
   </li>
@@ -512,7 +469,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../type_main/" title="7.1. 介绍" class="md-nav__link">
+    <a href="../../basic/type_main/" title="7.1. 介绍" class="md-nav__link">
       7.1. 介绍
     </a>
   </li>
@@ -524,7 +481,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../type_default/" title="7.2. 默认值" class="md-nav__link">
+    <a href="../../basic/type_default/" title="7.2. 默认值" class="md-nav__link">
       7.2. 默认值
     </a>
   </li>
@@ -536,7 +493,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../type_change/" title="7.3. 类型转换" class="md-nav__link">
+    <a href="../../basic/type_change/" title="7.3. 类型转换" class="md-nav__link">
       7.3. 类型转换
     </a>
   </li>
@@ -548,7 +505,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../type_guess/" title="7.4. 类型推导" class="md-nav__link">
+    <a href="../../basic/type_guess/" title="7.4. 类型推导" class="md-nav__link">
       7.4. 类型推导
     </a>
   </li>
@@ -560,7 +517,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../type_custom/" title="7.5. 自定义类型" class="md-nav__link">
+    <a href="../../basic/type_custom/" title="7.5. 自定义类型" class="md-nav__link">
       7.5. 自定义类型
     </a>
   </li>
@@ -1408,10 +1365,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
     
     <label class="md-nav__link" for="nav-7">
       七. 反射
@@ -1429,7 +1388,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/main/" title="1. 介绍" class="md-nav__link">
+    <a href="../main/" title="1. 介绍" class="md-nav__link">
       1. 介绍
     </a>
   </li>
@@ -1439,10 +1398,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2" checked>
     
     <label class="md-nav__link" for="nav-7-2">
       2. reflect(反射包)
@@ -1460,7 +1421,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/pkg_type_value/" title="2.1. Type和Value" class="md-nav__link">
+    <a href="../pkg_type_value/" title="2.1. Type和Value" class="md-nav__link">
       2.1. Type和Value
     </a>
   </li>
@@ -1472,7 +1433,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/pkg_typeof_valueof/" title="2.2. TypeOf()与ValueOf()" class="md-nav__link">
+    <a href="../pkg_typeof_valueof/" title="2.2. TypeOf()与ValueOf()" class="md-nav__link">
       2.2. TypeOf()与ValueOf()
     </a>
   </li>
@@ -1482,11 +1443,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../reflect/pkg_fmt/" title="2.3. fmt" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="2.3. fmt" class="md-nav__link md-nav__link--active">
       2.3. fmt
     </a>
+    
   </li>
 
         
@@ -1501,7 +1469,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/law1/" title="3. 法则1" class="md-nav__link">
+    <a href="../law1/" title="3. 法则1" class="md-nav__link">
       3. 法则1
     </a>
   </li>
@@ -1513,7 +1481,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/law2/" title="4. 法则2" class="md-nav__link">
+    <a href="../law2/" title="4. 法则2" class="md-nav__link">
       4. 法则2
     </a>
   </li>
@@ -1525,7 +1493,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reflect/law3/" title="5. 法则3" class="md-nav__link">
+    <a href="../law3/" title="5. 法则3" class="md-nav__link">
       5. 法则3
     </a>
   </li>
@@ -1771,175 +1739,41 @@
               </div>
             
             
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#var" title="var" class="md-nav__link">
-    var
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title=":=" class="md-nav__link">
-    :=
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cyent/golang/edit/master/docs/basic/variable_declare.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/cyent/golang/edit/master/docs/reflect/pkg_fmt.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>5.1. 声明</h1>
+                  <h1>2.3. fmt</h1>
                 
-                <h2 id="var"><strong>var</strong><a class="headerlink" href="#var" title="Permanent link">&para;</a></h2>
-<hr />
-<p>变量声明用<code>var</code>关键字，可以用在函数级别，也可以用在包级别，比如</p>
-<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">python</span><span class="p">,</span> <span class="nx">java</span> <span class="kt">bool</span>    <span class="c1">//这个就是在包级别</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">i</span> <span class="kt">int</span>     <span class="c1">//这个就是在函数级别</span>
-<span class="p">}</span>
+                <p>fmt在打印变量值的时候（例如fmt.Println或者fmt.Printf的%v）是调用reflect.Value来打印内部的值（如果是接口变量，则是hold的变量的值）。举例如下：</p>
+<div class="codehilite"><pre><span></span>fmt.Println(reflect.ValueOf(x))
 </pre></div>
 
-<p>注意：</p>
-<p>var多个变量时不能为每个变量设定类型（无论类型是否相同，无论是否有带初始值）比如：</p>
-<table>
-<thead>
-<tr>
-<th align="left">语句</th>
-<th align="left">结果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">var i int, j int</td>
-<td align="left">报错</td>
-</tr>
-<tr>
-<td align="left">var i int, j int = 1, 2</td>
-<td align="left">报错</td>
-</tr>
-<tr>
-<td align="left">var i string, j int</td>
-<td align="left">报错</td>
-</tr>
-<tr>
-<td align="left">var i string, j int = "a", 1</td>
-<td align="left">报错</td>
-</tr>
-</tbody>
-</table>
-<p>var多个变量带初始值，如果类型不同，就不能指定变量类型，比如：</p>
-<table>
-<thead>
-<tr>
-<th align="left">语句</th>
-<th align="left">结果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">var i, j = "aa", 2</td>
-<td align="left">正确</td>
-</tr>
-<tr>
-<td align="left">var i, j int = "aa", 2</td>
-<td align="left">报错</td>
-</tr>
-</tbody>
-</table>
-<p>var是否跟类型（包括var单个变量或者var多个变量）：</p>
+<p>这个例子中有2次调用reflect：</p>
 <ol>
 <li>
-<p>跟类型：</p>
-<ol>
-<li>
-<p>带初始值: OK</p>
-<p>单个变量例子：<code class="codehilite"><span class="kd">var</span> <span class="nx">i</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">1</span></code></p>
-<p>多个变量例子：<code class="codehilite"><span class="kd">var</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span></code></p>
+<p>reflect.ValueOf(x)获得reflect.Value变量</p>
 </li>
 <li>
-<p>不带初始值: 根据类型自动设初始值，如int初始值为0，string初始值为""（空字符）</p>
-<p>单个变量例子：<code class="codehilite"><span class="kd">var</span> <span class="nx">i</span> <span class="kt">int</span></code>，则i为0</p>
-<p>多个变量例子：<code class="codehilite"><span class="kd">var</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span></code>，则i和j为0</p>
+<p>Println调用reflect.ValueOf()</p>
 </li>
 </ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>第二次调用reflect.ValueOf()是因为fmt对待reflect.Value和对待其他类型的变量是不一样的：</p>
+<ul>
+<li>
+<p>若是reflect.Value则没有调用要打印变量的String()方法，而是打印其hold的准确值</p>
 </li>
 <li>
-<p>不跟类型：</p>
-<ol>
-<li>
-<p>带初始值: 根据初始值自动判断类型，如1为int类型，"a"为string类型</p>
-<p>单个变量例子：<code class="codehilite"><span class="kd">var</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">1</span></code>，则i为int类型</p>
-<p>多个变量例子：</p>
-<ol>
-<li>
-<p><code class="codehilite"><span class="kd">var</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="p">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span></code>，则i和j为int类型</p>
+<p>若非reflect.Value，则先查找变量是否有Error()，如果没有再查找String()</p>
 </li>
-<li>
-<p><code class="codehilite"><span class="kd">var</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="p">=</span> <span class="kc">true</span><span class="p">,</span> <span class="s">&quot;a&quot;</span></code>，则i为bool类型，j为string类型</p>
-</li>
-</ol>
-</li>
-<li>
-<p>不带初始值: 报错</p>
-<p>单个变量例子：<code class="codehilite"><span class="kd">var</span> <span class="nx">i</span></code>，会报错</p>
-<p>多个变量例子：<code class="codehilite"><span class="kd">var</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span></code>，会报错</p>
-</li>
-</ol>
-</li>
-</ol>
-<p>也可以这么声明</p>
-<div class="codehilite"><pre><span></span>var (
-    A int = 100
-    B string
-)
-</pre></div>
-
-<div class="admonition warning">
-<p class="admonition-title">和const区别</p>
-<p>var可以不赋值（会自动赋值初始值），而const必须赋值</p>
+</ul>
 </div>
-<h2 id="_1"><strong>:=</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<hr />
-<p><code>:=</code>是短声明变量，也叫简洁赋值语句</p>
-<p>函数内，<code>:=</code> 用在明确类型的地方（但不能显式指定类型），可以用于替代<code>var</code>定义。</p>
-<p>函数外（即包级别）的每个语句都必须以关键字开始（<code>var</code>、<code>func</code>等），<code>:=</code> 不能使用在函数外，如：</p>
-<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">k</span> <span class="p">=</span> <span class="mi">3</span>   <span class="c1">//OK</span>
-<span class="nx">k</span> <span class="o">:=</span> <span class="mi">3</span>      <span class="c1">//报错</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">k</span> <span class="o">:=</span> <span class="mi">3</span>          <span class="c1">//OK</span>
-    <span class="kd">var</span> <span class="nx">k</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">3</span>   <span class="c1">//OK</span>
-    <span class="nx">k</span> <span class="kt">int</span> <span class="o">:=</span> <span class="mi">3</span>      <span class="c1">//报错</span>
-    <span class="kd">var</span> <span class="nx">k</span> <span class="o">:=</span> <span class="mi">3</span>      <span class="c1">//报错</span>
-    <span class="kd">var</span> <span class="nx">k</span> <span class="kt">int</span> <span class="o">:=</span> <span class="mi">3</span>  <span class="c1">//报错</span>
-<span class="p">}</span>
-</pre></div>
                 
                   
                 
@@ -1958,7 +1792,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../function/" title="4. 函数" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../pkg_typeof_valueof/" title="2.2. TypeOf()与ValueOf()" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1967,19 +1801,19 @@
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                4. 函数
+                2.2. TypeOf()与ValueOf()
               </span>
             </div>
           </a>
         
         
-          <a href="../variable_affect/" title="5.2. 作用域" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../law1/" title="3. 法则1" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                5.2. 作用域
+                3. 法则1
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
