@@ -1710,6 +1710,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/enum/" title="10. 枚举" class="md-nav__link">
+      10. 枚举
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1958,7 +1970,7 @@
 <p>Kind()方法返回的变量类型是reflect.Kind，值是
 .Kind()返回的变量类型是reflect.Kind，</p>
 <p><strong>Kind底层研究</strong></p>
-<p><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s">&quot;fmt&quot;</span>
@@ -1968,16 +1980,17 @@
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">x</span> <span class="kt">float64</span> <span class="p">=</span> <span class="mf">3.4</span>
     <span class="nx">v</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Kind</span><span class="p">()</span> <span class="o">==</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Float64</span><span class="p">)</span>
-<span class="p">}</span>
+<span class="hll">    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Kind</span><span class="p">()</span> <span class="o">==</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Float64</span><span class="p">)</span>
+</span><span class="p">}</span>
 </pre></div>
-??????????
-输出
-reflect.Uint、reflect.Struct这种的类型是reflect.Kind，而值就是uint、struct（不是字符串"uint"、"struct"，而是go的类型uint、struct）</p>
-<p>reflect.Kind支持String()，就是将对应的go类型转为字符串，比如
-reflect.Ptr.String() == "ptr"
-reflect.Ptr == k</p>
-<details class="note"><summary>附Kind()定义</summary><p>下面是Type和Value的Kind()方法中都有提及的核心部分（type Kind）</p><div class="codehilite"><pre><span></span><span class="c1">// A Kind represents the specific kind of type that a Type represents.</span>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>true
+</pre></div>
+
+<p>为什么Kind()可以等于reflect.Float64，是因为:</p>
+<p>Kind()返回的是Kind类型，这个Kind类型是reflect包里定义的一个uint的type</p>
+<details class="note"><summary>附Kind定义</summary><p>下面是Type和Value的Kind()方法中都有提及的核心部分（type Kind）</p><div class="codehilite"><pre><span></span><span class="c1">// A Kind represents the specific kind of type that a Type represents.</span>
 <span class="c1">// The zero Kind is not a valid kind.</span>
 <span class="kd">type</span> <span class="nx">Kind</span> <span class="kt">uint</span>
 
@@ -2011,7 +2024,11 @@ reflect.Ptr == k</p>
     <span class="nx">UnsafePointer</span>
 <span class="p">)</span>
 </pre></div>
-</details><h2 id="reflectvalue"><strong>reflect.Value</strong><a class="headerlink" href="#reflectvalue" title="Permanent link">&para;</a></h2>
+</details><p>reflect.Uint、reflect.Struct这种的类型是reflect.Kind，而值就是uint、struct（不是字符串"uint"、"struct"，而是go的类型uint、struct）</p>
+<p>reflect.Kind支持String()，就是将对应的go类型转为字符串，比如
+reflect.Ptr.String() == "ptr"
+reflect.Ptr == k</p>
+<h2 id="reflectvalue"><strong>reflect.Value</strong><a class="headerlink" href="#reflectvalue" title="Permanent link">&para;</a></h2>
 <hr />
 <p>reflect.Value：是一个struct，在go源码/src/reflect/value.go里定义：</p>
 <div class="codehilite"><pre><span></span>// Value is the reflection interface to a Go value.
