@@ -64,7 +64,7 @@ Kind()方法返回的变量类型是reflect.Kind，值是
 
 **Kind底层研究**
 
-```go
+```go hl_lines="11"
 package main
 
 import (
@@ -78,15 +78,18 @@ func main() {
 	fmt.Println(v.Kind() == reflect.Float64)
 }
 ```
-??????????
+
 输出
-reflect.Uint、reflect.Struct这种的类型是reflect.Kind，而值就是uint、struct（不是字符串"uint"、"struct"，而是go的类型uint、struct）
 
-reflect.Kind支持String()，就是将对应的go类型转为字符串，比如
-reflect.Ptr.String() == "ptr"
-reflect.Ptr == k
+```text
+true
+```
 
-??? note "附Kind()定义"
+为什么Kind()可以等于reflect.Float64，是因为:
+
+Kind()返回的是Kind类型，这个Kind类型是reflect包里定义的一个uint的type
+
+??? note "附Kind定义"
 	下面是Type和Value的Kind()方法中都有提及的核心部分（type Kind）
 
 	```go
@@ -124,6 +127,16 @@ reflect.Ptr == k
 	    UnsafePointer
 	)
 	```
+
+
+
+ reflect.Uint、reflect.Struct这种的类型是reflect.Kind，而值就是uint、struct（不是字符串"uint"、"struct"，而是go的类型uint、struct）
+
+reflect.Kind支持String()，就是将对应的go类型转为字符串，比如
+reflect.Ptr.String() == "ptr"
+reflect.Ptr == k
+
+
 
 ## **reflect.Value**
 
