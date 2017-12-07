@@ -1980,15 +1980,30 @@
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">x</span> <span class="kt">float64</span> <span class="p">=</span> <span class="mf">3.4</span>
     <span class="nx">v</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;v.Kind(): %T %v\n&quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Kind</span><span class="p">(),</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Kind</span><span class="p">())</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;reflect.Float64: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Float64</span><span class="p">,</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Float64</span><span class="p">)</span>
 <span class="hll">    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Kind</span><span class="p">()</span> <span class="o">==</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Float64</span><span class="p">)</span>
 </span><span class="p">}</span>
 </pre></div>
 
 <p>输出</p>
-<div class="codehilite"><pre><span></span>true
+<div class="codehilite"><pre><span></span>v.Kind(): reflect.Kind float64
+reflect.Float64: reflect.Kind float64
+true
 </pre></div>
 
-<p>为什么Kind()可以等于reflect.Float64，是因为:</p>
+<p>为什么Kind()可以等于reflect.Float64，是因为同时满足了2点：</p>
+<ol>
+<li>
+<p>Kind()返回的类型与reflect.Float64类型一致</p>
+</li>
+<li>
+<p>Kind()返回的值与reflect.Float64值一致</p>
+</li>
+</ol>
+<p>下面一一解答：</p>
+<ol>
+<li>
 <p>Kind()返回的是Kind类型，这个Kind类型是reflect包里定义的一个uint的type</p>
 <details class="note"><summary>附Kind定义</summary><p>下面是Type和Value的Kind()方法中都有提及的核心部分（type Kind）</p><div class="codehilite"><pre><span></span><span class="c1">// A Kind represents the specific kind of type that a Type represents.</span>
 <span class="c1">// The zero Kind is not a valid kind.</span>
@@ -2024,7 +2039,13 @@
     <span class="nx">UnsafePointer</span>
 <span class="p">)</span>
 </pre></div>
-</details><p>reflect.Uint、reflect.Struct这种的类型是reflect.Kind，而值就是uint、struct（不是字符串"uint"、"struct"，而是go的类型uint、struct）</p>
+<p>上面这个例子用到了类似枚举功能，详见<a href="../../other/enum/">枚举章节</a></p></details><p>其次，点击打开上面的"附Kind定义"可以看到：reflect.Float64的类型是reflect.Kind，其值是14(uint的14，从Invalid往下数第14个)。</p>
+<p>所以Kind()返回的类型与reflect.Float64类型一致</p>
+</li>
+<li>
+<p>?????????????</p>
+</li>
+</ol>
 <p>reflect.Kind支持String()，就是将对应的go类型转为字符串，比如
 reflect.Ptr.String() == "ptr"
 reflect.Ptr == k</p>
