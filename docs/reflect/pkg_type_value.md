@@ -64,7 +64,7 @@ Kind()方法返回的变量类型是reflect.Kind，值是
 
 **Kind底层研究**
 
-```go hl_lines="11"
+```go hl_lines="13"
 package main
 
 import (
@@ -75,6 +75,8 @@ import (
 func main() {
 	var x float64 = 3.4
 	v := reflect.ValueOf(x)
+	fmt.Printf("v.Kind(): %T %v\n", v.Kind(), v.Kind())
+	fmt.Printf("reflect.Float64: %T %v\n", reflect.Float64, reflect.Float64)
 	fmt.Println(v.Kind() == reflect.Float64)
 }
 ```
@@ -82,55 +84,68 @@ func main() {
 输出
 
 ```text
+v.Kind(): reflect.Kind float64
+reflect.Float64: reflect.Kind float64
 true
 ```
 
-为什么Kind()可以等于reflect.Float64，是因为:
+为什么Kind()可以等于reflect.Float64，是因为同时满足了2点：
 
-Kind()返回的是Kind类型，这个Kind类型是reflect包里定义的一个uint的type
+1. Kind()返回的类型与reflect.Float64类型一致
 
-??? note "附Kind定义"
-	下面是Type和Value的Kind()方法中都有提及的核心部分（type Kind）
+2. Kind()返回的值与reflect.Float64值一致
 
-	```go
-	// A Kind represents the specific kind of type that a Type represents.
-	// The zero Kind is not a valid kind.
-	type Kind uint
+下面一一解答：
 
-	const (
-	    Invalid Kind = iota
-	    Bool
-	    Int
-	    Int8
-	    Int16
-	    Int32
-	    Int64
-	    Uint
-	    Uint8
-	    Uint16
-	    Uint32
-	    Uint64
-	    Uintptr
-	    Float32
-	    Float64
-	    Complex64
-	    Complex128
-	    Array
-	    Chan
-	    Func
-	    Interface
-	    Map
-	    Ptr
-	    Slice
-	    String
-	    Struct
-	    UnsafePointer
-	)
-	```
+1. Kind()返回的是Kind类型，这个Kind类型是reflect包里定义的一个uint的type
 
+	??? note "附Kind定义"
+		下面是Type和Value的Kind()方法中都有提及的核心部分（type Kind）
 
+		```go
+		// A Kind represents the specific kind of type that a Type represents.
+		// The zero Kind is not a valid kind.
+		type Kind uint
 
- reflect.Uint、reflect.Struct这种的类型是reflect.Kind，而值就是uint、struct（不是字符串"uint"、"struct"，而是go的类型uint、struct）
+		const (
+		    Invalid Kind = iota
+		    Bool
+		    Int
+		    Int8
+		    Int16
+		    Int32
+		    Int64
+		    Uint
+		    Uint8
+		    Uint16
+		    Uint32
+		    Uint64
+		    Uintptr
+		    Float32
+		    Float64
+		    Complex64
+		    Complex128
+		    Array
+		    Chan
+		    Func
+		    Interface
+		    Map
+		    Ptr
+		    Slice
+		    String
+		    Struct
+		    UnsafePointer
+		)
+		```
+
+		上面这个例子用到了类似枚举功能，详见[枚举章节](/other/enum/)
+
+	其次，点击打开上面的"附Kind定义"可以看到：reflect.Float64的类型是reflect.Kind，其值是14(uint的14，从Invalid往下数第14个)。
+
+	所以Kind()返回的类型与reflect.Float64类型一致
+
+2. ?????????????
+
 
 reflect.Kind支持String()，就是将对应的go类型转为字符串，比如
 reflect.Ptr.String() == "ptr"
