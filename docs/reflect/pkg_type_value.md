@@ -78,6 +78,7 @@ func main() {
 	fmt.Printf("v.Kind(): %T %v\n", v.Kind(), v.Kind())
 	fmt.Printf("reflect.Float64: %T %v\n", reflect.Float64, reflect.Float64)
 	fmt.Println(v.Kind() == reflect.Float64)
+	fmt.Println(v.Kind().String() == "float64")
 }
 ```
 
@@ -86,6 +87,7 @@ func main() {
 ```text
 v.Kind(): reflect.Kind float64
 reflect.Float64: reflect.Kind float64
+true
 true
 ```
 
@@ -100,7 +102,7 @@ true
 1. Kind()返回的是Kind类型，这个Kind类型是reflect包里定义的一个uint的type
 
 	??? note "附Kind定义"
-		下面是Type和Value的Kind()方法中都有提及的核心部分（type Kind）
+		type Kind是在Type和Value的Kind()方法中都有提及的核心部分
 
 		```go
 		// A Kind represents the specific kind of type that a Type represents.
@@ -136,22 +138,61 @@ true
 		    Struct
 		    UnsafePointer
 		)
+
+		func (k Kind) String() string {
+			if int(k) < len(kindNames) {
+				return kindNames[k]
+			}
+			return "kind" + strconv.Itoa(int(k))
+		}
+
+		var kindNames = []string{
+			Invalid:       "invalid",
+			Bool:          "bool",
+			Int:           "int",
+			Int8:          "int8",
+			Int16:         "int16",
+			Int32:         "int32",
+			Int64:         "int64",
+			Uint:          "uint",
+			Uint8:         "uint8",
+			Uint16:        "uint16",
+			Uint32:        "uint32",
+			Uint64:        "uint64",
+			Uintptr:       "uintptr",
+			Float32:       "float32",
+			Float64:       "float64",
+			Complex64:     "complex64",
+			Complex128:    "complex128",
+			Array:         "array",
+			Chan:          "chan",
+			Func:          "func",
+			Interface:     "interface",
+			Map:           "map",
+			Ptr:           "ptr",
+			Slice:         "slice",
+			String:        "string",
+			Struct:        "struct",
+			UnsafePointer: "unsafe.Pointer",
+		}
 		```
 
-		上面这个例子用到了类似枚举功能，详见[枚举章节](/other/enum/)
+		上面这个例子const部分用到了类似枚举功能，详见[枚举章节](/other/enum/)
+
+		注意：上面reflect.Uint、reflect.Struct这种的类型是reflect.Kind，而值就是uint、struct（不是字符串"uint"、"struct"，而是go的类型uint、struct）
 
 	其次，点击打开上面的"附Kind定义"可以看到：reflect.Float64的类型是reflect.Kind，其值是14(uint的14，从Invalid往下数第14个)。
 
 	所以Kind()返回的类型与reflect.Float64类型一致
 
-2. ?????????????
+2. Kind()返回的值实际是uint数字，例子中为14（reflect.Float64），reflect.Float64返回的值也是uint数字，也为14，所以是相等的，为true
 
+	!!! note
+		fmt打印Kind值的时候，调用了Kind的String()方法，因此打印出"float64"而不是数字14
 
-reflect.Kind支持String()，就是将对应的go类型转为字符串，比如
-reflect.Ptr.String() == "ptr"
-reflect.Ptr == k
+		因此`v.Kind().String() == "float64"`也为true
 
-
+		**因此今后如果要查询一个变量的最终类型，可以v.Kind()，如果想获得类型的字符串形式，就v.Kind().String**
 
 ## **reflect.Value**
 
