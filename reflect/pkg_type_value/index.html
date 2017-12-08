@@ -1983,12 +1983,14 @@
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;v.Kind(): %T %v\n&quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Kind</span><span class="p">(),</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Kind</span><span class="p">())</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;reflect.Float64: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Float64</span><span class="p">,</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Float64</span><span class="p">)</span>
 <span class="hll">    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Kind</span><span class="p">()</span> <span class="o">==</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Float64</span><span class="p">)</span>
-</span><span class="p">}</span>
+</span>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Kind</span><span class="p">().</span><span class="nx">String</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;float64&quot;</span><span class="p">)</span>
+<span class="p">}</span>
 </pre></div>
 
 <p>输出</p>
 <div class="codehilite"><pre><span></span>v.Kind(): reflect.Kind float64
 reflect.Float64: reflect.Kind float64
+true
 true
 </pre></div>
 
@@ -2005,7 +2007,7 @@ true
 <ol>
 <li>
 <p>Kind()返回的是Kind类型，这个Kind类型是reflect包里定义的一个uint的type</p>
-<details class="note"><summary>附Kind定义</summary><p>下面是Type和Value的Kind()方法中都有提及的核心部分（type Kind）</p><div class="codehilite"><pre><span></span><span class="c1">// A Kind represents the specific kind of type that a Type represents.</span>
+<details class="note"><summary>附Kind定义</summary><p>type Kind是在Type和Value的Kind()方法中都有提及的核心部分</p><div class="codehilite"><pre><span></span><span class="c1">// A Kind represents the specific kind of type that a Type represents.</span>
 <span class="c1">// The zero Kind is not a valid kind.</span>
 <span class="kd">type</span> <span class="nx">Kind</span> <span class="kt">uint</span>
 
@@ -2038,17 +2040,57 @@ true
     <span class="nx">Struct</span>
     <span class="nx">UnsafePointer</span>
 <span class="p">)</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">k</span> <span class="nx">Kind</span><span class="p">)</span> <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">kindNames</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">kindNames</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="s">&quot;kind&quot;</span> <span class="o">+</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Itoa</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nx">k</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">kindNames</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span>
+    <span class="nx">Invalid</span><span class="p">:</span>       <span class="s">&quot;invalid&quot;</span><span class="p">,</span>
+    <span class="nx">Bool</span><span class="p">:</span>          <span class="s">&quot;bool&quot;</span><span class="p">,</span>
+    <span class="nx">Int</span><span class="p">:</span>           <span class="s">&quot;int&quot;</span><span class="p">,</span>
+    <span class="nx">Int8</span><span class="p">:</span>          <span class="s">&quot;int8&quot;</span><span class="p">,</span>
+    <span class="nx">Int16</span><span class="p">:</span>         <span class="s">&quot;int16&quot;</span><span class="p">,</span>
+    <span class="nx">Int32</span><span class="p">:</span>         <span class="s">&quot;int32&quot;</span><span class="p">,</span>
+    <span class="nx">Int64</span><span class="p">:</span>         <span class="s">&quot;int64&quot;</span><span class="p">,</span>
+    <span class="nx">Uint</span><span class="p">:</span>          <span class="s">&quot;uint&quot;</span><span class="p">,</span>
+    <span class="nx">Uint8</span><span class="p">:</span>         <span class="s">&quot;uint8&quot;</span><span class="p">,</span>
+    <span class="nx">Uint16</span><span class="p">:</span>        <span class="s">&quot;uint16&quot;</span><span class="p">,</span>
+    <span class="nx">Uint32</span><span class="p">:</span>        <span class="s">&quot;uint32&quot;</span><span class="p">,</span>
+    <span class="nx">Uint64</span><span class="p">:</span>        <span class="s">&quot;uint64&quot;</span><span class="p">,</span>
+    <span class="nx">Uintptr</span><span class="p">:</span>       <span class="s">&quot;uintptr&quot;</span><span class="p">,</span>
+    <span class="nx">Float32</span><span class="p">:</span>       <span class="s">&quot;float32&quot;</span><span class="p">,</span>
+    <span class="nx">Float64</span><span class="p">:</span>       <span class="s">&quot;float64&quot;</span><span class="p">,</span>
+    <span class="nx">Complex64</span><span class="p">:</span>     <span class="s">&quot;complex64&quot;</span><span class="p">,</span>
+    <span class="nx">Complex128</span><span class="p">:</span>    <span class="s">&quot;complex128&quot;</span><span class="p">,</span>
+    <span class="nx">Array</span><span class="p">:</span>         <span class="s">&quot;array&quot;</span><span class="p">,</span>
+    <span class="nx">Chan</span><span class="p">:</span>          <span class="s">&quot;chan&quot;</span><span class="p">,</span>
+    <span class="nx">Func</span><span class="p">:</span>          <span class="s">&quot;func&quot;</span><span class="p">,</span>
+    <span class="nx">Interface</span><span class="p">:</span>     <span class="s">&quot;interface&quot;</span><span class="p">,</span>
+    <span class="nx">Map</span><span class="p">:</span>           <span class="s">&quot;map&quot;</span><span class="p">,</span>
+    <span class="nx">Ptr</span><span class="p">:</span>           <span class="s">&quot;ptr&quot;</span><span class="p">,</span>
+    <span class="nx">Slice</span><span class="p">:</span>         <span class="s">&quot;slice&quot;</span><span class="p">,</span>
+    <span class="nx">String</span><span class="p">:</span>        <span class="s">&quot;string&quot;</span><span class="p">,</span>
+    <span class="nx">Struct</span><span class="p">:</span>        <span class="s">&quot;struct&quot;</span><span class="p">,</span>
+    <span class="nx">UnsafePointer</span><span class="p">:</span> <span class="s">&quot;unsafe.Pointer&quot;</span><span class="p">,</span>
+<span class="p">}</span>
 </pre></div>
-<p>上面这个例子用到了类似枚举功能，详见<a href="../../other/enum/">枚举章节</a></p></details><p>其次，点击打开上面的"附Kind定义"可以看到：reflect.Float64的类型是reflect.Kind，其值是14(uint的14，从Invalid往下数第14个)。</p>
+<p>上面这个例子const部分用到了类似枚举功能，详见<a href="../../other/enum/">枚举章节</a></p><p>注意：上面reflect.Uint、reflect.Struct这种的类型是reflect.Kind，而值就是uint、struct（不是字符串"uint"、"struct"，而是go的类型uint、struct）</p></details><p>其次，点击打开上面的"附Kind定义"可以看到：reflect.Float64的类型是reflect.Kind，其值是14(uint的14，从Invalid往下数第14个)。</p>
 <p>所以Kind()返回的类型与reflect.Float64类型一致</p>
 </li>
 <li>
-<p>?????????????</p>
+<p>Kind()返回的值实际是uint数字，例子中为14（reflect.Float64），reflect.Float64返回的值也是uint数字，也为14，所以是相等的，为true</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>fmt打印Kind值的时候，调用了Kind的String()方法，因此打印出"float64"而不是数字14</p>
+<p>因此<code>v.Kind().String() == &quot;float64&quot;</code>也为true</p>
+<p><strong>因此今后如果要查询一个变量的最终类型，可以v.Kind()，如果想获得类型的字符串形式，就v.Kind().String</strong></p>
+</div>
 </li>
 </ol>
-<p>reflect.Kind支持String()，就是将对应的go类型转为字符串，比如
-reflect.Ptr.String() == "ptr"
-reflect.Ptr == k</p>
 <h2 id="reflectvalue"><strong>reflect.Value</strong><a class="headerlink" href="#reflectvalue" title="Permanent link">&para;</a></h2>
 <hr />
 <p>reflect.Value：是一个struct，在go源码/src/reflect/value.go里定义：</p>
