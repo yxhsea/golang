@@ -57,10 +57,10 @@ func main() {
 int
 ```
 
-目前暂时没有找到办法获得中间类型
+!!! note
+	目前暂时没有找到办法获得中间类型
 
-Kind()方法返回的变量类型是reflect.Kind，值是
-.Kind()返回的变量类型是reflect.Kind，
+Kind()方法返回的变量类型是reflect.Kind，其值是uint类型的数字，每个数字表示一种go内置类型
 
 **Kind底层研究**
 
@@ -204,7 +204,42 @@ reflect.Value：是一个struct，在go源码/src/reflect/value.go里定义：
 // Value is the reflection interface to a Go value.
 ```
 
-### **String()**
+### **Kind()**
+
+[同reflec.Type.Kind()](/reflect/pkg_type_value/#kind)
+
+### **Type()**
+
+reflect.Value有Type()方法，用于得到reflect.Type
+
+```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+type MyStruct struct {
+	X, Y int
+}
+
+func main() {
+	var e interface{} = MyStruct{3, 4}
+	t := reflect.ValueOf(e).Type()
+	fmt.Printf("%T %v\n", t, t)
+}
+```
+
+输出
+
+```text
+*reflect.rtype main.MyStruct
+```
+
+### **获得值**
+
+#### **String()**
 
 reflect.Value的String()方法:
 
@@ -307,35 +342,66 @@ v2:		reflect.Value	hello, world
 sv2:	string			hello, world
 ```
 
-### **Kind()**
+#### **Int()、Float()**
 
-[同reflec.Type.Kind()](/reflect/pkg_type_value/#kind)
+Value类型变量还拥有一些名如Int和Float的方法用来获取内部存储的值
 
-### **Type()**
+!!! warning
+	返回的是int64类型以及float64类型的变量，而不是int8、float32
 
-reflect.Value有Type()方法，用于得到reflect.Type
+有符号整型为何只有Int()，而没有Int8()、Int32()，是为了保持API的简洁性，获得值和设置值的方法有一定的简化考虑，用最大的类型来包含相关类型，以便存储值。例如使用int64来表示所有有符号整型（int64最大，存储的值能涵盖int8、int16、int32），而Int()是Value获得有符号整型方法，返回的也是int64
 
 ```go
 package main
 
 import (
-	"fmt"
 	"reflect"
+	"fmt"
 )
 
-type MyStruct struct {
-	X, Y int
-}
-
 func main() {
-	var e interface{} = MyStruct{3, 4}
-	t := reflect.ValueOf(e).Type()
-	fmt.Printf("%T %v\n", t, t)
+	var f32 float32 = 3.4
+	fmt.Println(f32)
+	vf32 := reflect.ValueOf(f32)
+	fmt.Printf("%T %v\n", vf32.Float(), vf32.Float())
+
+	fmt.Println("-----")
+
+	var f64 float64 = 3.4
+	fmt.Println(f64)
+	vf64 := reflect.ValueOf(f64)
+	fmt.Printf("%T %v\n", vf64.Float(), vf64.Float())
+
+	fmt.Println("=====")
+
+	var i8 int8 = 10
+	fmt.Println(i8)
+	vi8 := reflect.ValueOf(i8)
+	fmt.Printf("%T %v\n", vi8.Int(), vi8.Int())
+
+	fmt.Println("-----")
+
+	var i64 int64 = 10
+	fmt.Println(i64)
+	vi64 := reflect.ValueOf(i64)
+	fmt.Printf("%T %v\n", vi64.Int(), vi64.Int())
 }
 ```
 
 输出
 
 ```text
-*reflect.rtype main.MyStruct
+3.4
+float64 3.4000000953674316
+-----
+3.4
+float64 3.4
+=====
+10
+int64 10
+-----
+10
+int64 10
 ```
+
+若将int64类型用Float()方法打印会报错，同样，float64用Int()打印也会报错，不过有一个特殊的，就是上面提到的String()，按理来说应该也会报错，但这样意义不大，还不如输出点什么有意义的，便于调试，于是就输出`<float64 Value>`好了
