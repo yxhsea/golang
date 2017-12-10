@@ -1479,13 +1479,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#string_1" title="String()" class="md-nav__link">
-    String()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#kind_1" title="Kind()" class="md-nav__link">
     Kind()
   </a>
@@ -1496,6 +1489,33 @@
   <a href="#type" title="Type()" class="md-nav__link">
     Type()
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" title="获得值" class="md-nav__link">
+    获得值
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#string_1" title="String()" class="md-nav__link">
+    String()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intfloat" title="Int()、Float()" class="md-nav__link">
+    Int()、Float()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1877,13 +1897,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#string_1" title="String()" class="md-nav__link">
-    String()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#kind_1" title="Kind()" class="md-nav__link">
     Kind()
   </a>
@@ -1894,6 +1907,33 @@
   <a href="#type" title="Type()" class="md-nav__link">
     Type()
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" title="获得值" class="md-nav__link">
+    获得值
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#string_1" title="String()" class="md-nav__link">
+    String()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intfloat" title="Int()、Float()" class="md-nav__link">
+    Int()、Float()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1966,9 +2006,11 @@
 <div class="codehilite"><pre><span></span>int
 </pre></div>
 
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>目前暂时没有找到办法获得中间类型</p>
-<p>Kind()方法返回的变量类型是reflect.Kind，值是
-.Kind()返回的变量类型是reflect.Kind，</p>
+</div>
+<p>Kind()方法返回的变量类型是reflect.Kind，其值是uint类型的数字，每个数字表示一种go内置类型</p>
 <p><strong>Kind底层研究</strong></p>
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
@@ -2097,7 +2139,34 @@ true
 <div class="codehilite"><pre><span></span>// Value is the reflection interface to a Go value.
 </pre></div>
 
-<h3 id="string_1"><strong>String()</strong><a class="headerlink" href="#string_1" title="Permanent link">&para;</a></h3>
+<h3 id="kind_1"><strong>Kind()</strong><a class="headerlink" href="#kind_1" title="Permanent link">&para;</a></h3>
+<p><a href="../../reflect/pkg_type_value/#kind">同reflec.Type.Kind()</a></p>
+<h3 id="type"><strong>Type()</strong><a class="headerlink" href="#type" title="Permanent link">&para;</a></h3>
+<p>reflect.Value有Type()方法，用于得到reflect.Type</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;reflect&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">e</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">=</span> <span class="nx">MyStruct</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">e</span><span class="p">).</span><span class="nx">Type</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T %v\n&quot;</span><span class="p">,</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">t</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>*reflect.rtype main.MyStruct
+</pre></div>
+
+<h3 id="_1"><strong>获得值</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h4 id="string_1"><strong>String()</strong><a class="headerlink" href="#string_1" title="Permanent link">&para;</a></h4>
 <p>reflect.Value的String()方法:</p>
 <ul>
 <li>
@@ -2187,31 +2256,64 @@ v2:     reflect.Value   hello, world
 sv2:    string          hello, world
 </pre></div>
 
-<h3 id="kind_1"><strong>Kind()</strong><a class="headerlink" href="#kind_1" title="Permanent link">&para;</a></h3>
-<p><a href="../../reflect/pkg_type_value/#kind">同reflec.Type.Kind()</a></p>
-<h3 id="type"><strong>Type()</strong><a class="headerlink" href="#type" title="Permanent link">&para;</a></h3>
-<p>reflect.Value有Type()方法，用于得到reflect.Type</p>
+<h4 id="intfloat"><strong>Int()、Float()</strong><a class="headerlink" href="#intfloat" title="Permanent link">&para;</a></h4>
+<p>Value类型变量还拥有一些名如Int和Float的方法用来获取内部存储的值</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>返回的是int64类型以及float64类型的变量，而不是int8、float32</p>
+</div>
+<p>有符号整型为何只有Int()，而没有Int8()、Int32()，是为了保持API的简洁性，获得值和设置值的方法有一定的简化考虑，用最大的类型来包含相关类型，以便存储值。例如使用int64来表示所有有符号整型（int64最大，存储的值能涵盖int8、int16、int32），而Int()是Value获得有符号整型方法，返回的也是int64</p>
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&quot;fmt&quot;</span>
     <span class="s">&quot;reflect&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">int</span>
-<span class="p">}</span>
-
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">e</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">=</span> <span class="nx">MyStruct</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
-    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">e</span><span class="p">).</span><span class="nx">Type</span><span class="p">()</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T %v\n&quot;</span><span class="p">,</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">t</span><span class="p">)</span>
+    <span class="kd">var</span> <span class="nx">f32</span> <span class="kt">float32</span> <span class="p">=</span> <span class="mf">3.4</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">f32</span><span class="p">)</span>
+    <span class="nx">vf32</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">f32</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T %v\n&quot;</span><span class="p">,</span> <span class="nx">vf32</span><span class="p">.</span><span class="nx">Float</span><span class="p">(),</span> <span class="nx">vf32</span><span class="p">.</span><span class="nx">Float</span><span class="p">())</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;-----&quot;</span><span class="p">)</span>
+
+    <span class="kd">var</span> <span class="nx">f64</span> <span class="kt">float64</span> <span class="p">=</span> <span class="mf">3.4</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">f64</span><span class="p">)</span>
+    <span class="nx">vf64</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">f64</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T %v\n&quot;</span><span class="p">,</span> <span class="nx">vf64</span><span class="p">.</span><span class="nx">Float</span><span class="p">(),</span> <span class="nx">vf64</span><span class="p">.</span><span class="nx">Float</span><span class="p">())</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;=====&quot;</span><span class="p">)</span>
+
+    <span class="kd">var</span> <span class="nx">i8</span> <span class="kt">int8</span> <span class="p">=</span> <span class="mi">10</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i8</span><span class="p">)</span>
+    <span class="nx">vi8</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">i8</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T %v\n&quot;</span><span class="p">,</span> <span class="nx">vi8</span><span class="p">.</span><span class="nx">Int</span><span class="p">(),</span> <span class="nx">vi8</span><span class="p">.</span><span class="nx">Int</span><span class="p">())</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;-----&quot;</span><span class="p">)</span>
+
+    <span class="kd">var</span> <span class="nx">i64</span> <span class="kt">int64</span> <span class="p">=</span> <span class="mi">10</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i64</span><span class="p">)</span>
+    <span class="nx">vi64</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">i64</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T %v\n&quot;</span><span class="p">,</span> <span class="nx">vi64</span><span class="p">.</span><span class="nx">Int</span><span class="p">(),</span> <span class="nx">vi64</span><span class="p">.</span><span class="nx">Int</span><span class="p">())</span>
 <span class="p">}</span>
 </pre></div>
 
 <p>输出</p>
-<div class="codehilite"><pre><span></span>*reflect.rtype main.MyStruct
+<div class="codehilite"><pre><span></span>3.4
+float64 3.4000000953674316
+-----
+3.4
+float64 3.4
+=====
+10
+int64 10
+-----
+10
+int64 10
 </pre></div>
+
+<p>若将int64类型用Float()方法打印会报错，同样，float64用Int()打印也会报错，不过有一个特殊的，就是上面提到的String()，按理来说应该也会报错，但这样意义不大，还不如输出点什么有意义的，便于调试，于是就输出<code>&lt;float64 Value&gt;</code>好了</p>
                 
                   
                 
