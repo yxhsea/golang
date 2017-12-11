@@ -1519,6 +1519,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#interface" title="Interface()" class="md-nav__link">
+    Interface()
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1937,6 +1944,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#interface" title="Interface()" class="md-nav__link">
+    Interface()
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2314,6 +2328,66 @@ int64 10
 </pre></div>
 
 <p>若将int64类型用Float()方法打印会报错，同样，float64用Int()打印也会报错，不过有一个特殊的，就是上面提到的String()，按理来说应该也会报错，但这样意义不大，还不如输出点什么有意义的，便于调试，于是就输出<code>&lt;float64 Value&gt;</code>好了</p>
+<h3 id="interface"><strong>Interface()</strong><a class="headerlink" href="#interface" title="Permanent link">&para;</a></h3>
+<p>给定一个reflect.Value类型的对象我们可以通过Interface方法来将其反转回接口变量。将其类型和值重新打包回一个接口变量中，只不过这个接口变量是个空接口</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;reflect&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">MyInt</span> <span class="kt">int</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">m</span> <span class="o">:=</span> <span class="nx">MyInt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="nx">v</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
+    <span class="nx">i</span> <span class="o">:=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Interface</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;m: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">m</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;v: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;i: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>m: main.MyInt 10
+v: reflect.Value 10
+i: main.MyInt 10
+</pre></div>
+
+<p>由于是空接口，因此如果类型（比如上面的MyInt）有方法的话是无法执行的，若想可以执行方法，可以用类型断言，详见<a href="../../method/interface_implement_interface/#_5">类型断言实现接口</a>，例如：</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;reflect&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">MyInt</span> <span class="kt">int</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="nx">MyInt</span><span class="p">)</span> <span class="nx">Add</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">this</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">m</span> <span class="o">:=</span> <span class="nx">MyInt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="nx">v</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
+    <span class="nx">i</span> <span class="o">:=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Interface</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;m: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">m</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;v: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;i: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+
+<span class="hll">    <span class="nx">e</span> <span class="o">:=</span> <span class="nx">i</span><span class="p">.(</span><span class="nx">MyInt</span><span class="p">)</span>
+</span>    <span class="nx">e</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>m: main.MyInt 10
+v: reflect.Value 10
+i: main.MyInt 10
+13
+</pre></div>
                 
                   
                 
