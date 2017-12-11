@@ -405,3 +405,73 @@ int64 10
 ```
 
 若将int64类型用Float()方法打印会报错，同样，float64用Int()打印也会报错，不过有一个特殊的，就是上面提到的String()，按理来说应该也会报错，但这样意义不大，还不如输出点什么有意义的，便于调试，于是就输出`<float64 Value>`好了
+
+### **Interface()**
+
+给定一个reflect.Value类型的对象我们可以通过Interface方法来将其反转回接口变量。将其类型和值重新打包回一个接口变量中，只不过这个接口变量是个空接口
+
+```go
+package main
+
+import (
+	"reflect"
+	"fmt"
+)
+
+type MyInt int
+
+func main() {
+	m := MyInt(10)
+	v := reflect.ValueOf(m)
+	i := v.Interface()
+	fmt.Printf("m: %T %v\n", m, m)
+	fmt.Printf("v: %T %v\n", v, v)
+	fmt.Printf("i: %T %v\n", i, i)
+}
+```
+
+输出
+
+```text
+m: main.MyInt 10
+v: reflect.Value 10
+i: main.MyInt 10
+```
+
+由于是空接口，因此如果类型（比如上面的MyInt）有方法的话是无法执行的，若想可以执行方法，可以用类型断言，详见[类型断言实现接口](/method/interface_implement_interface/#_5)，例如：
+
+```go hl_lines="22"
+package main
+
+import (
+	"reflect"
+	"fmt"
+)
+
+type MyInt int
+
+func (this MyInt) Add() {
+	fmt.Println(this + 3)
+}
+
+func main() {
+	m := MyInt(10)
+	v := reflect.ValueOf(m)
+	i := v.Interface()
+	fmt.Printf("m: %T %v\n", m, m)
+	fmt.Printf("v: %T %v\n", v, v)
+	fmt.Printf("i: %T %v\n", i, i)
+
+	e := i.(MyInt)
+	e.Add()
+}
+```
+
+输出
+
+```text
+m: main.MyInt 10
+v: reflect.Value 10
+i: main.MyInt 10
+13
+```
