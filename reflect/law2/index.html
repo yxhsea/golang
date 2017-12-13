@@ -1761,6 +1761,26 @@
                 
                 <p><strong>Reflection goes from reflection object to interface value.</strong></p>
 <p>反射可以从反射类型对象到接口类型</p>
+<p>我的理解，就是通过reflect.Value的Interface()方法反转得到最原始的变量，只不过得到的是一个接口类型的变量</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>这个接口类型的变量是一个空接口，这里附上Interface()的定义</p>
+<div class="codehilite"><pre><span></span><span class="c1">// Interface returns v&#39;s current value as an interface{}.</span>
+<span class="c1">// It is equivalent to:</span>
+<span class="c1">//  var i interface{} = (v&#39;s underlying value)</span>
+<span class="c1">// It panics if the Value was obtained by accessing</span>
+<span class="c1">// unexported struct fields.</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">v</span> <span class="nx">Value</span><span class="p">)</span> <span class="nx">Interface</span><span class="p">()</span> <span class="p">(</span><span class="nx">i</span> <span class="kd">interface</span><span class="p">{})</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">valueInterface</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+<p><a href="../../reflect/pkg_type_value/#interface">点击查看Interface()详情</a></p>
+<p>简单来说，法则2和法则1是相反的，官方解释如下：</p>
+<blockquote>
+<p>Reflection goes from interface values to reflection objects and back again</p>
+</blockquote>
                 
                   
                 

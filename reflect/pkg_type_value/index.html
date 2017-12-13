@@ -1526,6 +1526,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#canset" title="CanSet()" class="md-nav__link">
+    CanSet()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elem" title="Elem()" class="md-nav__link">
+    Elem()
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1947,6 +1961,20 @@
           <li class="md-nav__item">
   <a href="#interface" title="Interface()" class="md-nav__link">
     Interface()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#canset" title="CanSet()" class="md-nav__link">
+    CanSet()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elem" title="Elem()" class="md-nav__link">
+    Elem()
   </a>
   
 </li>
@@ -2388,6 +2416,128 @@ v: reflect.Value 10
 i: main.MyInt 10
 13
 </pre></div>
+
+<p>简单来说，Interface()是ValueOf()的反函数</p>
+<h3 id="canset"><strong>CanSet()</strong><a class="headerlink" href="#canset" title="Permanent link">&para;</a></h3>
+<p>reflect.Value有一个CanSet()方法可以用来检测Value类型的可设置性（返回一个bool类型的true或false）</p>
+<details class="note"><summary>例：非指针不具备可设置性</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;reflect&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">x</span> <span class="kt">float64</span> <span class="p">=</span> <span class="mf">3.4</span>
+    <span class="nx">v</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">CanSet</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<p>输出</p><div class="codehilite"><pre><span></span>false
+</pre></div>
+</details><details class="note"><summary>例：指针具备可设置性</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;reflect&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">x</span> <span class="kt">float64</span> <span class="p">=</span> <span class="mf">3.4</span>
+    <span class="nx">v</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">x</span><span class="p">)</span>
+    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">CanSet</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<p>输出</p><div class="codehilite"><pre><span></span>false
+</pre></div>
+<p>虽然用了指针，但还是不可设置性，因为要取它的指向的值才可以，详见<a href="../../reflect/pkg_type_value/#elem">Elem()章节</a></p></details><details class="note"><summary>附: CanSet()定义</summary><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="p">(</span><span class="nx">v</span> <span class="nx">Value</span><span class="p">)</span> <span class="nx">CanSet</span><span class="p">()</span> <span class="kt">bool</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">v</span><span class="p">.</span><span class="nx">flag</span><span class="o">&amp;</span><span class="p">(</span><span class="nx">flagAddr</span><span class="p">|</span><span class="nx">flagRO</span><span class="p">)</span> <span class="o">==</span> <span class="nx">flagAddr</span>
+<span class="p">}</span>
+</pre></div>
+</details><h3 id="elem"><strong>Elem()</strong><a class="headerlink" href="#elem" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;reflect&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">x</span> <span class="kt">float64</span> <span class="p">=</span> <span class="mf">3.4</span>
+    <span class="nx">v</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">x</span><span class="p">)</span>
+    <span class="nx">e</span> <span class="o">:=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Elem</span><span class="p">()</span>
+    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">CanSet</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>true
+</pre></div>
+
+<p>注意：不能对非指针使用Elem()，会报错</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;reflect&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">x</span> <span class="kt">float64</span> <span class="p">=</span> <span class="mf">3.4</span>
+    <span class="nx">v</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+    <span class="nx">e</span> <span class="o">:=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Elem</span><span class="p">()</span>
+    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">CanSet</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>报错</p>
+<div class="codehilite"><pre><span></span>panic: reflect: call of reflect.Value.Elem on float64 Value
+</pre></div>
+
+<details class="note"><summary>附: Elem()定义</summary><div class="codehilite"><pre><span></span><span class="c1">// Elem returns the value that the interface v contains</span>
+<span class="c1">// or that the pointer v points to.</span>
+<span class="c1">// It panics if v&#39;s Kind is not Interface or Ptr.</span>
+<span class="c1">// It returns the zero Value if v is nil.</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">v</span> <span class="nx">Value</span><span class="p">)</span> <span class="nx">Elem</span><span class="p">()</span> <span class="nx">Value</span> <span class="p">{</span>
+    <span class="nx">k</span> <span class="o">:=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">kind</span><span class="p">()</span>
+    <span class="k">switch</span> <span class="nx">k</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">Interface</span><span class="p">:</span>
+        <span class="kd">var</span> <span class="nx">eface</span> <span class="kd">interface</span><span class="p">{}</span>
+        <span class="k">if</span> <span class="nx">v</span><span class="p">.</span><span class="nx">typ</span><span class="p">.</span><span class="nx">NumMethod</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+            <span class="nx">eface</span> <span class="p">=</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="kd">interface</span><span class="p">{})(</span><span class="nx">v</span><span class="p">.</span><span class="nx">ptr</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">eface</span> <span class="p">=</span> <span class="p">(</span><span class="kd">interface</span><span class="p">{})(</span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="kd">interface</span> <span class="p">{</span>
+                <span class="nx">M</span><span class="p">()</span>
+            <span class="p">})(</span><span class="nx">v</span><span class="p">.</span><span class="nx">ptr</span><span class="p">))</span>
+        <span class="p">}</span>
+        <span class="nx">x</span> <span class="o">:=</span> <span class="nx">unpackEface</span><span class="p">(</span><span class="nx">eface</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nx">x</span><span class="p">.</span><span class="nx">flag</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+            <span class="nx">x</span><span class="p">.</span><span class="nx">flag</span> <span class="o">|=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">flag</span> <span class="o">&amp;</span> <span class="nx">flagRO</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">x</span>
+    <span class="k">case</span> <span class="nx">Ptr</span><span class="p">:</span>
+        <span class="nx">ptr</span> <span class="o">:=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">ptr</span>
+        <span class="k">if</span> <span class="nx">v</span><span class="p">.</span><span class="nx">flag</span><span class="o">&amp;</span><span class="nx">flagIndir</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+            <span class="nx">ptr</span> <span class="p">=</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">)(</span><span class="nx">ptr</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="c1">// The returned value&#39;s address is v&#39;s value.</span>
+        <span class="k">if</span> <span class="nx">ptr</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">Value</span><span class="p">{}</span>
+        <span class="p">}</span>
+        <span class="nx">tt</span> <span class="o">:=</span> <span class="p">(</span><span class="o">*</span><span class="nx">ptrType</span><span class="p">)(</span><span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">typ</span><span class="p">))</span>
+        <span class="nx">typ</span> <span class="o">:=</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">elem</span>
+        <span class="nx">fl</span> <span class="o">:=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">flag</span><span class="o">&amp;</span><span class="nx">flagRO</span> <span class="p">|</span> <span class="nx">flagIndir</span> <span class="p">|</span> <span class="nx">flagAddr</span>
+        <span class="nx">fl</span> <span class="o">|=</span> <span class="nx">flag</span><span class="p">(</span><span class="nx">typ</span><span class="p">.</span><span class="nx">Kind</span><span class="p">())</span>
+        <span class="k">return</span> <span class="nx">Value</span><span class="p">{</span><span class="nx">typ</span><span class="p">,</span> <span class="nx">ptr</span><span class="p">,</span> <span class="nx">fl</span><span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nb">panic</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ValueError</span><span class="p">{</span><span class="s">&quot;reflect.Value.Elem&quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">.</span><span class="nx">kind</span><span class="p">()})</span>
+<span class="p">}</span>
+</pre></div>
+</details>
                 
                   
                 

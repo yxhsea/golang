@@ -1490,9 +1490,41 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        5. 法则3
+      </label>
+    
     <a href="./" title="5. 法则3" class="md-nav__link md-nav__link--active">
       5. 法则3
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="可设置性由反射对象是否能寻址原始对象来决定" class="md-nav__link">
+    可设置性由反射对象是否能寻址原始对象来决定
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="查询是否可设置" class="md-nav__link">
+    查询是否可设置
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -1749,6 +1781,40 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="可设置性由反射对象是否能寻址原始对象来决定" class="md-nav__link">
+    可设置性由反射对象是否能寻址原始对象来决定
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="查询是否可设置" class="md-nav__link">
+    查询是否可设置
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -1759,7 +1825,26 @@
                 
                   <h1>5. 法则3</h1>
                 
-                
+                <p><strong>To modify a reflection object, the value must be settable.</strong></p>
+<p>修改反射类型变量的内部值需要保证其可设置性</p>
+<p>反射对象可以修改实际存储的被反射对象的能力。</p>
+<h2 id="_1"><strong>可设置性由反射对象是否能寻址原始对象来决定</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
+<p>简单理解就是反射对象如果存在的是地址（比如原始对象是指针）就是可设置的</p>
+<p>无法设置的例子</p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">x</span> <span class="kt">float64</span> <span class="p">=</span> <span class="mf">3.4</span>
+<span class="nx">v</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+<span class="nx">v</span><span class="p">.</span><span class="nx">SetFloat</span><span class="p">(</span><span class="mf">7.1</span><span class="p">)</span>
+</pre></div>
+
+<p>报错</p>
+<div class="codehilite"><pre><span></span>panic: reflect.Value.SetFloat using unaddressable value
+</pre></div>
+
+<p>上面的代码中我们将x值做了一份拷贝传给reflect.ValueOf方法，所以传入的参数仅仅是拷贝，而不是x本身。即使我们允许v.SetFloat(7.1)能操作成功，这并不会更新x。因此没有啥意义（设计者这样认为）。所以干脆定义它非法好了</p>
+<h2 id="_2"><strong>查询是否可设置</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<hr />
+<p>reflect.Value有一个CanSet()方法可以用来检测Value类型的可设置性（返回一个bool类型的true或false）</p>
                 
                   
                 
