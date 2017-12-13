@@ -1520,6 +1520,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" title="设置值" class="md-nav__link">
+    设置值
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -1806,6 +1813,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" title="设置值" class="md-nav__link">
+    设置值
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -1844,7 +1858,21 @@
 <p>上面的代码中我们将x值做了一份拷贝传给reflect.ValueOf方法，所以传入的参数仅仅是拷贝，而不是x本身。即使我们允许v.SetFloat(7.1)能操作成功，这并不会更新x。因此没有啥意义（设计者这样认为）。所以干脆定义它非法好了</p>
 <h2 id="_2"><strong>查询是否可设置</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <hr />
-<p>reflect.Value有一个CanSet()方法可以用来检测Value类型的可设置性（返回一个bool类型的true或false）</p>
+<p>reflect.Value有一个<a href="../../reflect/pkg_type_value/#canset">CanSet()</a>方法可以用来检测Value类型的可设置性（返回一个bool类型的true或false）</p>
+<h2 id="_3"><strong>设置值</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<hr />
+<p>若具备可设置性，接下来可以设置值，分为2步：</p>
+<ol>
+<li>
+<p>使用Value的<a href="../../reflect/pkg_type_value/#elem">Elem()</a>方法来指向内部存储的值（Elem()方法返回的也是Value）</p>
+</li>
+<li>
+<p>使用Value的<a href="../../reflect/pkg_type_value/#_2">SetInt()</a>等方法来设置值</p>
+</li>
+</ol>
+<blockquote>
+<p>Just keep in mind that reflection Values need the address of something in order to modify what they represent</p>
+</blockquote>
                 
                   
                 

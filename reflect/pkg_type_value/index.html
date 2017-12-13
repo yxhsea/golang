@@ -1465,6 +1465,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#fieldname" title="Field().Name" class="md-nav__link">
+    Field().Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fieldbyname" title="FieldByName()" class="md-nav__link">
+    FieldByName()
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1520,6 +1534,26 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_2" title="设置值" class="md-nav__link">
+    设置值
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setintsetfloat" title="SetInt()、SetFloat()" class="md-nav__link">
+    SetInt()、SetFloat()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#interface" title="Interface()" class="md-nav__link">
     Interface()
   </a>
@@ -1536,6 +1570,27 @@
           <li class="md-nav__item">
   <a href="#elem" title="Elem()" class="md-nav__link">
     Elem()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numfield" title="NumField()" class="md-nav__link">
+    NumField()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fieldtypefieldinterface" title="Field().Type()和Field().Interface()" class="md-nav__link">
+    Field().Type()和Field().Interface()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fieldbyname_1" title="FieldByName()" class="md-nav__link">
+    FieldByName()
   </a>
   
 </li>
@@ -1904,6 +1959,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#fieldname" title="Field().Name" class="md-nav__link">
+    Field().Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fieldbyname" title="FieldByName()" class="md-nav__link">
+    FieldByName()
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1959,6 +2028,26 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_2" title="设置值" class="md-nav__link">
+    设置值
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setintsetfloat" title="SetInt()、SetFloat()" class="md-nav__link">
+    SetInt()、SetFloat()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#interface" title="Interface()" class="md-nav__link">
     Interface()
   </a>
@@ -1975,6 +2064,27 @@
           <li class="md-nav__item">
   <a href="#elem" title="Elem()" class="md-nav__link">
     Elem()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numfield" title="NumField()" class="md-nav__link">
+    NumField()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fieldtypefieldinterface" title="Field().Type()和Field().Interface()" class="md-nav__link">
+    Field().Type()和Field().Interface()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fieldbyname_1" title="FieldByName()" class="md-nav__link">
+    FieldByName()
   </a>
   
 </li>
@@ -2175,6 +2285,35 @@ true
 </div>
 </li>
 </ol>
+<h3 id="fieldname"><strong>Field().Name</strong><a class="headerlink" href="#fieldname" title="Permanent link">&para;</a></h3>
+<p>查询struct元素值，比如.Field(0)表示查询struct中第一个元素的值，.FieldByName("X")表示查询struct中元素名为X的值</p>
+<p>但由于Type和Value都有Field()和FieldByName()，但有所不同，并且有的支持.Name，有的不支持，这里做了个测试，贴出结果</p>
+<div class="codehilite"><pre><span></span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">Name</span><span class="p">)</span> <span class="c1">// panic</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">FieldByName</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">))</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">FieldByName</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">).</span><span class="nx">Name</span><span class="p">)</span> <span class="c1">// panic</span>
+
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">Name</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">FieldByName</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">))</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">FieldByName</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">).</span><span class="nx">Name</span><span class="p">)</span> <span class="c1">// panic</span>
+</pre></div>
+
+<ul>
+<li>
+<p>i是个数字，表示第几个元素，"A"表示结构体中有一个元素为"A"</p>
+</li>
+<li>
+<p>v表示Value类型</p>
+</li>
+<li>
+<p>t表示Type类型(即*rtype)</p>
+</li>
+</ul>
+<p>注释掉的表示会报错，因此可以看出，Type和Value都支持Field()和FieldByName()，但只有Type的Field()支持.Name</p>
+<h3 id="fieldbyname"><strong>FieldByName()</strong><a class="headerlink" href="#fieldbyname" title="Permanent link">&para;</a></h3>
+<p>通过结构体的元素名查询对应的元素值，不支持.Name、.Type()、.Interface()</p>
+<p>和Value的FieldByName支持的有所不同，详见<a href="../../reflect/pkg_type_value/#fieldbyname_1">Value的FieldByName</a></p>
 <h2 id="reflectvalue"><strong>reflect.Value</strong><a class="headerlink" href="#reflectvalue" title="Permanent link">&para;</a></h2>
 <hr />
 <p>reflect.Value：是一个struct，在go源码/src/reflect/value.go里定义：</p>
@@ -2356,6 +2495,57 @@ int64 10
 </pre></div>
 
 <p>若将int64类型用Float()方法打印会报错，同样，float64用Int()打印也会报错，不过有一个特殊的，就是上面提到的String()，按理来说应该也会报错，但这样意义不大，还不如输出点什么有意义的，便于调试，于是就输出<code>&lt;float64 Value&gt;</code>好了</p>
+<h3 id="_2"><strong>设置值</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="setintsetfloat">SetInt()、SetFloat()<a class="headerlink" href="#setintsetfloat" title="Permanent link">&para;</a></h4>
+<p>Value类型变量还拥有一些名如SetInt和SetFloat的方法用来改变内部存储的值，但要注意仅对指针这种地址传递的才有效，并且要用上<a href="../../reflect/pkg_type_value/#elem">Elem()</a>才行</p>
+<p>SetInt()例子</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;reflect&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">MyInt</span> <span class="kt">int</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">m</span> <span class="o">:=</span> <span class="nx">MyInt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="nx">v</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">m</span><span class="p">)</span>
+    <span class="nx">e</span> <span class="o">:=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Elem</span><span class="p">()</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">SetInt</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;m: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">m</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;e: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>m: main.MyInt 20
+e: reflect.Value 20
+</pre></div>
+
+<p>SetFloat()例子</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;reflect&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">f</span> <span class="kt">float64</span> <span class="p">=</span> <span class="mf">3.4</span>
+    <span class="nx">v</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">f</span><span class="p">)</span>
+    <span class="nx">e</span> <span class="o">:=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Elem</span><span class="p">()</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">SetFloat</span><span class="p">(</span><span class="mf">7.1</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;f: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">f</span><span class="p">,</span> <span class="nx">f</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;e: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>f: float64 7.1
+e: reflect.Value 7.1
+</pre></div>
+
 <h3 id="interface"><strong>Interface()</strong><a class="headerlink" href="#interface" title="Permanent link">&para;</a></h3>
 <p>给定一个reflect.Value类型的对象我们可以通过Interface方法来将其反转回接口变量。将其类型和值重新打包回一个接口变量中，只不过这个接口变量是个空接口</p>
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
@@ -2457,6 +2647,7 @@ i: main.MyInt 10
 <span class="p">}</span>
 </pre></div>
 </details><h3 id="elem"><strong>Elem()</strong><a class="headerlink" href="#elem" title="Permanent link">&para;</a></h3>
+<p>用于获得Value变量内部存储的值，注意仅针对指针这种传递地址的才有效</p>
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
@@ -2537,7 +2728,65 @@ i: main.MyInt 10
     <span class="nb">panic</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ValueError</span><span class="p">{</span><span class="s">&quot;reflect.Value.Elem&quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">.</span><span class="nx">kind</span><span class="p">()})</span>
 <span class="p">}</span>
 </pre></div>
-</details>
+</details><h3 id="numfield"><strong>NumField()</strong><a class="headerlink" href="#numfield" title="Permanent link">&para;</a></h3>
+<p>查询struct结构的元素个数</p>
+<h3 id="fieldtypefieldinterface"><strong>Field().Type()和Field().Interface()</strong><a class="headerlink" href="#fieldtypefieldinterface" title="Permanent link">&para;</a></h3>
+<p>Field()是查询第几个元素，比如.Field(0)表示查询第1个元素</p>
+<p>但由于Type和Value都有Field()，但有所不同，并且有的支持.Type()和.Interface()，有的不支持，这里做了个测试，贴出结果</p>
+<div class="codehilite"><pre><span></span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">Type</span><span class="p">())</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">Interface</span><span class="p">())</span>
+
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">Type</span><span class="p">())</span> <span class="c1">// panic</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">Interface</span><span class="p">())</span> <span class="c1">// panic</span>
+</pre></div>
+
+<ul>
+<li>
+<p>i是个数字，表示第几个元素</p>
+</li>
+<li>
+<p>v表示Value类型</p>
+</li>
+<li>
+<p>t表示Type类型(即*rtype)</p>
+</li>
+</ul>
+<p>注释掉的表示会报错，因此可以看出，Type和Value都支持Field()，但只有Value的Field()支持.Type()和.Interface()</p>
+<p><strong>完整例子</strong>，包含Type的Field()</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;reflect&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">T</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">A</span> <span class="kt">int</span>
+    <span class="nx">B</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">T</span><span class="p">{</span><span class="mi">23</span><span class="p">,</span> <span class="s">&quot;skidoo&quot;</span><span class="p">}</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">t</span><span class="p">).</span><span class="nx">Elem</span><span class="p">()</span>
+    <span class="nx">typeOfT</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Type</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">NumField</span><span class="p">();</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">f</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d: %s %s = %v\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">typeOfT</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">Name</span><span class="p">,</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Type</span><span class="p">(),</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Interface</span><span class="p">())</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>0: A int = 23
+1: B string = skidoo
+</pre></div>
+
+<h3 id="fieldbyname_1"><strong>FieldByName()</strong><a class="headerlink" href="#fieldbyname_1" title="Permanent link">&para;</a></h3>
+<p>通过结构体的元素名查询对应的元素值，不支持.Name，但支持.Type()、.Interface()。</p>
+<p>和Type的FieldByName支持的有所不同，详见<a href="../../reflect/pkg_type_value/#fieldbyname">Type的FieldByName</a></p>
                 
                   
                 
