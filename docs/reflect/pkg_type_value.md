@@ -475,3 +475,156 @@ v: reflect.Value 10
 i: main.MyInt 10
 13
 ```
+
+简单来说，Interface()是ValueOf()的反函数
+
+### **CanSet()**
+
+reflect.Value有一个CanSet()方法可以用来检测Value类型的可设置性（返回一个bool类型的true或false）
+
+??? note "例：非指针不具备可设置性"
+	```go
+	package main
+
+	import (
+		"reflect"
+		"fmt"
+	)
+
+	func main() {
+		var x float64 = 3.4
+		v := reflect.ValueOf(x)
+		c := v.CanSet()
+		fmt.Println(c)
+	}
+	```
+
+	输出
+
+	```text
+	false
+	```
+
+??? note "例：指针具备可设置性"
+	```go
+	package main
+
+	import (
+		"reflect"
+		"fmt"
+	)
+
+	func main() {
+		var x float64 = 3.4
+		v := reflect.ValueOf(&x)
+		c := v.CanSet()
+		fmt.Println(c)
+	}
+	```
+
+	输出
+
+	```text
+	false
+	```
+
+	虽然用了指针，但还是不可设置性，因为要取它的指向的值才可以，详见[Elem()章节](/reflect/pkg_type_value/#elem)
+
+??? note "附: CanSet()定义"
+	```go
+	func (v Value) CanSet() bool {
+		return v.flag&(flagAddr|flagRO) == flagAddr
+	}
+	```
+
+### **Elem()**
+
+```go
+package main
+
+import (
+	"reflect"
+	"fmt"
+)
+
+func main() {
+	var x float64 = 3.4
+	v := reflect.ValueOf(&x)
+	e := v.Elem()
+	c := e.CanSet()
+	fmt.Println(c)
+}
+```
+
+输出
+
+```text
+true
+```
+
+注意：不能对非指针使用Elem()，会报错
+
+```go
+package main
+
+import (
+	"reflect"
+	"fmt"
+)
+
+func main() {
+	var x float64 = 3.4
+	v := reflect.ValueOf(x)
+	e := v.Elem()
+	c := e.CanSet()
+	fmt.Println(c)
+}
+```
+
+报错
+
+```text
+panic: reflect: call of reflect.Value.Elem on float64 Value
+```
+
+??? note "附: Elem()定义"
+	```go
+	// Elem returns the value that the interface v contains
+	// or that the pointer v points to.
+	// It panics if v's Kind is not Interface or Ptr.
+	// It returns the zero Value if v is nil.
+	func (v Value) Elem() Value {
+		k := v.kind()
+		switch k {
+		case Interface:
+			var eface interface{}
+			if v.typ.NumMethod() == 0 {
+				eface = *(*interface{})(v.ptr)
+			} else {
+				eface = (interface{})(*(*interface {
+					M()
+				})(v.ptr))
+			}
+			x := unpackEface(eface)
+			if x.flag != 0 {
+				x.flag |= v.flag & flagRO
+			}
+			return x
+		case Ptr:
+			ptr := v.ptr
+			if v.flag&flagIndir != 0 {
+				ptr = *(*unsafe.Pointer)(ptr)
+			}
+			// The returned value's address is v's value.
+			if ptr == nil {
+				return Value{}
+			}
+			tt := (*ptrType)(unsafe.Pointer(v.typ))
+			typ := tt.elem
+			fl := v.flag&flagRO | flagIndir | flagAddr
+			fl |= flag(typ.Kind())
+			return Value{typ, ptr, fl}
+		}
+		panic(&ValueError{"reflect.Value.Elem", v.kind()})
+	}
+	```
