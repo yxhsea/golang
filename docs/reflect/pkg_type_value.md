@@ -194,6 +194,38 @@ true
 
 		**因此今后如果要查询一个变量的最终类型，可以v.Kind()，如果想获得类型的字符串形式，就v.Kind().String**
 
+### **Field().Name**
+
+查询struct元素值，比如.Field(0)表示查询struct中第一个元素的值，.FieldByName("X")表示查询struct中元素名为X的值
+
+但由于Type和Value都有Field()和FieldByName()，但有所不同，并且有的支持.Name，有的不支持，这里做了个测试，贴出结果
+
+```go
+fmt.Println(v.Field(i))
+fmt.Println(v.Field(i).Name) // panic
+fmt.Println(v.FieldByName("A"))
+fmt.Println(v.FieldByName("A").Name) // panic
+
+fmt.Println(t.Field(i))
+fmt.Println(t.Field(i).Name)
+fmt.Println(t.FieldByName("A"))
+fmt.Println(t.FieldByName("A").Name) // panic
+```
+
+- i是个数字，表示第几个元素，"A"表示结构体中有一个元素为"A"
+
+- v表示Value类型
+
+- t表示Type类型(即\*rtype)
+
+注释掉的表示会报错，因此可以看出，Type和Value都支持Field()和FieldByName()，但只有Type的Field()支持.Name
+
+### **FieldByName()**
+
+通过结构体的元素名查询对应的元素值，不支持.Name、.Type()、.Interface()
+
+和Value的FieldByName支持的有所不同，详见[Value的FieldByName](/reflect/pkg_type_value/#fieldbyname_1)
+
 ## **reflect.Value**
 
 ---
@@ -406,6 +438,68 @@ int64 10
 
 若将int64类型用Float()方法打印会报错，同样，float64用Int()打印也会报错，不过有一个特殊的，就是上面提到的String()，按理来说应该也会报错，但这样意义不大，还不如输出点什么有意义的，便于调试，于是就输出`<float64 Value>`好了
 
+### **设置值**
+
+#### SetInt()、SetFloat()
+
+Value类型变量还拥有一些名如SetInt和SetFloat的方法用来改变内部存储的值，但要注意仅对指针这种地址传递的才有效，并且要用上[Elem()](/reflect/pkg_type_value/#elem)才行
+
+SetInt()例子
+
+```go
+package main
+
+import (
+	"reflect"
+	"fmt"
+)
+
+type MyInt int
+
+func main() {
+	m := MyInt(10)
+	v := reflect.ValueOf(&m)
+	e := v.Elem()
+	e.SetInt(20)
+	fmt.Printf("m: %T %v\n", m, m)
+	fmt.Printf("e: %T %v\n", e, e)
+}
+```
+
+输出
+
+```text
+m: main.MyInt 20
+e: reflect.Value 20
+```
+
+SetFloat()例子
+
+```go
+package main
+
+import (
+	"reflect"
+	"fmt"
+)
+
+func main() {
+	var f float64 = 3.4
+	v := reflect.ValueOf(&f)
+	e := v.Elem()
+	e.SetFloat(7.1)
+	fmt.Printf("f: %T %v\n", f, f)
+	fmt.Printf("e: %T %v\n", e, e)
+}
+```
+
+输出
+
+```text
+f: float64 7.1
+e: reflect.Value 7.1
+```
+
 ### **Interface()**
 
 给定一个reflect.Value类型的对象我们可以通过Interface方法来将其反转回接口变量。将其类型和值重新打包回一个接口变量中，只不过这个接口变量是个空接口
@@ -539,6 +633,8 @@ reflect.Value有一个CanSet()方法可以用来检测Value类型的可设置性
 
 ### **Elem()**
 
+用于获得Value变量内部存储的值，注意仅针对指针这种传递地址的才有效
+
 ```go
 package main
 
@@ -628,3 +724,71 @@ panic: reflect: call of reflect.Value.Elem on float64 Value
 		panic(&ValueError{"reflect.Value.Elem", v.kind()})
 	}
 	```
+
+### **NumField()**
+
+查询struct结构的元素个数
+
+### **Field().Type()和Field().Interface()**
+
+Field()是查询第几个元素，比如.Field(0)表示查询第1个元素
+
+但由于Type和Value都有Field()，但有所不同，并且有的支持.Type()和.Interface()，有的不支持，这里做了个测试，贴出结果
+
+```go
+fmt.Println(v.Field(i))
+fmt.Println(v.Field(i).Type())
+fmt.Println(v.Field(i).Interface())
+
+fmt.Println(t.Field(i))
+fmt.Println(v.Field(i).Type()) // panic
+fmt.Println(v.Field(i).Interface()) // panic
+```
+
+- i是个数字，表示第几个元素
+
+- v表示Value类型
+
+- t表示Type类型(即\*rtype)
+
+注释掉的表示会报错，因此可以看出，Type和Value都支持Field()，但只有Value的Field()支持.Type()和.Interface()
+
+**完整例子**，包含Type的Field()
+
+```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+type T struct {
+	A int
+	B string
+}
+
+func main() {
+	t := T{23, "skidoo"}
+	s := reflect.ValueOf(&t).Elem()
+	typeOfT := s.Type()
+
+	for i := 0; i < s.NumField(); i++ {
+		f := s.Field(i)
+		fmt.Printf("%d: %s %s = %v\n", i, typeOfT.Field(i).Name, f.Type(), f.Interface())
+	}
+}
+```
+
+输出
+
+```text
+0: A int = 23
+1: B string = skidoo
+```
+
+### **FieldByName()**
+
+通过结构体的元素名查询对应的元素值，不支持.Name，但支持.Type()、.Interface()。
+
+和Type的FieldByName支持的有所不同，详见[Type的FieldByName](/reflect/pkg_type_value/#fieldbyname)

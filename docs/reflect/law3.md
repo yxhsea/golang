@@ -30,4 +30,16 @@ panic: reflect.Value.SetFloat using unaddressable value
 
 ---
 
-reflect.Value有一个CanSet()方法可以用来检测Value类型的可设置性（返回一个bool类型的true或false）
+reflect.Value有一个[CanSet()](/reflect/pkg_type_value/#canset)方法可以用来检测Value类型的可设置性（返回一个bool类型的true或false）
+
+## **设置值**
+
+---
+
+若具备可设置性，接下来可以设置值，分为2步：
+
+1. 使用Value的[Elem()](/reflect/pkg_type_value/#elem)方法来指向内部存储的值（Elem()方法返回的也是Value）
+
+2. 使用Value的[SetInt()](/reflect/pkg_type_value/#_2)等方法来设置值
+
+> Just keep in mind that reflection Values need the address of something in order to modify what they represent
