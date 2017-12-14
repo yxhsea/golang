@@ -1582,6 +1582,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#field" title="Field()" class="md-nav__link">
+    Field()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#fieldtypefieldinterface" title="Field().Type()和Field().Interface()" class="md-nav__link">
     Field().Type()和Field().Interface()
   </a>
@@ -1621,18 +1628,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../pkg_fmt/" title="2.3. fmt" class="md-nav__link">
-      2.3. fmt
-    </a>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -1644,8 +1639,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../law1/" title="3. 法则1" class="md-nav__link">
-      3. 法则1
+    <a href="../fmt/" title="3. fmt" class="md-nav__link">
+      3. fmt
     </a>
   </li>
 
@@ -1656,8 +1651,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../law2/" title="4. 法则2" class="md-nav__link">
-      4. 法则2
+    <a href="../law1/" title="4. 法则1" class="md-nav__link">
+      4. 法则1
     </a>
   </li>
 
@@ -1668,8 +1663,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../law3/" title="5. 法则3" class="md-nav__link">
-      5. 法则3
+    <a href="../law2/" title="5. 法则2" class="md-nav__link">
+      5. 法则2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../law3/" title="6. 法则3" class="md-nav__link">
+      6. 法则3
     </a>
   </li>
 
@@ -2071,6 +2078,13 @@
           <li class="md-nav__item">
   <a href="#numfield" title="NumField()" class="md-nav__link">
     NumField()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field" title="Field()" class="md-nav__link">
+    Field()
   </a>
   
 </li>
@@ -2730,6 +2744,63 @@ i: main.MyInt 10
 </pre></div>
 </details><h3 id="numfield"><strong>NumField()</strong><a class="headerlink" href="#numfield" title="Permanent link">&para;</a></h3>
 <p>查询struct结构的元素个数</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;reflect&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">MyStruct</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+
+    <span class="nx">v</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">s</span><span class="p">)</span>
+    <span class="nx">e</span> <span class="o">:=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Elem</span><span class="p">()</span>
+    <span class="nx">n</span> <span class="o">:=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">NumField</span><span class="p">()</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T %v\n&quot;</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>int 2
+</pre></div>
+
+<h3 id="field"><strong>Field()</strong><a class="headerlink" href="#field" title="Permanent link">&para;</a></h3>
+<p>打印指定下标的元素（下标从0开始），比如</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;reflect&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">MyStruct</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+
+    <span class="nx">v</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">s</span><span class="p">)</span>
+    <span class="nx">e</span> <span class="o">:=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Elem</span><span class="p">()</span>
+<span class="hll">    <span class="nx">f0</span> <span class="o">:=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span class="hll">    <span class="nx">f1</span> <span class="o">:=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;f0: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">f0</span><span class="p">,</span> <span class="nx">f0</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;f1: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">f1</span><span class="p">,</span> <span class="nx">f1</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>f0: reflect.Value 3
+f1: reflect.Value 4
+</pre></div>
+
 <h3 id="fieldtypefieldinterface"><strong>Field().Type()和Field().Interface()</strong><a class="headerlink" href="#fieldtypefieldinterface" title="Permanent link">&para;</a></h3>
 <p>Field()是查询第几个元素，比如.Field(0)表示查询第1个元素</p>
 <p>但由于Type和Value都有Field()，但有所不同，并且有的支持.Type()和.Interface()，有的不支持，这里做了个测试，贴出结果</p>
@@ -2738,8 +2809,8 @@ i: main.MyInt 10
 <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">Interface</span><span class="p">())</span>
 
 <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">Type</span><span class="p">())</span> <span class="c1">// panic</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">Interface</span><span class="p">())</span> <span class="c1">// panic</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">Type</span><span class="p">())</span> <span class="c1">// panic</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">Interface</span><span class="p">())</span> <span class="c1">// panic</span>
 </pre></div>
 
 <ul>

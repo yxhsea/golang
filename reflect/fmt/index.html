@@ -13,7 +13,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/golang/reflect/pkg_fmt/">
+        <link rel="canonical" href="https://cyent.github.io/golang/reflect/fmt/">
       
       
         <meta name="author" content="cyent">
@@ -38,7 +38,7 @@
     
     
       
-        <title>2.3. fmt - Go语言学习 - cyent笔记</title>
+        <title>3. fmt - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                2.3. fmt
+                3. fmt
               </span>
             
           
@@ -1398,12 +1398,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
     
     <label class="md-nav__link" for="nav-7-2">
       2. reflect(反射包)
@@ -1439,6 +1437,11 @@
   </li>
 
         
+      </ul>
+    </nav>
+  </li>
+
+        
           
           
           
@@ -1451,26 +1454,21 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
-    <a href="./" title="2.3. fmt" class="md-nav__link md-nav__link--active">
-      2.3. fmt
+    <a href="./" title="3. fmt" class="md-nav__link md-nav__link--active">
+      3. fmt
     </a>
     
   </li>
 
         
-      </ul>
-    </nav>
-  </li>
-
-        
           
           
           
 
 
   <li class="md-nav__item">
-    <a href="../law1/" title="3. 法则1" class="md-nav__link">
-      3. 法则1
+    <a href="../law1/" title="4. 法则1" class="md-nav__link">
+      4. 法则1
     </a>
   </li>
 
@@ -1481,8 +1479,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../law2/" title="4. 法则2" class="md-nav__link">
-      4. 法则2
+    <a href="../law2/" title="5. 法则2" class="md-nav__link">
+      5. 法则2
     </a>
   </li>
 
@@ -1493,8 +1491,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../law3/" title="5. 法则3" class="md-nav__link">
-      5. 法则3
+    <a href="../law3/" title="6. 法则3" class="md-nav__link">
+      6. 法则3
     </a>
   </li>
 
@@ -1756,10 +1754,10 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cyent/golang/edit/master/docs/reflect/pkg_fmt.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/cyent/golang/edit/master/docs/reflect/fmt.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>2.3. fmt</h1>
+                  <h1>3. fmt</h1>
                 
                 <p>fmt在打印变量值的时候（例如fmt.Println或者fmt.Printf的%v）是调用reflect.Value来打印内部的值（如果是接口变量，则是hold的变量的值）。举例如下：</p>
 <div class="codehilite"><pre><span></span>fmt.Println(reflect.ValueOf(x))
@@ -1819,13 +1817,13 @@
           </a>
         
         
-          <a href="../law1/" title="3. 法则1" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../law1/" title="4. 法则1" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                3. 法则1
+                4. 法则1
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

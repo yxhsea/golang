@@ -38,7 +38,7 @@
     
     
       
-        <title>5. 法则3 - Go语言学习 - cyent笔记</title>
+        <title>6. 法则3 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                5. 法则3
+                6. 法则3
               </span>
             
           
@@ -1437,18 +1437,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../pkg_fmt/" title="2.3. fmt" class="md-nav__link">
-      2.3. fmt
-    </a>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -1460,8 +1448,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../law1/" title="3. 法则1" class="md-nav__link">
-      3. 法则1
+    <a href="../fmt/" title="3. fmt" class="md-nav__link">
+      3. fmt
     </a>
   </li>
 
@@ -1472,8 +1460,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../law2/" title="4. 法则2" class="md-nav__link">
-      4. 法则2
+    <a href="../law1/" title="4. 法则1" class="md-nav__link">
+      4. 法则1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../law2/" title="5. 法则2" class="md-nav__link">
+      5. 法则2
     </a>
   </li>
 
@@ -1491,11 +1491,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="toc">
-        5. 法则3
+        6. 法则3
       </label>
     
-    <a href="./" title="5. 法则3" class="md-nav__link md-nav__link--active">
-      5. 法则3
+    <a href="./" title="6. 法则3" class="md-nav__link md-nav__link--active">
+      6. 法则3
     </a>
     
       
@@ -1523,6 +1523,13 @@
         <li class="md-nav__item">
   <a href="#_3" title="设置值" class="md-nav__link">
     设置值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#struct" title="struct结构体" class="md-nav__link">
+    struct结构体
   </a>
   
 </li>
@@ -1820,6 +1827,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#struct" title="struct结构体" class="md-nav__link">
+    struct结构体
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -1837,7 +1851,7 @@
                   <a href="https://github.com/cyent/golang/edit/master/docs/reflect/law3.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>5. 法则3</h1>
+                  <h1>6. 法则3</h1>
                 
                 <p><strong>To modify a reflection object, the value must be settable.</strong></p>
 <p>修改反射类型变量的内部值需要保证其可设置性</p>
@@ -1873,6 +1887,59 @@
 <blockquote>
 <p>Just keep in mind that reflection Values need the address of something in order to modify what they represent</p>
 </blockquote>
+<h2 id="struct"><strong>struct结构体</strong><a class="headerlink" href="#struct" title="Permanent link">&para;</a></h2>
+<hr />
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;reflect&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">T</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">A</span> <span class="kt">int</span>
+    <span class="nx">B</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">T</span><span class="p">{</span><span class="mi">23</span><span class="p">,</span> <span class="s">&quot;skidoo&quot;</span><span class="p">}</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">t</span><span class="p">).</span><span class="nx">Elem</span><span class="p">()</span>
+    <span class="nx">typeOfT</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Type</span><span class="p">()</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">NumField</span><span class="p">();</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">f</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d: %s %s = %v\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span>
+            <span class="nx">typeOfT</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">Name</span><span class="p">,</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Type</span><span class="p">(),</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Interface</span><span class="p">())</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>0: A int = 23
+1: B string = skidoo
+</pre></div>
+
+<p>上面例子中涉及到的有：</p>
+<ul>
+<li>
+<p><a href="../../reflect/pkg_type_value/#elem">Value.Elem()</a></p>
+</li>
+<li>
+<p><a href="../../reflect/pkg_type_value/#numfield">Value.NumField()</a></p>
+</li>
+<li>
+<p><a href="../../reflect/pkg_type_value/#field">Value.Field()</a></p>
+</li>
+<li>
+<p><a href="../../reflect/pkg_type_value/#fieldtypefieldinterface">Value.Field(x).Type()和Value.Field(x).Interface()</a></p>
+</li>
+<li>
+<p><a href="../../reflect/pkg_type_value/#fieldname">Type.Field(x).Name</a></p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>结构体中的元素的名只有以大写字母开头的才是可设置的</p>
+</div>
                 
                   
                 
@@ -1891,7 +1958,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../law2/" title="4. 法则2" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../law2/" title="5. 法则2" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1900,7 +1967,7 @@
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                4. 法则2
+                5. 法则2
               </span>
             </div>
           </a>
