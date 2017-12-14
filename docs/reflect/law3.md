@@ -43,3 +43,54 @@ reflect.Value有一个[CanSet()](/reflect/pkg_type_value/#canset)方法可以用
 2. 使用Value的[SetInt()](/reflect/pkg_type_value/#_2)等方法来设置值
 
 > Just keep in mind that reflection Values need the address of something in order to modify what they represent
+
+## **struct结构体**
+
+---
+
+```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+type T struct {
+	A int
+	B string
+}
+
+func main() {
+	t := T{23, "skidoo"}
+	s := reflect.ValueOf(&t).Elem()
+	typeOfT := s.Type()
+	for i := 0; i < s.NumField(); i++ {
+		f := s.Field(i)
+		fmt.Printf("%d: %s %s = %v\n", i,
+			typeOfT.Field(i).Name, f.Type(), f.Interface())
+	}
+}
+```
+
+输出
+
+```text
+0: A int = 23
+1: B string = skidoo
+```
+
+上面例子中涉及到的有：
+
+- [Value.Elem()](/reflect/pkg_type_value/#elem)
+
+- [Value.NumField()](/reflect/pkg_type_value/#numfield)
+
+- [Value.Field()](/reflect/pkg_type_value/#field)
+
+- [Value.Field(x).Type()和Value.Field(x).Interface()](/reflect/pkg_type_value/#fieldtypefieldinterface)
+
+- [Type.Field(x).Name](/reflect/pkg_type_value/#fieldname)
+
+!!! warning
+	结构体中的元素的名只有以大写字母开头的才是可设置的

@@ -729,6 +729,71 @@ panic: reflect: call of reflect.Value.Elem on float64 Value
 
 查询struct结构的元素个数
 
+```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+type MyStruct struct {
+	X, Y int
+}
+
+func main() {
+	s := MyStruct{3, 4}
+
+	v := reflect.ValueOf(&s)
+	e := v.Elem()
+	n := e.NumField()
+
+	fmt.Printf("%T %v\n", n, n)
+}
+```
+
+输出
+
+```text
+int 2
+```
+
+### **Field()**
+
+打印指定下标的元素（下标从0开始），比如
+
+```go hl_lines="17 18"
+package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+type MyStruct struct {
+	X, Y int
+}
+
+func main() {
+	s := MyStruct{3, 4}
+
+	v := reflect.ValueOf(&s)
+	e := v.Elem()
+	f0 := e.Field(0)
+	f1 := e.Field(1)
+
+	fmt.Printf("f0: %T %v\n", f0, f0)
+	fmt.Printf("f1: %T %v\n", f1, f1)
+}
+```
+
+输出
+
+```
+f0: reflect.Value 3
+f1: reflect.Value 4
+```
+
 ### **Field().Type()和Field().Interface()**
 
 Field()是查询第几个元素，比如.Field(0)表示查询第1个元素
@@ -741,8 +806,8 @@ fmt.Println(v.Field(i).Type())
 fmt.Println(v.Field(i).Interface())
 
 fmt.Println(t.Field(i))
-fmt.Println(v.Field(i).Type()) // panic
-fmt.Println(v.Field(i).Interface()) // panic
+fmt.Println(t.Field(i).Type()) // panic
+fmt.Println(t.Field(i).Interface()) // panic
 ```
 
 - i是个数字，表示第几个元素
