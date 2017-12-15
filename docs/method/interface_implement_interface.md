@@ -216,3 +216,9 @@ func main() {
 ```text
 ./example.go:7: invalid type assertion: a.(<inter>) (non-interface type int on left)
 ```
+
+## **类型判断实现接口**
+
+---
+
+详见[type switch章节](/method/interface_typeswitch/#_1)

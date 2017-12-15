@@ -1,6 +1,10 @@
-type switches
+## **对接口变量hold值做类型判断**
 
-```text
+---
+
+当i是个接口变量的时候，可以用i.(type)来对这个接口变量hold的值类型做判断
+
+```go
 switch v := i.(type)  {
 case int:
 	...
@@ -124,3 +128,45 @@ func main() {
 ```text
 undefined: MyStruct
 ```
+
+## **可以用是否实现接口做判断**
+
+---
+
+```go
+package main
+
+import "fmt"
+
+type Adder interface {
+	Add()
+}
+
+type MyStruct struct {
+	X, Y int
+}
+
+func (this MyStruct) Add() {
+	fmt.Println(this.X + this.Y)
+}
+
+func main() {
+	s := MyStruct{3, 4}
+	//var i interface{} = s
+	var i Adder = s
+	switch v := i.(type) {
+	case MyStruct:
+		fmt.Printf("case MyStruct: %T %v\n", v, v)
+	case interface{}:
+		fmt.Printf("case interface{}: %T %v\n", v, v)
+	case Adder:
+		fmt.Printf("case Adder: %T %v\n", v, v)
+	default:
+		fmt.Printf("not case: %T %v\n", v, v)
+	}
+}
+```
+
+1. `var i interface{} = s`或`var i Adder = s`用哪个都一样
+
+2. 这3个case不管用哪个，第一个case都能匹配到
