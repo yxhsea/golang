@@ -1979,6 +1979,10 @@ fmt.Printf(&quot;%v %T\n&quot;, a, a)
 <p>这3个case不管用哪个，第一个case都能匹配到</p>
 </li>
 </ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>case只能用于类型判断（包括实现接口），没有办法判断是否为一个接口。就是说没有办法判断一个变量是否为接口变量，即使用反射也是无法判断的</p>
+</div>
                 
                   
                 
