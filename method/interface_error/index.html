@@ -1373,6 +1373,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#error_1" title="为什么要用error" class="md-nav__link">
+    为什么要用error
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -1808,6 +1815,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#error_1" title="为什么要用error" class="md-nav__link">
+    为什么要用error
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -1890,6 +1904,91 @@
 </pre></div>
 
 <p>并不是因为Error()在代码中的位置靠下所以优先，若把上面String()和Error()对调，输出依然是Error</p>
+<h2 id="error_1"><strong>为什么要用error</strong><a class="headerlink" href="#error_1" title="Permanent link">&para;</a></h2>
+<hr />
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">MyError</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">When</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+    <span class="nx">What</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">e</span> <span class="o">*</span><span class="nx">MyError</span><span class="p">)</span> <span class="nx">Error</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;at %v, %s&quot;</span><span class="p">,</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">When</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">What</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">func run() error {</span>
+<span class="cm">    return &amp;MyError{</span>
+<span class="cm">        time.Now(),</span>
+<span class="cm">        &quot;it didn&#39;t work&quot;,</span>
+<span class="cm">    }</span>
+<span class="cm">}</span>
+<span class="cm">*/</span>
+
+<span class="cm">/*</span>
+<span class="cm">func run() *MyError {</span>
+<span class="cm">    return &amp;MyError{</span>
+<span class="cm">        time.Now(),</span>
+<span class="cm">        &quot;it didn&#39;t work&quot;,</span>
+<span class="cm">    }</span>
+<span class="cm">}</span>
+<span class="cm">*/</span>
+
+<span class="cm">/*</span>
+<span class="cm">func run() interface{} {</span>
+<span class="cm">    return &amp;MyError{</span>
+<span class="cm">        time.Now(),</span>
+<span class="cm">        &quot;it didn&#39;t work&quot;,</span>
+<span class="cm">    }</span>
+<span class="cm">}</span>
+<span class="cm">*/</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">run</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>上面3个run()任意取消一个注释，都能输出，并且输出都是：</p>
+<div class="codehilite"><pre><span></span>*main.MyError
+at 2017-07-25 22:45:27.476615537 +0800 CST, it didn&#39;t work
+</pre></div>
+
+<p>问题：既然3个run()都能用，为什么要用error，而不是另外2个？</p>
+<p>答：用哪个都可以，但既然有error，就用error吧，符合习惯，也为了让别人更容易看懂</p>
+<p>因为这3个用哪个都是一模一样的，不仅最终输出一样，底层处理逻辑也是完全一样，因为fmt里有一段：</p>
+<div class="codehilite"><pre><span></span><span class="k">switch</span> <span class="nx">verb</span> <span class="p">{</span>
+<span class="k">case</span> <span class="sc">&#39;v&#39;</span><span class="p">,</span> <span class="sc">&#39;s&#39;</span><span class="p">,</span> <span class="sc">&#39;x&#39;</span><span class="p">,</span> <span class="sc">&#39;X&#39;</span><span class="p">,</span> <span class="sc">&#39;q&#39;</span><span class="p">:</span>
+    <span class="c1">// Is it an error or Stringer?</span>
+    <span class="c1">// The duplication in the bodies is necessary:</span>
+    <span class="c1">// setting handled and deferring catchPanic</span>
+    <span class="c1">// must happen before calling the method.</span>
+    <span class="k">switch</span> <span class="nx">v</span> <span class="o">:=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">arg</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="kt">error</span><span class="p">:</span>
+        <span class="nx">handled</span> <span class="p">=</span> <span class="kc">true</span>
+        <span class="k">defer</span> <span class="nx">p</span><span class="p">.</span><span class="nx">catchPanic</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">arg</span><span class="p">,</span> <span class="nx">verb</span><span class="p">)</span>
+        <span class="nx">p</span><span class="p">.</span><span class="nx">fmtString</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Error</span><span class="p">(),</span> <span class="nx">verb</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="k">case</span> <span class="nx">Stringer</span><span class="p">:</span>
+        <span class="nx">handled</span> <span class="p">=</span> <span class="kc">true</span>
+        <span class="k">defer</span> <span class="nx">p</span><span class="p">.</span><span class="nx">catchPanic</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">arg</span><span class="p">,</span> <span class="nx">verb</span><span class="p">)</span>
+        <span class="nx">p</span><span class="p">.</span><span class="nx">fmtString</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">String</span><span class="p">(),</span> <span class="nx">verb</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>说明会先判断下是否实现了error接口，即是否有Error()方法，如果有的话，就打印Error()。而根据接口的pair原理，无论是interface{}、struct、还是实现error接口，最终都会在fmt里再实现一次error接口，而上面例子中3种情况均实现error接口，所以完全一样，没有任何区别</p>
                 
                   
                 
