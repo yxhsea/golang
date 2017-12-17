@@ -161,6 +161,7 @@ pages:
         - 8. nil: other/nil.md
         - 9. make: other/make.md
         - 10. 枚举: other/enum.md
+        - 11. Readers: other/readers.md
     - 八. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md
