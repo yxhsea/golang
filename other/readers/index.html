@@ -13,7 +13,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/golang/other/enum/">
+        <link rel="canonical" href="https://cyent.github.io/golang/other/readers/">
       
       
         <meta name="author" content="cyent">
@@ -38,7 +38,7 @@
     
     
       
-        <title>10. 枚举 - Go语言学习 - cyent笔记</title>
+        <title>11. Readers - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                10. 枚举
+                11. Readers
               </span>
             
           
@@ -1626,6 +1626,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../enum/" title="10. 枚举" class="md-nav__link">
+      10. 枚举
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -1634,22 +1646,42 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
-    <a href="./" title="10. 枚举" class="md-nav__link md-nav__link--active">
-      10. 枚举
-    </a>
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        11. Readers
+      </label>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../readers/" title="11. Readers" class="md-nav__link">
+    <a href="./" title="11. Readers" class="md-nav__link md-nav__link--active">
       11. Readers
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ioreader" title="io.Reader" class="md-nav__link">
+    io.Reader
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stringsreader" title="strings.Reader" class="md-nav__link">
+    strings.Reader
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -1761,58 +1793,195 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ioreader" title="io.Reader" class="md-nav__link">
+    io.Reader
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stringsreader" title="strings.Reader" class="md-nav__link">
+    strings.Reader
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cyent/golang/edit/master/docs/other/enum.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/cyent/golang/edit/master/docs/other/readers.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>10. 枚举</h1>
+                  <h1>11. Readers</h1>
                 
-                <p>枚举就是一一列举，将所有的情况都列举出来，那么取值的时候只能是这几种情况的一种，不能是别的。</p>
-<p>go枚举：</p>
-<p>在go语言中，没有直接支持枚举的关键字，也就造成go没有直接枚举的功能。但是可以通过const+iota来模拟枚举</p>
-<p>例子：</p>
+                <h2 id="ioreader"><strong>io.Reader</strong><a class="headerlink" href="#ioreader" title="Permanent link">&para;</a></h2>
+<hr />
+<p>io 包指定了 io.Reader 接口， 它表示从数据流结尾读取。</p>
+<p>Go标准库包含这个了io.Reader接口的许多实现，包括文件、网络连接、压缩、加密等</p>
+<p>io.Reader接口的定义：</p>
+<div class="codehilite"><pre><span></span><span class="kd">type</span> <span class="nx">Reader</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">Read</span><span class="p">(</span><span class="nx">p</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>任意的type只要实现了<code>Read(p []byte) (n int, err error)</code>就可以被其他程序通过实现Reader接口方式来调用Read()方法</p>
+<p>Read()：用数据填充指定的字节 slice，并且返回填充的字节数和错误信息。 在遇到数据流结尾时，返回 io.EOF 错误。</p>
+<h2 id="stringsreader"><strong>strings.Reader</strong><a class="headerlink" href="#stringsreader" title="Permanent link">&para;</a></h2>
+<hr />
+<p>strings.Reader是个struct，定义如下</p>
+<div class="codehilite"><pre><span></span><span class="c1">// A Reader implements the io.Reader, io.ReaderAt, io.Seeker, io.WriterTo,</span>
+<span class="c1">// io.ByteScanner, and io.RuneScanner interfaces by reading</span>
+<span class="c1">// from a string.</span>
+<span class="kd">type</span> <span class="nx">Reader</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">s</span>        <span class="kt">string</span>
+    <span class="nx">i</span>        <span class="kt">int64</span> <span class="c1">// current reading index</span>
+    <span class="nx">prevRune</span> <span class="kt">int</span>   <span class="c1">// index of previous rune; or &lt; 0</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>strings.Reader实现了io.Reader，因为strings.Reader拥有符合io.Reader要求的Read()方法，定义如下</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">Reader</span><span class="p">)</span> <span class="nx">Read</span><span class="p">(</span><span class="nx">b</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">r</span><span class="p">.</span><span class="nx">i</span> <span class="o">&gt;=</span> <span class="nb">int64</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">s</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">io</span><span class="p">.</span><span class="nx">EOF</span>
+    <span class="p">}</span>
+    <span class="nx">r</span><span class="p">.</span><span class="nx">prevRune</span> <span class="p">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="nx">n</span> <span class="p">=</span> <span class="nb">copy</span><span class="p">(</span><span class="nx">b</span><span class="p">,</span> <span class="nx">r</span><span class="p">.</span><span class="nx">s</span><span class="p">[</span><span class="nx">r</span><span class="p">.</span><span class="nx">i</span><span class="p">:])</span>
+    <span class="nx">r</span><span class="p">.</span><span class="nx">i</span> <span class="o">+=</span> <span class="nb">int64</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span>
+    <span class="k">return</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>下面例子代码创建了一个 strings.Reader。 并且以每次 8 字节的速度读取它的输出</p>
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="c1">// 实现枚举例子</span>
-<span class="kd">type</span> <span class="nx">State</span> <span class="kt">int</span>
-
-<span class="c1">// iota 初始化后会自动递增</span>
-<span class="kd">const</span> <span class="p">(</span>
-    <span class="nx">Running</span> <span class="nx">State</span> <span class="p">=</span> <span class="kc">iota</span>    <span class="c1">// value --&gt; 0</span>
-    <span class="nx">Stopped</span>                 <span class="c1">// value --&gt; 1</span>
-    <span class="nx">Rebooting</span>               <span class="c1">// value --&gt; 2</span>
-    <span class="nx">Terminated</span>              <span class="c1">// value --&gt; 3</span>
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;io&quot;</span>
+    <span class="s">&quot;strings&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="nx">State</span><span class="p">)</span> <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
-    <span class="k">switch</span> <span class="nx">this</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">Running</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">&quot;Running&quot;</span>
-    <span class="k">case</span> <span class="nx">Stopped</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">&quot;Stopped&quot;</span>
-    <span class="k">default</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">&quot;Unknown&quot;</span>
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">r</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">(</span><span class="s">&quot;Hello, Reader!&quot;</span><span class="p">)</span>
+
+    <span class="nx">b</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">{</span>
+        <span class="nx">n</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">r</span><span class="p">.</span><span class="nx">Read</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;n = %v err = %v b = %v\n&quot;</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;b[:n] = %q\n&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">[:</span><span class="nx">n</span><span class="p">])</span>
+        <span class="k">if</span> <span class="nx">err</span> <span class="o">==</span> <span class="nx">io</span><span class="p">.</span><span class="nx">EOF</span> <span class="p">{</span>
+            <span class="k">break</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+</pre></div>
+
+<p>输出：</p>
+<div class="codehilite"><pre><span></span>n = 8 err = &lt;nil&gt; b = [72 101 108 108 111 44 32 82]
+b[:n] = &quot;Hello, R&quot;
+n = 6 err = &lt;nil&gt; b = [101 97 100 101 114 33 32 82]
+b[:n] = &quot;eader!&quot;
+n = 0 err = EOF b = [101 97 100 101 114 33 32 82]
+b[:n] = &quot;&quot;
+</pre></div>
+
+<p>注意点：</p>
+<ol>
+<li>
+<p>r.Read(b) 表示读取r里面的字符串（即Hello, Reader!），每次读出8个字节并存入slice b中，存入方式是从第一个元素开始存，不管元素原来是否已经有值都直接覆盖。因此要做EOF的判断，因为最终slice的值是最后一次循环读出的（靠前）+ 最后一次的前一次循环读出的（靠后），即假设字符串是从a到z，而且[]byte, 3，那么最终slice的值类似这样[x, y, z, u, v, w]</p>
+</li>
+<li>
+<p>每次r.Read()之后已经被读取的r里面的字符串就不能被重新读取了</p>
+</li>
+</ol>
+<p>如果上面例子不是很懂，对上面例子稍微改造下，更详细的输出</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;io&quot;</span>
+    <span class="s">&quot;strings&quot;</span>
+<span class="p">)</span>
 
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">state</span> <span class="o">:=</span> <span class="nx">Stopped</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;state&quot;</span><span class="p">,</span> <span class="nx">state</span><span class="p">)</span>
+    <span class="nx">r</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">(</span><span class="s">&quot;Hello, Reader!&quot;</span><span class="p">)</span>
+
+    <span class="nx">b</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;===init===&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;r:&quot;</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;===for begin===&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">{</span>
+        <span class="nx">n</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">r</span><span class="p">.</span><span class="nx">Read</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;r:&quot;</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;n = %v, err = %v, b = %v\n&quot;</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;b[:n] = %q\n&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">[:</span><span class="nx">n</span><span class="p">])</span>
+        <span class="k">if</span> <span class="nx">err</span> <span class="o">==</span> <span class="nx">io</span><span class="p">.</span><span class="nx">EOF</span> <span class="p">{</span>
+            <span class="k">break</span>
+        <span class="p">}</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;---&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;===end===&quot;</span><span class="p">)</span>
+    <span class="nx">n</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">r</span><span class="p">.</span><span class="nx">Read</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;r:&quot;</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;n = %v, err = %v, b = %v\n&quot;</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;b[:n] = %q\n&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">[:</span><span class="nx">n</span><span class="p">])</span>
 <span class="p">}</span>
 </pre></div>
 
-<p>输出</p>
-<div class="codehilite"><pre><span></span>state Stopped
+<p>输出：</p>
+<div class="codehilite"><pre><span></span>===init===
+r: &amp;{Hello, Reader! 0 -1}
+b: [0 0 0 0]
+===for begin===
+r: &amp;{Hello, Reader! 4 -1}
+n = 4, err = &lt;nil&gt;, b = [72 101 108 108]
+b[:n] = &quot;Hell&quot;
+---
+r: &amp;{Hello, Reader! 8 -1}
+n = 4, err = &lt;nil&gt;, b = [111 44 32 82]
+b[:n] = &quot;o, R&quot;
+---
+r: &amp;{Hello, Reader! 12 -1}
+n = 4, err = &lt;nil&gt;, b = [101 97 100 101]
+b[:n] = &quot;eade&quot;
+---
+r: &amp;{Hello, Reader! 14 -1}
+n = 2, err = &lt;nil&gt;, b = [114 33 100 101]
+b[:n] = &quot;r!&quot;
+---
+r: &amp;{Hello, Reader! 14 -1}
+n = 0, err = EOF, b = [114 33 100 101]
+b[:n] = &quot;&quot;
+===end===
+r: &amp;{Hello, Reader! 14 -1}
+n = 0, err = EOF, b = [114 33 100 101]
+b[:n] = &quot;&quot;
 </pre></div>
-
-<p>没有重载String函数的情况下则输出<code>state 1</code></p>
-<p>附iota详解：<a href="https://studygolang.com/articles/2192">https://studygolang.com/articles/2192</a></p>
                 
                   
                 
@@ -1831,7 +2000,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../make/" title="9. make" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../enum/" title="10. 枚举" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1840,19 +2009,19 @@
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                9. make
+                10. 枚举
               </span>
             </div>
           </a>
         
         
-          <a href="../readers/" title="11. Readers" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../appendix/doc/" title="1. 文档" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                11. Readers
+                1. 文档
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
