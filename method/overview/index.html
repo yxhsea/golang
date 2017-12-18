@@ -1127,6 +1127,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#tar-gz" title="tar-gz" class="md-nav__link">
+    tar-gz
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1865,6 +1872,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#tar-gz" title="tar-gz" class="md-nav__link">
+    tar-gz
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2032,6 +2046,145 @@ Marks: &quot;75&quot;
 <div class="codehilite"><pre><span></span>Salary: 30000
 Marks: 75
 </pre></div>
+
+<h3 id="tar-gz"><strong>tar-gz</strong><a class="headerlink" href="#tar-gz" title="Permanent link">&para;</a></h3>
+<p>python</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">tarfile</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">tar</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fname</span> <span class="o">+</span> <span class="s2">&quot;.tar.gz&quot;</span><span class="p">,</span> <span class="s2">&quot;w:gz&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="nb">dir</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+        <span class="k">print</span> <span class="n">root</span><span class="p">,</span> <span class="nb">dir</span><span class="p">,</span> <span class="n">files</span>
+        <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">fullpath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="nb">file</span><span class="p">)</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">fullpath</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">tar</span><span class="p">(</span><span class="s2">&quot;del&quot;</span><span class="p">)</span>
+</pre></div>
+
+<p>go</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;os&quot;</span>
+    <span class="s">&quot;io&quot;</span>
+    <span class="s">&quot;archive/tar&quot;</span>
+    <span class="s">&quot;compress/gzip&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// file write</span>
+    <span class="nx">fw</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="s">&quot;tar/lin_golang_src.tar.gz&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">defer</span> <span class="nx">fw</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+
+    <span class="c1">// gzip write</span>
+    <span class="nx">gw</span> <span class="o">:=</span> <span class="nx">gzip</span><span class="p">.</span><span class="nx">NewWriter</span><span class="p">(</span><span class="nx">fw</span><span class="p">)</span>
+    <span class="k">defer</span> <span class="nx">gw</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+
+    <span class="c1">// tar write</span>
+    <span class="nx">tw</span> <span class="o">:=</span> <span class="nx">tar</span><span class="p">.</span><span class="nx">NewWriter</span><span class="p">(</span><span class="nx">gw</span><span class="p">)</span>
+    <span class="k">defer</span> <span class="nx">tw</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+
+    <span class="c1">// 打开文件夹</span>
+    <span class="nx">dir</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&quot;file/&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">defer</span> <span class="nx">dir</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+
+    <span class="c1">// 读取文件列表</span>
+    <span class="nx">fis</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">dir</span><span class="p">.</span><span class="nx">Readdir</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 遍历文件列表</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">fi</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">fis</span> <span class="p">{</span>
+        <span class="c1">// 逃过文件夹, 我这里就不递归了</span>
+        <span class="k">if</span> <span class="nx">fi</span><span class="p">.</span><span class="nx">IsDir</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">continue</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 打印文件名称</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">fi</span><span class="p">.</span><span class="nx">Name</span><span class="p">())</span>
+
+        <span class="c1">// 打开文件</span>
+        <span class="nx">fr</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">dir</span><span class="p">.</span><span class="nx">Name</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="nx">fi</span><span class="p">.</span><span class="nx">Name</span><span class="p">())</span>
+        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">defer</span> <span class="nx">fr</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+
+        <span class="c1">// 信息头</span>
+        <span class="nx">h</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">tar</span><span class="p">.</span><span class="nx">Header</span><span class="p">)</span>
+        <span class="nx">h</span><span class="p">.</span><span class="nx">Name</span> <span class="p">=</span> <span class="nx">fi</span><span class="p">.</span><span class="nx">Name</span><span class="p">()</span>
+        <span class="nx">h</span><span class="p">.</span><span class="nx">Size</span> <span class="p">=</span> <span class="nx">fi</span><span class="p">.</span><span class="nx">Size</span><span class="p">()</span>
+        <span class="nx">h</span><span class="p">.</span><span class="nx">Mode</span> <span class="p">=</span> <span class="nb">int64</span><span class="p">(</span><span class="nx">fi</span><span class="p">.</span><span class="nx">Mode</span><span class="p">())</span>
+        <span class="nx">h</span><span class="p">.</span><span class="nx">ModTime</span> <span class="p">=</span> <span class="nx">fi</span><span class="p">.</span><span class="nx">ModTime</span><span class="p">()</span>
+
+        <span class="c1">// 写信息头</span>
+        <span class="nx">err</span> <span class="p">=</span> <span class="nx">tw</span><span class="p">.</span><span class="nx">WriteHeader</span><span class="p">(</span><span class="nx">h</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 写文件</span>
+        <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">io</span><span class="p">.</span><span class="nx">Copy</span><span class="p">(</span><span class="nx">tw</span><span class="p">,</span> <span class="nx">fr</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;tar.gz ok&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>总结核心代码：</p>
+<p>python：</p>
+<div class="codehilite"><pre><span></span><span class="o">//</span> <span class="err">创建</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fname</span> <span class="o">+</span> <span class="s2">&quot;.tar.gz&quot;</span><span class="p">,</span> <span class="s2">&quot;w:gz&quot;</span><span class="p">)</span>
+<span class="o">//</span> <span class="err">往</span><span class="n">tar</span><span class="err">里添加文件</span>
+<span class="n">t</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">fiepath</span><span class="p">)</span>
+</pre></div>
+
+<p>go：</p>
+<div class="codehilite"><pre><span></span><span class="c1">// 创建tar.gz</span>
+<span class="nx">fw</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="s">&quot;tar/lin_golang_src.tar.gz&quot;</span><span class="p">)</span>
+<span class="nx">gw</span> <span class="o">:=</span> <span class="nx">gzip</span><span class="p">.</span><span class="nx">NewWriter</span><span class="p">(</span><span class="nx">fw</span><span class="p">)</span>
+<span class="nx">tw</span> <span class="o">:=</span> <span class="nx">tar</span><span class="p">.</span><span class="nx">NewWriter</span><span class="p">(</span><span class="nx">gw</span><span class="p">)</span>
+<span class="c1">// 往tar里添加文件</span>
+<span class="nx">fr</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">filepath</span><span class="p">)</span>
+<span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">io</span><span class="p">.</span><span class="nx">Copy</span><span class="p">(</span><span class="nx">tw</span><span class="p">,</span> <span class="nx">fr</span><span class="p">)</span>
+</pre></div>
+
+<p>可以看到：</p>
+<ol>
+<li>
+<p>python封装了做tar的所有细节（创建tar并gzip压缩），而golang没有封装细节，要自己依次创建一个文件，带给gzip，再将gzip的输出带给tar。</p>
+<ol>
+<li>
+<p>创建tar.gz：python只需要调用tarfile包自己的方法open即可，而golang分3步，先os.Create获得fw，再把fw带到gzip.NewWriter获得gw，再把gw带到tar.NewWriter获得tw</p>
+</li>
+<li>
+<p>往tar里添加文件：python只需要调用tarfile包自己的方法add即可，而golang分2步，首先是通过os.Open（公共方法）获得文件句柄，再把文件句柄带到io.Copy（公共方法）来处理</p>
+</li>
+</ol>
+</li>
+<li>
+<p>由于go语言的接口特点，golang没有必要像python一样完全封装细节，而是使用公共接口（每个类型都实现了相同的接口）</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>当然用golang自己可以再做一次封装，比如自己也搞个tarfile包，封装创建tar和gzip压缩方法</p>
+</div>
+<p>详细剖析上面的tar.gz例子，详见<a href="../../attachment/golang_targz.itmz">golang-targz脑图</a>（点击下载，并使用iThoughtsX打开）</p>
                 
                   
                 
