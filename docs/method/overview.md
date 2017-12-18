@@ -160,3 +160,144 @@ func main() {
 Salary: 30000
 Marks: 75
 ```
+
+### **tar-gz**
+
+python
+
+```python
+import tarfile
+import os
+
+def tar(fname):
+    t = tarfile.open(fname + ".tar.gz", "w:gz")
+    for root, dir, files in os.walk(fname):
+        print root, dir, files
+        for file in files:
+            fullpath = os.path.join(root, file)
+            t.add(fullpath)
+    t.close()
+
+if __name__ == "__main__":
+    tar("del")
+```
+
+go
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    "io"
+    "archive/tar"
+    "compress/gzip"
+)
+
+func main() {
+    // file write
+    fw, err := os.Create("tar/lin_golang_src.tar.gz")
+    if err != nil {
+        panic(err)
+    }
+    defer fw.Close()
+
+    // gzip write
+    gw := gzip.NewWriter(fw)
+    defer gw.Close()
+
+    // tar write
+    tw := tar.NewWriter(gw)
+    defer tw.Close()
+
+    // 打开文件夹
+    dir, err := os.Open("file/")
+    if err != nil {
+        panic(nil)
+    }
+    defer dir.Close()
+
+    // 读取文件列表
+    fis, err := dir.Readdir(0)
+    if err != nil {
+        panic(err)
+    }
+
+    // 遍历文件列表
+    for _, fi := range fis {
+        // 逃过文件夹, 我这里就不递归了
+        if fi.IsDir() {
+            continue
+        }
+
+        // 打印文件名称
+        fmt.Println(fi.Name())
+
+        // 打开文件
+        fr, err := os.Open(dir.Name() + "/" + fi.Name())
+        if err != nil {
+            panic(err)
+        }
+        defer fr.Close()
+
+        // 信息头
+        h := new(tar.Header)
+        h.Name = fi.Name()
+        h.Size = fi.Size()
+        h.Mode = int64(fi.Mode())
+        h.ModTime = fi.ModTime()
+
+        // 写信息头
+        err = tw.WriteHeader(h)
+        if err != nil {
+            panic(err)
+        }
+
+        // 写文件
+        _, err = io.Copy(tw, fr)
+        if err != nil {
+            panic(err)
+        }
+    }
+    fmt.Println("tar.gz ok")
+}
+```
+
+总结核心代码：
+
+python：
+
+```python
+// 创建tar.gz
+t = tarfile.open(fname + ".tar.gz", "w:gz")
+// 往tar里添加文件
+t.add(fiepath)
+```
+
+go：
+
+```go
+// 创建tar.gz
+fw, err := os.Create("tar/lin_golang_src.tar.gz")
+gw := gzip.NewWriter(fw)
+tw := tar.NewWriter(gw)
+// 往tar里添加文件
+fr, err := os.Open(filepath)
+_, err = io.Copy(tw, fr)
+```
+
+可以看到：
+
+1. python封装了做tar的所有细节（创建tar并gzip压缩），而golang没有封装细节，要自己依次创建一个文件，带给gzip，再将gzip的输出带给tar。
+
+	1. 创建tar.gz：python只需要调用tarfile包自己的方法open即可，而golang分3步，先os.Create获得fw，再把fw带到gzip.NewWriter获得gw，再把gw带到tar.NewWriter获得tw
+
+	2. 往tar里添加文件：python只需要调用tarfile包自己的方法add即可，而golang分2步，首先是通过os.Open（公共方法）获得文件句柄，再把文件句柄带到io.Copy（公共方法）来处理
+
+2. 由于go语言的接口特点，golang没有必要像python一样完全封装细节，而是使用公共接口（每个类型都实现了相同的接口）
+
+!!! note
+	当然用golang自己可以再做一次封装，比如自己也搞个tarfile包，封装创建tar和gzip压缩方法
+
+详细剖析上面的tar.gz例子，详见[golang-targz脑图](/attachment/golang_targz.itmz)（点击下载，并使用iThoughtsX打开）

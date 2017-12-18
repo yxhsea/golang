@@ -43,9 +43,9 @@ func main() {
 
 function的argument和method的receiver都能接收pointer，区别：
 
-1. function的argument类型必须和传入的类型一致，比如argument是pointer类型，则传入参数也必须是pointer，如果传入参数不是pointer类型，则传入参数不能是pointer。
+1. function的argument类型必须和传入的类型一致，比如argument是pointer类型，则传入参数也必须是pointer，如果argument不是pointer类型，则传入参数不能是pointer。
 
-2. method的receiver类型比较智能，如果receiver类型是pointer，那么当传入参数类型不是pointer时候，go会自动转为pointer。如果receiver类型不是pointer，那么当传入参数类型是pointer，会自动将pointer转换为pointer所对应的值。
+2. method的receiver类型比较智能，如果receiver类型是pointer，那么当传入参数类型不是pointer时候，会自动转为pointer。如果receiver类型不是pointer，那么当传入参数类型是pointer，会自动将pointer转换为pointer所对应的值。
 
 	!!! warning
 		接口的receiver类型必须和实现接口一致，否则会报错，详见[接口章节部分](/method/interface_receiver/)
