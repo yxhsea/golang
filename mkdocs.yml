@@ -162,6 +162,7 @@ pages:
         - 9. make: other/make.md
         - 10. 枚举: other/enum.md
         - 11. Readers: other/readers.md
+        - 12. 编码风格: other/style.md
     - 八. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md
