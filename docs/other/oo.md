@@ -305,3 +305,13 @@ http://legendtkl.com/2015/11/25/go-generic-programming/
 这段话为个人理解，不保证准确性鸭子类型是一个老外提出的构想，是一种动态的代码风格，某个开发语言支持了这个构想而产生的编程风格或规范，叫做泛型编程，interface是go对泛型编程的实现（准确说是go不支持泛型编程，但go的interface可以实现类似泛型编程的效果）
 
 泛型编程：像类一样，泛型也是一种抽象数据类型，但是泛型不属于面向对象，它是面向对象的补充和发展。
+
+## **继承**
+
+---
+
+有2种方式: 使用接口，或者使用struct嵌套
+
+- 使用接口，详见[方法章节-有基类](/method/overview/#_2)
+
+- 使用struct嵌套，详见[struct章节-struct作为struct的元素](/datatype/struct_struct_element/)

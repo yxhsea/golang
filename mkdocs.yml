@@ -95,6 +95,7 @@ pages:
             - 2.4. literal: datatype/struct_literal.md
             - 2.5. 匿名struct: datatype/struct_anon.md
             - 2.6. 接口作为struct元素: datatype/struct_interface_element.md
+            - 2.7. struct作为struct的元素: datatype/struct_struct_element.md
         - 3. array和slice:
             - 3.1. 介绍与比较: datatype/arr_sli_main.md
             - 3.2. len()与cap(): datatype/arr_sli_len_cap.md
