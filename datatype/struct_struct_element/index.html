@@ -13,7 +13,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/golang/flow/switch/">
+        <link rel="canonical" href="https://cyent.github.io/golang/datatype/struct_struct_element/">
       
       
         <meta name="author" content="cyent">
@@ -38,7 +38,7 @@
     
     
       
-        <title>3. switch - Go语言学习 - cyent笔记</title>
+        <title>2.7. struct作为struct的元素 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                3. switch
+                2.7. struct作为struct的元素
               </span>
             
           
@@ -537,12 +537,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       四. 流控制
@@ -560,7 +558,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../for/" title="1. for" class="md-nav__link">
+    <a href="../../flow/for/" title="1. for" class="md-nav__link">
       1. for
     </a>
   </li>
@@ -572,7 +570,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../if/" title="2. if" class="md-nav__link">
+    <a href="../../flow/if/" title="2. if" class="md-nav__link">
       2. if
     </a>
   </li>
@@ -582,64 +580,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        3. switch
-      </label>
-    
-    <a href="./" title="3. switch" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../flow/switch/" title="3. switch" class="md-nav__link">
       3. switch
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="跟变量" class="md-nav__link">
-    跟变量
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="不跟变量" class="md-nav__link">
-    不跟变量
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="短声明" class="md-nav__link">
-    短声明
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" title="作用域" class="md-nav__link">
-    作用域
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -649,7 +594,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../defer/" title="4. defer" class="md-nav__link">
+    <a href="../../flow/defer/" title="4. defer" class="md-nav__link">
       4. defer
     </a>
   </li>
@@ -664,10 +609,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
     
     <label class="md-nav__link" for="nav-5">
       五. 数据类型
@@ -685,7 +632,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/pointer/" title="1. pointer" class="md-nav__link">
+    <a href="../pointer/" title="1. pointer" class="md-nav__link">
       1. pointer
     </a>
   </li>
@@ -695,10 +642,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2" checked>
     
     <label class="md-nav__link" for="nav-5-2">
       2. struct
@@ -716,7 +665,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/struct_main/" title="2.1. 声明" class="md-nav__link">
+    <a href="../struct_main/" title="2.1. 声明" class="md-nav__link">
       2.1. 声明
     </a>
   </li>
@@ -728,7 +677,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/struct_export/" title="2.2. 导出名" class="md-nav__link">
+    <a href="../struct_export/" title="2.2. 导出名" class="md-nav__link">
       2.2. 导出名
     </a>
   </li>
@@ -740,7 +689,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/struct_pointer/" title="2.3. struct指针" class="md-nav__link">
+    <a href="../struct_pointer/" title="2.3. struct指针" class="md-nav__link">
       2.3. struct指针
     </a>
   </li>
@@ -752,7 +701,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/struct_literal/" title="2.4. literal" class="md-nav__link">
+    <a href="../struct_literal/" title="2.4. literal" class="md-nav__link">
       2.4. literal
     </a>
   </li>
@@ -764,7 +713,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/struct_anon/" title="2.5. 匿名struct" class="md-nav__link">
+    <a href="../struct_anon/" title="2.5. 匿名struct" class="md-nav__link">
       2.5. 匿名struct
     </a>
   </li>
@@ -776,7 +725,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/struct_interface_element/" title="2.6. 接口作为struct元素" class="md-nav__link">
+    <a href="../struct_interface_element/" title="2.6. 接口作为struct元素" class="md-nav__link">
       2.6. 接口作为struct元素
     </a>
   </li>
@@ -786,11 +735,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../datatype/struct_struct_element/" title="2.7. struct作为struct的元素" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="2.7. struct作为struct的元素" class="md-nav__link md-nav__link--active">
       2.7. struct作为struct的元素
     </a>
+    
   </li>
 
         
@@ -824,7 +780,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_main/" title="3.1. 介绍与比较" class="md-nav__link">
+    <a href="../arr_sli_main/" title="3.1. 介绍与比较" class="md-nav__link">
       3.1. 介绍与比较
     </a>
   </li>
@@ -836,7 +792,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_len_cap/" title="3.2. len()与cap()" class="md-nav__link">
+    <a href="../arr_sli_len_cap/" title="3.2. len()与cap()" class="md-nav__link">
       3.2. len()与cap()
     </a>
   </li>
@@ -848,7 +804,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_index/" title="3.3. 下标" class="md-nav__link">
+    <a href="../arr_sli_index/" title="3.3. 下标" class="md-nav__link">
       3.3. 下标
     </a>
   </li>
@@ -860,7 +816,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_key/" title="3.4. 深入理解" class="md-nav__link">
+    <a href="../arr_sli_key/" title="3.4. 深入理解" class="md-nav__link">
       3.4. 深入理解
     </a>
   </li>
@@ -872,7 +828,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_nil/" title="3.5. nil" class="md-nav__link">
+    <a href="../arr_sli_nil/" title="3.5. nil" class="md-nav__link">
       3.5. nil
     </a>
   </li>
@@ -884,7 +840,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_make/" title="3.6. make" class="md-nav__link">
+    <a href="../arr_sli_make/" title="3.6. make" class="md-nav__link">
       3.6. make
     </a>
   </li>
@@ -896,7 +852,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_nest/" title="3.7. slice嵌套" class="md-nav__link">
+    <a href="../arr_sli_nest/" title="3.7. slice嵌套" class="md-nav__link">
       3.7. slice嵌套
     </a>
   </li>
@@ -908,7 +864,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_expand/" title="3.8. slice扩容" class="md-nav__link">
+    <a href="../arr_sli_expand/" title="3.8. slice扩容" class="md-nav__link">
       3.8. slice扩容
     </a>
   </li>
@@ -920,7 +876,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_append/" title="3.9. append添加元素" class="md-nav__link">
+    <a href="../arr_sli_append/" title="3.9. append添加元素" class="md-nav__link">
       3.9. append添加元素
     </a>
   </li>
@@ -932,7 +888,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_sli_copy/" title="3.10. copy复制元素" class="md-nav__link">
+    <a href="../arr_sli_copy/" title="3.10. copy复制元素" class="md-nav__link">
       3.10. copy复制元素
     </a>
   </li>
@@ -944,7 +900,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/arr_empty_interface/" title="3.11. 空接口对切片的影响" class="md-nav__link">
+    <a href="../arr_empty_interface/" title="3.11. 空接口对切片的影响" class="md-nav__link">
       3.11. 空接口对切片的影响
     </a>
   </li>
@@ -980,7 +936,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/map_main/" title="4.1. 声明" class="md-nav__link">
+    <a href="../map_main/" title="4.1. 声明" class="md-nav__link">
       4.1. 声明
     </a>
   </li>
@@ -992,7 +948,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/map_nil/" title="4.2. nil map" class="md-nav__link">
+    <a href="../map_nil/" title="4.2. nil map" class="md-nav__link">
       4.2. nil map
     </a>
   </li>
@@ -1004,7 +960,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/map_struct/" title="4.3. key和value可以用struct" class="md-nav__link">
+    <a href="../map_struct/" title="4.3. key和value可以用struct" class="md-nav__link">
       4.3. key和value可以用struct
     </a>
   </li>
@@ -1016,7 +972,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/map_literal/" title="4.4. literal" class="md-nav__link">
+    <a href="../map_literal/" title="4.4. literal" class="md-nav__link">
       4.4. literal
     </a>
   </li>
@@ -1028,7 +984,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/map_get_insert_update/" title="4.5. 检索、添加和修改元素" class="md-nav__link">
+    <a href="../map_get_insert_update/" title="4.5. 检索、添加和修改元素" class="md-nav__link">
       4.5. 检索、添加和修改元素
     </a>
   </li>
@@ -1040,7 +996,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/map_delete/" title="4.6. delete删除元素" class="md-nav__link">
+    <a href="../map_delete/" title="4.6. delete删除元素" class="md-nav__link">
       4.6. delete删除元素
     </a>
   </li>
@@ -1076,7 +1032,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/funcvalue_main/" title="5.1. 介绍" class="md-nav__link">
+    <a href="../funcvalue_main/" title="5.1. 介绍" class="md-nav__link">
       5.1. 介绍
     </a>
   </li>
@@ -1088,7 +1044,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/funcvalue_parameter/" title="5.2. 函数作为参数传递给另一个函数" class="md-nav__link">
+    <a href="../funcvalue_parameter/" title="5.2. 函数作为参数传递给另一个函数" class="md-nav__link">
       5.2. 函数作为参数传递给另一个函数
     </a>
   </li>
@@ -1100,7 +1056,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/funcvalue_callback/" title="5.3. 用途1-回调函数" class="md-nav__link">
+    <a href="../funcvalue_callback/" title="5.3. 用途1-回调函数" class="md-nav__link">
       5.3. 用途1-回调函数
     </a>
   </li>
@@ -1112,7 +1068,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../datatype/funcvalue_closure/" title="5.4. 用途2-闭包" class="md-nav__link">
+    <a href="../funcvalue_closure/" title="5.4. 用途2-闭包" class="md-nav__link">
       5.4. 用途2-闭包
     </a>
   </li>
@@ -1855,203 +1811,158 @@
               </div>
             
             
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="跟变量" class="md-nav__link">
-    跟变量
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="不跟变量" class="md-nav__link">
-    不跟变量
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="短声明" class="md-nav__link">
-    短声明
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" title="作用域" class="md-nav__link">
-    作用域
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cyent/golang/edit/master/docs/flow/switch.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/cyent/golang/edit/master/docs/datatype/struct_struct_element.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>3. switch</h1>
+                  <h1>2.7. struct作为struct的元素</h1>
                 
-                <h2 id="_1"><strong>跟变量</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<hr />
-<p>某个变量等于A或者等于B</p>
-<div class="codehilite"><pre><span></span><span class="k">switch</span> <span class="nx">varA</span> <span class="p">{</span>
-<span class="k">case</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="o">...</span>
-<span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
-    <span class="o">...</span>
-<span class="k">default</span><span class="p">:</span>
-    <span class="o">...</span>
+                <p>go可以模拟面向对象中的继承（准确叫法是嵌入，英语叫embed，而不是inherit）</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">Dog</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">name</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">BDog</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Dog</span>
+    <span class="nx">name</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">Dog</span><span class="p">)</span> <span class="nx">callMyName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;my name is %q\n&quot;</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">BDog</span><span class="p">)</span>  <span class="c1">// 等同于b := BDog{}</span>
+    <span class="nx">b</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;this is a BDog name&quot;</span>
+    <span class="nx">b</span><span class="p">.</span><span class="nx">Dog</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;this is a Dog name&quot;</span>
+    <span class="nx">b</span><span class="p">.</span><span class="nx">callMyName</span><span class="p">()</span>
 <span class="p">}</span>
 </pre></div>
 
-<h2 id="_2"><strong>不跟变量</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<hr />
-<p>相当于if-else if-else if-else</p>
-<div class="codehilite"><pre><span></span><span class="k">switch</span> <span class="p">{</span>
-<span class="k">case</span> <span class="nx">varA</span> <span class="p">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-    <span class="o">...</span>
-<span class="k">case</span> <span class="nx">varA</span> <span class="p">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="o">...</span>
-<span class="k">default</span><span class="p">:</span>
-    <span class="o">...</span>
-<span class="p">}</span>
+<p>输出</p>
+<div class="codehilite"><pre><span></span>my name is &quot;this is a Dog name&quot;
 </pre></div>
 
-<p><code>switch { ... }</code> 等同于 <code>switch true { ... }</code></p>
-<h2 id="_3"><strong>短声明</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<hr />
-<p>2种短声明形式：</p>
-<ol>
-<li>
-<p>跟变量</p>
-<div class="codehilite"><pre><span></span><span class="k">switch</span> <span class="nx">os</span> <span class="o">:=</span> <span class="nx">runtime</span><span class="p">.</span><span class="nx">GOOS</span><span class="p">;</span> <span class="nx">os</span> <span class="p">{</span>
-<span class="k">case</span> <span class="s">&quot;darwin&quot;</span><span class="p">:</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;OS X.&quot;</span><span class="p">)</span>
-<span class="k">case</span> <span class="s">&quot;linux&quot;</span><span class="p">:</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Linux.&quot;</span><span class="p">)</span>
-<span class="k">default</span><span class="p">:</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s.&quot;</span><span class="p">,</span> <span class="nx">os</span><span class="p">)</span>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>上面callMyName是Dog才有的方法，而BDog没有，但是却能输出，并且输出的是Dog.name的内容。</p>
+<p>因为：Go编译器在编译检查过程（不是在运行时候检查）中，会去遍历结构中的成员，并检查成员中是否有支持callMyName()的调用。如果只找到一个成员支持这种调用，那么b.callMyName()是合法的。如果是两个或者两个以上的成员都支持，那么就会报一个调用有歧义的错误"ambiguous selector b.callMyName"。</p>
+</div>
+<p>扩展一下，把Dog放到一个包里，导入进来：</p>
+<p>dog.go</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">dog</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">Dog</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="hll">    <span class="nx">Name</span> <span class="kt">string</span>
+</span><span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">Dog</span><span class="p">)</span> <span class="nx">CallMyName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Dog my name is %q\n&quot;</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
 <div class="admonition note">
-<p>os变量作用域只在switch里</p>
+<p>注意Dog struct里Name改成了大写</p>
 </div>
-</li>
-<li>
-<p>不跟变量：</p>
-<div class="codehilite"><pre><span></span><span class="k">switch</span> <span class="nx">varA</span> <span class="o">:=</span> <span class="mi">5</span><span class="p">;</span> <span class="p">{</span> <span class="c1">//注意这里有个分号，如果没有分号会报错</span>
-<span class="k">case</span> <span class="nx">varA</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">:</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;&lt;5&quot;</span><span class="p">)</span>
-<span class="k">case</span> <span class="nx">varA</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;==5&quot;</span><span class="p">)</span>
-<span class="k">case</span> <span class="nx">varA</span> <span class="p">&gt;</span> <span class="mi">5</span><span class="p">:</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;&gt;5&quot;</span><span class="p">)</span>
+<p>main.go</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;github.com/cyent/repo1/dog&quot;</span>
+
+<span class="kd">type</span> <span class="nx">BDog</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">dog</span><span class="p">.</span><span class="nx">Dog</span>
+    <span class="nx">name</span> <span class="kt">string</span>
 <span class="p">}</span>
-</pre></div>
-
-</li>
-</ol>
-<p>就是说switch分号后面如果是一个变量，则case就是判断这个变量值等于多少，如果分号后面没变量，则case写条件句，当true时触发</p>
-<p><strong>注意: case里不能用短声明或赋值语句</strong></p>
-<h2 id="_4"><strong>作用域</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<hr />
-<details class="note"><summary>例1. switch的短声明是独立的作用域吗?</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">a</span> <span class="o">:=</span> <span class="mi">3</span>
-
-    <span class="k">switch</span> <span class="nx">a</span> <span class="o">:=</span> <span class="mi">5</span><span class="p">;</span> <span class="p">{</span> <span class="c1">//注意这里有个分号，如果没有分号会报错</span>
-    <span class="k">case</span> <span class="nx">a</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;&lt;5&quot;</span><span class="p">)</span>
-    <span class="k">case</span> <span class="nx">a</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;==5&quot;</span><span class="p">)</span>
-    <span class="k">case</span> <span class="nx">a</span> <span class="p">&gt;</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;&gt;5&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">BDog</span><span class="p">)</span>  <span class="c1">// 等同于b := BDog{}</span>
+<span class="hll">    <span class="nx">b</span><span class="p">.</span><span class="nx">Name</span> <span class="p">=</span> <span class="s">&quot;this is a Dog name&quot;</span>
+</span>    <span class="nx">b</span><span class="p">.</span><span class="nx">CallMyName</span><span class="p">()</span>
 <span class="p">}</span>
 </pre></div>
-<p>输出</p><div class="codehilite"><pre><span></span>==5
-3
-</pre></div>
-<p>答: switch的短声明是独立的作用域</p></details><details class="note"><summary>例2. switch的每个case均是独立的作用域吗?</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+<div class="admonition note">
+<p>注意b.Name是大写</p>
+</div>
+<p>输出也是</p>
+<div class="codehilite"><pre><span></span>Dog my name is &quot;this is a Dog name&quot;
+</pre></div>
+
+<p>可以把b.Name改为b.Dog.Name，即</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;github.com/cyent/repo1/dog&quot;</span>
+
+<span class="kd">type</span> <span class="nx">BDog</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">dog</span><span class="p">.</span><span class="nx">Dog</span>
+    <span class="nx">name</span> <span class="kt">string</span>
+<span class="p">}</span>
 
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span>
-
-    <span class="k">switch</span> <span class="nx">a</span> <span class="o">:=</span> <span class="mi">5</span><span class="p">;</span> <span class="p">{</span> <span class="c1">//注意这里有个分号，如果没有分号会报错</span>
-    <span class="k">case</span> <span class="nx">a</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;&lt;5&quot;</span><span class="p">)</span>
-        <span class="nx">i</span> <span class="o">:=</span> <span class="mi">2</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-    <span class="k">case</span> <span class="nx">a</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;==5&quot;</span><span class="p">)</span>
-        <span class="nx">i</span> <span class="o">:=</span> <span class="mi">3</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-    <span class="k">case</span> <span class="nx">a</span> <span class="p">&gt;</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;&gt;5&quot;</span><span class="p">)</span>
-        <span class="nx">i</span> <span class="o">:=</span> <span class="mi">4</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">BDog</span><span class="p">)</span>
+<span class="hll">    <span class="nx">b</span><span class="p">.</span><span class="nx">Dog</span><span class="p">.</span><span class="nx">Name</span> <span class="p">=</span> <span class="s">&quot;this is a Dog name&quot;</span>
+</span>    <span class="nx">b</span><span class="p">.</span><span class="nx">CallMyName</span><span class="p">()</span>
 <span class="p">}</span>
 </pre></div>
-<p>输出</p><div class="codehilite"><pre><span></span>==5
-3
-1
-</pre></div>
-<p>答: switch的每个case均是独立的作用域</p></details><details class="note"><summary>例3. switch使用赋值语句时是独立变量还是引用外部变量?</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+<p>输出也是</p>
+<div class="codehilite"><pre><span></span>Dog my name is &quot;this is a Dog name&quot;
+</pre></div>
+
+<p>b.Name和b.Dog.Name是有区别的，只要把BDog结构体里的name也改成Name就看到区别了</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;github.com/cyent/repo1/dog&quot;</span>
+
+<span class="kd">type</span> <span class="nx">BDog</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">dog</span><span class="p">.</span><span class="nx">Dog</span>
+<span class="hll">    <span class="nx">Name</span> <span class="kt">string</span>
+</span><span class="p">}</span>
 
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">a</span> <span class="o">:=</span> <span class="mi">3</span>
-
-    <span class="k">switch</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span> <span class="p">{</span> <span class="c1">//注意这里有个分号，如果没有分号会报错</span>
-    <span class="k">case</span> <span class="nx">a</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;&lt;5&quot;</span><span class="p">)</span>
-    <span class="k">case</span> <span class="nx">a</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;==5&quot;</span><span class="p">)</span>
-    <span class="k">case</span> <span class="nx">a</span> <span class="p">&gt;</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;&gt;5&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">BDog</span><span class="p">)</span>
+    <span class="nx">b</span><span class="p">.</span><span class="nx">Dog</span><span class="p">.</span><span class="nx">Name</span> <span class="p">=</span> <span class="s">&quot;this is a Dog name&quot;</span>
+    <span class="nx">b</span><span class="p">.</span><span class="nx">CallMyName</span><span class="p">()</span>
 <span class="p">}</span>
 </pre></div>
-<p>输出</p><div class="codehilite"><pre><span></span>==5
-5
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>Dog my name is &quot;this is a Dog name&quot;
 </pre></div>
-<p>答: switch使用赋值语句时是引用外部变量</p></details>
+
+<p>现在改成</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;github.com/cyent/repo1/dog&quot;</span>
+
+<span class="kd">type</span> <span class="nx">BDog</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">dog</span><span class="p">.</span><span class="nx">Dog</span>
+    <span class="nx">Name</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">BDog</span><span class="p">)</span>
+<span class="hll">    <span class="nx">b</span><span class="p">.</span><span class="nx">Name</span> <span class="p">=</span> <span class="s">&quot;this is a Dog name&quot;</span>
+</span>    <span class="nx">b</span><span class="p">.</span><span class="nx">CallMyName</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>Dog my name is &quot;&quot;
+</pre></div>
+
+<p>可以看到区别：当自身struct里的元素名和embed导入的元素名重复时候，b.Name是会赋值给自身的元素，此时只有b.Dog.Name才能显式指定导入的元素</p>
+<p>所以：如果要给导入的元素赋值，应该要用b.Dog.Name这种方式显式赋值</p>
                 
                   
                 
@@ -2070,7 +1981,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../if/" title="2. if" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../struct_interface_element/" title="2.6. 接口作为struct元素" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2079,19 +1990,19 @@
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                2. if
+                2.6. 接口作为struct元素
               </span>
             </div>
           </a>
         
         
-          <a href="../defer/" title="4. defer" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../arr_sli_main/" title="3.1. 介绍与比较" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                4. defer
+                3.1. 介绍与比较
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
