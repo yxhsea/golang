@@ -13,7 +13,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/golang/method/interface_implement/">
+        <link rel="canonical" href="https://cyent.github.io/golang/method/interface_struct_element/">
       
       
         <meta name="author" content="cyent">
@@ -38,7 +38,7 @@
     
     
       
-        <title>3.8. 各种实现 - Go语言学习 - cyent笔记</title>
+        <title>3.17. 接口作为struct的元素 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                3.8. 各种实现
+                3.17. 接口作为struct的元素
               </span>
             
           
@@ -1251,18 +1251,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="3.8. 各种实现" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../interface_implement/" title="3.8. 各种实现" class="md-nav__link">
       3.8. 各种实现
     </a>
-    
   </li>
 
         
@@ -1366,11 +1359,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../interface_struct_element/" title="3.17. 接口作为struct的元素" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="3.17. 接口作为struct的元素" class="md-nav__link md-nav__link--active">
       3.17. 接口作为struct的元素
     </a>
+    
   </li>
 
         
@@ -1804,35 +1804,54 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cyent/golang/edit/master/docs/method/interface_implement.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/cyent/golang/edit/master/docs/method/interface_struct_element.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>3.8. 各种实现</h1>
+                  <h1>3.17. 接口作为struct的元素</h1>
                 
-                <ol>
-<li>
-<p>如果一个类型实现了一个接口的所有方法，那么就说这个类型实现了这个接口</p>
-<div class="codehilite"><pre><span></span><span class="kd">type</span> <span class="nx">File</span> <span class="kd">interface</span> <span class="p">{</span>
-    <span class="nx">Read</span><span class="p">(</span><span class="nx">b</span> <span class="nx">Buffer</span><span class="p">)</span> <span class="kt">bool</span>
-    <span class="nx">Write</span><span class="p">(</span><span class="nx">b</span> <span class="nx">Buffer</span><span class="p">)</span> <span class="kt">bool</span>
-    <span class="nx">Close</span><span class="p">()</span>
+                <p>struct里的元素可以是接口类型，举例如下：</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">Reader</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">Read</span><span class="p">()</span> <span class="kt">int</span>
 <span class="p">}</span>
 
-<span class="kd">type</span> <span class="nx">T</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="o">...</span>
+<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">X</span> <span class="nx">Reader</span>
+    <span class="nx">Y</span> <span class="kt">int</span>
 <span class="p">}</span>
 
-<span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="nx">T</span><span class="p">)</span> <span class="nx">Read</span><span class="p">(</span><span class="nx">b</span> <span class="nx">Buffer</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span> <span class="k">return</span> <span class="o">...</span> <span class="p">}</span>
-<span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="nx">T</span><span class="p">)</span> <span class="nx">Write</span><span class="p">(</span><span class="nx">b</span> <span class="nx">Buffer</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span> <span class="k">return</span> <span class="o">...</span> <span class="p">}</span>
-<span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="nx">T</span><span class="p">)</span> <span class="nx">Close</span><span class="p">()</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+<span class="kd">type</span> <span class="nx">Foo</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">f</span> <span class="o">*</span><span class="nx">Foo</span><span class="p">)</span> <span class="nx">Read</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">f</span><span class="p">.</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">f</span><span class="p">.</span><span class="nx">b</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">ms</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">MyStruct</span><span class="p">{}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T %v\n&quot;</span><span class="p">,</span> <span class="nx">ms</span><span class="p">,</span> <span class="nx">ms</span><span class="p">)</span>
+
+    <span class="nx">ms</span><span class="p">.</span><span class="nx">Y</span> <span class="p">=</span> <span class="mi">3</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T %v\n&quot;</span><span class="p">,</span> <span class="nx">ms</span><span class="p">,</span> <span class="nx">ms</span><span class="p">)</span>
+
+    <span class="nx">ms</span><span class="p">.</span><span class="nx">X</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">Foo</span><span class="p">{</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T %v\n&quot;</span><span class="p">,</span> <span class="nx">ms</span><span class="p">,</span> <span class="nx">ms</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T %v\n&quot;</span><span class="p">,</span> <span class="nx">ms</span><span class="p">.</span><span class="nx">X</span><span class="p">,</span> <span class="nx">ms</span><span class="p">.</span><span class="nx">X</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T %v\n&quot;</span><span class="p">,</span> <span class="nx">ms</span><span class="p">.</span><span class="nx">X</span><span class="p">.</span><span class="nx">Read</span><span class="p">(),</span> <span class="nx">ms</span><span class="p">.</span><span class="nx">X</span><span class="p">.</span><span class="nx">Read</span><span class="p">())</span>
+<span class="p">}</span>
 </pre></div>
 
-<p>上面例子可以这么描述：类型T实现了File接口的所有方法（即Read()、Write()、Close()），因此可以说类型T实现了接口File</p>
-</li>
-<li>
-<p>某类型实现某方法：比如上面这个例子，可以说类型T实现了方法Read()、Write()、Close()</p>
-</li>
-</ol>
+<p>输出</p>
+<div class="codehilite"><pre><span></span>*main.MyStruct &amp;{&lt;nil&gt; 0}
+*main.MyStruct &amp;{&lt;nil&gt; 3}
+*main.MyStruct &amp;{0xc42000e290 3}
+*main.Foo &amp;{8 9}
+int 17
+</pre></div>
                 
                   
                 
@@ -1851,7 +1870,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../interface_receiver/" title="3.7. 接口receiver参数类型不会自动转换" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../interface_error/" title="3.16. error" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1860,19 +1879,19 @@
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                3.7. 接口receiver参数类型不会自动转换
+                3.16. error
               </span>
             </div>
           </a>
         
         
-          <a href="../interface_nil/" title="3.9. nil interface" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../interface_deep/" title="3.18. 深入理解" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                3.9. nil interface
+                3.18. 深入理解
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

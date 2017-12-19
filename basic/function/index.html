@@ -416,6 +416,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" title="入参和出参的变量不能重复声明" class="md-nav__link">
+    入参和出参的变量不能重复声明
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -752,6 +759,18 @@
   <li class="md-nav__item">
     <a href="../../datatype/struct_anon/" title="2.5. 匿名struct" class="md-nav__link">
       2.5. 匿名struct
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/struct_interface_element/" title="2.6. 接口作为struct元素" class="md-nav__link">
+      2.6. 接口作为struct元素
     </a>
   </li>
 
@@ -1386,8 +1405,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../../method/interface_deep/" title="3.17. 深入理解" class="md-nav__link">
-      3.17. 深入理解
+    <a href="../../method/interface_struct_element/" title="3.17. 接口作为struct的元素" class="md-nav__link">
+      3.17. 接口作为struct的元素
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../method/interface_deep/" title="3.18. 深入理解" class="md-nav__link">
+      3.18. 深入理解
     </a>
   </li>
 
@@ -1830,6 +1861,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" title="入参和出参的变量不能重复声明" class="md-nav__link">
+    入参和出参的变量不能重复声明
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -1907,6 +1945,59 @@
 <div class="admonition note">
 <p>这种return不跟参数方式不推荐，这种方式仅适用于比较短的函数，如果函数比较长，这样可读性就很不好了</p>
 </div>
+<h2 id="_3"><strong>入参和出参的变量不能重复声明</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<hr />
+<p>这个例子是正确的</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">c</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">foo</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>但如果改成</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">c</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+<span class="hll">    <span class="nx">a</span> <span class="o">:=</span> <span class="mi">3</span>
+</span>    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">foo</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>则报错</p>
+<div class="codehilite"><pre><span></span>./example.go:6: no new variables on left side of :=
+</pre></div>
+
+<p>下面这个例子依然是错误的</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">c</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+<span class="hll">    <span class="nx">c</span> <span class="o">:=</span> <span class="mi">3</span>
+</span>    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">foo</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>依然报错</p>
+<div class="codehilite"><pre><span></span>./example.go:6: no new variables on left side of :=
+</pre></div>
                 
                   
                 
