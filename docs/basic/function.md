@@ -72,3 +72,69 @@ func split(sum int) (x, y int) {
 
 !!! note ""
 	这种return不跟参数方式不推荐，这种方式仅适用于比较短的函数，如果函数比较长，这样可读性就很不好了
+
+## **入参和出参的变量不能重复声明**
+
+---
+
+这个例子是正确的
+
+```go
+package main
+
+import "fmt"
+
+func foo(a, b int) (c int) {
+	return a + b
+}
+
+func main() {
+	fmt.Println(foo(1, 2))
+}
+```
+
+但如果改成
+
+```go hl_lines="6"
+package main
+
+import "fmt"
+
+func foo(a, b int) (c int) {
+	a := 3
+	return a + b
+}
+
+func main() {
+	fmt.Println(foo(1, 2))
+}
+```
+
+则报错
+
+```text
+./example.go:6: no new variables on left side of :=
+```
+
+下面这个例子依然是错误的
+
+```go hl_lines="6"
+package main
+
+import "fmt"
+
+func foo(a, b int) (c int) {
+	c := 3
+	return a + b
+}
+
+func main() {
+	fmt.Println(foo(1, 2))
+}
+```
+
+依然报错
+
+```text
+./example.go:6: no new variables on left side of :=
+```

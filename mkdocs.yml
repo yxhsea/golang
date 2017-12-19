@@ -94,6 +94,7 @@ pages:
             - 2.3. struct指针: datatype/struct_pointer.md
             - 2.4. literal: datatype/struct_literal.md
             - 2.5. 匿名struct: datatype/struct_anon.md
+            - 2.6. 接口作为struct元素: datatype/struct_interface_element.md
         - 3. array和slice:
             - 3.1. 介绍与比较: datatype/arr_sli_main.md
             - 3.2. len()与cap(): datatype/arr_sli_len_cap.md
@@ -140,7 +141,8 @@ pages:
             - 3.14. 函数的传入传出参数来实现接口: method/interface_argv_interface.md
             - 3.15. 实现接口的多种方法汇集: method/interface_implement_interface.md
             - 3.16. error: method/interface_error.md
-            - 3.17. 深入理解: method/interface_deep.md
+            - 3.17. 接口作为struct的元素: method/interface_struct_element.md
+            - 3.18. 深入理解: method/interface_deep.md
     - 七. 反射:
         - 1. 介绍: reflect/main.md
         - 2. reflect(反射包):
