@@ -310,8 +310,4 @@ http://legendtkl.com/2015/11/25/go-generic-programming/
 
 ---
 
-有2种方式: 使用接口，或者使用struct嵌套
-
-- 使用接口，详见[方法章节-有基类](/method/overview/#_2)
-
-- 使用struct嵌套，详见[struct章节-struct作为struct的元素](/datatype/struct_struct_element/)
+使用struct嵌套可以模拟继承，详见[面向对象写法比较-继承](/method/overview/#_2)

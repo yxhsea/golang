@@ -8,4 +8,4 @@ golang中没有面向对象，但却可以实现面向对象的基础功能，�
 
 - 类的方法：golang中struct的方法（就叫method，在某些语言里叫签名函数）相当于面向中的类的方法
 
-例子详见[比较python和go的面向对象写法](/method/overview/#_2)
+例子详见[比较python和go的面向对象写法](/method/overview/#pythongo)

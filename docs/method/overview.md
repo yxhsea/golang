@@ -21,7 +21,9 @@ https://segmentfault.com/q/1010000005140317
 
 ---
 
-### **无基类（无接口）**
+### **类**
+
+不包含父类（或者叫基类）
 
 python
 
@@ -67,12 +69,15 @@ func main() {
 cyent
 ```
 
-### **有基类（也叫继承，使用接口）**
+### **继承**
+
+使用struct嵌套模拟继承
+
+该例子很经典，包含了父类（或者叫基类）、子类、继承、重载(或者是重写，一直没搞懂)
 
 python
 
 ```python
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 class SchoolMember:
@@ -81,7 +86,7 @@ class SchoolMember:
 		self.age = age
 
 	def tell(self):
-		pass
+		print 'name:"{}", age:"{}"'.format(self.name,self.age)
 
 class Teacher(SchoolMember):
 	def __init__(self, name, age, salary):
@@ -111,7 +116,9 @@ s.tell()
 输出
 
 ```text
+name:"Mrs. Shrividya", age:"40"
 Salary: "30000"
+name:"Swaroop", age:"22"
 Marks: "75"
 ```
 
@@ -122,44 +129,60 @@ package main
 
 import "fmt"
 
-type SchoolMember interface {
-	tell()
+type SchoolMember struct {
+	name string
+	age int
+}
+
+func (this SchoolMember) tell() {
+	fmt.Printf("name:\"%s\", age:\"%d\"\n", this.name, this.age)
 }
 
 type Teacher struct {
-	name string
-	age int
+	SchoolMember
 	salary int
 }
 
+func (this Teacher) tell() {
+	this.SchoolMember.tell()
+	fmt.Printf("Salary: \"%d\"\n", this.salary)
+}
+
 type Student struct {
-	name string
-	age int
+	SchoolMember
 	marks int
 }
 
-func (this *Teacher) tell() {
-	fmt.Printf("Salary: %d\n", this.salary)
-}
-
-func (this *Student) tell() {
-	fmt.Printf("Marks: %d\n", this.marks)
+func (this Student) tell() {
+	this.SchoolMember.tell()
+	fmt.Printf("Marks: \"%d\"\n", this.marks)
 }
 
 func main() {
-	var t SchoolMember = &Teacher{"Mrs. Shrividya", 40, 30000}
-	var s SchoolMember = &Student{"Swaroop", 22, 75}
+	t := Teacher{}	// 也可以用new(Teacher)
+	s := Student{}	// 也可以用new(Student)
+	t.name = "Mrs. Shrividya"
+	t.age = 40
+	t.salary = 30000
+	s.name = "Swaroop"
+	s.age = 22
+	s.marks = 75
+
 	t.tell()
 	s.tell()
 }
 ```
 
-输出
+输出也是
 
 ```text
-Salary: 30000
-Marks: 75
+name:"Mrs. Shrividya", age:"40"
+Salary: "30000"
+name:"Swaroop", age:"22"
+Marks: "75"
 ```
+
+更多关于struct嵌套的知识，详见[struct作为struct的元素](/datatype/struct_struct_element/)
 
 ### **tar-gz**
 
