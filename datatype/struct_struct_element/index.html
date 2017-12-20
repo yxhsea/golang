@@ -1703,6 +1703,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/new/" title="13. new" class="md-nav__link">
+      13. new
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1840,13 +1852,17 @@
 <span class="p">}</span>
 
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">b</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">BDog</span><span class="p">)</span>  <span class="c1">// 等同于b := BDog{}</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">BDog</span><span class="p">)</span>
     <span class="nx">b</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;this is a BDog name&quot;</span>
     <span class="nx">b</span><span class="p">.</span><span class="nx">Dog</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;this is a Dog name&quot;</span>
     <span class="nx">b</span><span class="p">.</span><span class="nx">callMyName</span><span class="p">()</span>
 <span class="p">}</span>
 </pre></div>
 
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>上面<code>b := new(BDog)</code>可以用<code>b := BDog{}</code>替代，但这2者是有一点区别的，区别在于前者是指针，详见<a href="../../other/new/#new">new</a></p>
+</div>
 <p>输出</p>
 <div class="codehilite"><pre><span></span>my name is &quot;this is a Dog name&quot;
 </pre></div>
@@ -1885,7 +1901,7 @@
 <span class="p">}</span>
 
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">b</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">BDog</span><span class="p">)</span>  <span class="c1">// 等同于b := BDog{}</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">BDog</span><span class="p">)</span>
 <span class="hll">    <span class="nx">b</span><span class="p">.</span><span class="nx">Name</span> <span class="p">=</span> <span class="s">&quot;this is a Dog name&quot;</span>
 </span>    <span class="nx">b</span><span class="p">.</span><span class="nx">CallMyName</span><span class="p">()</span>
 <span class="p">}</span>

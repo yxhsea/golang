@@ -1760,6 +1760,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/new/" title="13. new" class="md-nav__link">
+      13. new
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -2080,8 +2092,8 @@ Marks: &quot;75&quot;
 <span class="p">}</span>
 
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">Teacher</span><span class="p">{}</span>  <span class="c1">// 也可以用new(Teacher)</span>
-    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">Student</span><span class="p">{}</span>  <span class="c1">// 也可以用new(Student)</span>
+    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">Teacher</span><span class="p">{}</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">Student</span><span class="p">{}</span>
     <span class="nx">t</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;Mrs. Shrividya&quot;</span>
     <span class="nx">t</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="mi">40</span>
     <span class="nx">t</span><span class="p">.</span><span class="nx">salary</span> <span class="p">=</span> <span class="mi">30000</span>
@@ -2094,6 +2106,10 @@ Marks: &quot;75&quot;
 <span class="p">}</span>
 </pre></div>
 
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>上面<code>t := Teacher{}</code>可以用<code>t := new(Teacher)</code>替代，但这2者是有一点区别的，区别在于前者是指针，详见<a href="../../other/new/#new">new</a></p>
+</div>
 <p>输出也是</p>
 <div class="codehilite"><pre><span></span>name:&quot;Mrs. Shrividya&quot;, age:&quot;40&quot;
 Salary: &quot;30000&quot;

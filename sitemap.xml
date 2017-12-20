@@ -293,6 +293,12 @@
      <changefreq>daily</changefreq>
     </url>
         
+    <url>
+     <loc>https://cyent.github.io/golang//other/new/</loc>
+     <lastmod>2017-12-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
     
