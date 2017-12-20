@@ -1,0 +1,3191 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="关于Go语言学习，包含许多个人理解">
+      
+      
+        <link rel="canonical" href="https://cyent.github.io/golang/method/interface_01/">
+      
+      
+        <meta name="author" content="cyent">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.2.0">
+    
+    
+      
+        <title>3.19. 从无到有逐步理解面向对象和接口 - Go语言学习 - cyent笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.5d3fffba.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.fbd935c7.css">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+    
+  </head>
+  
+    
+    
+    
+      <body data-md-color-primary="blue-grey" data-md-color-accent="pink">
+    
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://cyent.github.io/golang/" title="Go语言学习 - cyent笔记" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Go语言学习 - cyent笔记
+              </span>
+              <span class="md-header-nav__topic">
+                3.19. 从无到有逐步理解面向对象和接口
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" required placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">&#xE5CD;</button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/cyent/golang/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      cyent/golang
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <span class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </span>
+    Go语言学习 - cyent笔记
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/cyent/golang/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      cyent/golang
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="一. 介绍" class="md-nav__link">
+      一. 介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      二. 代码组织
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        二. 代码组织
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../organization/workspace/" title="1. workspace" class="md-nav__link">
+      1. workspace
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../organization/gopath/" title="2. GOPATH" class="md-nav__link">
+      2. GOPATH
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../organization/importpath/" title="3. import path" class="md-nav__link">
+      3. import path
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../organization/helloworld/" title="4. hello world" class="md-nav__link">
+      4. hello world
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../organization/firstlib/" title="5. 第一个library" class="md-nav__link">
+      5. 第一个library
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../organization/test/" title="6. 内置的轻量级测试框架" class="md-nav__link">
+      6. 内置的轻量级测试框架
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      三. 基础
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        三. 基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basic/packages/" title="1. Packages" class="md-nav__link">
+      1. Packages
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basic/imports/" title="2. Imports" class="md-nav__link">
+      2. Imports
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basic/exportname/" title="3. 导出名" class="md-nav__link">
+      3. 导出名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basic/function/" title="4. 函数" class="md-nav__link">
+      4. 函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-5" type="checkbox" id="nav-3-5">
+    
+    <label class="md-nav__link" for="nav-3-5">
+      5. 变量
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-5">
+        5. 变量
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basic/variable_declare/" title="5.1. 声明" class="md-nav__link">
+      5.1. 声明
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basic/variable_affect/" title="5.2. 作用域" class="md-nav__link">
+      5.2. 作用域
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basic/const/" title="6. 常量" class="md-nav__link">
+      6. 常量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-7" type="checkbox" id="nav-3-7">
+    
+    <label class="md-nav__link" for="nav-3-7">
+      7. 数据类型
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-7">
+        7. 数据类型
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basic/type_main/" title="7.1. 介绍" class="md-nav__link">
+      7.1. 介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basic/type_default/" title="7.2. 默认值" class="md-nav__link">
+      7.2. 默认值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basic/type_change/" title="7.3. 类型转换" class="md-nav__link">
+      7.3. 类型转换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basic/type_guess/" title="7.4. 类型推导" class="md-nav__link">
+      7.4. 类型推导
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basic/type_custom/" title="7.5. 自定义类型" class="md-nav__link">
+      7.5. 自定义类型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      四. 流控制
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        四. 流控制
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/for/" title="1. for" class="md-nav__link">
+      1. for
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/if/" title="2. if" class="md-nav__link">
+      2. if
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/switch/" title="3. switch" class="md-nav__link">
+      3. switch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/defer/" title="4. defer" class="md-nav__link">
+      4. defer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      五. 数据类型
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        五. 数据类型
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/pointer/" title="1. pointer" class="md-nav__link">
+      1. pointer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      2. struct
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        2. struct
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/struct_main/" title="2.1. 声明" class="md-nav__link">
+      2.1. 声明
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/struct_export/" title="2.2. 导出名" class="md-nav__link">
+      2.2. 导出名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/struct_pointer/" title="2.3. struct指针" class="md-nav__link">
+      2.3. struct指针
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/struct_literal/" title="2.4. literal" class="md-nav__link">
+      2.4. literal
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/struct_anon/" title="2.5. 匿名struct" class="md-nav__link">
+      2.5. 匿名struct
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/struct_interface_element/" title="2.6. 接口作为struct元素" class="md-nav__link">
+      2.6. 接口作为struct元素
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/struct_struct_element/" title="2.7. struct作为struct的元素" class="md-nav__link">
+      2.7. struct作为struct的元素
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+    
+    <label class="md-nav__link" for="nav-5-3">
+      3. array和slice
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        3. array和slice
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/arr_sli_main/" title="3.1. 介绍与比较" class="md-nav__link">
+      3.1. 介绍与比较
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/arr_sli_len_cap/" title="3.2. len()与cap()" class="md-nav__link">
+      3.2. len()与cap()
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/arr_sli_index/" title="3.3. 下标" class="md-nav__link">
+      3.3. 下标
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/arr_sli_key/" title="3.4. 深入理解" class="md-nav__link">
+      3.4. 深入理解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/arr_sli_nil/" title="3.5. nil" class="md-nav__link">
+      3.5. nil
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/arr_sli_make/" title="3.6. make" class="md-nav__link">
+      3.6. make
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/arr_sli_nest/" title="3.7. slice嵌套" class="md-nav__link">
+      3.7. slice嵌套
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/arr_sli_expand/" title="3.8. slice扩容" class="md-nav__link">
+      3.8. slice扩容
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/arr_sli_append/" title="3.9. append添加元素" class="md-nav__link">
+      3.9. append添加元素
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/arr_sli_copy/" title="3.10. copy复制元素" class="md-nav__link">
+      3.10. copy复制元素
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/arr_empty_interface/" title="3.11. 空接口对切片的影响" class="md-nav__link">
+      3.11. 空接口对切片的影响
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
+    
+    <label class="md-nav__link" for="nav-5-4">
+      4. map
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        4. map
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/map_main/" title="4.1. 声明" class="md-nav__link">
+      4.1. 声明
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/map_nil/" title="4.2. nil map" class="md-nav__link">
+      4.2. nil map
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/map_struct/" title="4.3. key和value可以用struct" class="md-nav__link">
+      4.3. key和value可以用struct
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/map_literal/" title="4.4. literal" class="md-nav__link">
+      4.4. literal
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/map_get_insert_update/" title="4.5. 检索、添加和修改元素" class="md-nav__link">
+      4.5. 检索、添加和修改元素
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/map_delete/" title="4.6. delete删除元素" class="md-nav__link">
+      4.6. delete删除元素
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5">
+    
+    <label class="md-nav__link" for="nav-5-5">
+      5. 函数值
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        5. 函数值
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/funcvalue_main/" title="5.1. 介绍" class="md-nav__link">
+      5.1. 介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/funcvalue_parameter/" title="5.2. 函数作为参数传递给另一个函数" class="md-nav__link">
+      5.2. 函数作为参数传递给另一个函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/funcvalue_callback/" title="5.3. 用途1-回调函数" class="md-nav__link">
+      5.3. 用途1-回调函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../datatype/funcvalue_closure/" title="5.4. 用途2-闭包" class="md-nav__link">
+      5.4. 用途2-闭包
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      六. 方法与接口
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        六. 方法与接口
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../overview/" title="1. 概念汇总" class="md-nav__link">
+      1. 概念汇总
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+    
+    <label class="md-nav__link" for="nav-6-2">
+      2. 方法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        2. 方法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../method_main/" title="2.1. 声明" class="md-nav__link">
+      2.1. 声明
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../method_receiver/" title="2.2. 指针receiver" class="md-nav__link">
+      2.2. 指针receiver
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3" checked>
+    
+    <label class="md-nav__link" for="nav-6-3">
+      3. 接口
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        3. 接口
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_main/" title="3.1. 什么是接口" class="md-nav__link">
+      3.1. 什么是接口
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_syntax/" title="3.2. 接口语法" class="md-nav__link">
+      3.2. 接口语法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_why/" title="3.3. Why interface" class="md-nav__link">
+      3.3. Why interface
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_oo/" title="3.4. 接口和面向对象的关系" class="md-nav__link">
+      3.4. 接口和面向对象的关系
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_application/" title="3.5. 应用场景" class="md-nav__link">
+      3.5. 应用场景
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_argv/" title="3.6. 传入和传出参数要带上" class="md-nav__link">
+      3.6. 传入和传出参数要带上
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_receiver/" title="3.7. 接口receiver参数类型不会自动转换" class="md-nav__link">
+      3.7. 接口receiver参数类型不会自动转换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_implement/" title="3.8. 各种实现" class="md-nav__link">
+      3.8. 各种实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_nil/" title="3.9. nil interface" class="md-nav__link">
+      3.9. nil interface
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_empty/" title="3.10. 空接口" class="md-nav__link">
+      3.10. 空接口
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_assertion/" title="3.11. 类型断言" class="md-nav__link">
+      3.11. 类型断言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_typeswitch/" title="3.12. type switch" class="md-nav__link">
+      3.12. type switch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_stringer/" title="3.13. Stringer" class="md-nav__link">
+      3.13. Stringer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_argv_interface/" title="3.14. 函数的传入传出参数来实现接口" class="md-nav__link">
+      3.14. 函数的传入传出参数来实现接口
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_implement_interface/" title="3.15. 实现接口的多种方法汇集" class="md-nav__link">
+      3.15. 实现接口的多种方法汇集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_error/" title="3.16. error" class="md-nav__link">
+      3.16. error
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_struct_element/" title="3.17. 接口作为struct的元素" class="md-nav__link">
+      3.17. 接口作为struct的元素
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interface_deep/" title="3.18. 深入理解" class="md-nav__link">
+      3.18. 深入理解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="3.19. 从无到有逐步理解面向对象和接口" class="md-nav__link md-nav__link--active">
+      3.19. 从无到有逐步理解面向对象和接口
+    </a>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      七. 反射
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        七. 反射
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reflect/main/" title="1. 介绍" class="md-nav__link">
+      1. 介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      2. reflect(反射包)
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        2. reflect(反射包)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reflect/pkg_type_value/" title="2.1. Type和Value" class="md-nav__link">
+      2.1. Type和Value
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reflect/pkg_typeof_valueof/" title="2.2. TypeOf()与ValueOf()" class="md-nav__link">
+      2.2. TypeOf()与ValueOf()
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reflect/fmt/" title="3. fmt" class="md-nav__link">
+      3. fmt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reflect/law1/" title="4. 法则1" class="md-nav__link">
+      4. 法则1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reflect/law2/" title="5. 法则2" class="md-nav__link">
+      5. 法则2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reflect/law3/" title="6. 法则3" class="md-nav__link">
+      6. 法则3
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      七. 其他
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        七. 其他
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/string/" title="1. 字符串处理" class="md-nav__link">
+      1. 字符串处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/range/" title="2. range" class="md-nav__link">
+      2. range
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/sync_block/" title="3. 同步异步与阻塞非阻塞的关系" class="md-nav__link">
+      3. 同步异步与阻塞非阻塞的关系
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/binary_operation/" title="4. 位运算" class="md-nav__link">
+      4. 位运算
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/loop_iterate_traversal_recursion/" title="5. 循环、迭代、遍历、递归的区别" class="md-nav__link">
+      5. 循环、迭代、遍历、递归的区别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/go_python/" title="6. go和python的比较" class="md-nav__link">
+      6. go和python的比较
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/oo/" title="7. 面向对象" class="md-nav__link">
+      7. 面向对象
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/nil/" title="8. nil" class="md-nav__link">
+      8. nil
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/make/" title="9. make" class="md-nav__link">
+      9. make
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/enum/" title="10. 枚举" class="md-nav__link">
+      10. 枚举
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/readers/" title="11. Readers" class="md-nav__link">
+      11. Readers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/style/" title="12. 编码风格" class="md-nav__link">
+      12. 编码风格
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/new/" title="13. new" class="md-nav__link">
+      13. new
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      八. 附录
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        八. 附录
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../appendix/doc/" title="1. 文档" class="md-nav__link">
+      1. 文档
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../appendix/code/" title="2. 编码规范" class="md-nav__link">
+      2. 编码规范
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-3" type="checkbox" id="nav-9-3">
+    
+    <label class="md-nav__link" for="nav-9-3">
+      3. 命令行工具
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-3">
+        3. 命令行工具
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../appendix/cli_go_get/" title="3.1. go get" class="md-nav__link">
+      3.1. go get
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../contact/" title="九. 联系方式" class="md-nav__link">
+      九. 联系方式
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/cyent/golang/edit/master/docs/method/interface_01.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>3.19. 从无到有逐步理解面向对象和接口</h1>
+                
+                <p>下面是从shell到python再到golang，从面向对象都不懂到了解面向对象、了解interface的整个思考过程。</p>
+<p><strong>注意：本页只适合编程小白看，并且要不然别看，要看就要看到底，因为中间经历了多次的错误例子和总结，直到最后才抓到面向对象和接口的尾巴</strong></p>
+<div class="admonition note">
+<p>本页大量使用了伪代码，所以不保证例子都是可执行的</p>
+</div>
+<p>创建netns，netns名组成：VRouter-${name}</p>
+<div class="codehilite"><pre><span></span>create_vrouter<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    ip netns add VRouter-<span class="si">${</span><span class="nv">name</span><span class="si">}</span>
+<span class="o">}</span>
+
+create_vrouter <span class="s2">&quot;vrtest&quot;</span>
+</pre></div>
+
+<p>这串代码有2处耦合：</p>
+<ol>
+<li>
+<p>创建netns与创建vrouter耦合</p>
+</li>
+<li>
+<p>netns名与创建vrouter耦合</p>
+</li>
+</ol>
+<p>第一个耦合的解决：将netns的创建封装为一个函数</p>
+<div class="codehilite"><pre><span></span>create_netns<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    ip netns add <span class="si">${</span><span class="nv">name</span><span class="si">}</span>
+<span class="o">}</span>
+
+create_vrouter<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    <span class="nv">vrname</span><span class="o">=</span><span class="s2">&quot;VRouter-</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span>
+    create_netns <span class="si">${</span><span class="nv">vrname</span><span class="si">}</span>
+<span class="o">}</span>
+
+create_vrouter <span class="s2">&quot;vrtest&quot;</span>
+</pre></div>
+
+<p>第二个耦合的解决：将netns封装为一个函数</p>
+<div class="codehilite"><pre><span></span>get_ns_name<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    <span class="nb">echo</span> <span class="s2">&quot;VRouter-</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="o">}</span>
+
+create_netns<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    <span class="nv">ns_name</span><span class="o">=</span><span class="sb">`</span>get_ns_name <span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="sb">`</span>
+    ip netns add <span class="si">${</span><span class="nv">ns_name</span><span class="si">}</span>
+<span class="o">}</span>
+
+create_vrouter<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    create_netns <span class="si">${</span><span class="nv">name</span><span class="si">}</span>
+<span class="o">}</span>
+
+create_vrouter <span class="s2">&quot;vrtest&quot;</span>
+</pre></div>
+
+<p>上面这种方法是create_netns函数里调用get_ns_name，下面这种方法是在create_vrouter里调用get_ns_name</p>
+<div class="codehilite"><pre><span></span>get_ns_name<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    <span class="nb">echo</span> <span class="s2">&quot;VRouter-</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="o">}</span>
+
+create_netns<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    ip netns add <span class="si">${</span><span class="nv">name</span><span class="si">}</span>
+<span class="o">}</span>
+
+create_vrouter<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    <span class="nv">ns_name</span><span class="o">=</span><span class="sb">`</span>get_ns_name <span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="sb">`</span>
+    create_netns <span class="si">${</span><span class="nv">ns_name</span><span class="si">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<p>这2种方法看过去好像都行，于是接下来做个扩展，netns名加ext、int，看下会发生什么：</p>
+<div class="codehilite"><pre><span></span>get_ns_name<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">type</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;ext&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&quot;E-VRouter-</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">elif</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">type</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;int&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&quot;I-VRouter-</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">else</span>
+        <span class="nb">echo</span> <span class="s2">&quot;VRouter-</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">fi</span>
+<span class="o">}</span>
+
+create_netns<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+    <span class="nv">ns_name</span><span class="o">=</span><span class="sb">`</span>get_ns_name <span class="si">${</span><span class="nv">name</span><span class="si">}</span> <span class="si">${</span><span class="nv">type</span><span class="si">}</span><span class="sb">`</span>
+    ip netns add <span class="si">${</span><span class="nv">ns_name</span><span class="si">}</span>
+<span class="o">}</span>
+
+create_vrouter<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+    create_netns <span class="si">${</span><span class="nv">name</span><span class="si">}</span> <span class="si">${</span><span class="nv">type</span><span class="si">}</span>
+<span class="o">}</span>
+
+create_vrouter <span class="s2">&quot;vrtest&quot;</span> <span class="s2">&quot;ext&quot;</span>
+</pre></div>
+
+<p>减少代码重复是本质，但是实现起来有多种方式，以前我都是停留在没有任何思考，能多减少一行是一行的想法来编写代码，导致了各种耦合，以致于代码扩展变得很难。接下来要找到一种比较好的方式。</p>
+<p>相似但不相关的东西不要耦合在一起，比如dhcp需要netns、vrouter也需要netns，但创建netns要分成2个函数，分别是dhcp的netns和vrouter的netns，否则后期因为vrouter的netns变化，就有可能连累dhcp的netns（往往到了这个时候为了不连累，又会新搞一个函数叫做dhcp_netns，这样就会造成netns和dhcp_netns同时存在的局面，维护就困难了）。</p>
+<p>突然想到，有一种情况，可能需要独立搞个netns函数，就是当这个函数里做的东西有不同环境的类型判断，比如启动host，在libvirt环境是virsh start，而在物理机是ipmitool power on，在docker环境是docker start。这种时候封装一个start_host函数，根据传入参数或其他途径判断类型，怎么启动host。</p>
+<p>但问题来了，这种情况的话，岂不是又回到最初问题了，就是什么时候要独立出来成为一个独立函数或独立模块，什么时候不要独立</p>
+<p>于是想到答案：当满足2个条件时候独立出来</p>
+<ol>
+<li>
+<p>不和调用者代码逻辑耦合。比如create_netns函数里就接收name，而不要和I-VRouter、E-VRouter这种代码逻辑耦合一起，到底是I-VRouter还是E-VRouter还是I-dhcp，由调用者(主函数)自己来处理</p>
+</li>
+<li>
+<p>要处理的事情较多时候，比如现在create_netns只有一种方式ip netns add，但也许在不同的操作系统上命令不一样（比如某些系统是用net命令替代ip命令，或者今后操作系统更新后废掉了ip命令，而是直接netns add命令等等）</p>
+</li>
+</ol>
+<p>所以上面的shell应该这么改：</p>
+<p>第一版（没有类型）：</p>
+<div class="codehilite"><pre><span></span>create_netns<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    ip netns add <span class="si">${</span><span class="nv">name</span><span class="si">}</span>
+<span class="o">}</span>
+
+create_vrouter<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    create_netns <span class="si">${</span><span class="nv">name</span><span class="si">}</span>
+<span class="o">}</span>
+
+create_vrouter <span class="s2">&quot;vrtest&quot;</span>
+</pre></div>
+
+<p>第二版（增加类型）：</p>
+<div class="codehilite"><pre><span></span>create_netns<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    ip netns add <span class="si">${</span><span class="nv">name</span><span class="si">}</span>
+<span class="o">}</span>
+
+create_vrouter<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">type</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;ext&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nv">ns_name</span><span class="o">=</span><span class="s2">&quot;E-VRouter-</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">elif</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">type</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;int&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nv">ns_name</span><span class="o">=</span><span class="s2">&quot;I-VRouter-</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">else</span>
+        <span class="nv">ns_name</span><span class="o">=</span><span class="s2">&quot;VRouter-</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">fi</span>
+    create_netns <span class="si">${</span><span class="nv">ns_name</span><span class="si">}</span>
+<span class="o">}</span>
+
+create_vrouter <span class="s2">&quot;vrtest&quot;</span> <span class="s2">&quot;ext&quot;</span>
+</pre></div>
+
+<p>如果要把ns_name封装起来也可以，但是只用于vrouter的netns，函数名可以叫做get_vrouter_netns_name()</p>
+<p>上面虽然用到了封装，但也只是面向过程的思路，如果用python，则可以使用面向对象：</p>
+<p>定义2个类：vrouter类、netns类</p>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">netns</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">ip</span><span class="o">.</span><span class="n">netns</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Vrouter</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">stype</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stype</span> <span class="o">=</span> <span class="n">stype</span>
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stype</span> <span class="o">==</span> <span class="s2">&quot;int&quot;</span><span class="p">:</span>
+            <span class="n">nsname</span> <span class="o">=</span> <span class="s2">&quot;I-VRouter-&quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">stype</span> <span class="o">==</span> <span class="s2">&quot;ext&quot;</span><span class="p">:</span>
+            <span class="n">nsname</span> <span class="o">=</span> <span class="s2">&quot;E-VRouter-&quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">nsname</span> <span class="o">=</span> <span class="s2">&quot;VRouter-&quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">ns</span> <span class="o">=</span> <span class="n">netns</span><span class="p">(</span><span class="n">nsname</span><span class="p">)</span>
+        <span class="n">ns</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+
+<span class="n">vr</span> <span class="o">=</span> <span class="n">Vrouter</span><span class="p">(</span><span class="s1">&#39;vabcdefg&#39;</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">)</span>
+<span class="n">vr</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+</pre></div>
+
+<p>接下来用go，但先不用接口（就2个函数，也没必要用接口）：</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">netns</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">name</span> <span class="kt">string</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">n</span> <span class="o">*</span><span class="nx">netns</span><span class="p">)</span> <span class="nx">create</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">n</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">vrouter</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">name</span> <span class="kt">string</span>
+    <span class="nx">stype</span> <span class="kt">string</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">v</span> <span class="o">*</span><span class="nx">vrouter</span><span class="p">)</span> <span class="nx">create</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">nsname</span> <span class="kt">string</span>
+    <span class="k">switch</span> <span class="nx">v</span><span class="p">.</span><span class="nx">stype</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="s">&quot;ext&quot;</span><span class="p">:</span>
+        <span class="nx">nsname</span> <span class="p">=</span> <span class="s">&quot;E-VRouter-&quot;</span><span class="o">+</span><span class="nx">v</span><span class="p">.</span><span class="nx">name</span>
+    <span class="k">case</span> <span class="s">&quot;int&quot;</span><span class="p">:</span>
+        <span class="nx">nsname</span> <span class="p">=</span> <span class="s">&quot;I-VRouter-&quot;</span><span class="o">+</span><span class="nx">v</span><span class="p">.</span><span class="nx">name</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="nx">nsname</span> <span class="p">=</span> <span class="s">&quot;VRouter-&quot;</span><span class="o">+</span><span class="nx">v</span><span class="p">.</span><span class="nx">name</span>
+    <span class="p">}</span>
+
+    <span class="nx">ns</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">netns</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="nx">nsname</span><span class="p">}</span>
+    <span class="nx">ns</span><span class="p">.</span><span class="nx">create</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">vr</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">vrouter</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;vrtest&quot;</span><span class="p">,</span> <span class="nx">stype</span><span class="p">:</span> <span class="s">&quot;int&quot;</span><span class="p">}</span>
+    <span class="nx">vr</span><span class="p">.</span><span class="nx">create</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>I-VRouter-vrtest
+</pre></div>
+
+<p>接下来继续增加功能点，增加p2p（veth）及ip：</p>
+<p>shell：</p>
+<div class="codehilite"><pre><span></span>create_netns<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    ip netns add <span class="si">${</span><span class="nv">name</span><span class="si">}</span>
+<span class="o">}</span>
+
+create_veth<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    <span class="nv">peername</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+    ip link add <span class="si">${</span><span class="nv">name</span><span class="si">}</span> <span class="nb">type</span> veth peer name <span class="si">${</span><span class="nv">peername</span><span class="si">}</span>
+<span class="o">}</span>
+
+up_nic<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    ip link <span class="nb">set</span> <span class="si">${</span><span class="nv">name</span><span class="si">}</span> up
+<span class="o">}</span>
+
+set_nic_ns<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">nic</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    <span class="nv">ns</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+    ip link <span class="nb">set</span> <span class="si">${</span><span class="nv">nic</span><span class="si">}</span> netns <span class="si">${</span><span class="nv">ns</span><span class="si">}</span>
+<span class="o">}</span>
+
+set_nic_ipv4<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">nic</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    <span class="nv">ipmask</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+    <span class="nv">ns</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="o">[</span> -n <span class="s2">&quot;</span><span class="si">${</span><span class="nv">ns</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        ip netns <span class="nb">exec</span> <span class="si">${</span><span class="nv">ns</span><span class="si">}</span> ip address add <span class="si">${</span><span class="nv">ipmask</span><span class="si">}</span> dev <span class="si">${</span><span class="nv">nic</span><span class="si">}</span>
+    <span class="k">else</span>
+        ip address add <span class="si">${</span><span class="nv">ipmask</span><span class="si">}</span> dev <span class="si">${</span><span class="nv">nic</span><span class="si">}</span>
+    <span class="k">fi</span>
+<span class="o">}</span>
+
+set_nic_br<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">nic</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    <span class="nv">br</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+    <span class="nv">ns</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="o">[</span> -n <span class="s2">&quot;</span><span class="si">${</span><span class="nv">ns</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        ip netns <span class="nb">exec</span> <span class="si">${</span><span class="nv">ns</span><span class="si">}</span> ip link <span class="nb">set</span> <span class="si">${</span><span class="nv">nic</span><span class="si">}</span> master <span class="si">${</span><span class="nv">br</span><span class="si">}</span>
+    <span class="k">else</span>
+        ip link <span class="nb">set</span> <span class="si">${</span><span class="nv">nic</span><span class="si">}</span> master <span class="si">${</span><span class="nv">br</span><span class="si">}</span>
+    <span class="k">fi</span>
+<span class="o">}</span>
+
+set_route<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">route</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    <span class="nv">via</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+    <span class="nv">dev</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span>
+    <span class="nv">ns</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$4</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="o">[</span> -n <span class="s2">&quot;</span><span class="si">${</span><span class="nv">ns</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="k">if</span> <span class="o">[</span> -n <span class="s2">&quot;</span><span class="si">${</span><span class="nv">dev</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+            ip netns <span class="nb">exec</span> <span class="si">${</span><span class="nv">ns</span><span class="si">}</span> ip route add <span class="si">${</span><span class="nv">route</span><span class="si">}</span> via <span class="si">${</span><span class="nv">via</span><span class="si">}</span> dev <span class="si">${</span><span class="nv">dev</span><span class="si">}</span>
+        <span class="k">else</span>
+            ip netns <span class="nb">exec</span> <span class="si">${</span><span class="nv">ns</span><span class="si">}</span> ip route add <span class="si">${</span><span class="nv">route</span><span class="si">}</span> via <span class="si">${</span><span class="nv">via</span><span class="si">}</span>
+        <span class="k">fi</span>
+    <span class="k">else</span>
+        <span class="k">if</span> <span class="o">[</span> -n <span class="s2">&quot;</span><span class="si">${</span><span class="nv">dev</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+            ip route add <span class="si">${</span><span class="nv">route</span><span class="si">}</span> via <span class="si">${</span><span class="nv">via</span><span class="si">}</span> dev <span class="si">${</span><span class="nv">dev</span><span class="si">}</span>
+        <span class="k">else</span>
+            ip route add <span class="si">${</span><span class="nv">route</span><span class="si">}</span> via <span class="si">${</span><span class="nv">via</span><span class="si">}</span>
+        <span class="k">fi</span>
+    <span class="k">fi</span>
+<span class="o">}</span>
+
+create_vrouter<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+    <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+    <span class="nv">ipmask</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span>
+    <span class="nv">gw</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$4</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">type</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;ext&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nv">ns_name</span><span class="o">=</span><span class="s2">&quot;E-VRouter-</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="nv">p2p_name</span><span class="o">=</span><span class="s2">&quot;pie-</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="nv">p2p_peername</span><span class="o">=</span><span class="s2">&quot;poe-</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">elif</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">type</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;int&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nv">ns_name</span><span class="o">=</span><span class="s2">&quot;I-VRouter-</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="nv">p2p_name</span><span class="o">=</span><span class="s2">&quot;pii-</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="nv">p2p_peername</span><span class="o">=</span><span class="s2">&quot;poi-</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">else</span>
+        <span class="nv">ns_name</span><span class="o">=</span><span class="s2">&quot;VRouter-</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="nv">p2p_name</span><span class="o">=</span><span class="s2">&quot;pi-</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="nv">p2p_peername</span><span class="o">=</span><span class="s2">&quot;po-</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">fi</span>
+    create_netns <span class="si">${</span><span class="nv">ns_name</span><span class="si">}</span>
+    create_veth <span class="si">${</span><span class="nv">p2p_name</span><span class="si">}</span> <span class="si">${</span><span class="nv">p2p_peername</span><span class="si">}</span>
+    up_nic <span class="si">${</span><span class="nv">p2p_name</span><span class="si">}</span>
+    up_nic <span class="si">${</span><span class="nv">p2p_peername</span><span class="si">}</span>
+    set_nic_ns <span class="si">${</span><span class="nv">p2p_peername</span><span class="si">}</span> <span class="si">${</span><span class="nv">ns_name</span><span class="si">}</span>
+    set_nic_ipv4 <span class="si">${</span><span class="nv">p2p_peername</span><span class="si">}</span> <span class="si">${</span><span class="nv">ipmask</span><span class="si">}</span> <span class="si">${</span><span class="nv">ns_name</span><span class="si">}</span>
+    set_route <span class="s2">&quot;0.0.0.0/0&quot;</span> <span class="si">${</span><span class="nv">gw</span><span class="si">}</span> <span class="si">${</span><span class="nv">p2p_peername</span><span class="si">}</span> <span class="si">${</span><span class="nv">ns_name</span><span class="si">}</span>
+    set_nic_br <span class="si">${</span><span class="nv">p2p_name</span><span class="si">}</span> <span class="s2">&quot;br-int-legacy&quot;</span>
+<span class="o">}</span>
+
+create_vrouter <span class="s2">&quot;vrtest&quot;</span> <span class="s2">&quot;ext&quot;</span> <span class="s2">&quot;192.168.100.1/24&quot;</span> <span class="s2">&quot;192.168.100.254&quot;</span>
+</pre></div>
+
+<p>python：</p>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">netns</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="n">ip</span><span class="o">.</span><span class="n">netns</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">iproute</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    <span class="k">def</span> <span class="nf">create_veth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">peername</span><span class="p">):</span>
+        <span class="n">ip</span><span class="o">.</span><span class="n">link</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">veth</span><span class="o">.</span><span class="n">peer</span><span class="o">.</span><span class="n">peername</span>
+    <span class="k">def</span> <span class="nf">up_nic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nic</span><span class="p">):</span>
+        <span class="n">ip</span><span class="o">.</span><span class="n">link</span><span class="o">.</span><span class="n">set</span><span class="o">.</span><span class="n">nic</span><span class="o">.</span><span class="n">up</span>
+    <span class="k">def</span> <span class="nf">set_nic_ns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nic</span><span class="p">,</span> <span class="n">ns</span><span class="p">):</span>
+        <span class="n">ip</span><span class="o">.</span><span class="n">link</span><span class="o">.</span><span class="n">set</span><span class="o">.</span><span class="n">nic</span><span class="o">.</span><span class="n">netns</span><span class="o">.</span><span class="n">ns</span>
+    <span class="k">def</span> <span class="nf">set_nic_ipv4</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nic</span><span class="p">,</span> <span class="n">ipmask</span><span class="p">,</span> <span class="n">ns</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">ns</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">ip</span><span class="o">.</span><span class="n">netns</span><span class="o">.</span><span class="k">exec</span><span class="o">.</span><span class="n">ns</span><span class="o">.</span><span class="n">ip</span><span class="o">.</span><span class="n">address</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">ipmask</span><span class="o">.</span><span class="n">dev</span><span class="o">.</span><span class="n">nic</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ip</span><span class="o">.</span><span class="n">address</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">ipmask</span><span class="o">.</span><span class="n">dev</span><span class="o">.</span><span class="n">nic</span>
+    <span class="k">def</span> <span class="nf">set_route</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">via</span><span class="p">,</span> <span class="n">dev</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ns</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">ns</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">dev</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">ip</span><span class="o">.</span><span class="n">netns</span><span class="o">.</span><span class="k">exec</span><span class="o">.</span><span class="n">ns</span><span class="o">.</span><span class="n">ip</span><span class="o">.</span><span class="n">route</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">route</span><span class="o">.</span><span class="n">via</span><span class="o">.</span><span class="n">via</span><span class="o">.</span><span class="n">dev</span><span class="o">.</span><span class="n">dev</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">ip</span><span class="o">.</span><span class="n">netns</span><span class="o">.</span><span class="k">exec</span><span class="o">.</span><span class="n">ns</span><span class="o">.</span><span class="n">ip</span><span class="o">.</span><span class="n">route</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">route</span><span class="o">.</span><span class="n">via</span><span class="o">.</span><span class="n">via</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">dev</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">ip</span><span class="o">.</span><span class="n">route</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">route</span><span class="o">.</span><span class="n">via</span><span class="o">.</span><span class="n">via</span><span class="o">.</span><span class="n">dev</span><span class="o">.</span><span class="n">dev</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">ip</span><span class="o">.</span><span class="n">route</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">route</span><span class="o">.</span><span class="n">via</span><span class="o">.</span><span class="n">via</span>
+    <span class="k">def</span> <span class="nf">set_nic_br</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nic</span><span class="p">,</span> <span class="n">br</span><span class="p">,</span> <span class="n">ns</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">ns</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">ip</span><span class="o">.</span><span class="n">netns</span><span class="o">.</span><span class="k">exec</span><span class="o">.</span><span class="n">ns</span><span class="o">.</span><span class="n">ip</span><span class="o">.</span><span class="n">link</span><span class="o">.</span><span class="n">set</span><span class="o">.</span><span class="n">nic</span><span class="o">.</span><span class="n">master</span><span class="o">.</span><span class="n">br</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ip</span><span class="o">.</span><span class="n">link</span><span class="o">.</span><span class="n">set</span><span class="o">.</span><span class="n">nic</span><span class="o">.</span><span class="n">master</span><span class="o">.</span><span class="n">br</span>
+
+<span class="k">class</span> <span class="nc">Vrouter</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">stype</span><span class="p">,</span> <span class="n">ipmask</span><span class="p">,</span> <span class="n">gw</span><span class="p">):</span>
+        <span class="k">pass</span>
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">stype</span><span class="p">,</span> <span class="n">ipmask</span><span class="p">,</span> <span class="n">gw</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stype</span> <span class="o">==</span> <span class="s2">&quot;int&quot;</span><span class="p">:</span>
+            <span class="n">nsname</span> <span class="o">=</span> <span class="s2">&quot;I-VRouter-&quot;</span><span class="o">+</span><span class="n">name</span>
+            <span class="n">p2p_name</span> <span class="o">=</span> <span class="s2">&quot;pii-&quot;</span><span class="o">+</span><span class="n">name</span>
+            <span class="n">p2p_peername</span> <span class="o">=</span> <span class="s2">&quot;poi-&quot;</span><span class="o">+</span><span class="n">name</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">stype</span> <span class="o">==</span> <span class="s2">&quot;ext&quot;</span><span class="p">:</span>
+            <span class="n">nsname</span> <span class="o">=</span> <span class="s2">&quot;E-VRouter-&quot;</span><span class="o">+</span><span class="n">name</span>
+            <span class="n">p2p_name</span> <span class="o">=</span> <span class="s2">&quot;pie-&quot;</span><span class="o">+</span><span class="n">name</span>
+            <span class="n">p2p_peername</span> <span class="o">=</span> <span class="s2">&quot;poe-&quot;</span><span class="o">+</span><span class="n">name</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">nsname</span> <span class="o">=</span> <span class="s2">&quot;VRouter-&quot;</span><span class="o">+</span><span class="n">name</span>
+            <span class="n">p2p_name</span> <span class="o">=</span> <span class="s2">&quot;pi-&quot;</span><span class="o">+</span><span class="n">name</span>
+            <span class="n">p2p_peername</span> <span class="o">=</span> <span class="s2">&quot;po-&quot;</span><span class="o">+</span><span class="n">name</span>
+
+        <span class="n">ns</span> <span class="o">=</span> <span class="n">netns</span><span class="p">()</span>
+        <span class="n">ns</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nsname</span><span class="p">)</span>
+        <span class="n">ip</span> <span class="o">=</span> <span class="n">iproute</span><span class="p">()</span>
+        <span class="n">ip</span><span class="o">.</span><span class="n">create_veth</span><span class="p">(</span><span class="n">p2p_name</span><span class="p">,</span> <span class="n">p2p_peername</span><span class="p">)</span>
+        <span class="n">ip</span><span class="o">.</span><span class="n">up_nic</span><span class="p">(</span><span class="n">p2p_name</span><span class="p">)</span>
+        <span class="n">ip</span><span class="o">.</span><span class="n">up_nic</span><span class="p">(</span><span class="n">p2p_peername</span><span class="p">)</span>
+        <span class="n">ip</span><span class="o">.</span><span class="n">set_nic_ns</span><span class="p">(</span><span class="n">p2p_peername</span><span class="p">,</span> <span class="n">nsname</span><span class="p">)</span>
+        <span class="n">ip</span><span class="o">.</span><span class="n">set_nic_ipv4</span><span class="p">(</span><span class="n">p2p_peername</span><span class="p">,</span> <span class="n">ipmask</span><span class="p">,</span> <span class="n">nsname</span><span class="p">)</span>
+        <span class="n">ip</span><span class="o">.</span><span class="n">set_route</span><span class="p">(</span><span class="s2">&quot;0.0.0.0/0&quot;</span><span class="p">,</span> <span class="n">gw</span><span class="p">,</span> <span class="n">p2p_peername</span><span class="p">,</span> <span class="n">nsname</span><span class="p">)</span>
+        <span class="n">ip</span><span class="o">.</span><span class="n">set_nic_br</span><span class="p">(</span><span class="n">p2p_name</span><span class="p">,</span> <span class="s2">&quot;br-int-legacy&quot;</span><span class="p">)</span>
+
+<span class="n">vr</span> <span class="o">=</span> <span class="n">Vrouter</span><span class="p">()</span>
+<span class="n">vr</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;vrtest&quot;</span><span class="p">,</span> <span class="s2">&quot;ext&quot;</span><span class="p">,</span> <span class="s2">&quot;192.168.100.1/24&quot;</span><span class="p">,</span> <span class="s2">&quot;192.168.100.254&quot;</span><span class="p">)</span>
+</pre></div>
+
+<p>然后，神奇出现了，当我想把上面这段代码直接翻译成golang时候，发现写不下去，因为golang里模拟面向对象通常用的是struct来模拟属性，用签名函数模拟方法，那么问题来了。上面py代码里的iproute类没有设定属性，只设定方法，而go的struct没有设置元素就觉得怪怪的（其实go里struct没有元素也很常见）。</p>
+<p>到此，开始意识到，我并没有真正理解面向对象的概念，我将python的class当封装拿来用（比如上面的iproute类），而不是当作真正的面向对象。那么接下来，先对python做改造，做成真正的面向对象，然后再试着用go来写</p>
+<p>python：</p>
+<div class="codehilite"><pre><span></span><span class="c1"># _*_ coding: utf-8 _*_</span>
+
+<span class="k">class</span> <span class="nc">Netns</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s2">&quot;ip netns add {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s2">&quot;ip netns del {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Nic</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">netns</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>        <span class="c1"># 网卡名</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">netns</span> <span class="o">=</span> <span class="n">netns</span>      <span class="c1"># 网卡当前所在netns</span>
+
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s2">&quot;Need to override or overload!&quot;</span>
+
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">netns</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;ip link delete {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;ip netns exec {} ip link delete {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">netns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">up</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">netns</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;ip link set {} up&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;ip netns exec {} ip link set {} up&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">netns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">down</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">netns</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;ip link set {} down&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;ip netns exec {} ip link set {} down&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">netns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">setMaster</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">master</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">netns</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;ip link set {} master {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">master</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;ip netns exec {} ip link set {} master {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">netns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">master</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">setNetns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netns</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        将当前网络命名空间(self.netns)中的网卡放置到新的命名空间中</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">netns</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;ip link set {} netns {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">netns</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;ip netns exec {} ip link set {} netns {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">netns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">netns</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">netns</span> <span class="o">=</span> <span class="n">netns</span>
+
+    <span class="k">def</span> <span class="nf">addIPAddr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ip</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">netns</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;ip address add {} dev {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;ip netns exec {} ip address add {} dev {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">netns</span><span class="p">,</span> <span class="n">ip</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">isExists</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">netns</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;ip link show dev {} &gt;/dev/null 2&gt;&amp;1&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;ip netns exec {} ip link show dev {} &gt;/dev/null 2&gt;&amp;1&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">netns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Vtep</span><span class="p">(</span><span class="n">Nic</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">vni</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">netns</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">Nic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">netns</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vni</span> <span class="o">=</span> <span class="n">vni</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">group</span> <span class="o">=</span> <span class="n">group</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dev</span> <span class="o">=</span> <span class="n">dev</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">port</span>
+
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">group</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">netns</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s2">&quot;ip link add {} mtu 1500 type vxlan id {} ttl 64 dev {} dstport {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">vni</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">dev</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">port</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s2">&quot;ip netns exec {} ip link add {} mtu 1500 type vxlan id {} ttl 64 dev {} dstport {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">netns</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">vni</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">dev</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">port</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">netns</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s2">&quot;ip link add {} mtu 1500 type vxlan id {} group {} ttl 64 dev {} dstport {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">vni</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">group</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">dev</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s2">&quot;ip netns exec {} ip link add {} mtu 1500 type vxlan id {} group {} ttl 64 dev {} dstport {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">netns</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">vni</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">group</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">dev</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">port</span>
+                <span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Bridge</span><span class="p">(</span><span class="n">Nic</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">netns</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">Nic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">netns</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">netns</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;ip link add {} type bridge&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;ip netns exec {} ip link add {} type bridge&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">netns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Veth</span><span class="p">(</span><span class="n">Nic</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">peer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">netns</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">Nic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">netns</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">peer</span> <span class="o">=</span> <span class="n">peer</span>
+
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">peer</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">netns</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s2">&quot;ip link add {} type veth peer&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s2">&quot;ip netns exec {} ip link add {} type veth peer&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">netns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="c1"># 假设获得的peer是vethX</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">peer</span> <span class="o">=</span> <span class="s2">&quot;vethX&quot;</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">peer</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">netns</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s2">&quot;ip link add {} type veth peer name {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">peer</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s2">&quot;ip netns exec {} ip link add {} type veth peer name {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">netns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">peer</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="s2">&quot;=====class Netns test=====&quot;</span>
+<span class="n">ns</span> <span class="o">=</span> <span class="n">Netns</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ns1&quot;</span><span class="p">)</span>
+<span class="n">ns</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+<span class="n">ns</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<span class="k">print</span>
+
+<span class="k">print</span> <span class="s2">&quot;=====class Bridge test=====&quot;</span>
+<span class="k">print</span> <span class="s2">&quot;---no netns---&quot;</span>
+<span class="n">br1</span> <span class="o">=</span> <span class="n">Bridge</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;br1&quot;</span><span class="p">)</span>
+<span class="n">br1</span><span class="o">.</span><span class="n">isExists</span><span class="p">()</span>
+<span class="n">br1</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+<span class="n">br1</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>
+<span class="n">br1</span><span class="o">.</span><span class="n">down</span><span class="p">()</span>
+<span class="n">br1</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<span class="k">print</span> <span class="s2">&quot;---netns=ns1---&quot;</span>
+<span class="n">br2</span> <span class="o">=</span> <span class="n">Bridge</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;br1&quot;</span><span class="p">,</span> <span class="n">netns</span><span class="o">=</span><span class="s2">&quot;ns1&quot;</span><span class="p">)</span>
+<span class="n">br2</span><span class="o">.</span><span class="n">isExists</span><span class="p">()</span>
+<span class="n">br2</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+<span class="n">br2</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>
+<span class="n">br2</span><span class="o">.</span><span class="n">down</span><span class="p">()</span>
+<span class="n">br2</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<span class="k">print</span>
+
+<span class="k">print</span> <span class="s2">&quot;=====class Vtep test=====&quot;</span>
+<span class="k">print</span> <span class="s2">&quot;---multi vtep---&quot;</span>
+<span class="k">print</span> <span class="s2">&quot;-no netns-&quot;</span>
+<span class="n">mvtep1</span> <span class="o">=</span> <span class="n">Vtep</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;int-v1111111&quot;</span><span class="p">,</span>
+    <span class="n">vni</span><span class="o">=</span><span class="mi">1111111</span><span class="p">,</span>
+    <span class="n">group</span><span class="o">=</span><span class="s2">&quot;239.1.111.111&quot;</span><span class="p">,</span>
+    <span class="n">dev</span><span class="o">=</span><span class="s2">&quot;em1&quot;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="mi">4789</span>
+<span class="p">)</span>
+<span class="n">mvtep1</span><span class="o">.</span><span class="n">isExists</span><span class="p">()</span>
+<span class="n">mvtep1</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+<span class="n">mvtep1</span><span class="o">.</span><span class="n">setMaster</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="s2">&quot;br1&quot;</span><span class="p">)</span>
+<span class="n">mvtep1</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>
+<span class="n">mvtep1</span><span class="o">.</span><span class="n">down</span><span class="p">()</span>
+<span class="n">mvtep1</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<span class="k">print</span> <span class="s2">&quot;---multi vtep---&quot;</span>
+<span class="k">print</span> <span class="s2">&quot;-netns=ns1-&quot;</span>
+<span class="n">mvtep2</span> <span class="o">=</span> <span class="n">Vtep</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;int-v1111111&quot;</span><span class="p">,</span>
+    <span class="n">vni</span><span class="o">=</span><span class="mi">1111111</span><span class="p">,</span>
+    <span class="n">group</span><span class="o">=</span><span class="s2">&quot;239.1.111.111&quot;</span><span class="p">,</span>
+    <span class="n">dev</span><span class="o">=</span><span class="s2">&quot;em1&quot;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="mi">4789</span><span class="p">,</span>
+    <span class="n">netns</span><span class="o">=</span><span class="s2">&quot;ns1&quot;</span>
+<span class="p">)</span>
+<span class="n">mvtep2</span><span class="o">.</span><span class="n">isExists</span><span class="p">()</span>
+<span class="n">mvtep2</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+<span class="n">mvtep2</span><span class="o">.</span><span class="n">setMaster</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="s2">&quot;br1&quot;</span><span class="p">)</span>
+<span class="n">mvtep2</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>
+<span class="n">mvtep2</span><span class="o">.</span><span class="n">down</span><span class="p">()</span>
+<span class="n">mvtep2</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+
+<span class="k">print</span> <span class="s2">&quot;---uni vtep---&quot;</span>
+<span class="k">print</span> <span class="s2">&quot;-no netns-&quot;</span>
+<span class="n">uvtep1</span> <span class="o">=</span> <span class="n">Vtep</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;int-v100&quot;</span><span class="p">,</span>
+    <span class="n">vni</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">dev</span><span class="o">=</span><span class="s2">&quot;em1&quot;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="mi">4789</span>
+<span class="p">)</span>
+<span class="n">uvtep1</span><span class="o">.</span><span class="n">isExists</span><span class="p">()</span>
+<span class="n">uvtep1</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+<span class="n">uvtep1</span><span class="o">.</span><span class="n">setMaster</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="s2">&quot;br1&quot;</span><span class="p">)</span>
+<span class="n">uvtep1</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>
+<span class="n">uvtep1</span><span class="o">.</span><span class="n">down</span><span class="p">()</span>
+<span class="n">uvtep1</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<span class="k">print</span> <span class="s2">&quot;-netns=ns1-&quot;</span>
+<span class="n">uvtep2</span> <span class="o">=</span> <span class="n">Vtep</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;int-v100&quot;</span><span class="p">,</span>
+    <span class="n">vni</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">dev</span><span class="o">=</span><span class="s2">&quot;em1&quot;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="mi">4789</span><span class="p">,</span>
+    <span class="n">netns</span><span class="o">=</span><span class="s2">&quot;ns1&quot;</span>
+<span class="p">)</span>
+<span class="n">uvtep2</span><span class="o">.</span><span class="n">isExists</span><span class="p">()</span>
+<span class="n">uvtep2</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+<span class="n">uvtep2</span><span class="o">.</span><span class="n">setMaster</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="s2">&quot;br1&quot;</span><span class="p">)</span>
+<span class="n">uvtep2</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>
+<span class="n">uvtep2</span><span class="o">.</span><span class="n">down</span><span class="p">()</span>
+<span class="n">uvtep2</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<span class="k">print</span>
+
+<span class="k">print</span> <span class="s2">&quot;=====class Veth test=====&quot;</span>
+<span class="k">print</span> <span class="s2">&quot;---no peer---&quot;</span>
+<span class="k">print</span> <span class="s2">&quot;--no netns--&quot;</span>
+<span class="n">veth1a</span> <span class="o">=</span> <span class="n">Veth</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;pii-xxx&quot;</span><span class="p">)</span>
+<span class="n">veth1a</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+<span class="n">veth1a</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>
+<span class="n">veth1a</span><span class="o">.</span><span class="n">setNetns</span><span class="p">(</span><span class="n">netns</span><span class="o">=</span><span class="s2">&quot;ns1&quot;</span><span class="p">)</span>
+<span class="k">print</span>
+
+<span class="k">print</span> <span class="s2">&quot;--netns=ns1--&quot;</span>
+<span class="n">veth2a</span> <span class="o">=</span> <span class="n">Veth</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;pii-xxx&quot;</span><span class="p">,</span> <span class="n">netns</span><span class="o">=</span><span class="s2">&quot;ns1&quot;</span><span class="p">)</span>
+<span class="n">veth2a</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+<span class="n">veth2a</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>
+<span class="n">veth2a</span><span class="o">.</span><span class="n">setNetns</span><span class="p">(</span><span class="n">netns</span><span class="o">=</span><span class="s2">&quot;ns2&quot;</span><span class="p">)</span>
+<span class="k">print</span>
+
+<span class="k">print</span> <span class="s2">&quot;---peer=poi-xxx---&quot;</span>
+<span class="k">print</span> <span class="s2">&quot;--no netns--&quot;</span>
+<span class="n">veth3a</span> <span class="o">=</span> <span class="n">Veth</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;pii-xxx&quot;</span><span class="p">,</span> <span class="n">peer</span><span class="o">=</span><span class="s2">&quot;poi-xxx&quot;</span><span class="p">)</span>
+<span class="n">veth3a</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+<span class="n">veth3a</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>
+<span class="n">veth3a</span><span class="o">.</span><span class="n">setNetns</span><span class="p">(</span><span class="n">netns</span><span class="o">=</span><span class="s2">&quot;ns1&quot;</span><span class="p">)</span>
+<span class="k">print</span>
+
+<span class="k">print</span> <span class="s2">&quot;--netns=ns1--&quot;</span>
+<span class="n">veth4a</span> <span class="o">=</span> <span class="n">Veth</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;pii-xxx&quot;</span><span class="p">,</span> <span class="n">peer</span><span class="o">=</span><span class="s2">&quot;poi-xxx&quot;</span><span class="p">,</span> <span class="n">netns</span><span class="o">=</span><span class="s2">&quot;ns1&quot;</span><span class="p">)</span>
+<span class="n">veth4a</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+<span class="n">veth4a</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>
+<span class="n">veth4a</span><span class="o">.</span><span class="n">setNetns</span><span class="p">(</span><span class="n">netns</span><span class="o">=</span><span class="s2">&quot;ns2&quot;</span><span class="p">)</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>=====class Netns test=====
+ip netns add ns1
+ip netns del ns1
+
+=====class Bridge test=====
+---no netns---
+ip link show dev br1 &gt;/dev/null 2&gt;&amp;1
+ip link add br1 type bridge
+ip link set br1 up
+ip link set br1 down
+ip link delete br1
+---netns=ns1---
+ip netns exec ns1 ip link show dev br1 &gt;/dev/null 2&gt;&amp;1
+ip netns exec ns1 ip link add br1 type bridge
+ip netns exec ns1 ip link set br1 up
+ip netns exec ns1 ip link set br1 down
+ip netns exec ns1 ip link delete br1
+
+=====class Vtep test=====
+---multi vtep---
+-no netns-
+ip link show dev int-v1111111 &gt;/dev/null 2&gt;&amp;1
+ip link add int-v1111111 mtu 1500 type vxlan id 1111111 group 239.1.111.111 ttl 64 dev em1 dstport 4789
+ip link set int-v1111111 master br1
+ip link set int-v1111111 up
+ip link set int-v1111111 down
+ip link delete int-v1111111
+---multi vtep---
+-netns=ns1-
+ip netns exec ns1 ip link show dev int-v1111111 &gt;/dev/null 2&gt;&amp;1
+ip netns exec ns1 ip link add int-v1111111 mtu 1500 type vxlan id 1111111 group 239.1.111.111 ttl 64 dev em1 dstport 4789
+ip netns exec ns1 ip link set int-v1111111 master br1
+ip netns exec ns1 ip link set int-v1111111 up
+ip netns exec ns1 ip link set int-v1111111 down
+ip netns exec ns1 ip link delete int-v1111111
+---uni vtep---
+-no netns-
+ip link show dev int-v100 &gt;/dev/null 2&gt;&amp;1
+ip link add int-v100 mtu 1500 type vxlan id 100 ttl 64 dev em1 dstport 4789
+ip link set int-v100 master br1
+ip link set int-v100 up
+ip link set int-v100 down
+ip link delete int-v100
+-netns=ns1-
+ip netns exec ns1 ip link show dev int-v100 &gt;/dev/null 2&gt;&amp;1
+ip netns exec ns1 ip link add int-v100 mtu 1500 type vxlan id 100 ttl 64 dev em1 dstport 4789
+ip netns exec ns1 ip link set int-v100 master br1
+ip netns exec ns1 ip link set int-v100 up
+ip netns exec ns1 ip link set int-v100 down
+ip netns exec ns1 ip link delete int-v100
+
+=====class Veth test=====
+---no peer---
+--no netns--
+ip link add pii-xxx type veth peer
+ip link set pii-xxx up
+ip link set pii-xxx netns ns1
+
+--netns=ns1--
+ip netns exec ns1 ip link add pii-xxx type veth peer
+ip netns exec ns1 ip link set pii-xxx up
+ip netns exec ns1 ip link set pii-xxx netns ns2
+
+---peer=poi-xxx---
+--no netns--
+ip link add pii-xxx type veth peer name poi-xxx
+ip link set pii-xxx up
+ip link set pii-xxx netns ns1
+
+--netns=ns1--
+ip netns exec ns1 ip link add pii-xxx type veth peer name poi-xxx
+ip netns exec ns1 ip link set pii-xxx up
+ip netns exec ns1 ip link set pii-xxx netns ns2
+</pre></div>
+
+<p>上面代码用go实现：</p>
+<p>建一个iproute目录，有bridge、netns、nic、veth、vtep这几个子目录，存放基础库：</p>
+<p>netns/netns.go</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">netns</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">netns</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">name</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">netns</span><span class="p">)</span> <span class="nx">Add</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip netns add %s\n&quot;</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">netns</span><span class="p">)</span> <span class="nx">Del</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip netns del %s\n&quot;</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">NewNetns</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="o">*</span><span class="nx">netns</span> <span class="p">{</span> <span class="k">return</span> <span class="o">&amp;</span><span class="nx">netns</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="nx">name</span><span class="p">}</span> <span class="p">}</span>
+</pre></div>
+
+<p>nic/nic.go</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">nic</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">Nic</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Name</span>  <span class="kt">string</span>
+    <span class="nx">Netns</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">Nic</span><span class="p">)</span> <span class="nx">Add</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Need to override or overload!&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">Nic</span><span class="p">)</span> <span class="nx">Del</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">this</span><span class="p">.</span><span class="nx">Netns</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip link delete %s\n&quot;</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip netns exec %s ip link delete %s\n&quot;</span><span class="p">,</span>
+            <span class="nx">this</span><span class="p">.</span><span class="nx">Netns</span><span class="p">,</span>
+            <span class="nx">this</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">Nic</span><span class="p">)</span> <span class="nx">Up</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">this</span><span class="p">.</span><span class="nx">Netns</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip link set %s up\n&quot;</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip netns exec %s ip link set %s up\n&quot;</span><span class="p">,</span>
+            <span class="nx">this</span><span class="p">.</span><span class="nx">Netns</span><span class="p">,</span>
+            <span class="nx">this</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">Nic</span><span class="p">)</span> <span class="nx">Down</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">this</span><span class="p">.</span><span class="nx">Netns</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip link set %s down\n&quot;</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip netns exec %s ip link set %s down\n&quot;</span><span class="p">,</span>
+            <span class="nx">this</span><span class="p">.</span><span class="nx">Netns</span><span class="p">,</span>
+            <span class="nx">this</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">Nic</span><span class="p">)</span> <span class="nx">SetMaster</span><span class="p">(</span><span class="nx">master</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">this</span><span class="p">.</span><span class="nx">Netns</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip link set %s master %s\n&quot;</span><span class="p">,</span>
+            <span class="nx">this</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span>
+            <span class="nx">master</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip netns exec %s ip link set %s master %s\n&quot;</span><span class="p">,</span>
+            <span class="nx">this</span><span class="p">.</span><span class="nx">Netns</span><span class="p">,</span>
+            <span class="nx">this</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span>
+            <span class="nx">master</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">Nic</span><span class="p">)</span> <span class="nx">SetNetns</span><span class="p">(</span><span class="nx">netns</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">this</span><span class="p">.</span><span class="nx">Netns</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip link set %s netns %s\n&quot;</span><span class="p">,</span>
+            <span class="nx">this</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span>
+            <span class="nx">netns</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip netns exec %s ip link set %s netns %s\n&quot;</span><span class="p">,</span>
+            <span class="nx">this</span><span class="p">.</span><span class="nx">Netns</span><span class="p">,</span>
+            <span class="nx">this</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span>
+            <span class="nx">netns</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">this</span><span class="p">.</span><span class="nx">Netns</span> <span class="p">=</span> <span class="nx">netns</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">Nic</span><span class="p">)</span> <span class="nx">AddIPAddr</span><span class="p">(</span><span class="nx">ip</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">this</span><span class="p">.</span><span class="nx">Netns</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip address add %s dev %s\n&quot;</span><span class="p">,</span>
+            <span class="nx">ip</span><span class="p">,</span>
+            <span class="nx">this</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip netns exec %s ip address add %s dev %s\n&quot;</span><span class="p">,</span>
+            <span class="nx">this</span><span class="p">.</span><span class="nx">Netns</span><span class="p">,</span>
+            <span class="nx">ip</span><span class="p">,</span>
+            <span class="nx">this</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">Nic</span><span class="p">)</span> <span class="nx">IsExists</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">this</span><span class="p">.</span><span class="nx">Netns</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip link show dev %s &gt;/dev/null 2&gt;&amp;1\n&quot;</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip netns exec %s ip link show dev %s &gt;/dev/null 2&gt;&amp;1\n&quot;</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">Netns</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>bridge/bridge.go</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">bridge</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;github.com/cyent/repo1/iproute/nic&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">bridge</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">nic</span><span class="p">.</span><span class="nx">Nic</span>
+    <span class="nx">name</span>  <span class="kt">string</span>
+    <span class="nx">netns</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">bridge</span><span class="p">)</span> <span class="nx">Add</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">this</span><span class="p">.</span><span class="nx">netns</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip link add %s type bridge\n&quot;</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip netns exec %s ip link add %s type bridge\n&quot;</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">netns</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">NewBridge</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">netns</span> <span class="kt">string</span><span class="p">)</span> <span class="o">*</span><span class="nx">bridge</span> <span class="p">{</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">bridge</span><span class="p">)</span>
+    <span class="nx">b</span><span class="p">.</span><span class="nx">Nic</span><span class="p">.</span><span class="nx">Name</span> <span class="p">=</span> <span class="nx">name</span>
+    <span class="nx">b</span><span class="p">.</span><span class="nx">Nic</span><span class="p">.</span><span class="nx">Netns</span> <span class="p">=</span> <span class="nx">netns</span>
+    <span class="nx">b</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="nx">name</span>
+    <span class="nx">b</span><span class="p">.</span><span class="nx">netns</span> <span class="p">=</span> <span class="nx">netns</span>
+    <span class="k">return</span> <span class="nx">b</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>veth/veth.go</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">veth</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;github.com/cyent/repo1/iproute/nic&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">veth</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">nic</span><span class="p">.</span><span class="nx">Nic</span>
+    <span class="nx">name</span>  <span class="kt">string</span>
+    <span class="nx">peer</span>  <span class="kt">string</span>
+    <span class="nx">netns</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">veth</span><span class="p">)</span> <span class="nx">Add</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">this</span><span class="p">.</span><span class="nx">peer</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">this</span><span class="p">.</span><span class="nx">netns</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> <span class="p">{</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip link add %s type veth peer\n&quot;</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip netns exec %s ip link add %s type veth peer\n&quot;</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">netns</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="c1">// 假设获得的peer是vethX</span>
+        <span class="nx">this</span><span class="p">.</span><span class="nx">peer</span> <span class="p">=</span> <span class="s">&quot;vethX&quot;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">this</span><span class="p">.</span><span class="nx">netns</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> <span class="p">{</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip link add %s type veth peer name %s\n&quot;</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">peer</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip netns exec %s ip link add %s type veth peer name %s\n&quot;</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">netns</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="nx">this</span><span class="p">.</span><span class="nx">peer</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">New</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">peer</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">netns</span> <span class="kt">string</span><span class="p">)</span> <span class="o">*</span><span class="nx">veth</span> <span class="p">{</span>
+    <span class="nx">v</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">veth</span><span class="p">)</span>
+    <span class="nx">v</span><span class="p">.</span><span class="nx">Nic</span><span class="p">.</span><span class="nx">Name</span> <span class="p">=</span> <span class="nx">name</span>
+    <span class="nx">v</span><span class="p">.</span><span class="nx">Nic</span><span class="p">.</span><span class="nx">Netns</span> <span class="p">=</span> <span class="nx">netns</span>
+    <span class="nx">v</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="nx">name</span>
+    <span class="nx">v</span><span class="p">.</span><span class="nx">peer</span> <span class="p">=</span> <span class="nx">peer</span>
+    <span class="nx">v</span><span class="p">.</span><span class="nx">netns</span> <span class="p">=</span> <span class="nx">netns</span>
+    <span class="k">return</span> <span class="nx">v</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>vtep/vtep.go</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">vtep</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;github.com/cyent/repo1/iproute/nic&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">vtep</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">nic</span><span class="p">.</span><span class="nx">Nic</span>
+    <span class="nx">name</span>  <span class="kt">string</span>
+    <span class="nx">vni</span>   <span class="kt">int</span>
+    <span class="nx">dev</span>   <span class="kt">string</span>
+    <span class="nx">port</span>  <span class="kt">int</span>
+    <span class="nx">netns</span> <span class="kt">string</span>
+    <span class="nx">group</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">vtep</span><span class="p">)</span> <span class="nx">Add</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">this</span><span class="p">.</span><span class="nx">group</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">this</span><span class="p">.</span><span class="nx">netns</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> <span class="p">{</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip link add %s mtu 1500 type vxlan id %d ttl 64 dev %s dstport %d\n&quot;</span><span class="p">,</span>
+                <span class="nx">this</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+                <span class="nx">this</span><span class="p">.</span><span class="nx">vni</span><span class="p">,</span>
+                <span class="nx">this</span><span class="p">.</span><span class="nx">dev</span><span class="p">,</span>
+                <span class="nx">this</span><span class="p">.</span><span class="nx">port</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip netns exec %s ip link add %s mtu 1500 type vxlan id %d ttl 64 dev %s dstport %d\n&quot;</span><span class="p">,</span>
+                <span class="nx">this</span><span class="p">.</span><span class="nx">netns</span><span class="p">,</span>
+                <span class="nx">this</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+                <span class="nx">this</span><span class="p">.</span><span class="nx">vni</span><span class="p">,</span>
+                <span class="nx">this</span><span class="p">.</span><span class="nx">dev</span><span class="p">,</span>
+                <span class="nx">this</span><span class="p">.</span><span class="nx">port</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">this</span><span class="p">.</span><span class="nx">netns</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> <span class="p">{</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip link add %s mtu 1500 type vxlan id %d group %s ttl 64 dev %s dstport %d\n&quot;</span><span class="p">,</span>
+                <span class="nx">this</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+                <span class="nx">this</span><span class="p">.</span><span class="nx">vni</span><span class="p">,</span>
+                <span class="nx">this</span><span class="p">.</span><span class="nx">group</span><span class="p">,</span>
+                <span class="nx">this</span><span class="p">.</span><span class="nx">dev</span><span class="p">,</span>
+                <span class="nx">this</span><span class="p">.</span><span class="nx">port</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ip netns exec %s ip link add %s mtu 1500 type vxlan id %d group %s ttl 64 dev %s dstport %d\n&quot;</span><span class="p">,</span>
+                <span class="nx">this</span><span class="p">.</span><span class="nx">netns</span><span class="p">,</span>
+                <span class="nx">this</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+                <span class="nx">this</span><span class="p">.</span><span class="nx">vni</span><span class="p">,</span>
+                <span class="nx">this</span><span class="p">.</span><span class="nx">group</span><span class="p">,</span>
+                <span class="nx">this</span><span class="p">.</span><span class="nx">dev</span><span class="p">,</span>
+                <span class="nx">this</span><span class="p">.</span><span class="nx">port</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">NewVtep</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">vni</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">dev</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">port</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">netns</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">group</span> <span class="kt">string</span><span class="p">)</span> <span class="o">*</span><span class="nx">vtep</span> <span class="p">{</span>
+    <span class="nx">v</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">vtep</span><span class="p">)</span>
+    <span class="nx">v</span><span class="p">.</span><span class="nx">Nic</span><span class="p">.</span><span class="nx">Name</span> <span class="p">=</span> <span class="nx">name</span>
+    <span class="nx">v</span><span class="p">.</span><span class="nx">Nic</span><span class="p">.</span><span class="nx">Netns</span> <span class="p">=</span> <span class="nx">netns</span>
+    <span class="nx">v</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="nx">name</span>
+    <span class="nx">v</span><span class="p">.</span><span class="nx">netns</span> <span class="p">=</span> <span class="nx">netns</span>
+    <span class="nx">v</span><span class="p">.</span><span class="nx">vni</span> <span class="p">=</span> <span class="nx">vni</span>
+    <span class="nx">v</span><span class="p">.</span><span class="nx">dev</span> <span class="p">=</span> <span class="nx">dev</span>
+    <span class="nx">v</span><span class="p">.</span><span class="nx">port</span> <span class="p">=</span> <span class="nx">port</span>
+    <span class="nx">v</span><span class="p">.</span><span class="nx">group</span> <span class="p">=</span> <span class="nx">group</span>
+    <span class="k">return</span> <span class="nx">v</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>调用者</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;github.com/cyent/repo1/iproute/bridge&quot;</span>
+    <span class="s">&quot;github.com/cyent/repo1/iproute/netns&quot;</span>
+    <span class="s">&quot;github.com/cyent/repo1/iproute/veth&quot;</span>
+    <span class="s">&quot;github.com/cyent/repo1/iproute/vtep&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">vnic</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">Add</span><span class="p">()</span>
+    <span class="nx">Del</span><span class="p">()</span>
+    <span class="nx">Up</span><span class="p">()</span>
+    <span class="nx">Down</span><span class="p">()</span>
+    <span class="nx">SetMaster</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span>
+    <span class="nx">SetNetns</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span>
+    <span class="nx">AddIPAddr</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span>
+    <span class="nx">IsExists</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;=====class Netns test=====&quot;</span><span class="p">)</span>
+    <span class="nx">ns</span> <span class="o">:=</span> <span class="nx">netns</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;ns1&quot;</span><span class="p">)</span>
+    <span class="nx">ns</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
+    <span class="nx">ns</span><span class="p">.</span><span class="nx">Del</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">()</span>
+
+    <span class="kd">var</span> <span class="nx">i</span> <span class="nx">vnic</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;=====class Bridge test=====&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;---no netns---&quot;</span><span class="p">)</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="nx">bridge</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;br1&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">IsExists</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Up</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Down</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Del</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;---netns=ns1---&quot;</span><span class="p">)</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="nx">bridge</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;br1&quot;</span><span class="p">,</span> <span class="s">&quot;ns1&quot;</span><span class="p">)</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">IsExists</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Up</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Down</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Del</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">()</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;=====class Vtep test=====&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;---multi vtep---&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;-no netns-&quot;</span><span class="p">)</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="nx">vtep</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;int-v1111111&quot;</span><span class="p">,</span> <span class="mi">1111111</span><span class="p">,</span> <span class="s">&quot;em1&quot;</span><span class="p">,</span> <span class="mi">4789</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;239.1.111.111&quot;</span><span class="p">)</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">IsExists</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">SetMaster</span><span class="p">(</span><span class="s">&quot;br1&quot;</span><span class="p">)</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Up</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Down</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Del</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;---multi vtep---&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;-netns=ns1-&quot;</span><span class="p">)</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="nx">vtep</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;int-v1111111&quot;</span><span class="p">,</span> <span class="mi">1111111</span><span class="p">,</span> <span class="s">&quot;em1&quot;</span><span class="p">,</span> <span class="mi">4789</span><span class="p">,</span> <span class="s">&quot;ns1&quot;</span><span class="p">,</span> <span class="s">&quot;239.1.111.111&quot;</span><span class="p">)</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">IsExists</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">SetMaster</span><span class="p">(</span><span class="s">&quot;br1&quot;</span><span class="p">)</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Up</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Down</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Del</span><span class="p">()</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;---uni vtep---&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;-no netns-&quot;</span><span class="p">)</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="nx">vtep</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;int-v100&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="s">&quot;em1&quot;</span><span class="p">,</span> <span class="mi">4789</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">IsExists</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">SetMaster</span><span class="p">(</span><span class="s">&quot;br1&quot;</span><span class="p">)</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Up</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Down</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Del</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;-netns=ns1-&quot;</span><span class="p">)</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="nx">vtep</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;int-v100&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="s">&quot;em1&quot;</span><span class="p">,</span> <span class="mi">4789</span><span class="p">,</span> <span class="s">&quot;ns1&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">IsExists</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">SetMaster</span><span class="p">(</span><span class="s">&quot;br1&quot;</span><span class="p">)</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Up</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Down</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Del</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">()</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;=====class Veth test=====&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;---no peer---&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;--no netns--&quot;</span><span class="p">)</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="nx">veth</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;pii-xxx&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Up</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">SetNetns</span><span class="p">(</span><span class="s">&quot;ns1&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">()</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;--netns=ns1--&quot;</span><span class="p">)</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="nx">veth</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;pii-xxx&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;ns1&quot;</span><span class="p">)</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Up</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">SetNetns</span><span class="p">(</span><span class="s">&quot;ns2&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">()</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;---peer=poi-xxx---&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;--no netns--&quot;</span><span class="p">)</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="nx">veth</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;pii-xxx&quot;</span><span class="p">,</span> <span class="s">&quot;poi-xxx&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Up</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">SetNetns</span><span class="p">(</span><span class="s">&quot;ns1&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">()</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;--netns=ns1--&quot;</span><span class="p">)</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="nx">veth</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;pii-xxx&quot;</span><span class="p">,</span> <span class="s">&quot;poi-xxx&quot;</span><span class="p">,</span> <span class="s">&quot;ns1&quot;</span><span class="p">)</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Up</span><span class="p">()</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">SetNetns</span><span class="p">(</span><span class="s">&quot;ns2&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出和刚才python的输出内容完全一样</p>
+<p>上面这个过程中有一个很有意思的一点，就是interface让我真正看清了事物的本质：</p>
+<p>一开始在iproute.py代码里，有这么一段：</p>
+<p>在class Veth里有重载了SetNetns方法：</p>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Veth</span><span class="p">:</span>
+    <span class="o">...</span>
+    <span class="k">def</span> <span class="nf">setNetns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isPeer</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+
+<p>即当调用该方法时候如果没有带isPeer参数或者isPeer为False时候，将self.name加入到netns中，而当isPeer=True时候，则将self.peer加入到netns中。</p>
+<p>这个逻辑咋一看没有任何问题，然后用go来写（此时还没用interface）：</p>
+<p>在veth.go里：</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">veth</span><span class="p">)</span> <span class="nx">SetNetns</span><span class="p">(</span><span class="nx">isPeer</span> <span class="kt">bool</span><span class="p">):</span>
+</pre></div>
+
+<p>咋一看也没有问题，调用该方法时候如果isPeer为false，将this.name加入到netns中，而当isPeer=true时候，则将this.peer加入到netns中。</p>
+<p>但有意思的来了，在调用者这里写一个接口：</p>
+<div class="codehilite"><pre><span></span><span class="kd">type</span> <span class="nx">vnic</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">Add</span><span class="p">()</span>
+    <span class="nx">Del</span><span class="p">()</span>
+    <span class="nx">Up</span><span class="p">()</span>
+    <span class="nx">Down</span><span class="p">()</span>
+    <span class="nx">SetMaster</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span>
+    <span class="nx">SetNetns</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span>
+    <span class="nx">AddIPAddr</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span>
+    <span class="nx">IsExists</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>这样就有问题了，因为bridge、vtep的SetNetns没有参数，而veth的SetNetns有参数，这样就造成了veth struct没有实现vnic接口。</p>
+<p>然后又想着，那能否vnic接口里把SetNetns给去掉，但这样就会造成：</p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">i</span> <span class="nx">vnic</span>
+<span class="nx">i</span> <span class="p">=</span> <span class="nx">bridge</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">xx</span><span class="p">)</span>
+<span class="nx">i</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>    <span class="c1">//不报错</span>
+<span class="nx">i</span><span class="p">.</span><span class="nx">Del</span><span class="p">()</span>    <span class="c1">//不报错</span>
+<span class="nx">i</span><span class="p">.</span><span class="nx">SetNetns</span><span class="p">()</span>    <span class="c1">//报错</span>
+</pre></div>
+
+<p>额，于是定下心仔细思考了下：</p>
+<p>veth虽然属于nic类，但是nic面向的是一张网卡，而不是多张网卡，因此veth创建出来有2张网卡，自身名网卡属于nic，peer网卡只是个附属品。</p>
+<p>因此要操作peer网卡时候，比如将peer网卡放入netns时候，有几种方法：</p>
+<ol>
+<li>
+<p>用nic.Nic来初始化这个peer：</p>
+<div class="codehilite"><pre><span></span><span class="nx">peername</span> <span class="o">:=</span> <span class="s">&quot;poi-xxx&quot;</span>
+<span class="nx">peer</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">nic</span><span class="p">.</span><span class="nx">Nic</span><span class="p">{</span>
+    <span class="nx">Name</span><span class="p">:</span> <span class="nx">peername</span><span class="p">,</span>
+    <span class="nx">Netns</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+<span class="p">}</span>
+<span class="nx">peer</span><span class="p">.</span><span class="nx">SetNetns</span><span class="p">(</span><span class="s">&quot;ns1&quot;</span><span class="p">)</span>
+</pre></div>
+
+</li>
+<li>
+<p>和上面类似，但是在nic.go里再搞一个New()方法用于处理这种既不属于veth、也不属于bridge、也不属于vtep的独立普通网卡</p>
+</li>
+<li>
+<p>自己新搞一个struct，比如叫normalNic来处理这种独立网卡</p>
+</li>
+<li>
+<p>在veth.go里新增<code>func (this *veth) SetPeerNetns(ns string)</code></p>
+</li>
+<li>
+<p>在veth.go里新增<code>func SetPeerNetns(peer string, ns string)</code></p>
+</li>
+<li>
+<p>在veth.go里新增<code>func SetPeerNetns(v *veth) { ip link set v.peer netns }</code></p>
+</li>
+</ol>
+<p>个人推荐用4最好，既不会为此把nic基类搞臃肿，同时又作为veth的方法存在（不管怎么说peer也是自家人，没有当作外乡人）</p>
+<p>接下来想做一个函数，传递参数给这个函数，然后这个函数帮我调用bridge、 veth、vtep，然后返回指针struct（返回参数是实现了vnic interface），但是发现不对：</p>
+<p>interface的使用要满足2个条件才有意义：</p>
+<ol>
+<li>
+<p>实现了interface的几个struct是平级的，并且输入输出参数完全一致。（这点是interface的本质，能实现interface的肯定是满足这个条件）</p>
+</li>
+<li>
+<p>在业务逻辑上，调用实现interface的struct是不定的，而不是顺序逻辑，比如这样是不对的，因为netns_struct、bridge_struct、veth_struct是有顺序的：</p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">i</span> <span class="nx">vnic</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">netns_struct</span><span class="p">{</span><span class="o">...</span><span class="p">}</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">bridge_struct</span><span class="p">{</span><span class="o">...</span><span class="p">}</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">veth_struct</span><span class="p">{</span><span class="o">...</span><span class="p">}</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>这样逻辑是正确的：</p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">i</span> <span class="nx">vnic</span>
+<span class="k">switch</span> <span class="nx">opt</span> <span class="p">{</span>
+<span class="k">case</span> <span class="s">&quot;netns&quot;</span><span class="p">:</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">netns</span><span class="p">.</span><span class="kd">struct</span><span class="p">{}</span>
+<span class="k">case</span> <span class="s">&quot;bridge&quot;</span><span class="p">:</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">bridge</span><span class="p">.</span><span class="kd">struct</span><span class="p">{}</span>
+<span class="k">case</span> <span class="s">&quot;veth&quot;</span><span class="p">:</span>
+    <span class="nx">i</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">veth</span><span class="p">.</span><span class="kd">struct</span><span class="p">{}</span>
+<span class="p">}</span>
+<span class="nx">i</span><span class="p">.</span><span class="nx">Add</span><span class="p">()</span>
+<span class="nx">i</span><span class="p">.</span><span class="nx">Del</span><span class="p">()</span>
+</pre></div>
+
+<p>就是说调用者这方对于实现interface的struct是根据某个参数（通过API传递过来，或者配置文件传递过来，或者etcd传递过来）来选择某个struct，这种逻辑才适用interface。而在vrouter程序逻辑里，netns、bridge、veth是被调用者依次执行，因此不适用interface。</p>
+<div class="codehilite"><pre><span></span><span class="kd">type</span> <span class="nx">vnic</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">Add</span><span class="p">()</span>
+    <span class="nx">Del</span><span class="p">()</span>
+    <span class="nx">Up</span><span class="p">()</span>
+    <span class="nx">Down</span><span class="p">()</span>
+    <span class="nx">SetMaster</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span>
+    <span class="nx">SetNetns</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span>
+    <span class="nx">AddIPAddr</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span>
+    <span class="nx">IsExists</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>所以上面这种定义接口的思路就是错误的，这个例子中暂时用不到接口</p>
+                
+                  
+                
+              
+              
+                
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../interface_deep/" title="3.18. 深入理解" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                3.18. 深入理解
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../reflect/main/" title="1. 介绍" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                1. 介绍
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="http://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <a href="https://github.com/cyent" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.6cdc17f0.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              <script src="../../assets/javascripts/lunr/lunr.jp.js"></script>
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="../../js/baidu-tongji.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>
