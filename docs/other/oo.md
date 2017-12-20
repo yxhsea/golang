@@ -286,6 +286,8 @@ http://legendtkl.com/2015/11/25/go-generic-programming/
 
 [详见接口章节](/method/interface_oo/)
 
+推荐小白看看: [从无到有逐步理解面向对象和接口](/method/interface_01/)
+
 ## **3种代码风格**
 
 ---

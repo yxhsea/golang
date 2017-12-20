@@ -144,6 +144,7 @@ pages:
             - 3.16. error: method/interface_error.md
             - 3.17. 接口作为struct的元素: method/interface_struct_element.md
             - 3.18. 深入理解: method/interface_deep.md
+            - 3.19. 从无到有逐步理解面向对象和接口: method/interface_01.md
     - 七. 反射:
         - 1. 介绍: reflect/main.md
         - 2. reflect(反射包):
