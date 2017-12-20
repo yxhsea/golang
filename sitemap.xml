@@ -4,7 +4,7 @@
     
     <url>
      <loc>https://cyent.github.io/golang//</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,37 +13,37 @@
         
     <url>
      <loc>https://cyent.github.io/golang//organization/workspace/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//organization/gopath/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//organization/importpath/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//organization/helloworld/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//organization/firstlib/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//organization/test/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -53,25 +53,25 @@
         
     <url>
      <loc>https://cyent.github.io/golang//basic/packages/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//basic/imports/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//basic/exportname/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//basic/function/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -83,7 +83,7 @@
         
     <url>
      <loc>https://cyent.github.io/golang//basic/const/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -99,25 +99,25 @@
         
     <url>
      <loc>https://cyent.github.io/golang//flow/for/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//flow/if/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//flow/switch/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//flow/defer/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -127,7 +127,7 @@
         
     <url>
      <loc>https://cyent.github.io/golang//datatype/pointer/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -161,7 +161,7 @@
         
     <url>
      <loc>https://cyent.github.io/golang//method/overview/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -183,7 +183,7 @@
         
     <url>
      <loc>https://cyent.github.io/golang//reflect/main/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -195,25 +195,25 @@
         
     <url>
      <loc>https://cyent.github.io/golang//reflect/fmt/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//reflect/law1/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//reflect/law2/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//reflect/law3/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -223,73 +223,73 @@
         
     <url>
      <loc>https://cyent.github.io/golang//other/string/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//other/range/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//other/sync_block/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//other/binary_operation/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//other/loop_iterate_traversal_recursion/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//other/go_python/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//other/oo/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//other/nil/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//other/make/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//other/enum/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//other/readers/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//other/style/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -299,13 +299,13 @@
         
     <url>
      <loc>https://cyent.github.io/golang//appendix/doc/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://cyent.github.io/golang//appendix/code/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -320,7 +320,7 @@
     
     <url>
      <loc>https://cyent.github.io/golang//contact/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
