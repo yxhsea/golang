@@ -159,8 +159,8 @@ func (this Student) tell() {
 }
 
 func main() {
-	t := Teacher{}	// 也可以用new(Teacher)
-	s := Student{}	// 也可以用new(Student)
+	t := Teacher{}
+	s := Student{}
 	t.name = "Mrs. Shrividya"
 	t.age = 40
 	t.salary = 30000
@@ -172,6 +172,9 @@ func main() {
 	s.tell()
 }
 ```
+
+!!! note
+	上面`t := Teacher{}`可以用`t := new(Teacher)`替代，但这2者是有一点区别的，区别在于前者是指针，详见[new](/other/new/#new)
 
 输出也是
 

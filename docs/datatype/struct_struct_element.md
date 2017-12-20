@@ -19,12 +19,15 @@ func (this *Dog) callMyName() {
 }
 
 func main() {
-	b := new(BDog)	// 等同于b := BDog{}
+	b := new(BDog)
 	b.name = "this is a BDog name"
 	b.Dog.name = "this is a Dog name"
 	b.callMyName()
 }
 ```
+
+!!! note
+	上面`b := new(BDog)`可以用`b := BDog{}`替代，但这2者是有一点区别的，区别在于前者是指针，详见[new](/other/new/#new)
 
 输出
 
@@ -71,7 +74,7 @@ type BDog struct {
 }
 
 func main() {
-	b := new(BDog)	// 等同于b := BDog{}
+	b := new(BDog)
 	b.Name = "this is a Dog name"
 	b.CallMyName()
 }
