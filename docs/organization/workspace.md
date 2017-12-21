@@ -5,7 +5,7 @@
 用于放置一个go程序员的所有go代码和依赖在一个workspace里。
 
 !!! note ""
-	前提是生成出的二进制文件不重名，如果存在重名情况，就要分成不同的workspace）
+	前提是生成出的二进制文件不重名，如果存在重名情况，就要分成不同的workspace
 
 ## **workspace、repository、package**
 
