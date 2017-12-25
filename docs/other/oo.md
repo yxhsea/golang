@@ -2,6 +2,18 @@
 
 ![](/img/oo.jpg)
 
+## **面向对象3步**
+
+---
+
+详见：http://developer.51cto.com/art/200906/130568.htm
+
+1. 系统分析
+
+2. 系统设计
+
+3. 实现（编码）
+
 ## **重载overload与覆盖override**
 
 ---
