@@ -154,10 +154,12 @@ pages:
         - 4. 法则1: reflect/law1.md
         - 5. 法则2: reflect/law2.md
         - 6. 法则3: reflect/law3.md
-    - 七. 其他:
+    - 八. 协程:
+        - 1. 介绍: goroutine/main.md
+    - 九. 其他:
         - 1. 字符串处理: other/string.md
         - 2. range: other/range.md
-        - 3. 同步异步与阻塞非阻塞的关系: other/sync_block.md
+        - 3. 同步异步、阻塞非阻塞、进程、线程、协程、事件驱动等: other/sync_block.md
         - 4. 位运算: other/binary_operation.md
         - 5. 循环、迭代、遍历、递归的区别: other/loop_iterate_traversal_recursion.md
         - 6. go和python的比较: other/go_python.md
@@ -168,9 +170,9 @@ pages:
         - 11. Readers: other/readers.md
         - 12. 编码风格: other/style.md
         - 13. new: other/new.md
-    - 八. 附录:
+    - 十. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md
         - 3. 命令行工具:
             - 3.1. go get: appendix/cli_go_get.md
-    - 九. 联系方式: contact.md
+    - 十一. 联系方式: contact.md
