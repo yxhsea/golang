@@ -178,3 +178,41 @@
 - 服务注册与发现: 微服务架构由一个服务注册中心和围绕该注册中心的一堆服务组成。每个服务将自己的地址和其他元信息注册到注册中心（zookeeper或etcd等），有依赖它的其他服务会实时发现（watch机制）变化。
 
 生产消费者模式和订阅发布模式是使用消息中间件时最常用的，用于功能解耦和分布式系统间的消息通信。
+
+## **参考资料**
+
+---
+
+- [**在多核CPU下，同一进程下的多个线程可不可以并行运行?**](http://blog.chinaunix.net/uid-29345848-id-5180536.html)
+
+- [为什么觉得协程是趋势?](https://www.zhihu.com/question/32218874)
+
+- [编程珠玑番外篇-Q 协程的历史，现在和未来](https://blog.youxu.info/2014/12/04/coroutine/)
+
+- [浅谈我对协程的理解](http://blog.csdn.net/qq910894904/article/details/41699541)
+
+- [异步和非阻塞之间的区别](https://www.cnblogs.com/akaneblog/p/6864262.html)
+
+- [异步，多线程和并行的区别?](https://www.zhihu.com/question/28550867)
+
+- [线程的同步和异步](https://www.cnblogs.com/daisyforever/p/6013349.html)
+
+- [进程、线程、轻量级进程、协程和go中的Goroutine 那些事儿](https://www.cnblogs.com/shenguanpu/archive/2013/05/05/3060616.html)
+
+- [怎样理解阻塞非阻塞与同步异步的区别?](https://www.zhihu.com/question/19732473)
+
+- [深入理解 Python 异步编程](http://python.jobbole.com/88291/)
+
+- [Kafka下的生产消费者模式与订阅发布模式](http://blog.csdn.net/zwgdft/article/details/54633105)
+
+- [从内核开发者的角度看协程与线程](https://steemit.com/coroutine/@waterflier/7wnfah)
+
+- [**从0到1，Python异步编程的演进之路**](https://zhuanlan.zhihu.com/p/25228075)
+
+- [**python的单线程异步非阻塞框架karlooper**](http://blog.csdn.net/karldoenitz/article/details/51804786)
+
+- [**跟无闻学Go语言：Go编程基础视频教程**](http://edu.51cto.com/course/1762.html)
+
+- [**协程Coroutine——用同步的方式编写异步的逻辑**](http://blog.csdn.net/djsaiofjasdfsa/article/details/48846591)
+
+- [go协程通信](https://www.cnblogs.com/heartchord/p/5276091.html)
