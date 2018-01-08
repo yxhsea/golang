@@ -170,6 +170,9 @@ pages:
         - 11. Readers: other/readers.md
         - 12. 编码风格: other/style.md
         - 13. new: other/new.md
+        - 14. 多进程、多线程、协程比较:
+            - 14.1. CPU占用率比较: other/ptr_cpu.md
+            - 14.2. 屏幕输出比较: other/ptr_stdout.md
     - 十. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md
