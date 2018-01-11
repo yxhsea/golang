@@ -13,7 +13,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/golang/reflect/law3/">
+        <link rel="canonical" href="https://cyent.github.io/golang/other/fork/">
       
       
         <meta name="author" content="cyent">
@@ -38,7 +38,7 @@
     
     
       
-        <title>6. 法则3 - Go语言学习 - cyent笔记</title>
+        <title>15. C语言的fork - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                6. 法则3
+                15. C语言的fork
               </span>
             
           
@@ -1413,12 +1413,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
     
     <label class="md-nav__link" for="nav-7">
       七. 反射
@@ -1436,7 +1434,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../main/" title="1. 介绍" class="md-nav__link">
+    <a href="../../reflect/main/" title="1. 介绍" class="md-nav__link">
       1. 介绍
     </a>
   </li>
@@ -1467,7 +1465,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../pkg_type_value/" title="2.1. Type和Value" class="md-nav__link">
+    <a href="../../reflect/pkg_type_value/" title="2.1. Type和Value" class="md-nav__link">
       2.1. Type和Value
     </a>
   </li>
@@ -1479,7 +1477,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../pkg_typeof_valueof/" title="2.2. TypeOf()与ValueOf()" class="md-nav__link">
+    <a href="../../reflect/pkg_typeof_valueof/" title="2.2. TypeOf()与ValueOf()" class="md-nav__link">
       2.2. TypeOf()与ValueOf()
     </a>
   </li>
@@ -1496,7 +1494,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../fmt/" title="3. fmt" class="md-nav__link">
+    <a href="../../reflect/fmt/" title="3. fmt" class="md-nav__link">
       3. fmt
     </a>
   </li>
@@ -1508,7 +1506,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../law1/" title="4. 法则1" class="md-nav__link">
+    <a href="../../reflect/law1/" title="4. 法则1" class="md-nav__link">
       4. 法则1
     </a>
   </li>
@@ -1520,7 +1518,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../law2/" title="5. 法则2" class="md-nav__link">
+    <a href="../../reflect/law2/" title="5. 法则2" class="md-nav__link">
       5. 法则2
     </a>
   </li>
@@ -1530,64 +1528,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        6. 法则3
-      </label>
-    
-    <a href="./" title="6. 法则3" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../reflect/law3/" title="6. 法则3" class="md-nav__link">
       6. 法则3
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="可设置性由反射对象是否能寻址原始对象来决定" class="md-nav__link">
-    可设置性由反射对象是否能寻址原始对象来决定
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="查询是否可设置" class="md-nav__link">
-    查询是否可设置
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="设置值" class="md-nav__link">
-    设置值
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#struct" title="struct结构体" class="md-nav__link">
-    struct结构体
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -1636,10 +1581,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9" checked>
     
     <label class="md-nav__link" for="nav-9">
       九. 其他
@@ -1657,7 +1604,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../other/string/" title="1. 字符串处理" class="md-nav__link">
+    <a href="../string/" title="1. 字符串处理" class="md-nav__link">
       1. 字符串处理
     </a>
   </li>
@@ -1669,7 +1616,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../other/range/" title="2. range" class="md-nav__link">
+    <a href="../range/" title="2. range" class="md-nav__link">
       2. range
     </a>
   </li>
@@ -1681,7 +1628,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../other/concurrent/" title="3. 并发、事件驱动等" class="md-nav__link">
+    <a href="../concurrent/" title="3. 并发、事件驱动等" class="md-nav__link">
       3. 并发、事件驱动等
     </a>
   </li>
@@ -1693,7 +1640,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../other/binary_operation/" title="4. 位运算" class="md-nav__link">
+    <a href="../binary_operation/" title="4. 位运算" class="md-nav__link">
       4. 位运算
     </a>
   </li>
@@ -1705,7 +1652,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../other/loop_iterate_traversal_recursion/" title="5. 循环、迭代、遍历、递归的区别" class="md-nav__link">
+    <a href="../loop_iterate_traversal_recursion/" title="5. 循环、迭代、遍历、递归的区别" class="md-nav__link">
       5. 循环、迭代、遍历、递归的区别
     </a>
   </li>
@@ -1717,7 +1664,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../other/go_python/" title="6. go和python的比较" class="md-nav__link">
+    <a href="../go_python/" title="6. go和python的比较" class="md-nav__link">
       6. go和python的比较
     </a>
   </li>
@@ -1729,7 +1676,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../other/oo/" title="7. 面向对象" class="md-nav__link">
+    <a href="../oo/" title="7. 面向对象" class="md-nav__link">
       7. 面向对象
     </a>
   </li>
@@ -1741,7 +1688,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../other/nil/" title="8. nil" class="md-nav__link">
+    <a href="../nil/" title="8. nil" class="md-nav__link">
       8. nil
     </a>
   </li>
@@ -1753,7 +1700,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../other/make/" title="9. make" class="md-nav__link">
+    <a href="../make/" title="9. make" class="md-nav__link">
       9. make
     </a>
   </li>
@@ -1765,7 +1712,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../other/enum/" title="10. 枚举" class="md-nav__link">
+    <a href="../enum/" title="10. 枚举" class="md-nav__link">
       10. 枚举
     </a>
   </li>
@@ -1777,7 +1724,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../other/readers/" title="11. Readers" class="md-nav__link">
+    <a href="../readers/" title="11. Readers" class="md-nav__link">
       11. Readers
     </a>
   </li>
@@ -1789,7 +1736,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../other/style/" title="12. 编码风格" class="md-nav__link">
+    <a href="../style/" title="12. 编码风格" class="md-nav__link">
       12. 编码风格
     </a>
   </li>
@@ -1801,7 +1748,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../other/new/" title="13. new" class="md-nav__link">
+    <a href="../new/" title="13. new" class="md-nav__link">
       13. new
     </a>
   </li>
@@ -1832,7 +1779,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../other/ptr_cpu/" title="14.1. CPU占用率比较" class="md-nav__link">
+    <a href="../ptr_cpu/" title="14.1. CPU占用率比较" class="md-nav__link">
       14.1. CPU占用率比较
     </a>
   </li>
@@ -1844,7 +1791,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../other/ptr_stdout/" title="14.2. 屏幕输出比较" class="md-nav__link">
+    <a href="../ptr_stdout/" title="14.2. 屏幕输出比较" class="md-nav__link">
       14.2. 屏幕输出比较
     </a>
   </li>
@@ -1859,11 +1806,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../other/fork/" title="15. C语言的fork" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="15. C语言的fork" class="md-nav__link md-nav__link--active">
       15. C语言的fork
     </a>
+    
   </li>
 
         
@@ -1975,151 +1929,106 @@
               </div>
             
             
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="可设置性由反射对象是否能寻址原始对象来决定" class="md-nav__link">
-    可设置性由反射对象是否能寻址原始对象来决定
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="查询是否可设置" class="md-nav__link">
-    查询是否可设置
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="设置值" class="md-nav__link">
-    设置值
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#struct" title="struct结构体" class="md-nav__link">
-    struct结构体
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cyent/golang/edit/master/docs/reflect/law3.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/cyent/golang/edit/master/docs/other/fork.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>6. 法则3</h1>
+                  <h1>15. C语言的fork</h1>
                 
-                <p><strong>To modify a reflection object, the value must be settable.</strong></p>
-<p>修改反射类型变量的内部值需要保证其可设置性</p>
-<p>反射对象可以修改实际存储的被反射对象的能力。</p>
-<h2 id="_1"><strong>可设置性由反射对象是否能寻址原始对象来决定</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<hr />
-<p>简单理解就是反射对象如果存在的是地址（比如原始对象是指针）就是可设置的</p>
-<p>无法设置的例子</p>
-<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">x</span> <span class="kt">float64</span> <span class="p">=</span> <span class="mf">3.4</span>
-<span class="nx">v</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
-<span class="nx">v</span><span class="p">.</span><span class="nx">SetFloat</span><span class="p">(</span><span class="mf">7.1</span><span class="p">)</span>
-</pre></div>
-
-<p>报错</p>
-<div class="codehilite"><pre><span></span>panic: reflect.Value.SetFloat using unaddressable value
-</pre></div>
-
-<p>上面的代码中我们将x值做了一份拷贝传给reflect.ValueOf方法，所以传入的参数仅仅是拷贝，而不是x本身。即使我们允许v.SetFloat(7.1)能操作成功，这并不会更新x。因此没有啥意义（设计者这样认为）。所以干脆定义它非法好了</p>
-<h2 id="_2"><strong>查询是否可设置</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<hr />
-<p>reflect.Value有一个<a href="../../reflect/pkg_type_value/#canset">CanSet()</a>方法可以用来检测Value类型的可设置性（返回一个bool类型的true或false）</p>
-<h2 id="_3"><strong>设置值</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<hr />
-<p>若具备可设置性，接下来可以设置值，分为2步：</p>
+                <p>本文想说明的：</p>
 <ol>
 <li>
-<p>使用Value的<a href="../../reflect/pkg_type_value/#elem">Elem()</a>方法来指向内部存储的值（Elem()方法返回的也是Value）</p>
+<p>如何使用fork()创建多个同级的子进程</p>
 </li>
 <li>
-<p>使用Value的<a href="../../reflect/pkg_type_value/#_2">SetInt()</a>等方法来设置值</p>
+<p>如何定位到指定的子进程或者父进程，或者说如何知道当前处于哪个进程</p>
+</li>
+<li>
+<p>通过多进程说明单核和多核的区别</p>
 </li>
 </ol>
-<blockquote>
-<p>Just keep in mind that reflection Values need the address of something in order to modify what they represent</p>
-</blockquote>
-<h2 id="struct"><strong>struct结构体</strong><a class="headerlink" href="#struct" title="Permanent link">&para;</a></h2>
-<hr />
-<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+<p>实验环境：分别在单核和多核linux服务器上测试C语言的fork</p>
+<div class="codehilite"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
 
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&quot;fmt&quot;</span>
-    <span class="s">&quot;reflect&quot;</span>
-<span class="p">)</span>
+<span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 初始化为-1是为了在能定位到</span>
+    <span class="kt">pid_t</span> <span class="n">child1_pid</span><span class="o">=-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="kt">pid_t</span> <span class="n">child2_pid</span><span class="o">=-</span><span class="mi">1</span><span class="p">;</span>
 
-<span class="kd">type</span> <span class="nx">T</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">A</span> <span class="kt">int</span>
-    <span class="nx">B</span> <span class="kt">string</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">T</span><span class="p">{</span><span class="mi">23</span><span class="p">,</span> <span class="s">&quot;skidoo&quot;</span><span class="p">}</span>
-    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">t</span><span class="p">).</span><span class="nx">Elem</span><span class="p">()</span>
-    <span class="nx">typeOfT</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Type</span><span class="p">()</span>
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">NumField</span><span class="p">();</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="nx">f</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d: %s %s = %v\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span>
-            <span class="nx">typeOfT</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">Name</span><span class="p">,</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Type</span><span class="p">(),</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Interface</span><span class="p">())</span>
+    <span class="n">child1_pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">child1_pid</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">child2_pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
     <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">child1_pid</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">child2_pid</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;I&#39;m parent: pid=%d ppid=%d child1_pid=%d child2_pid=%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">getpid</span><span class="p">(),</span> <span class="n">getppid</span><span class="p">(),</span> <span class="n">child1_pid</span><span class="p">,</span> <span class="n">child2_pid</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">child1_pid</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">child2_pid</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;I&#39;m child1: pid=%d ppid=%d child1_pid=%d child2_pid=%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">getpid</span><span class="p">(),</span> <span class="n">getppid</span><span class="p">(),</span> <span class="n">child1_pid</span><span class="p">,</span> <span class="n">child2_pid</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">child1_pid</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">child2_pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;I&#39;m child2: pid=%d ppid=%d child1_pid=%d child2_pid=%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">getpid</span><span class="p">(),</span> <span class="n">getppid</span><span class="p">(),</span> <span class="n">child1_pid</span><span class="p">,</span> <span class="n">child2_pid</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
-<p>输出</p>
-<div class="codehilite"><pre><span></span>0: A int = 23
-1: B string = skidoo
-</pre></div>
-
-<p>上面例子中涉及到的有：</p>
+<p>分别在单核和多核情况下执行上面代码，同时把<code>sleep(1)</code>这行删掉，对比结果：</p>
+<p>单核运行结果：</p>
 <ul>
 <li>
-<p><a href="../../reflect/pkg_type_value/#elem">Value.Elem()</a></p>
+<p>有<code>sleep(1)</code></p>
+<div class="codehilite"><pre><span></span>I&#39;m parent: pid=30220 ppid=29448 child1_pid=30221 child2_pid=30222
+I&#39;m child1: pid=30221 ppid=30220 child1_pid=0 child2_pid=-1
+I&#39;m child2: pid=30222 ppid=30220 child1_pid=30221 child2_pid=0
+</pre></div>
+
+<div class="admonition warning">
+<p>多次测试，会发现这3行的前后顺序固定</p>
+</div>
 </li>
 <li>
-<p><a href="../../reflect/pkg_type_value/#numfield">Value.NumField()</a></p>
-</li>
-<li>
-<p><a href="../../reflect/pkg_type_value/#field">Value.Field()</a></p>
-</li>
-<li>
-<p><a href="../../reflect/pkg_type_value/#fieldtypefieldinterface">Value.Field(x).Type()和Value.Field(x).Interface()</a></p>
-</li>
-<li>
-<p><a href="../../reflect/pkg_type_value/#fieldname">Type.Field(x).Name</a></p>
+<p>无<code>sleep(1)</code></p>
+<div class="codehilite"><pre><span></span>I&#39;m parent: pid=22414 ppid=20062 child1_pid=22415 child2_pid=22416
+I&#39;m child2: pid=22416 ppid=1 child1_pid=22415 child2_pid=0
+I&#39;m child1: pid=22415 ppid=1 child1_pid=0 child2_pid=-1
+</pre></div>
+
+<div class="admonition warning">
+<p>多次测试，会发现这3行的前后顺序固定</p>
+</div>
 </li>
 </ul>
+<p>多核运行结果：</p>
+<ul>
+<li>
+<p>有<code>sleep(1)</code></p>
+<div class="codehilite"><pre><span></span>I&#39;m parent: pid=21585 ppid=20062 child1_pid=21586 child2_pid=21587
+I&#39;m child2: pid=21587 ppid=21585 child1_pid=21586 child2_pid=0
+I&#39;m child1: pid=21586 ppid=21585 child1_pid=0 child2_pid=-1
+</pre></div>
+
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>结构体中的元素的名只有以大写字母开头的才是可设置的</p>
+<p>多次测试，会发现这3行的前后顺序不定</p>
 </div>
+</li>
+<li>
+<p>无<code>sleep(1)</code></p>
+<div class="codehilite"><pre><span></span>I&#39;m child1: pid=32181 ppid=32180 child1_pid=0 child2_pid=-1
+I&#39;m parent: pid=32180 ppid=29448 child1_pid=32181 child2_pid=32182
+I&#39;m child2: pid=32182 ppid=1 child1_pid=32181 child2_pid=0
+</pre></div>
+
+<div class="admonition warning">
+<p>多次测试，会发现这3行的前后顺序不定</p>
+</div>
+</li>
+</ul>
                 
                   
                 
@@ -2138,7 +2047,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../law2/" title="5. 法则2" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../ptr_stdout/" title="14.2. 屏幕输出比较" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2147,19 +2056,19 @@
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                5. 法则2
+                14.2. 屏幕输出比较
               </span>
             </div>
           </a>
         
         
-          <a href="../../goroutine/main/" title="1. 介绍" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../appendix/doc/" title="1. 文档" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                1. 介绍
+                1. 文档
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
