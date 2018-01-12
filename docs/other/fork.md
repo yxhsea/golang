@@ -2,85 +2,135 @@
 
 1. 如何使用fork()创建多个同级的子进程
 
-2. 如何定位到指定的子进程或者父进程，或者说如何知道当前处于哪个进程
+2. 如何定位到指定的子进程或者父进程
 
-3. 通过多进程说明单核和多核的区别
+3. 说明单核和多核的区别
 
 实验环境：分别在单核和多核linux服务器上测试C语言的fork
 
-```c
-#include <stdio.h>
-#include <unistd.h>
+??? note "代码例子"
+	```c
+	#include <stdio.h>
+	#include <unistd.h>
 
-main() {
-    // 初始化为-1是为了在能定位到
-    pid_t child1_pid=-1;
-    pid_t child2_pid=-1;
+	main() {
+	    pid_t child1_pid=-1;
+	    pid_t child2_pid=-1;
+	    pid_t child3_pid=-1;
+	    pid_t child4_pid=-1;
 
-    child1_pid = fork();
-    if (child1_pid != 0) {
-        child2_pid = fork();
-    }
+	    child1_pid = fork();
+	    if (child1_pid > 0) {
+	        child2_pid = fork();
+	    }
+	    if (child1_pid > 0 && child2_pid > 0) {
+	        child3_pid = fork();
+	    }
+	    if (child1_pid > 0 && child2_pid > 0 && child3_pid > 0)  {
+	        child4_pid = fork();
+	    }
 
-    if (child1_pid != 0 && child2_pid != 0) {
-        printf("I'm parent: pid=%d ppid=%d child1_pid=%d child2_pid=%d\n", getpid(), getppid(), child1_pid, child2_pid);
-    }
-    else if (child1_pid == 0 && child2_pid != 0) {
-        printf("I'm child1: pid=%d ppid=%d child1_pid=%d child2_pid=%d\n", getpid(), getppid(), child1_pid, child2_pid);
-    }
-    else if (child1_pid != 0 && child2_pid == 0) {
-        printf("I'm child2: pid=%d ppid=%d child1_pid=%d child2_pid=%d\n", getpid(), getppid(), child1_pid, child2_pid);
-    }
-    sleep(1);
-}
-```
+	    if (child1_pid * child2_pid * child3_pid * child4_pid != 0) {
+	        printf("I'm parent: pid=%d ppid=%d child1_pid=%d child2_pid=%d child3_pid=%d child4_pid=%d\n", getpid(), getppid(), child1_pid, child2_pid, child3_pid, child4_pid);
+	    }
+	    else if (child1_pid == 0) {
+	        printf("I'm child1: pid=%d ppid=%d child1_pid=%d child2_pid=%d child3_pid=%d child4_pid=%d\n", getpid(), getppid(), child1_pid, child2_pid, child3_pid, child4_pid);
+	    }
+	    else if (child2_pid == 0) {
+	        printf("I'm child2: pid=%d ppid=%d child1_pid=%d child2_pid=%d child3_pid=%d child4_pid=%d\n", getpid(), getppid(), child1_pid, child2_pid, child3_pid, child4_pid);
+	    }
+	    else if (child3_pid == 0) {
+	        printf("I'm child3: pid=%d ppid=%d child1_pid=%d child2_pid=%d child3_pid=%d child4_pid=%d\n", getpid(), getppid(), child1_pid, child2_pid, child3_pid, child4_pid);
+	    }
+	    else if (child4_pid == 0) {
+	        printf("I'm child4: pid=%d ppid=%d child1_pid=%d child2_pid=%d child3_pid=%d child4_pid=%d\n", getpid(), getppid(), child1_pid, child2_pid, child3_pid, child4_pid);
+	    }
+	    else {
+	        printf("ERROR\n");
+	    }
+
+	    sleep(1);
+	}
+	```
 
 分别在单核和多核情况下执行上面代码，同时把`sleep(1)`这行删掉，对比结果：
 
 单核运行结果：
 
-- 有`sleep(1)`
-
+??? note "有`sleep(1)`"
 	```text
-	I'm parent: pid=30220 ppid=29448 child1_pid=30221 child2_pid=30222
-	I'm child1: pid=30221 ppid=30220 child1_pid=0 child2_pid=-1
-	I'm child2: pid=30222 ppid=30220 child1_pid=30221 child2_pid=0
+	I'm parent: pid=4801 ppid=3226 child1_pid=4802 child2_pid=4803 child3_pid=4804 child4_pid=4805
+	I'm child4: pid=4805 ppid=4801 child1_pid=4802 child2_pid=4803 child3_pid=4804 child4_pid=0
+	I'm child3: pid=4804 ppid=4801 child1_pid=4802 child2_pid=4803 child3_pid=0 child4_pid=-1
+	I'm child2: pid=4803 ppid=4801 child1_pid=4802 child2_pid=0 child3_pid=-1 child4_pid=-1
+	I'm child1: pid=4802 ppid=4801 child1_pid=0 child2_pid=-1 child3_pid=-1 child4_pid=-1
 	```
 
-	!!! warning ""
-		多次测试，会发现这3行的前后顺序固定
+	多次测试，会发现这5行的前后顺序固定
 
-- 无`sleep(1)`
-
+??? success "无`sleep(1)`"
 	```text
-	I'm parent: pid=22414 ppid=20062 child1_pid=22415 child2_pid=22416
-	I'm child2: pid=22416 ppid=1 child1_pid=22415 child2_pid=0
-	I'm child1: pid=22415 ppid=1 child1_pid=0 child2_pid=-1
+	I'm parent: pid=5095 ppid=3226 child1_pid=5096 child2_pid=5097 child3_pid=5098 child4_pid=5099
+	I'm child4: pid=5099 ppid=1 child1_pid=5096 child2_pid=5097 child3_pid=5098 child4_pid=0
+	I'm child3: pid=5098 ppid=1 child1_pid=5096 child2_pid=5097 child3_pid=0 child4_pid=-1
+	I'm child2: pid=5097 ppid=1 child1_pid=5096 child2_pid=0 child3_pid=-1 child4_pid=-1
+	I'm child1: pid=5096 ppid=1 child1_pid=0 child2_pid=-1 child3_pid=-1 child4_pid=-1
 	```
 
-	!!! warning ""
-		多次测试，会发现这3行的前后顺序固定
+	多次测试，会发现这5行的前后顺序固定
 
 多核运行结果：
 
-- 有`sleep(1)`
-
+??? note "有`sleep(1)`"
 	```text
-	I'm parent: pid=21585 ppid=20062 child1_pid=21586 child2_pid=21587
-	I'm child2: pid=21587 ppid=21585 child1_pid=21586 child2_pid=0
-	I'm child1: pid=21586 ppid=21585 child1_pid=0 child2_pid=-1
+	I'm child1: pid=10586 ppid=10585 child1_pid=0 child2_pid=-1 child3_pid=-1 child4_pid=-1
+	I'm parent: pid=10585 ppid=3316 child1_pid=10586 child2_pid=10587 child3_pid=10588 child4_pid=10589
+	I'm child4: pid=10589 ppid=10585 child1_pid=10586 child2_pid=10587 child3_pid=10588 child4_pid=0
+	I'm child3: pid=10588 ppid=10585 child1_pid=10586 child2_pid=10587 child3_pid=0 child4_pid=-1
+	I'm child2: pid=10587 ppid=10585 child1_pid=10586 child2_pid=0 child3_pid=-1 child4_pid=-1
 	```
 
-	!!! warning ""
-		多次测试，会发现这3行的前后顺序不定
+	多次测试，会发现这5行的前后顺序不定
 
-- 无`sleep(1)`
-
+??? success "无`sleep(1)`"
 	```text
-	I'm child1: pid=32181 ppid=32180 child1_pid=0 child2_pid=-1
-	I'm parent: pid=32180 ppid=29448 child1_pid=32181 child2_pid=32182
-	I'm child2: pid=32182 ppid=1 child1_pid=32181 child2_pid=0
+	I'm child1: pid=10787 ppid=10786 child1_pid=0 child2_pid=-1 child3_pid=-1 child4_pid=-1
+	I'm child2: pid=10788 ppid=10786 child1_pid=10787 child2_pid=0 child3_pid=-1 child4_pid=-1
+	I'm parent: pid=10786 ppid=3316 child1_pid=10787 child2_pid=10788 child3_pid=10789 child4_pid=10790
+	I'm child4: pid=10790 ppid=10786 child1_pid=10787 child2_pid=10788 child3_pid=10789 child4_pid=0
+	I'm child3: pid=10789 ppid=10786 child1_pid=10787 child2_pid=10788 child3_pid=0 child4_pid=-1
 	```
 
-	!!! warning ""
-		多次测试，会发现这3行的前后顺序不定
+	多次测试，会发现这5行的前后顺序不定
+
+	有时候还会像下面这样结果，即多个ppid为1
+
+	```text
+	I'm child1: pid=11443 ppid=11442 child1_pid=0 child2_pid=-1 child3_pid=-1 child4_pid=-1
+	I'm child2: pid=11444 ppid=11442 child1_pid=11443 child2_pid=0 child3_pid=-1 child4_pid=-1
+	I'm parent: pid=11442 ppid=3316 child1_pid=11443 child2_pid=11444 child3_pid=11445 child4_pid=11446
+	I'm child3: pid=11445 ppid=1 child1_pid=11443 child2_pid=11444 child3_pid=0 child4_pid=-1
+	I'm child4: pid=11446 ppid=1 child1_pid=11443 child2_pid=11444 child3_pid=11445 child4_pid=0
+	```
+
+在代码运行中`pstree -p`的输出如下
+
+```text
+├─sshd(798)─┬─sshd(15384)───bash(15386)───fork(16242)─┬─fork(16243)
+│           │                                         ├─fork(16244)
+│           │                                         ├─fork(16245)
+│           │                                         └─fork(16246)
+│           └─sshd(15468)───bash(15470)───pstree(16247)
+```
+
+注意观察输出中的child{1-4}.pid，可以看到
+
+- 父进程里，4个child的pid都是有值的
+
+- 子进程child1里，child1_pid为0，其他都为初始值-1
+
+- 子进程child2里，child1_pid有值，child2_pid为0，其他为初始值-1
+
+- child3和child4以此类推
+
+因此就可以通过这个特性来确定当前是父进程还是某个子进程
