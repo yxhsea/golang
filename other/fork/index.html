@@ -1814,9 +1814,62 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        15. C语言的fork
+      </label>
+    
     <a href="./" title="15. C语言的fork" class="md-nav__link md-nav__link--active">
       15. C语言的fork
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fork" title="如何使用fork()创建多个同级的子进程" class="md-nav__link">
+    如何使用fork()创建多个同级的子进程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="如何定位到指定的同级子进程或者父进程" class="md-nav__link">
+    如何定位到指定的同级子进程或者父进程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="单核和多核的区别" class="md-nav__link">
+    单核和多核的区别
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="父进程先退出，子进程会消失吗" class="md-nav__link">
+    父进程先退出，子进程会消失吗
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="完整例子" class="md-nav__link">
+    完整例子
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -1929,6 +1982,61 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fork" title="如何使用fork()创建多个同级的子进程" class="md-nav__link">
+    如何使用fork()创建多个同级的子进程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="如何定位到指定的同级子进程或者父进程" class="md-nav__link">
+    如何定位到指定的同级子进程或者父进程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="单核和多核的区别" class="md-nav__link">
+    单核和多核的区别
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="父进程先退出，子进程会消失吗" class="md-nav__link">
+    父进程先退出，子进程会消失吗
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="完整例子" class="md-nav__link">
+    完整例子
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -1939,28 +2047,93 @@
                 
                   <h1>15. C语言的fork</h1>
                 
-                <p>本文想说明的：</p>
+                <p>创建子进程：</p>
+<div class="codehilite"><pre><span></span><span class="n">fork</span><span class="p">();</span>
+</pre></div>
+
+<p>"fork"翻译成中文叫：分叉，表示当执行了一次<code>fork()</code>后，会将当前内存数据拷贝一份出来，接下来的代码分叉了，即在父进程和子进程里都会执行。</p>
+<p>因此在后续代码中如何判断当前的分支是父进程还是哪个子进程就显得尤为重要，尤其是当父进程和子进程需要执行不同后续代码的时候。</p>
+<div class="admonition note">
+<p>子进程里再创建子进程，本文暂不做探讨。</p>
+</div>
+<h2 id="fork"><strong>如何使用fork()创建多个同级的子进程</strong><a class="headerlink" href="#fork" title="Permanent link">&para;</a></h2>
+<hr />
+<details class="note"><summary>创建1个子进程</summary><div class="codehilite"><pre><span></span><span class="n">fork</span><span class="p">();</span>
+</pre></div>
+</details><details class="success"><summary>创建2个子进程</summary><div class="codehilite"><pre><span></span><span class="kt">pid_t</span> <span class="n">child1_pid</span><span class="p">;</span>
+<span class="kt">pid_t</span> <span class="n">child2_pid</span><span class="p">;</span>
+
+<span class="n">child1_pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">child1_pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">child2_pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+<p>可以简写为</p><div class="codehilite"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">fork</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">fork</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+</details><details class="note"><summary>创建3个子进程</summary><div class="codehilite"><pre><span></span><span class="kt">pid_t</span> <span class="n">child1_pid</span><span class="p">;</span>
+<span class="kt">pid_t</span> <span class="n">child2_pid</span><span class="p">;</span>
+<span class="kt">pid_t</span> <span class="n">child3_pid</span><span class="p">;</span>
+
+<span class="n">child1_pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">child1_pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">child2_pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">child1_pid</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">child2_pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">child3_pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</details><details class="success"><summary>创建4个子进程</summary><div class="codehilite"><pre><span></span><span class="kt">pid_t</span> <span class="n">child1_pid</span><span class="p">;</span>
+<span class="kt">pid_t</span> <span class="n">child2_pid</span><span class="p">;</span>
+<span class="kt">pid_t</span> <span class="n">child3_pid</span><span class="p">;</span>
+<span class="kt">pid_t</span> <span class="n">child4_pid</span><span class="p">;</span>
+
+<span class="n">child1_pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">child1_pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">child2_pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">child1_pid</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">child2_pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">child3_pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">child1_pid</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">child2_pid</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">child3_pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>  <span class="p">{</span>
+    <span class="n">child4_pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</details><h2 id="_1"><strong>如何定位到指定的同级子进程或者父进程</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
 <ol>
 <li>
-<p>如何使用fork()创建多个同级的子进程</p>
+<p>执行<code>fork();</code>会返回该子进程的pid（pid_t类型的整型）</p>
 </li>
 <li>
-<p>如何定位到指定的子进程或者父进程</p>
+<p>当"我是子进程"的时候，我的pid为0</p>
 </li>
 <li>
-<p>说明单核和多核的区别</p>
+<p>当"我是父进程"的时候，我之前产生的所有子进程pid均大于0</p>
 </li>
 </ol>
-<p>实验环境：分别在单核和多核linux服务器上测试C语言的fork</p>
-<details class="note"><summary>代码例子</summary><div class="codehilite"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<p>因此可以通过上面3个特点来综合判断"我是谁"，详见<a href="../../other/fork/#_4">本章节-完整例子</a></p>
+<h2 id="_2"><strong>单核和多核的区别</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<hr />
+<p>分别在单核和多核上执行，观察每次执行输出的顺序是否一致，详见<a href="../../other/fork/#_4">本章节-完整例子</a></p>
+<h2 id="_3"><strong>父进程先退出，子进程会消失吗</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<hr />
+<p>在代码最后加上<code>sleep(1);</code>来观察（同时可以结合单核和多核分别测试），详见<a href="../../other/fork/#_4">本章节-完整例子</a></p>
+<h2 id="_4"><strong>完整例子</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<hr />
+<p>实验环境：分别在1核和4核linux服务器上测试C语言的fork</p>
+<details class="note"><summary>完整代码</summary><div class="codehilite"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
 
 <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">pid_t</span> <span class="n">child1_pid</span><span class="o">=-</span><span class="mi">1</span><span class="p">;</span>
-    <span class="kt">pid_t</span> <span class="n">child2_pid</span><span class="o">=-</span><span class="mi">1</span><span class="p">;</span>
-    <span class="kt">pid_t</span> <span class="n">child3_pid</span><span class="o">=-</span><span class="mi">1</span><span class="p">;</span>
-    <span class="kt">pid_t</span> <span class="n">child4_pid</span><span class="o">=-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="c1">// 主要是为了</span>
+    <span class="kt">pid_t</span> <span class="n">child1_pid</span><span class="p">;</span>
+    <span class="kt">pid_t</span> <span class="n">child2_pid</span><span class="p">;</span>
+    <span class="kt">pid_t</span> <span class="n">child3_pid</span><span class="p">;</span>
+    <span class="kt">pid_t</span> <span class="n">child4_pid</span><span class="p">;</span>
 
+    <span class="c1">// 创建4个同级的子进程</span>
     <span class="n">child1_pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">child1_pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">child2_pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
@@ -1972,6 +2145,7 @@
         <span class="n">child4_pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
     <span class="p">}</span>
 
+    <span class="c1">// 定位到指定的子进程或者父进程</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">child1_pid</span> <span class="o">*</span> <span class="n">child2_pid</span> <span class="o">*</span> <span class="n">child3_pid</span> <span class="o">*</span> <span class="n">child4_pid</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">printf</span><span class="p">(</span><span class="s">&quot;I&#39;m parent: pid=%d ppid=%d child1_pid=%d child2_pid=%d child3_pid=%d child4_pid=%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">getpid</span><span class="p">(),</span> <span class="n">getppid</span><span class="p">(),</span> <span class="n">child1_pid</span><span class="p">,</span> <span class="n">child2_pid</span><span class="p">,</span> <span class="n">child3_pid</span><span class="p">,</span> <span class="n">child4_pid</span><span class="p">);</span>
     <span class="p">}</span>
@@ -1994,7 +2168,7 @@
     <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
-</details><p>分别在单核和多核情况下执行上面代码，同时把<code>sleep(1)</code>这行删掉，对比结果：</p>
+</details><p>分别在单核和多核情况下执行上面代码（<code>gcc -o fork fork.c &amp;&amp; ./fork</code>），同时观察有无<code>sleep(1)</code>这行的区别，对比结果：</p>
 <p>单核运行结果：</p>
 <details class="note"><summary>有<code>sleep(1)</code></summary><div class="codehilite"><pre><span></span>I&#39;m parent: pid=4801 ppid=3226 child1_pid=4802 child2_pid=4803 child3_pid=4804 child4_pid=4805
 I&#39;m child4: pid=4805 ppid=4801 child1_pid=4802 child2_pid=4803 child3_pid=4804 child4_pid=0
@@ -2008,7 +2182,7 @@ I&#39;m child3: pid=5098 ppid=1 child1_pid=5096 child2_pid=5097 child3_pid=0 chi
 I&#39;m child2: pid=5097 ppid=1 child1_pid=5096 child2_pid=0 child3_pid=-1 child4_pid=-1
 I&#39;m child1: pid=5096 ppid=1 child1_pid=0 child2_pid=-1 child3_pid=-1 child4_pid=-1
 </pre></div>
-<p>多次测试，会发现这5行的前后顺序固定</p></details><p>多核运行结果：</p>
+<p>多次测试，会发现这5行的前后顺序固定</p><p>注意看上面的ppid，所有child的ppid均为1，是因为父进程一执行完就退出了，而此时子进程还未执行完，随即子进程被过继给操作系统管理（init进程成为继父，pid为1）</p></details><p>多核运行结果：</p>
 <details class="note"><summary>有<code>sleep(1)</code></summary><div class="codehilite"><pre><span></span>I&#39;m child1: pid=10586 ppid=10585 child1_pid=0 child2_pid=-1 child3_pid=-1 child4_pid=-1
 I&#39;m parent: pid=10585 ppid=3316 child1_pid=10586 child2_pid=10587 child3_pid=10588 child4_pid=10589
 I&#39;m child4: pid=10589 ppid=10585 child1_pid=10586 child2_pid=10587 child3_pid=10588 child4_pid=0
@@ -2028,11 +2202,10 @@ I&#39;m child3: pid=11445 ppid=1 child1_pid=11443 child2_pid=11444 child3_pid=0 
 I&#39;m child4: pid=11446 ppid=1 child1_pid=11443 child2_pid=11444 child3_pid=11445 child4_pid=0
 </pre></div>
 </details><p>在代码运行中<code>pstree -p</code>的输出如下</p>
-<div class="codehilite"><pre><span></span>├─sshd(798)─┬─sshd(15384)───bash(15386)───fork(16242)─┬─fork(16243)
-│           │                                         ├─fork(16244)
-│           │                                         ├─fork(16245)
-│           │                                         └─fork(16246)
-│           └─sshd(15468)───bash(15470)───pstree(16247)
+<div class="codehilite"><pre><span></span>fork(16242)─┬─fork(16243)
+            ├─fork(16244)
+            ├─fork(16245)
+            └─fork(16246)
 </pre></div>
 
 <p>注意观察输出中的child{1-4}.pid，可以看到</p>
@@ -2041,16 +2214,19 @@ I&#39;m child4: pid=11446 ppid=1 child1_pid=11443 child2_pid=11444 child3_pid=11
 <p>父进程里，4个child的pid都是有值的</p>
 </li>
 <li>
-<p>子进程child1里，child1_pid为0，其他都为初始值-1</p>
+<p>子进程child1里，child1_pid为0，其他child_pid都为初始值-1</p>
 </li>
 <li>
-<p>子进程child2里，child1_pid有值，child2_pid为0，其他为初始值-1</p>
+<p>子进程child2里，child1_pid有值，child2_pid为0，其他child_pid都为初始值-1</p>
 </li>
 <li>
-<p>child3和child4以此类推</p>
+<p>子进程child3里，child1_pid有值，child2_pid有值，child3_pid为0，其他child_pid都为初始值-1</p>
+</li>
+<li>
+<p>子进程child4里，child1_pid有值，child2_pid有值，child3_pid有值，child4_pid为0</p>
 </li>
 </ul>
-<p>因此就可以通过这个特性来确定当前是父进程还是某个子进程</p>
+<p>如果创建同级更多子进程，可以以此类推。通过这个特性来确定当前处于父进程还是某个子进程</p>
                 
                   
                 
