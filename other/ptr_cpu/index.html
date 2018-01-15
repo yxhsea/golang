@@ -2067,11 +2067,11 @@
 <p>多线程</p>
 <details class="note"><summary>linux-GCC 4.8.5 多线程(pthread)</summary><div class="codehilite"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp"></span>
 
-<span class="kt">void</span> <span class="nf">loop</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{}</span>
 <span class="p">}</span>
 
-<span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">pthread_t</span> <span class="n">id</span><span class="p">;</span>
     <span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">id</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span> <span class="n">loop</span><span class="p">,</span><span class="nb">NULL</span><span class="p">);</span>
     <span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">id</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span> <span class="n">loop</span><span class="p">,</span><span class="nb">NULL</span><span class="p">);</span>
