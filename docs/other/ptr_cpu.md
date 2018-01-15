@@ -60,15 +60,15 @@
 		```c
 		#include <pthread.h>
 
-		void loop(void) {
-			while(1) {}
+		loop() {
+		    while(1) {}
 		}
 
-		main(void) {
-			pthread_t id;
-			pthread_create(&id,NULL,(void *) loop,NULL);
-			pthread_create(&id,NULL,(void *) loop,NULL);
-			loop();
+		main() {
+		    pthread_t id;
+		    pthread_create(&id,NULL,(void *) loop,NULL);
+		    pthread_create(&id,NULL,(void *) loop,NULL);
+		    loop();
 		}
 		```
 
