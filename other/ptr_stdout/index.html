@@ -1799,9 +1799,34 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        14.2. 屏幕输出比较
+      </label>
+    
     <a href="./" title="14.2. 屏幕输出比较" class="md-nav__link md-nav__link--active">
       14.2. 屏幕输出比较
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="环境说明" class="md-nav__link">
+    环境说明
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -1931,6 +1956,33 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="环境说明" class="md-nav__link">
+    环境说明
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -1941,7 +1993,26 @@
                 
                   <h1>14.2. 屏幕输出比较</h1>
                 
-                
+                <h2 id="_1"><strong>环境说明</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
+<p>2台测试vm，1台是单核，1台是4核</p>
+<p>代码逻辑：</p>
+<ul>
+<li>
+<p>多进程：主进程和2个子进程(fork)同时输出字符串到屏幕</p>
+</li>
+<li>
+<p>多线程：主线程(main)和生成的2个线程同时输出字符串到屏幕</p>
+</li>
+<li>
+<p>协程：主协程和生产的2个协程同时输出字符串到屏幕</p>
+</li>
+</ul>
+<p>观察点:</p>
+<ul>
+<li>是否</li>
+</ul>
+<p>测试代码:</p>
                 
                   
                 
