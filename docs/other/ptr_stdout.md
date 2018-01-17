@@ -253,3 +253,49 @@
 		> In C stdout is buffered by default, stderr is not.
 
 		> In Go neither os.Stdout nor os.Stderr is buffered.
+
+## **单核结果**
+
+---
+
+- 多进程
+
+	??? note "linux-GCC 4.8.5 多进程(fork)"
+		- 未出现串行
+		- 3个进程执行的前后顺序偶尔变化
+
+	??? note "python2.7 多进程"
+		- 未出现串行
+		- 3个进程执行的前后顺序偶尔变化
+
+	??? note "python3.6 多进程"
+		- 未出现串行
+		- 3个进程执行的前后顺序偶尔变化
+
+- 多线程
+
+	??? note "linux-GCC 4.8.5 多线程(pthread)"
+		```text
+		```
+
+	??? note "python2.7 多线程（thread模块）"
+		```text
+		```
+
+	??? note "python2.7 多线程（threading模块）"
+		```text
+		```
+
+	??? note "python3.6 多线程"
+		```text
+		```
+
+	??? note "java1.8 多线程"
+		```text
+		```
+
+- 协程
+
+	??? note "go1.8 协程"
+		```text
+		```
