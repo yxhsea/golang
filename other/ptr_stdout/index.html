@@ -1822,6 +1822,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" title="单核结果" class="md-nav__link">
+    单核结果
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -1970,6 +1977,13 @@
         <li class="md-nav__item">
   <a href="#_1" title="环境说明" class="md-nav__link">
     环境说明
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="单核结果" class="md-nav__link">
+    单核结果
   </a>
   
 </li>
@@ -2211,6 +2225,31 @@
 <span class="p">}</span>
 </pre></div>
 <blockquote><p>In C stdout is buffered by default, stderr is not.</p><p>In Go neither os.Stdout nor os.Stderr is buffered.</p></blockquote></details></li>
+</ul>
+<h2 id="_2"><strong>单核结果</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<hr />
+<ul>
+<li>
+<p>多进程</p>
+<details class="note"><summary>linux-GCC 4.8.5 多进程(fork)</summary><ul><li>未出现串行</li><li>3个进程执行的前后顺序偶尔变化</li></ul></details><details class="note"><summary>python2.7 多进程</summary><ul><li>未出现串行</li><li>3个进程执行的前后顺序偶尔变化</li></ul></details><details class="note"><summary>python3.6 多进程</summary><ul><li>未出现串行</li><li>3个进程执行的前后顺序偶尔变化</li></ul></details></li>
+<li>
+<p>多线程</p>
+<details class="note"><summary>linux-GCC 4.8.5 多线程(pthread)</summary><div class="codehilite"><pre><span></span>
+</pre></div>
+</details><details class="note"><summary>python2.7 多线程（thread模块）</summary><div class="codehilite"><pre><span></span>
+</pre></div>
+</details><details class="note"><summary>python2.7 多线程（threading模块）</summary><div class="codehilite"><pre><span></span>
+</pre></div>
+</details><details class="note"><summary>python3.6 多线程</summary><div class="codehilite"><pre><span></span>
+</pre></div>
+</details><details class="note"><summary>java1.8 多线程</summary><div class="codehilite"><pre><span></span>
+</pre></div>
+</details></li>
+<li>
+<p>协程</p>
+<details class="note"><summary>go1.8 协程</summary><div class="codehilite"><pre><span></span>
+</pre></div>
+</details></li>
 </ul>
                 
                   
