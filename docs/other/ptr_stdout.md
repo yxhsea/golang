@@ -35,7 +35,7 @@
 		    int i;
 		    for (i=0; i<20; i++) {
 		        sleep(1);
-		        printf("%s%d\n", str, i);
+		        printf("%s\n", str);
 		    }
 		}
 
@@ -74,7 +74,7 @@
 		def say(s):
 		    for i in range(20):
 		        time.sleep(1)
-		        print(s+str(i))
+		        print(s)
 
 		multiprocessing.Process(target=say, args=("Second",)).start()
 		multiprocessing.Process(target=say, args=("Third",)).start()
@@ -93,7 +93,7 @@
 		def say(s):
 		    for i in range(20):
 		        time.sleep(1)
-		        print(s+str(i))
+		        print(s)
 
 		multiprocessing.Process(target=say, args=("Second",)).start()
 		multiprocessing.Process(target=say, args=("Third",)).start()
@@ -113,7 +113,7 @@
 		    int i;
 		    for (i=0; i<20; i++) {
 		        sleep(1);
-		        printf("%s%d\n", str, i);
+		        printf("%s\n", str);
 		    }
 		}
 
@@ -138,7 +138,7 @@
 		def say(s):
 		    for i in range(20):
 		        time.sleep(1)
-		        print(s+str(i))
+		        print(s)
 
 		thread.start_new_thread(say, ("Second",))
 		thread.start_new_thread(say, ("Third",))
@@ -157,7 +157,7 @@
 		def say(s):
 		    for i in range(20):
 		        time.sleep(1)
-		        print(s+str(i))
+		        print(s)
 
 		threading.Thread(target=say, args=("Second",)).start()
 		threading.Thread(target=say, args=("Third",)).start()
@@ -176,7 +176,7 @@
 		def say(s):
 		    for i in range(20):
 		        time.sleep(1)
-		        print(s+str(i))
+		        print(s)
 
 		threading.Thread(target=say, args=("Second",)).start()
 		threading.Thread(target=say, args=("Third",)).start()
@@ -205,7 +205,7 @@
 		            } catch (InterruptedException e) {
 		                e.printStackTrace();
 		            }
-		            System.err.println(s+i);
+		            System.err.println(s);
 		        }
 		    }
 
@@ -233,13 +233,12 @@
 		import (
 		    "os"
 		    "time"
-		    "strconv"
 		)
 
 		func say(str string) {
 		    for i:=0; i<20; i++ {
 		        time.Sleep(1000 * time.Millisecond)
-		        os.Stdout.Write([]byte(str + strconv.Itoa(i) + "\n"))
+		        os.Stdout.Write([]byte(str + "\n"))
 		    }
 		}
 
@@ -262,40 +261,83 @@
 
 	??? note "linux-GCC 4.8.5 多进程(fork)"
 		- 未出现串行
-		- 3个进程执行的前后顺序偶尔变化
+		- 3个进程执行的前后顺序不定
 
 	??? note "python2.7 多进程"
 		- 未出现串行
-		- 3个进程执行的前后顺序偶尔变化
+		- 3个进程执行的前后顺序不定
 
 	??? note "python3.6 多进程"
 		- 未出现串行
-		- 3个进程执行的前后顺序偶尔变化
+		- 3个进程执行的前后顺序不定
 
 - 多线程
 
 	??? note "linux-GCC 4.8.5 多线程(pthread)"
-		```text
-		```
+		- 未出现串行
+		- 3个进程执行的前后顺序不定
 
 	??? note "python2.7 多线程（thread模块）"
-		```text
-		```
+		- 未出现串行
+		- 3个进程执行的前后顺序不定
 
 	??? note "python2.7 多线程（threading模块）"
-		```text
-		```
+		- 未出现串行
+		- 3个进程执行的前后顺序不定
 
 	??? note "python3.6 多线程"
-		```text
-		```
+		- 未出现串行
+		- 3个进程执行的前后顺序不定
 
 	??? note "java1.8 多线程"
-		```text
-		```
+		- 未出现串行
+		- 3个进程执行的前后顺序不定
 
 - 协程
 
 	??? note "go1.8 协程"
-		```text
-		```
+		- 未出现串行
+		- 3个进程执行的前后顺序不定
+
+## **多核结果**
+
+---
+
+- 多进程
+
+	??? note "linux-GCC 4.8.5 多进程(fork)"
+		- 出现串行
+
+	??? note "python2.7 多进程"
+		- 出现串行
+
+	??? note "python3.6 多进程"
+		- 未出现串行
+		- 3个进程执行的前后顺序不定
+
+
+- 多线程
+
+	??? note "linux-GCC 4.8.5 多线程(pthread)"
+		- 未出现串行
+		- 3个进程执行的前后顺序不定
+
+	??? note "python2.7 多线程（thread模块）"
+		- 出现串行
+
+	??? note "python2.7 多线程（threading模块）"
+		- 出现串行
+
+	??? note "python3.6 多线程"
+		- 未出现串行
+		- 3个进程执行的前后顺序不定
+
+	??? note "java1.8 多线程"
+		- 未出现串行
+		- 3个进程执行的前后顺序不定
+
+- 协程
+
+	??? note "go1.8 协程"
+		- 未出现串行
+		- 3个进程执行的前后顺序不定
