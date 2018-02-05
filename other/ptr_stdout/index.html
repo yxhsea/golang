@@ -2214,7 +2214,7 @@
     <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
-<p>System.out是有buffer的（暂时没找到关闭buffer方法），而System.err没有buffer</p></details><details class="note"><summary>go1.8 协程</summary><p>虽然例子里启动的是goroutine（协程），但在多核情况下实际是多线程方式。因为go会充分利用cpu资源，当cpu逻辑核数 &gt; 程序里(使用go关键字)的goroutine数量时，使用go关键字实际是启动一个线程来跑go关键字后跟的函数。所以这里把go协程归入多线程范畴</p><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+<p>System.out是有buffer的（暂时没找到关闭buffer方法），而System.err没有buffer</p></details><details class="note"><summary>go1.8 协程</summary><p>虽然例子里启动的是goroutine（协程），但在多核情况下很可能是多线程方式。因为go会充分利用cpu资源，当cpu逻辑核数 &gt; 程序里(使用go关键字)的goroutine数量时，一个线程里只运行一个goroutine（即使用go关键字实际是启动一个线程专门只跑一个协程）。所以这里把go协程归入多线程范畴</p><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s">&quot;os&quot;</span>
