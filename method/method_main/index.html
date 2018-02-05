@@ -2039,6 +2039,17 @@
 <li>
 <p>只有放在包级别的type，并且首字母大写的，才能被导入给其他模块引用，详见<a href="../../basic/type_custom/#_3">数据类型章节-自定义类型</a>的第4点</p>
 </li>
+<li>
+<p>若只调用一次方法，则不用赋给变量，直接在类型后跟方法就行，比如</p>
+<div class="codehilite"><pre><span></span><span class="nx">a</span> <span class="o">:=</span> <span class="nx">Vertex</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">Abs</span><span class="p">())</span>
+</pre></div>
+
+<p>也可以这么写</p>
+<div class="codehilite"><pre><span></span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">Vertex</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}.</span><span class="nx">Abs</span><span class="p">())</span>
+</pre></div>
+
+</li>
 </ol>
                 
                   
