@@ -225,7 +225,7 @@
 		System.out是有buffer的（暂时没找到关闭buffer方法），而System.err没有buffer
 
 	??? note "go1.8 协程"
-		虽然例子里启动的是goroutine（协程），但在多核情况下实际是多线程方式。因为go会充分利用cpu资源，当cpu逻辑核数 > 程序里(使用go关键字)的goroutine数量时，使用go关键字实际是启动一个线程来跑go关键字后跟的函数。所以这里把go协程归入多线程范畴
+		虽然例子里启动的是goroutine（协程），但在多核情况下很可能是多线程方式。因为go会充分利用cpu资源，当cpu逻辑核数 > 程序里(使用go关键字)的goroutine数量时，一个线程里只运行一个goroutine（即使用go关键字实际是启动一个线程专门只跑一个协程）。所以这里把go协程归入多线程范畴
 
 		```go
 		package main
