@@ -6,3 +6,5 @@
 	var b string = string(a) 是OK的，而var b string = a是会报错的
 
 另外，var b = string(a)，或者b := string(a)也可以
+
+**注意：若类型T是个指针，则需要用圆括号，比如`(*pointer)(r)`**，详见[指针章节](/datatype/pointer/#_3)
