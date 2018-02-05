@@ -638,9 +638,48 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        1. pointer
+      </label>
+    
     <a href="./" title="1. pointer" class="md-nav__link md-nav__link--active">
       1. pointer
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="声明指针" class="md-nav__link">
+    声明指针
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="圆括号" class="md-nav__link">
+    圆括号
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="类型转换" class="md-nav__link">
+    类型转换
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -1929,6 +1968,47 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="声明指针" class="md-nav__link">
+    声明指针
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="圆括号" class="md-nav__link">
+    圆括号
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="类型转换" class="md-nav__link">
+    类型转换
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -1939,7 +2019,8 @@
                 
                   <h1>1. pointer</h1>
                 
-                <p>声明指针：</p>
+                <h2 id="_1"><strong>声明指针</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
 <div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">p</span> <span class="o">*</span><span class="kt">int</span>
 <span class="nx">p</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">i</span>
 </pre></div>
@@ -1991,6 +2072,64 @@
 
 <p>输出</p>
 <div class="codehilite"><pre><span></span>13
+</pre></div>
+
+<h2 id="_2"><strong>圆括号</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<hr />
+<p>圆括号可以做分隔使用</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">x</span> <span class="o">:=</span> <span class="mi">42</span>
+    <span class="nx">p</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">x</span>
+    <span class="o">*</span><span class="nx">p</span> <span class="p">=</span> <span class="mi">11</span>
+    <span class="o">*&amp;*</span><span class="nx">p</span><span class="o">++</span>
+    <span class="o">*&amp;*&amp;*</span><span class="nx">p</span><span class="o">++</span>
+    <span class="o">*&amp;*&amp;*</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span><span class="o">++</span>
+    <span class="o">*&amp;*&amp;</span><span class="p">(</span><span class="o">*</span><span class="nx">p</span><span class="p">)</span><span class="o">++</span>
+    <span class="o">*&amp;*</span><span class="p">(</span><span class="o">&amp;*</span><span class="nx">p</span><span class="p">)</span><span class="o">++</span>
+    <span class="o">*&amp;</span><span class="p">(</span><span class="o">*&amp;*</span><span class="nx">p</span><span class="p">)</span><span class="o">++</span>
+    <span class="o">*</span><span class="p">(</span><span class="o">&amp;*&amp;*</span><span class="nx">p</span><span class="p">)</span><span class="o">++</span>
+    <span class="p">(</span><span class="o">*&amp;*&amp;*</span><span class="nx">p</span><span class="p">)</span><span class="o">++</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>19
+</pre></div>
+
+<h2 id="_3"><strong>类型转换</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<hr />
+<p>对于指针类型的变量做强制类型转换也需要圆括号</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">foo</span> <span class="kd">struct</span> <span class="p">{}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">f</span> <span class="o">*</span><span class="nx">foo</span><span class="p">)</span> <span class="nx">hello</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;f hello&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">bar</span> <span class="kd">struct</span> <span class="p">{}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">bar</span><span class="p">)</span> <span class="nx">hello</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;b hello&quot;</span><span class="p">)</span>
+<span class="hll">    <span class="p">(</span><span class="o">*</span><span class="nx">foo</span><span class="p">)(</span><span class="nx">b</span><span class="p">).</span><span class="nx">hello</span><span class="p">()</span>
+</span><span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">b</span> <span class="nx">bar</span>
+    <span class="nx">b</span><span class="p">.</span><span class="nx">hello</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>b hello
+f hello
 </pre></div>
                 
                   
