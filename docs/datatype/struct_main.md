@@ -21,7 +21,9 @@ func main() {
 main.vertex
 ```
 
-上面这种方法最常见，但要注意，v这个变量的类型是vertex（准确说是main.vertex），而不是struct。因为真正的struct类型应该是以下例子这样直接用struct{}声明
+上面这种方法最常见，但要注意，v这个变量的类型是vertex（准确说是main.vertex），而不是struct。
+
+真正的 **struct类型** 应该是以下例子这样直接用struct{}声明
 
 ```go
 package main
@@ -62,9 +64,3 @@ main.vertex,{1 2 hello},{a:1 b:2 c:hello}
 ```
 
 可以看到直接用struct{}声明的变量的类型才是struct{...}
-
-另外，空struct这么表示:
-
-```text
-struct{}{}
-```

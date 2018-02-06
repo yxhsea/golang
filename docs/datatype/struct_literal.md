@@ -29,3 +29,5 @@ main.Vertex
 	1. 声明多个变量时候可以用`var (...)`
 	2. `v2 = Vertex{X: 1}`这样表示X为1，其他都为类型推导的默认值
 	3. 这里struct指针类型是`*main.Vertex`
+
+[在struct声明章节也有提到literal](/datatype/struct_main/)
