@@ -750,6 +750,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../struct_empty/" title="2.8. 空struct" class="md-nav__link">
+      2.8. 空struct
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1959,6 +1971,47 @@
 <div class="codehilite"><pre><span></span>{1 2}
 4
 main.vertex
+</pre></div>
+
+<p>上面这种方法最常见，但要注意，v这个变量的类型是vertex（准确说是main.vertex），而不是struct。因为真正的struct类型应该是以下例子这样直接用struct{}声明</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">vertex</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span>
+    <span class="nx">c</span>    <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s1</span> <span class="o">:=</span> <span class="kd">struct</span><span class="p">{</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">;</span> <span class="nx">c</span> <span class="kt">string</span><span class="p">}{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&quot;hello&quot;</span><span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T,%v,%+v\n&quot;</span><span class="p">,</span> <span class="nx">s1</span><span class="p">,</span> <span class="nx">s1</span><span class="p">,</span> <span class="nx">s1</span><span class="p">)</span>
+
+    <span class="nx">s2</span> <span class="o">:=</span> <span class="kd">struct</span><span class="p">{</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">;</span> <span class="nx">c</span> <span class="kt">string</span><span class="p">}{</span><span class="nx">a</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="nx">c</span><span class="p">:</span><span class="s">&quot;hello&quot;</span><span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T,%v,%+v\n&quot;</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s2</span><span class="p">)</span>
+
+    <span class="nx">s3</span> <span class="o">:=</span> <span class="kd">struct</span><span class="p">{</span><span class="nx">a</span> <span class="kt">int</span><span class="p">;</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">;</span> <span class="nx">c</span> <span class="kt">string</span><span class="p">}{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&quot;hello&quot;</span><span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T,%v,%+v\n&quot;</span><span class="p">,</span> <span class="nx">s3</span><span class="p">,</span> <span class="nx">s3</span><span class="p">,</span> <span class="nx">s3</span><span class="p">)</span>
+
+    <span class="nx">s4</span> <span class="o">:=</span> <span class="kd">struct</span><span class="p">{</span><span class="nx">a</span> <span class="kt">int</span><span class="p">;</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">;</span> <span class="nx">c</span> <span class="kt">string</span><span class="p">}{</span><span class="nx">a</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="nx">c</span><span class="p">:</span><span class="s">&quot;hello&quot;</span><span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T,%v,%+v\n&quot;</span><span class="p">,</span> <span class="nx">s4</span><span class="p">,</span> <span class="nx">s4</span><span class="p">,</span> <span class="nx">s4</span><span class="p">)</span>
+
+    <span class="nx">s5</span> <span class="o">:=</span> <span class="nx">vertex</span><span class="p">{</span><span class="nx">a</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="nx">c</span><span class="p">:</span><span class="s">&quot;hello&quot;</span><span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T,%v,%+v\n&quot;</span><span class="p">,</span> <span class="nx">s5</span><span class="p">,</span> <span class="nx">s5</span><span class="p">,</span> <span class="nx">s5</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>struct { a int; b int; c string },{1 2 hello},{a:1 b:2 c:hello}
+struct { a int; b int; c string },{1 2 hello},{a:1 b:2 c:hello}
+struct { a int; b int; c string },{1 2 hello},{a:1 b:2 c:hello}
+struct { a int; b int; c string },{1 2 hello},{a:1 b:2 c:hello}
+main.vertex,{1 2 hello},{a:1 b:2 c:hello}
+</pre></div>
+
+<p>可以看到直接用struct{}声明的变量的类型才是struct{...}</p>
+<p>另外，空struct这么表示:</p>
+<div class="codehilite"><pre><span></span>struct{}{}
 </pre></div>
                 
                   
