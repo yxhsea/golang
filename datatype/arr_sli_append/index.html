@@ -2063,7 +2063,10 @@ s len=10 cap=16 [777 1 2 3 4 5 6 7 8 9]
 a len=3 cap=4 [111 1 2]
 b len=3 cap=4 [111 1 2]
 </pre></div>
-<p>注意：虽然a是s的衍生出来的，但从上面红色部分开始，a和s就分道扬镳了</p></details>
+<p>注意：虽然a是s的衍生出来的，但从上面红色部分开始，a和s就分道扬镳了</p></details><div class="admonition warning">
+<p class="admonition-title">建议使用make()提前申请空间</p>
+<p>建议使用<code>make([]int64, 0, 8)</code>这种方式提前申请好空间，以便降低append扩容引起的旧空间内存回收问题，来达到性能优化。</p>
+</div>
                 
                   
                 
