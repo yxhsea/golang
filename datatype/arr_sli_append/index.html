@@ -1960,6 +1960,7 @@
 <div class="admonition note">
 <p class="admonition-title">命令解读</p>
 <p>sli = append(sli, 元素)意思是先读取原有元素，然后cap扩容一倍，然后在末尾插入数字0这个元素，然后把插入完的赋值给sli（赋值给新变量也是可以的），因此和原有slice脱离关系。</p>
+<p>每一次扩容空间，都会重新申请一块区域，把旧空间里面的元素复制进来到新空间里，然后把新的元素追加进来。旧空间里面的元素等着垃圾回收。</p>
 </div>
 <details class="note"><summary>示例</summary><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">s</span> <span class="p">[]</span><span class="kt">int</span>
