@@ -1586,9 +1586,62 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        1. 介绍
+      </label>
+    
     <a href="./" title="1. 介绍" class="md-nav__link md-nav__link--active">
       1. 介绍
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="什么是协程" class="md-nav__link">
+    什么是协程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go" title="GO协程" class="md-nav__link">
+    GO协程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go_1" title="启动GO协程" class="md-nav__link">
+    启动GO协程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go_2" title="单核和多核下，go协程的区别" class="md-nav__link">
+    单核和多核下，go协程的区别
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="协程相关内置方法" class="md-nav__link">
+    协程相关内置方法
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -1833,6 +1886,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/runtime/" title="16. 查看系统环境runtime" class="md-nav__link">
+      16. 查看系统环境runtime
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1941,6 +2006,61 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="什么是协程" class="md-nav__link">
+    什么是协程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go" title="GO协程" class="md-nav__link">
+    GO协程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go_1" title="启动GO协程" class="md-nav__link">
+    启动GO协程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go_2" title="单核和多核下，go协程的区别" class="md-nav__link">
+    单核和多核下，go协程的区别
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="协程相关内置方法" class="md-nav__link">
+    协程相关内置方法
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -1951,7 +2071,23 @@
                 
                   <h1>1. 介绍</h1>
                 
-                <p>关于协程本身的概念，详见<a href="../../other/concurrent/#_5">进程、线程、协程</a></p>
+                <h2 id="_1"><strong>什么是协程</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
+<p>关于协程本身的概念，详见<a href="../../other/concurrent/#_5">进程、线程、协程</a></p>
+<h2 id="go"><strong>GO协程</strong><a class="headerlink" href="#go" title="Permanent link">&para;</a></h2>
+<hr />
+<blockquote>
+<p>goroutine（go协程）是由Go runtime管理的轻量级线程。</p>
+</blockquote>
+<p>这句话表明了协程是用户态，因为是由Go runtime管理，而非OS内核管理</p>
+<h2 id="go_1"><strong>启动GO协程</strong><a class="headerlink" href="#go_1" title="Permanent link">&para;</a></h2>
+<hr />
+<p>启动go协程方法：只需要在调用函数时候在前面加上go即可，如</p>
+<div class="codehilite"><pre><span></span>go say(&quot;hello&quot;)
+</pre></div>
+
+<h2 id="go_2"><strong>单核和多核下，go协程的区别</strong><a class="headerlink" href="#go_2" title="Permanent link">&para;</a></h2>
+<hr />
 <p>单核和多核情况下，go协程的执行结果是有差异的，看例子</p>
 <p>同样的代码</p>
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
@@ -2017,6 +2153,10 @@ a5be9ea34f6d9aabf1bdb3ce106dc95d  -
 0c2c59a85ba901ca20b4ff0935244b1c  -
 851344244bbb9b7e636252215dd88b1b  -
 </pre></div>
+
+<h2 id="_2"><strong>协程相关内置方法</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<hr />
+<p>详见<a href="http://127.0.0.1:8000/other/runtime/#_3">runtime章节</a></p>
                 
                   
                 
