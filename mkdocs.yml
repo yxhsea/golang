@@ -175,6 +175,7 @@ pages:
             - 14.1. CPU占用率比较: other/ptr_cpu.md
             - 14.2. 屏幕输出比较: other/ptr_stdout.md
         - 15. C语言的fork: other/fork.md
+        - 16. 查看系统环境runtime: other/runtime.md
     - 十. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md
