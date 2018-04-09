@@ -156,7 +156,8 @@ pages:
         - 5. 法则2: reflect/law2.md
         - 6. 法则3: reflect/law3.md
     - 八. 协程:
-        - 1. 介绍: goroutine/main.md
+        - 1. 创建协程(go关键字): goroutine/main.md
+        - 2. channel: goroutine/channel.md
     - 九. 其他:
         - 1. 字符串处理: other/string.md
         - 2. range: other/range.md
