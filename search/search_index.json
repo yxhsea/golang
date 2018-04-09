@@ -1108,7 +1108,7 @@
         {
             "location": "/goroutine/main/", 
             "text": "\u4ec0\u4e48\u662f\u534f\u7a0b\n\n\n\n\n\u5173\u4e8e\u534f\u7a0b\u672c\u8eab\u7684\u6982\u5ff5\uff0c\u8be6\u89c1\n\u8fdb\u7a0b\u3001\u7ebf\u7a0b\u3001\u534f\u7a0b\n\n\nGO\u534f\u7a0b\n\n\n\n\n\n\ngoroutine\uff08go\u534f\u7a0b\uff09\u662f\u7531Go runtime\u7ba1\u7406\u7684\u8f7b\u91cf\u7ea7\u7ebf\u7a0b\u3002\n\n\n\n\n\u8fd9\u53e5\u8bdd\u8868\u660e\u4e86\u534f\u7a0b\u662f\u7528\u6237\u6001\uff0c\u56e0\u4e3a\u662f\u7531Go runtime\u7ba1\u7406\uff0c\u800c\u975eOS\u5185\u6838\u7ba1\u7406\n\n\n\u542f\u52a8GO\u534f\u7a0b\n\n\n\n\n\u542f\u52a8go\u534f\u7a0b\u65b9\u6cd5\uff1a\u53ea\u9700\u8981\u5728\u8c03\u7528\u51fd\u6570\u65f6\u5019\u5728\u524d\u9762\u52a0\u4e0ago\u5373\u53ef\uff0c\u5982\n\n\ngo say(\nhello\n)\n\n\n\n\n\u5355\u6838\u548c\u591a\u6838\u4e0b\uff0cgo\u534f\u7a0b\u7684\u533a\u522b\n\n\n\n\n\u5355\u6838\u548c\u591a\u6838\u60c5\u51b5\u4e0b\uff0cgo\u534f\u7a0b\u7684\u6267\u884c\u7ed3\u679c\u662f\u6709\u5dee\u5f02\u7684\uff0c\u770b\u4f8b\u5b50\n\n\n\u540c\u6837\u7684\u4ee3\u7801\n\n\npackage\n \nmain\n\n\n\nimport\n \n(\n\n    \nfmt\n\n    \ntime\n\n\n)\n\n\n\nfunc\n \nsay\n(\ns\n \nstring\n)\n \n{\n\n    \nfor\n \ni\n \n:=\n \n0\n;\n \ni\n \n \n5\n;\n \ni\n++\n \n{\n\n        \ntime\n.\nSleep\n(\n100\n \n*\n \ntime\n.\nMillisecond\n)\n\n        \nfmt\n.\nPrintln\n(\ns\n)\n\n    \n}\n\n\n}\n\n\n\nfunc\n \nmain\n()\n \n{\n\n    \ngo\n \nsay\n(\nworld\n)\n\n    \nsay\n(\nhello\n)\n\n\n}\n\n\n\n\n\n\u540c\u6837\u7684\u6267\u884c\n\n\nfor i in {1..10}; do\n    go run goroutines.go | md5sum\ndone\n\n\n\n\n\u5728\u5355\u6838\u4e0a\u7684\u7ed3\u679c\u6bcf\u6b21\u90fd\u4e00\u6837\n\n\n0c2c59a85ba901ca20b4ff0935244b1c  -\n0c2c59a85ba901ca20b4ff0935244b1c  -\n0c2c59a85ba901ca20b4ff0935244b1c  -\n0c2c59a85ba901ca20b4ff0935244b1c  -\n0c2c59a85ba901ca20b4ff0935244b1c  -\n0c2c59a85ba901ca20b4ff0935244b1c  -\n0c2c59a85ba901ca20b4ff0935244b1c  -\n0c2c59a85ba901ca20b4ff0935244b1c  -\n0c2c59a85ba901ca20b4ff0935244b1c  -\n0c2c59a85ba901ca20b4ff0935244b1c  -\n\n\n\n\n\u5728\u591a\u6838\u4e0a\u7684\u7ed3\u679c\u6bcf\u6b21\u90fd\u4e0d\u4e00\u6837\uff0c\u8fd9\u91cc\u4ec5\u8d34\u51fa2\u6b21\n\n\n0c2c59a85ba901ca20b4ff0935244b1c  -\n0c2c59a85ba901ca20b4ff0935244b1c  -\n1b8ac04b5e950c4c30682a92a5dbd50e  -\nf3b59387aa582b783ce750226e024610  -\n0c2c59a85ba901ca20b4ff0935244b1c  -\n1b8ac04b5e950c4c30682a92a5dbd50e  -\n52eda0b32ac5579adf4cdb8fdcaaf9f7  -\n0c2c59a85ba901ca20b4ff0935244b1c  -\n0c2c59a85ba901ca20b4ff0935244b1c  -\n77f2faf014eb84e230dad3d4c60e2380  -\n\n\n\n\na5be9ea34f6d9aabf1bdb3ce106dc95d  -\n0c2c59a85ba901ca20b4ff0935244b1c  -\na5be9ea34f6d9aabf1bdb3ce106dc95d  -\n286dc19dc0c36ff4838e1e7492502b5d  -\n0c2c59a85ba901ca20b4ff0935244b1c  -\nf3b59387aa582b783ce750226e024610  -\na5be9ea34f6d9aabf1bdb3ce106dc95d  -\n851344244bbb9b7e636252215dd88b1b  -\n0c2c59a85ba901ca20b4ff0935244b1c  -\n851344244bbb9b7e636252215dd88b1b  -\n\n\n\n\n\u534f\u7a0b\u76f8\u5173\u5185\u7f6e\u65b9\u6cd5\n\n\n\n\n\u8be6\u89c1\nruntime\u7ae0\u8282", 
-            "title": "1. \u4ecb\u7ecd"
+            "title": "1. \u521b\u5efa\u534f\u7a0b(go\u5173\u952e\u5b57)"
         }, 
         {
             "location": "/goroutine/main/#_1", 
@@ -1134,6 +1134,26 @@
             "location": "/goroutine/main/#_2", 
             "text": "\u8be6\u89c1 runtime\u7ae0\u8282", 
             "title": "\u534f\u7a0b\u76f8\u5173\u5185\u7f6e\u65b9\u6cd5"
+        }, 
+        {
+            "location": "/goroutine/channel/", 
+            "text": "channel\n\n\n\n\nchannel\u662f\u6709\u7c7b\u578b\u7684\u7ba1\u9053\uff0c\u53ef\u4ee5\u7528channel\u64cd\u4f5c\u7b26 \n-\n \u5bf9\u5176\u53d1\u9001\u6216\u8005\u63a5\u6536\u503c\u3002\n\n\n\u521b\u5efachannel\n\n\n\n\nc := make(chan int)\n\n\n\n\n\u6ce8\u610f\uff1a\u7ba1\u9053\u5fc5\u987b\u6307\u5b9a\u7c7b\u578b\uff0c\u6bd4\u5982\u8fd9\u91cc\u662fint\uff0c\u5373\u5f80\u7ba1\u9053\u91cc\u4f20\u9001\u7684\u6570\u636e\u53ea\u80fd\u662fint\u7c7b\u578b\u3002\u5f53\u7136\u53ef\u4ee5\u662finterface{}\u8fd9\u79cd\u7a7a\u63a5\u53e3\u65b9\u5f0f\uff0c\u8fd9\u6837\u5c31\u53ef\u4ee5\u4f20\u9001\u5404\u79cd\u6570\u636e\u7c7b\u578b\u4e86\n\n\n\u7ba1\u9053\u65b9\u5411\n\n\n\n\nch \n- v // Send v to channel ch.\nv := \n-ch // Receive from ch, and\n           // assign value to v.\n\n\n\n\n\u201c\u7bad\u5934\u201d\u5c31\u662f\u6570\u636e\u6d41\u7684\u65b9\u5411\n\n\n\u6ce8\u610f\u63a5\u53d7\u65f6\u5019\n-\u548cchan\u53d8\u91cf\u4e4b\u95f4\u6ca1\u6709\u7a7a\u683c\uff0c\u867d\u7136\u6709\u7a7a\u683c\u4e5f\u4e0d\u4f1a\u62a5\u9519\uff0c\u4f46\u662fide\u4f1a\u63d0\u793a\uff0c\u56e0\u6b64\u8fd8\u662f\u4f9d\u7167\u89c4\u8303\u4e0d\u7a7a\u683c\u6bd4\u8f83\u597d", 
+            "title": "2. channel"
+        }, 
+        {
+            "location": "/goroutine/channel/#channel", 
+            "text": "channel\u662f\u6709\u7c7b\u578b\u7684\u7ba1\u9053\uff0c\u53ef\u4ee5\u7528channel\u64cd\u4f5c\u7b26  -  \u5bf9\u5176\u53d1\u9001\u6216\u8005\u63a5\u6536\u503c\u3002", 
+            "title": "channel"
+        }, 
+        {
+            "location": "/goroutine/channel/#channel_1", 
+            "text": "c := make(chan int)  \u6ce8\u610f\uff1a\u7ba1\u9053\u5fc5\u987b\u6307\u5b9a\u7c7b\u578b\uff0c\u6bd4\u5982\u8fd9\u91cc\u662fint\uff0c\u5373\u5f80\u7ba1\u9053\u91cc\u4f20\u9001\u7684\u6570\u636e\u53ea\u80fd\u662fint\u7c7b\u578b\u3002\u5f53\u7136\u53ef\u4ee5\u662finterface{}\u8fd9\u79cd\u7a7a\u63a5\u53e3\u65b9\u5f0f\uff0c\u8fd9\u6837\u5c31\u53ef\u4ee5\u4f20\u9001\u5404\u79cd\u6570\u636e\u7c7b\u578b\u4e86", 
+            "title": "\u521b\u5efachannel"
+        }, 
+        {
+            "location": "/goroutine/channel/#_1", 
+            "text": "ch  - v // Send v to channel ch.\nv :=  -ch // Receive from ch, and\n           // assign value to v.  \u201c\u7bad\u5934\u201d\u5c31\u662f\u6570\u636e\u6d41\u7684\u65b9\u5411  \u6ce8\u610f\u63a5\u53d7\u65f6\u5019 -\u548cchan\u53d8\u91cf\u4e4b\u95f4\u6ca1\u6709\u7a7a\u683c\uff0c\u867d\u7136\u6709\u7a7a\u683c\u4e5f\u4e0d\u4f1a\u62a5\u9519\uff0c\u4f46\u662fide\u4f1a\u63d0\u793a\uff0c\u56e0\u6b64\u8fd8\u662f\u4f9d\u7167\u89c4\u8303\u4e0d\u7a7a\u683c\u6bd4\u8f83\u597d", 
+            "title": "\u7ba1\u9053\u65b9\u5411"
         }, 
         {
             "location": "/other/string/", 

@@ -13,7 +13,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/golang/datatype/funcvalue_callback/">
+        <link rel="canonical" href="https://cyent.github.io/golang/goroutine/channel/">
       
       
         <meta name="author" content="cyent">
@@ -38,7 +38,7 @@
     
     
       
-        <title>5.3. 用途1-回调函数 - Go语言学习 - cyent笔记</title>
+        <title>2. channel - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                5.3. 用途1-回调函数
+                2. channel
               </span>
             
           
@@ -609,12 +609,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
       五. 数据类型
@@ -632,7 +630,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../pointer/" title="1. pointer" class="md-nav__link">
+    <a href="../../datatype/pointer/" title="1. pointer" class="md-nav__link">
       1. pointer
     </a>
   </li>
@@ -663,7 +661,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_main/" title="2.1. 声明" class="md-nav__link">
+    <a href="../../datatype/struct_main/" title="2.1. 声明" class="md-nav__link">
       2.1. 声明
     </a>
   </li>
@@ -675,7 +673,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_export/" title="2.2. 导出名" class="md-nav__link">
+    <a href="../../datatype/struct_export/" title="2.2. 导出名" class="md-nav__link">
       2.2. 导出名
     </a>
   </li>
@@ -687,7 +685,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_pointer/" title="2.3. struct指针" class="md-nav__link">
+    <a href="../../datatype/struct_pointer/" title="2.3. struct指针" class="md-nav__link">
       2.3. struct指针
     </a>
   </li>
@@ -699,7 +697,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_literal/" title="2.4. literal" class="md-nav__link">
+    <a href="../../datatype/struct_literal/" title="2.4. literal" class="md-nav__link">
       2.4. literal
     </a>
   </li>
@@ -711,7 +709,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_anon/" title="2.5. 匿名struct" class="md-nav__link">
+    <a href="../../datatype/struct_anon/" title="2.5. 匿名struct" class="md-nav__link">
       2.5. 匿名struct
     </a>
   </li>
@@ -723,7 +721,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_interface_element/" title="2.6. 接口作为struct元素" class="md-nav__link">
+    <a href="../../datatype/struct_interface_element/" title="2.6. 接口作为struct元素" class="md-nav__link">
       2.6. 接口作为struct元素
     </a>
   </li>
@@ -735,7 +733,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_struct_element/" title="2.7. struct作为struct的元素" class="md-nav__link">
+    <a href="../../datatype/struct_struct_element/" title="2.7. struct作为struct的元素" class="md-nav__link">
       2.7. struct作为struct的元素
     </a>
   </li>
@@ -747,7 +745,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_empty/" title="2.8. 空struct" class="md-nav__link">
+    <a href="../../datatype/struct_empty/" title="2.8. 空struct" class="md-nav__link">
       2.8. 空struct
     </a>
   </li>
@@ -783,7 +781,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_main/" title="3.1. 介绍与比较" class="md-nav__link">
+    <a href="../../datatype/arr_sli_main/" title="3.1. 介绍与比较" class="md-nav__link">
       3.1. 介绍与比较
     </a>
   </li>
@@ -795,7 +793,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_len_cap/" title="3.2. len()与cap()" class="md-nav__link">
+    <a href="../../datatype/arr_sli_len_cap/" title="3.2. len()与cap()" class="md-nav__link">
       3.2. len()与cap()
     </a>
   </li>
@@ -807,7 +805,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_index/" title="3.3. 下标" class="md-nav__link">
+    <a href="../../datatype/arr_sli_index/" title="3.3. 下标" class="md-nav__link">
       3.3. 下标
     </a>
   </li>
@@ -819,7 +817,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_key/" title="3.4. 深入理解" class="md-nav__link">
+    <a href="../../datatype/arr_sli_key/" title="3.4. 深入理解" class="md-nav__link">
       3.4. 深入理解
     </a>
   </li>
@@ -831,7 +829,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_nil/" title="3.5. nil" class="md-nav__link">
+    <a href="../../datatype/arr_sli_nil/" title="3.5. nil" class="md-nav__link">
       3.5. nil
     </a>
   </li>
@@ -843,7 +841,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_make/" title="3.6. make" class="md-nav__link">
+    <a href="../../datatype/arr_sli_make/" title="3.6. make" class="md-nav__link">
       3.6. make
     </a>
   </li>
@@ -855,7 +853,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_nest/" title="3.7. slice嵌套" class="md-nav__link">
+    <a href="../../datatype/arr_sli_nest/" title="3.7. slice嵌套" class="md-nav__link">
       3.7. slice嵌套
     </a>
   </li>
@@ -867,7 +865,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_expand/" title="3.8. slice扩容" class="md-nav__link">
+    <a href="../../datatype/arr_sli_expand/" title="3.8. slice扩容" class="md-nav__link">
       3.8. slice扩容
     </a>
   </li>
@@ -879,7 +877,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_append/" title="3.9. append添加元素" class="md-nav__link">
+    <a href="../../datatype/arr_sli_append/" title="3.9. append添加元素" class="md-nav__link">
       3.9. append添加元素
     </a>
   </li>
@@ -891,7 +889,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_copy/" title="3.10. copy复制元素" class="md-nav__link">
+    <a href="../../datatype/arr_sli_copy/" title="3.10. copy复制元素" class="md-nav__link">
       3.10. copy复制元素
     </a>
   </li>
@@ -903,7 +901,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_empty_interface/" title="3.11. 空接口对切片的影响" class="md-nav__link">
+    <a href="../../datatype/arr_empty_interface/" title="3.11. 空接口对切片的影响" class="md-nav__link">
       3.11. 空接口对切片的影响
     </a>
   </li>
@@ -939,7 +937,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../map_main/" title="4.1. 声明" class="md-nav__link">
+    <a href="../../datatype/map_main/" title="4.1. 声明" class="md-nav__link">
       4.1. 声明
     </a>
   </li>
@@ -951,7 +949,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../map_nil/" title="4.2. nil map" class="md-nav__link">
+    <a href="../../datatype/map_nil/" title="4.2. nil map" class="md-nav__link">
       4.2. nil map
     </a>
   </li>
@@ -963,7 +961,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../map_struct/" title="4.3. key和value可以用struct" class="md-nav__link">
+    <a href="../../datatype/map_struct/" title="4.3. key和value可以用struct" class="md-nav__link">
       4.3. key和value可以用struct
     </a>
   </li>
@@ -975,7 +973,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../map_literal/" title="4.4. literal" class="md-nav__link">
+    <a href="../../datatype/map_literal/" title="4.4. literal" class="md-nav__link">
       4.4. literal
     </a>
   </li>
@@ -987,7 +985,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../map_get_insert_update/" title="4.5. 检索、添加和修改元素" class="md-nav__link">
+    <a href="../../datatype/map_get_insert_update/" title="4.5. 检索、添加和修改元素" class="md-nav__link">
       4.5. 检索、添加和修改元素
     </a>
   </li>
@@ -999,7 +997,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../map_delete/" title="4.6. delete删除元素" class="md-nav__link">
+    <a href="../../datatype/map_delete/" title="4.6. delete删除元素" class="md-nav__link">
       4.6. delete删除元素
     </a>
   </li>
@@ -1014,12 +1012,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5">
     
     <label class="md-nav__link" for="nav-5-5">
       5. 函数值
@@ -1037,7 +1033,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../funcvalue_main/" title="5.1. 介绍" class="md-nav__link">
+    <a href="../../datatype/funcvalue_main/" title="5.1. 介绍" class="md-nav__link">
       5.1. 介绍
     </a>
   </li>
@@ -1049,7 +1045,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../funcvalue_parameter/" title="5.2. 函数作为参数传递给另一个函数" class="md-nav__link">
+    <a href="../../datatype/funcvalue_parameter/" title="5.2. 函数作为参数传递给另一个函数" class="md-nav__link">
       5.2. 函数作为参数传递给另一个函数
     </a>
   </li>
@@ -1059,57 +1055,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        5.3. 用途1-回调函数
-      </label>
-    
-    <a href="./" title="5.3. 用途1-回调函数" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../datatype/funcvalue_callback/" title="5.3. 用途1-回调函数" class="md-nav__link">
       5.3. 用途1-回调函数
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="什么是回调函数" class="md-nav__link">
-    什么是回调函数
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="我的例子" class="md-nav__link">
-    我的例子
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="回调函数类型" class="md-nav__link">
-    回调函数类型
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -1119,7 +1069,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../funcvalue_closure/" title="5.4. 用途2-闭包" class="md-nav__link">
+    <a href="../../datatype/funcvalue_closure/" title="5.4. 用途2-闭包" class="md-nav__link">
       5.4. 用途2-闭包
     </a>
   </li>
@@ -1607,10 +1557,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
     
     <label class="md-nav__link" for="nav-8">
       八. 协程
@@ -1628,7 +1580,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/main/" title="1. 创建协程(go关键字)" class="md-nav__link">
+    <a href="../main/" title="1. 创建协程(go关键字)" class="md-nav__link">
       1. 创建协程(go关键字)
     </a>
   </li>
@@ -1638,11 +1590,57 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../goroutine/channel/" title="2. channel" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        2. channel
+      </label>
+    
+    <a href="./" title="2. channel" class="md-nav__link md-nav__link--active">
       2. channel
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#channel" title="channel" class="md-nav__link">
+    channel
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#channel_1" title="创建channel" class="md-nav__link">
+    创建channel
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="管道方向" class="md-nav__link">
+    管道方向
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -2018,22 +2016,22 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" title="什么是回调函数" class="md-nav__link">
-    什么是回调函数
+  <a href="#channel" title="channel" class="md-nav__link">
+    channel
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" title="我的例子" class="md-nav__link">
-    我的例子
+  <a href="#channel_1" title="创建channel" class="md-nav__link">
+    创建channel
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" title="回调函数类型" class="md-nav__link">
-    回调函数类型
+  <a href="#_1" title="管道方向" class="md-nav__link">
+    管道方向
   </a>
   
 </li>
@@ -2052,193 +2050,29 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cyent/golang/edit/master/docs/datatype/funcvalue_callback.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/cyent/golang/edit/master/docs/goroutine/channel.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>5.3. 用途1-回调函数</h1>
+                  <h1>2. channel</h1>
                 
-                <h2 id="_1"><strong>什么是回调函数</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+                <h2 id="channel"><strong>channel</strong><a class="headerlink" href="#channel" title="Permanent link">&para;</a></h2>
 <hr />
-<p>关于回调的理解，知乎上有个不错，这里贴出来: <a href="https://www.zhihu.com/question/19801131">https://www.zhihu.com/question/19801131</a></p>
-<p>函数值可用于回调，下面是关于回调函数的理解:</p>
-<p>回调函数英文叫做callback，技术本质是就是一个通过函数指针（只不过在golang里叫函数值，不叫函数指针）调用的函数。比如将函数A作为参数传递给函数B，那么A就叫做 <strong><em>回调函数</em></strong> ，B就叫做 <strong><em>中间函数</em></strong>，调用B的函数叫做 <strong><em>起始函数</em></strong></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>中间函数：什么时间、做什么</p>
-<p>回调函数：怎么做</p>
-</div>
-<p>回调示例（来自知乎）：</p>
-<ul>
-<li>
-<p>有一家旅馆提供叫醒服务，但是要求旅客自己决定叫醒的方法。可以是打客房电话，也可以是派服务员去敲门，睡得死怕耽误事的，还可以要求往自己头上浇盆水。这里，“叫醒”这个行为是旅馆提供的，相当于中间函数，但是叫醒的方式是由旅客决定并告诉旅馆的，也就是回调函数。而旅客告诉旅馆怎么叫醒自己的动作，也就是把回调函数传入中间函数的动作，称为登记回调函数（to register a callback function）</p>
-</li>
-<li>
-<p>你到一个商店买东西，刚好你要的东西没有货，于是你在店员那里留下了你的电话，过了几天店里有货了，店员就打了你的电话，然后你接到电话后就到店里去取了货。在这个例子里， 你的电话号码就叫 <strong><em>回调函数</em></strong> ，你把电话留给店员就叫 <strong><em>登记回调函数</em></strong> ，店里后来有货了叫做 <strong><em>触发了回调关联的事件</em></strong> ，店员给你打电话叫做 <strong><em>调用回调函数</em></strong> ，你到店里去取货叫做 <strong><em>响应回调事件</em></strong>  。</p>
-</li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">回调: 回过头来调用</p>
-<p>回调函数这4个字容易让人理解为调用别人，这是错误的，如果在前面加上一个"被"字就好理解了，即等着被中间函数调用，只不过回调函数是主程序写的，也就是自己的意思，所以叫回调。</p>
-<p>我是这么记忆的：我把我写的函数，传递给你，希望你在某个时候 <strong>回过头来调用</strong> 我的这个函数。那么这个函数就称为回调函数</p>
-</div>
-<p>下面是一个代码例子，可以比较下python和golang在回调方面的编码区别</p>
-<ul>
-<li>
-<p>python示例</p>
-<details class="note"><summary>even.py</summary><div class="codehilite"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-
-<span class="c1">#回调函数1</span>
-<span class="c1">#生成一个2k形式的偶数</span>
-<span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
-
-<span class="c1">#回调函数2</span>
-<span class="c1">#生成一个4k形式的偶数</span>
-<span class="k">def</span> <span class="nf">quadruple</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">4</span>
-</pre></div>
-</details><details class="note"><summary>main.py</summary><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">even</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="c1">#中间函数</span>
-<span class="c1">#接受一个生成偶数的函数作为参数</span>
-<span class="c1">#返回一个奇数</span>
-<span class="k">def</span> <span class="nf">getOddNumber</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">getEvenNumber</span><span class="p">):</span>
-    <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">getEvenNumber</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
-
-<span class="c1">#起始函数，这里是程序的主函数</span>
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span>
-
-    <span class="c1">#当需要生成一个2k+1形式的奇数时</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="n">getOddNumber</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">double</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-
-    <span class="c1">#当需要一个4k+1形式的奇数时</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="n">getOddNumber</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">quadruple</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
-</pre></div>
-</details><div class="codehilite"><pre><span></span>&gt; python main.py
-&gt; 3
-&gt; 5
-</pre></div>
-
-</li>
-<li>
-<p>golang示例</p>
-<details class="note"><summary>$GOPATH/src/github.com/cyent/golang/example/even/even.go</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">even</span>
-
-<span class="c1">//回调函数1</span>
-<span class="c1">//生成一个2k形式的偶数</span>
-<span class="kd">func</span> <span class="nx">Double</span><span class="p">(</span><span class="nx">x</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span>
-<span class="p">}</span>
-
-<span class="c1">//回调函数2</span>
-<span class="c1">//生成一个4k形式的偶数</span>
-<span class="kd">func</span> <span class="nx">Quadruple</span><span class="p">(</span><span class="nx">x</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">4</span>
-<span class="p">}</span>
-</pre></div>
-</details><details class="note"><summary>main.go</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&quot;fmt&quot;</span>
-    <span class="s">&quot;github.com/cyent/golang/example/even&quot;</span>
-<span class="p">)</span>
-
-<span class="c1">//中间函数</span>
-<span class="c1">//接受一个生成偶数的函数作为参数</span>
-<span class="c1">//返回一个奇数</span>
-<span class="kd">func</span> <span class="nx">getOddNumber</span><span class="p">(</span><span class="nx">k</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">getEvenNumber</span> <span class="kd">func</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="nx">getEvenNumber</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="c1">//起始函数，这里是程序的主函数</span>
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">k</span> <span class="o">:=</span> <span class="mi">1</span>
-
-    <span class="c1">//当需要生成一个2k+1形式的奇数时</span>
-    <span class="nx">i</span> <span class="o">:=</span> <span class="nx">getOddNumber</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">even</span><span class="p">.</span><span class="nx">Double</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-
-    <span class="c1">//当需要一个4k+1形式的奇数时</span>
-    <span class="nx">i</span> <span class="p">=</span> <span class="nx">getOddNumber</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">even</span><span class="p">.</span><span class="nx">Quadruple</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-</details><div class="codehilite"><pre><span></span>&gt; go run main.go
-&gt; 3
-&gt; 5
-</pre></div>
-
-</li>
-</ul>
-<p>可以看出，python是隐式函数指针，而golang是显式函数指针（函数值）</p>
-<h2 id="_2"><strong>我的例子</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>channel是有类型的管道，可以用channel操作符 <code>&lt;-</code> 对其发送或者接收值。</p>
+<h2 id="channel_1"><strong>创建channel</strong><a class="headerlink" href="#channel_1" title="Permanent link">&para;</a></h2>
 <hr />
-<p>使用libvirt api对虚拟机进行操作，有2种方式：</p>
-<ol>
-<li>
-<p>只写一个libvirt模块，接收参数来对虚拟机进行启动、停止、重启、删除等操作。但这样有3个问题</p>
-<ul>
-<li>这个模块要做很多类型的事情，包括连接libvirt接口、宿主机操作（网络、存储、性能获取）、vm操作（创建、删除、启动、停止）</li>
-<li>这个模块要维护libvirt版本的兼容性，当版本越来越多的时候，会因为兼容各个版本导致模块很臃肿</li>
-<li>每增加一个对虚拟机操作的功能，都是在更新这个模块，次数多了，自然也变得臃肿</li>
-</ul>
-</li>
-<li>
-<p>libvirt模块只写最基础的功能，例如只写连接libvirt接口，然后接收一个函数来对宿主机或者虚拟机做操作。然后调用者自己实现宿主机操作的回调函数、虚拟机操作的回调函数，例如需要对某个虚拟机进行启动，操作是：</p>
-<ol>
-<li>调用libvirt模块连接api</li>
-<li>传入调用者自己实现的启动虚拟机的回调函数作为参数传递给libvirt模块</li>
-</ol>
-<p>这样的好处有2个：</p>
-<ul>
-<li>将原本libvirt模块需要做的3件事，拆解开来，维护量大大减少</li>
-<li>调用者需要哪个功能，就实现哪个功能，不需要就不用实现，代码开量明显减少</li>
-</ul>
-<p>例如：</p>
-<p>上面提到的调用者，可以叫vm.py，libvirt模块分为kvm.py、container.py，用到kvm.py时候就import kvm</p>
-<p>vm.py
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">kvm</span>
+<div class="codehilite"><pre><span></span>c := make(chan int)
+</pre></div>
 
-<span class="k">def</span> <span class="nf">reboot</span><span class="p">(</span><span class="n">dom_uuid</span><span class="p">,</span> <span class="n">host_ip</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">shutdown_vm</span><span class="p">(</span><span class="n">dom</span><span class="p">):</span>
-        <span class="o">...</span>
-    <span class="n">kvm</span><span class="o">.</span><span class="n">libvirt_connect</span><span class="p">(</span><span class="n">shutdown_vm</span><span class="p">(</span><span class="n">dom</span><span class="p">),</span> <span class="n">host_ip</span><span class="p">,</span> <span class="n">dom_uuid</span><span class="o">=</span><span class="n">dom_uuid</span><span class="p">)</span>
-</pre></div></p>
-<p>kvm.py
-<div class="codehilite"><pre><span></span><span class="c1"># 封装libvirt connect</span>
-<span class="k">def</span> <span class="nf">libvirt_conenct</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">dom_uuid</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="n">callback</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
-</pre></div></p>
-<div class="admonition note">
-<p>这个例子也是阻塞式回调，延迟式回调还没研究过~</p>
-</div>
-</li>
-</ol>
-<h2 id="_3"><strong>回调函数类型</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>注意：管道必须指定类型，比如这里是int，即往管道里传送的数据只能是int类型。当然可以是interface{}这种空接口方式，这样就可以传送各种数据类型了</p>
+<h2 id="_1"><strong>管道方向</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <hr />
-<p>有两种类型的回调函数：</p>
-<ol>
-<li>
-<p>阻塞式回调（也叫同步回调）</p>
-<blockquote>
-<p>blocking callbacks (also known as synchronous callbacks or just callbacks)</p>
-</blockquote>
-</li>
-<li>
-<p>延迟式回调（也叫异步回调）</p>
-<blockquote>
-<p>deferred callbacks (also known as asynchronous callbacks)</p>
-</blockquote>
-</li>
-</ol>
-<p>本页所有例子都是阻塞式回调</p>
+<div class="codehilite"><pre><span></span>ch &lt;- v // Send v to channel ch.
+v := &lt;-ch // Receive from ch, and
+           // assign value to v.
+</pre></div>
+
+<p>“箭头”就是数据流的方向</p>
+<p><strong>注意接受时候&lt;-和chan变量之间没有空格，虽然有空格也不会报错，但是ide会提示，因此还是依照规范不空格比较好</strong></p>
                 
                   
                 
@@ -2257,7 +2091,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../funcvalue_parameter/" title="5.2. 函数作为参数传递给另一个函数" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../main/" title="1. 创建协程(go关键字)" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2266,19 +2100,19 @@
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                5.2. 函数作为参数传递给另一个函数
+                1. 创建协程(go关键字)
               </span>
             </div>
           </a>
         
         
-          <a href="../funcvalue_closure/" title="5.4. 用途2-闭包" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../other/string/" title="1. 字符串处理" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                5.4. 用途2-闭包
+                1. 字符串处理
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
