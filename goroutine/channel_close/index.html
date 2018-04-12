@@ -13,7 +13,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/golang/goroutine/channel/">
+        <link rel="canonical" href="https://cyent.github.io/golang/goroutine/channel_close/">
       
       
         <meta name="author" content="cyent">
@@ -38,7 +38,7 @@
     
     
       
-        <title>2. channel - Go语言学习 - cyent笔记</title>
+        <title>2.3. close - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                2. channel
+                2.3. close
               </span>
             
           
@@ -1593,17 +1593,62 @@
   
 
 
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2" checked>
+    
+    <label class="md-nav__link" for="nav-8-2">
+      2. channel
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        2. channel
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../channel_main/" title="2.1. 基本使用" class="md-nav__link">
+      2.1. 基本使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../channel_buffer/" title="2.2. buffer" class="md-nav__link">
+      2.2. buffer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
   <li class="md-nav__item md-nav__item--active">
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
       <label class="md-nav__link md-nav__link--active" for="toc">
-        2. channel
+        2.3. close
       </label>
     
-    <a href="./" title="2. channel" class="md-nav__link md-nav__link--active">
-      2. channel
+    <a href="./" title="2.3. close" class="md-nav__link md-nav__link--active">
+      2.3. close
     </a>
     
       
@@ -1615,22 +1660,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#channel" title="channel" class="md-nav__link">
-    channel
+  <a href="#close" title="close" class="md-nav__link">
+    close
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#channel_1" title="创建channel" class="md-nav__link">
-    创建channel
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="管道方向" class="md-nav__link">
-    管道方向
+  <a href="#range" title="结合range" class="md-nav__link">
+    结合range
   </a>
   
 </li>
@@ -1641,6 +1679,35 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../channel_select/" title="2.4. 结合select-case" class="md-nav__link">
+      2.4. 结合select-case
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../channel_rw/" title="2.5. 读写类型" class="md-nav__link">
+      2.5. 读写类型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -2016,22 +2083,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#channel" title="channel" class="md-nav__link">
-    channel
+  <a href="#close" title="close" class="md-nav__link">
+    close
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#channel_1" title="创建channel" class="md-nav__link">
-    创建channel
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="管道方向" class="md-nav__link">
-    管道方向
+  <a href="#range" title="结合range" class="md-nav__link">
+    结合range
   </a>
   
 </li>
@@ -2050,29 +2110,52 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cyent/golang/edit/master/docs/goroutine/channel.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/cyent/golang/edit/master/docs/goroutine/channel_close.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>2. channel</h1>
+                  <h1>2.3. close</h1>
                 
-                <h2 id="channel"><strong>channel</strong><a class="headerlink" href="#channel" title="Permanent link">&para;</a></h2>
+                <h2 id="close"><strong>close</strong><a class="headerlink" href="#close" title="Permanent link">&para;</a></h2>
 <hr />
-<p>channel是有类型的管道，可以用channel操作符 <code>&lt;-</code> 对其发送或者接收值。</p>
-<h2 id="channel_1"><strong>创建channel</strong><a class="headerlink" href="#channel_1" title="Permanent link">&para;</a></h2>
-<hr />
-<div class="codehilite"><pre><span></span>c := make(chan int)
+<div class="codehilite"><pre><span></span>close(ch)
 </pre></div>
 
-<p>注意：管道必须指定类型，比如这里是int，即往管道里传送的数据只能是int类型。当然可以是interface{}这种空接口方式，这样就可以传送各种数据类型了</p>
-<h2 id="_1"><strong>管道方向</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>有且只有发送者可以关闭管道，接收者不能关闭管道</p>
+<p>接收者可以通过<code>v, ok := &lt;-ch</code>这种方式来测试管道是否关闭，若ok为false则表示管道已关闭</p>
+<h2 id="range"><strong>结合range</strong><a class="headerlink" href="#range" title="Permanent link">&para;</a></h2>
 <hr />
-<div class="codehilite"><pre><span></span>ch &lt;- v // Send v to channel ch.
-v := &lt;-ch // Receive from ch, and
-           // assign value to v.
+<p>可以用for range来循环取出管道里的数据，range当遇到管道关闭时候就会自动结束循环，例子：</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">c</span> <span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">c</span> <span class="o">&lt;-</span> <span class="s">&quot;a&quot;</span>
+    <span class="nx">c</span> <span class="o">&lt;-</span> <span class="s">&quot;b&quot;</span>
+    <span class="nb">close</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">c</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span>
+    <span class="k">go</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">c</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
-<p>“箭头”就是数据流的方向</p>
-<p><strong>注意接受时候&lt;-和chan变量之间没有空格，虽然有空格也不会报错，但是ide会提示，因此还是依照规范不空格比较好</strong></p>
+<p>输出</p>
+<div class="codehilite"><pre><span></span>a
+b
+</pre></div>
+
+<blockquote>
+<p>Closing is only necessary when the receiver must be told there are no more values coming, such as to terminate a range loop.</p>
+</blockquote>
+<p>只有必须告知接收者没有数据要接收了才需要关闭管道，例如上面例子中需要告知range循环该结束了。如果不告知就会造成死锁</p>
+<p><strong>生产者close()结合消费者&lt;- 就可以实现类似多进程、多线程的wait、join这种等待效果</strong></p>
                 
                   
                 
@@ -2091,7 +2174,7 @@ v := &lt;-ch // Receive from ch, and
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../main/" title="1. 创建协程(go关键字)" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../channel_buffer/" title="2.2. buffer" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2100,19 +2183,19 @@ v := &lt;-ch // Receive from ch, and
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                1. 创建协程(go关键字)
+                2.2. buffer
               </span>
             </div>
           </a>
         
         
-          <a href="../../other/string/" title="1. 字符串处理" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../channel_select/" title="2.4. 结合select-case" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                1. 字符串处理
+                2.4. 结合select-case
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

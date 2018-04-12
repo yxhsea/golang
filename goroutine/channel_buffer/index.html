@@ -13,7 +13,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/golang/datatype/map_main/">
+        <link rel="canonical" href="https://cyent.github.io/golang/goroutine/channel_buffer/">
       
       
         <meta name="author" content="cyent">
@@ -38,7 +38,7 @@
     
     
       
-        <title>4.1. 声明 - Go语言学习 - cyent笔记</title>
+        <title>2.2. buffer - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                4.1. 声明
+                2.2. buffer
               </span>
             
           
@@ -609,12 +609,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
       五. 数据类型
@@ -632,7 +630,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../pointer/" title="1. pointer" class="md-nav__link">
+    <a href="../../datatype/pointer/" title="1. pointer" class="md-nav__link">
       1. pointer
     </a>
   </li>
@@ -663,7 +661,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_main/" title="2.1. 声明" class="md-nav__link">
+    <a href="../../datatype/struct_main/" title="2.1. 声明" class="md-nav__link">
       2.1. 声明
     </a>
   </li>
@@ -675,7 +673,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_export/" title="2.2. 导出名" class="md-nav__link">
+    <a href="../../datatype/struct_export/" title="2.2. 导出名" class="md-nav__link">
       2.2. 导出名
     </a>
   </li>
@@ -687,7 +685,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_pointer/" title="2.3. struct指针" class="md-nav__link">
+    <a href="../../datatype/struct_pointer/" title="2.3. struct指针" class="md-nav__link">
       2.3. struct指针
     </a>
   </li>
@@ -699,7 +697,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_literal/" title="2.4. literal" class="md-nav__link">
+    <a href="../../datatype/struct_literal/" title="2.4. literal" class="md-nav__link">
       2.4. literal
     </a>
   </li>
@@ -711,7 +709,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_anon/" title="2.5. 匿名struct" class="md-nav__link">
+    <a href="../../datatype/struct_anon/" title="2.5. 匿名struct" class="md-nav__link">
       2.5. 匿名struct
     </a>
   </li>
@@ -723,7 +721,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_interface_element/" title="2.6. 接口作为struct元素" class="md-nav__link">
+    <a href="../../datatype/struct_interface_element/" title="2.6. 接口作为struct元素" class="md-nav__link">
       2.6. 接口作为struct元素
     </a>
   </li>
@@ -735,7 +733,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_struct_element/" title="2.7. struct作为struct的元素" class="md-nav__link">
+    <a href="../../datatype/struct_struct_element/" title="2.7. struct作为struct的元素" class="md-nav__link">
       2.7. struct作为struct的元素
     </a>
   </li>
@@ -747,7 +745,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_empty/" title="2.8. 空struct" class="md-nav__link">
+    <a href="../../datatype/struct_empty/" title="2.8. 空struct" class="md-nav__link">
       2.8. 空struct
     </a>
   </li>
@@ -783,7 +781,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_main/" title="3.1. 介绍与比较" class="md-nav__link">
+    <a href="../../datatype/arr_sli_main/" title="3.1. 介绍与比较" class="md-nav__link">
       3.1. 介绍与比较
     </a>
   </li>
@@ -795,7 +793,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_len_cap/" title="3.2. len()与cap()" class="md-nav__link">
+    <a href="../../datatype/arr_sli_len_cap/" title="3.2. len()与cap()" class="md-nav__link">
       3.2. len()与cap()
     </a>
   </li>
@@ -807,7 +805,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_index/" title="3.3. 下标" class="md-nav__link">
+    <a href="../../datatype/arr_sli_index/" title="3.3. 下标" class="md-nav__link">
       3.3. 下标
     </a>
   </li>
@@ -819,7 +817,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_key/" title="3.4. 深入理解" class="md-nav__link">
+    <a href="../../datatype/arr_sli_key/" title="3.4. 深入理解" class="md-nav__link">
       3.4. 深入理解
     </a>
   </li>
@@ -831,7 +829,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_nil/" title="3.5. nil" class="md-nav__link">
+    <a href="../../datatype/arr_sli_nil/" title="3.5. nil" class="md-nav__link">
       3.5. nil
     </a>
   </li>
@@ -843,7 +841,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_make/" title="3.6. make" class="md-nav__link">
+    <a href="../../datatype/arr_sli_make/" title="3.6. make" class="md-nav__link">
       3.6. make
     </a>
   </li>
@@ -855,7 +853,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_nest/" title="3.7. slice嵌套" class="md-nav__link">
+    <a href="../../datatype/arr_sli_nest/" title="3.7. slice嵌套" class="md-nav__link">
       3.7. slice嵌套
     </a>
   </li>
@@ -867,7 +865,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_expand/" title="3.8. slice扩容" class="md-nav__link">
+    <a href="../../datatype/arr_sli_expand/" title="3.8. slice扩容" class="md-nav__link">
       3.8. slice扩容
     </a>
   </li>
@@ -879,7 +877,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_append/" title="3.9. append添加元素" class="md-nav__link">
+    <a href="../../datatype/arr_sli_append/" title="3.9. append添加元素" class="md-nav__link">
       3.9. append添加元素
     </a>
   </li>
@@ -891,7 +889,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_copy/" title="3.10. copy复制元素" class="md-nav__link">
+    <a href="../../datatype/arr_sli_copy/" title="3.10. copy复制元素" class="md-nav__link">
       3.10. copy复制元素
     </a>
   </li>
@@ -903,7 +901,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_empty_interface/" title="3.11. 空接口对切片的影响" class="md-nav__link">
+    <a href="../../datatype/arr_empty_interface/" title="3.11. 空接口对切片的影响" class="md-nav__link">
       3.11. 空接口对切片的影响
     </a>
   </li>
@@ -918,12 +916,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
     
     <label class="md-nav__link" for="nav-5-4">
       4. map
@@ -939,50 +935,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        4.1. 声明
-      </label>
-    
-    <a href="./" title="4.1. 声明" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../datatype/map_main/" title="4.1. 声明" class="md-nav__link">
       4.1. 声明
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="完整写法" class="md-nav__link">
-    完整写法
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="短声明写法" class="md-nav__link">
-    短声明写法
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -992,7 +949,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../map_nil/" title="4.2. nil map" class="md-nav__link">
+    <a href="../../datatype/map_nil/" title="4.2. nil map" class="md-nav__link">
       4.2. nil map
     </a>
   </li>
@@ -1004,7 +961,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../map_struct/" title="4.3. key和value可以用struct" class="md-nav__link">
+    <a href="../../datatype/map_struct/" title="4.3. key和value可以用struct" class="md-nav__link">
       4.3. key和value可以用struct
     </a>
   </li>
@@ -1016,7 +973,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../map_literal/" title="4.4. literal" class="md-nav__link">
+    <a href="../../datatype/map_literal/" title="4.4. literal" class="md-nav__link">
       4.4. literal
     </a>
   </li>
@@ -1028,7 +985,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../map_get_insert_update/" title="4.5. 检索、添加和修改元素" class="md-nav__link">
+    <a href="../../datatype/map_get_insert_update/" title="4.5. 检索、添加和修改元素" class="md-nav__link">
       4.5. 检索、添加和修改元素
     </a>
   </li>
@@ -1040,7 +997,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../map_delete/" title="4.6. delete删除元素" class="md-nav__link">
+    <a href="../../datatype/map_delete/" title="4.6. delete删除元素" class="md-nav__link">
       4.6. delete删除元素
     </a>
   </li>
@@ -1076,7 +1033,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../funcvalue_main/" title="5.1. 介绍" class="md-nav__link">
+    <a href="../../datatype/funcvalue_main/" title="5.1. 介绍" class="md-nav__link">
       5.1. 介绍
     </a>
   </li>
@@ -1088,7 +1045,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../funcvalue_parameter/" title="5.2. 函数作为参数传递给另一个函数" class="md-nav__link">
+    <a href="../../datatype/funcvalue_parameter/" title="5.2. 函数作为参数传递给另一个函数" class="md-nav__link">
       5.2. 函数作为参数传递给另一个函数
     </a>
   </li>
@@ -1100,7 +1057,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../funcvalue_callback/" title="5.3. 用途1-回调函数" class="md-nav__link">
+    <a href="../../datatype/funcvalue_callback/" title="5.3. 用途1-回调函数" class="md-nav__link">
       5.3. 用途1-回调函数
     </a>
   </li>
@@ -1112,7 +1069,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../funcvalue_closure/" title="5.4. 用途2-闭包" class="md-nav__link">
+    <a href="../../datatype/funcvalue_closure/" title="5.4. 用途2-闭包" class="md-nav__link">
       5.4. 用途2-闭包
     </a>
   </li>
@@ -1600,10 +1557,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
     
     <label class="md-nav__link" for="nav-8">
       八. 协程
@@ -1621,7 +1580,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/main/" title="1. 创建协程(go关键字)" class="md-nav__link">
+    <a href="../main/" title="1. 创建协程(go关键字)" class="md-nav__link">
       1. 创建协程(go关键字)
     </a>
   </li>
@@ -1631,10 +1590,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2" checked>
     
     <label class="md-nav__link" for="nav-8-2">
       2. channel
@@ -1652,7 +1613,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/channel_main/" title="2.1. 基本使用" class="md-nav__link">
+    <a href="../channel_main/" title="2.1. 基本使用" class="md-nav__link">
       2.1. 基本使用
     </a>
   </li>
@@ -1662,11 +1623,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../goroutine/channel_buffer/" title="2.2. buffer" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="2.2. buffer" class="md-nav__link md-nav__link--active">
       2.2. buffer
     </a>
+    
   </li>
 
         
@@ -1676,7 +1644,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/channel_close/" title="2.3. close" class="md-nav__link">
+    <a href="../channel_close/" title="2.3. close" class="md-nav__link">
       2.3. close
     </a>
   </li>
@@ -1688,7 +1656,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/channel_select/" title="2.4. 结合select-case" class="md-nav__link">
+    <a href="../channel_select/" title="2.4. 结合select-case" class="md-nav__link">
       2.4. 结合select-case
     </a>
   </li>
@@ -1700,7 +1668,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/channel_rw/" title="2.5. 读写类型" class="md-nav__link">
+    <a href="../channel_rw/" title="2.5. 读写类型" class="md-nav__link">
       2.5. 读写类型
     </a>
   </li>
@@ -2071,80 +2039,42 @@
               </div>
             
             
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="完整写法" class="md-nav__link">
-    完整写法
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="短声明写法" class="md-nav__link">
-    短声明写法
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cyent/golang/edit/master/docs/datatype/map_main.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/cyent/golang/edit/master/docs/goroutine/channel_buffer.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>4.1. 声明</h1>
+                  <h1>2.2. buffer</h1>
                 
-                <p>map就是键值对(key-&gt;value)，在其他语言中通常叫hash或者字典</p>
-<h2 id="_1"><strong>完整写法</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<hr />
-<div class="codehilite"><pre><span></span>var m map[key_type]value_type
-m = make(map[key_type]value_type)
+                <p><strong>Buffered Channels</strong></p>
+<p>channel可以带buffer：</p>
+<div class="codehilite"><pre><span></span>make(chan int, 2)
 </pre></div>
 
-<p>例子</p>
-<div class="codehilite"><pre><span></span>var m map[string]int
-m = make(map[string]int)
+<p>表示创建一个length为2的管道，注意这里的length表示数量，而非具体的内存容积，比如</p>
+<div class="codehilite"><pre><span></span>make(chan string, 2)
 </pre></div>
 
-<div class="admonition note">
-<p class="admonition-title">简写</p>
-<div class="codehilite"><pre><span></span>var m map[key_type]value_type = make(map[key_type]value_type)
-</pre></div>
-
-<p>例子</p>
-<div class="codehilite"><pre><span></span>var m map[string]int = make(make[string]int)
-</pre></div>
-
-</div>
-<h2 id="_2"><strong>短声明写法</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<hr />
-<div class="codehilite"><pre><span></span>m := make(map[key_type]value_type)
-</pre></div>
-
-<p>例子</p>
-<div class="codehilite"><pre><span></span>m := make(map[string]int)
-</pre></div>
+<ul>
+<li>
+<p>表示可以容纳2个string的内容，比如"abcdefg"和"h"这样2个string，而不是指只能存"a"和"b"。</p>
+</li>
+<li>
+<p>当不设置length时候即为buffer=0</p>
+</li>
+</ul>
+<p>说明：</p>
+<ul>
+<li>
+<p>往chan发送数据时候，若buffer没满的时候，则发送数据即刻成功，不会被阻塞。当buffer满了就会被阻塞</p>
+</li>
+<li>
+<p>从chan接受数据时候，若buffer是空的则会被阻塞，当buffer不是空的时候则即刻完成，不会被阻塞</p>
+</li>
+</ul>
                 
                   
                 
@@ -2163,7 +2093,7 @@ m = make(map[string]int)
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../arr_empty_interface/" title="3.11. 空接口对切片的影响" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../channel_main/" title="2.1. 基本使用" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2172,19 +2102,19 @@ m = make(map[string]int)
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                3.11. 空接口对切片的影响
+                2.1. 基本使用
               </span>
             </div>
           </a>
         
         
-          <a href="../map_nil/" title="4.2. nil map" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../channel_close/" title="2.3. close" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                4.2. nil map
+                2.3. close
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
