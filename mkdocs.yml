@@ -163,6 +163,9 @@ pages:
             - 2.3. close: goroutine/channel_close.md
             - 2.4. 结合select-case: goroutine/channel_select.md
             - 2.5. 读写类型: goroutine/channel_rw.md
+        - 3. 同步(sync):
+            - 3.1. 互斥锁(Mutex): goroutine/sync_mutex.md
+            - 3.2. 读写锁(RWMutex): goroutine/sync_rwmutex.md
     - 九. 其他:
         - 1. 字符串处理: other/string.md
         - 2. range: other/range.md
