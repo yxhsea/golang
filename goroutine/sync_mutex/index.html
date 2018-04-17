@@ -13,7 +13,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/golang/datatype/struct_anon/">
+        <link rel="canonical" href="https://cyent.github.io/golang/goroutine/sync_mutex/">
       
       
         <meta name="author" content="cyent">
@@ -38,7 +38,7 @@
     
     
       
-        <title>2.5. 匿名struct - Go语言学习 - cyent笔记</title>
+        <title>3.1. 互斥锁(Mutex) - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                2.5. 匿名struct
+                3.1. 互斥锁(Mutex)
               </span>
             
           
@@ -609,12 +609,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
       五. 数据类型
@@ -632,7 +630,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../pointer/" title="1. pointer" class="md-nav__link">
+    <a href="../../datatype/pointer/" title="1. pointer" class="md-nav__link">
       1. pointer
     </a>
   </li>
@@ -642,12 +640,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
     
     <label class="md-nav__link" for="nav-5-2">
       2. struct
@@ -665,7 +661,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_main/" title="2.1. 声明" class="md-nav__link">
+    <a href="../../datatype/struct_main/" title="2.1. 声明" class="md-nav__link">
       2.1. 声明
     </a>
   </li>
@@ -677,7 +673,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_export/" title="2.2. 导出名" class="md-nav__link">
+    <a href="../../datatype/struct_export/" title="2.2. 导出名" class="md-nav__link">
       2.2. 导出名
     </a>
   </li>
@@ -689,7 +685,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_pointer/" title="2.3. struct指针" class="md-nav__link">
+    <a href="../../datatype/struct_pointer/" title="2.3. struct指针" class="md-nav__link">
       2.3. struct指针
     </a>
   </li>
@@ -701,7 +697,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_literal/" title="2.4. literal" class="md-nav__link">
+    <a href="../../datatype/struct_literal/" title="2.4. literal" class="md-nav__link">
       2.4. literal
     </a>
   </li>
@@ -711,18 +707,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="2.5. 匿名struct" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../datatype/struct_anon/" title="2.5. 匿名struct" class="md-nav__link">
       2.5. 匿名struct
     </a>
-    
   </li>
 
         
@@ -732,7 +721,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_interface_element/" title="2.6. 接口作为struct元素" class="md-nav__link">
+    <a href="../../datatype/struct_interface_element/" title="2.6. 接口作为struct元素" class="md-nav__link">
       2.6. 接口作为struct元素
     </a>
   </li>
@@ -744,7 +733,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_struct_element/" title="2.7. struct作为struct的元素" class="md-nav__link">
+    <a href="../../datatype/struct_struct_element/" title="2.7. struct作为struct的元素" class="md-nav__link">
       2.7. struct作为struct的元素
     </a>
   </li>
@@ -756,7 +745,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../struct_empty/" title="2.8. 空struct" class="md-nav__link">
+    <a href="../../datatype/struct_empty/" title="2.8. 空struct" class="md-nav__link">
       2.8. 空struct
     </a>
   </li>
@@ -792,7 +781,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_main/" title="3.1. 介绍与比较" class="md-nav__link">
+    <a href="../../datatype/arr_sli_main/" title="3.1. 介绍与比较" class="md-nav__link">
       3.1. 介绍与比较
     </a>
   </li>
@@ -804,7 +793,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_len_cap/" title="3.2. len()与cap()" class="md-nav__link">
+    <a href="../../datatype/arr_sli_len_cap/" title="3.2. len()与cap()" class="md-nav__link">
       3.2. len()与cap()
     </a>
   </li>
@@ -816,7 +805,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_index/" title="3.3. 下标" class="md-nav__link">
+    <a href="../../datatype/arr_sli_index/" title="3.3. 下标" class="md-nav__link">
       3.3. 下标
     </a>
   </li>
@@ -828,7 +817,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_key/" title="3.4. 深入理解" class="md-nav__link">
+    <a href="../../datatype/arr_sli_key/" title="3.4. 深入理解" class="md-nav__link">
       3.4. 深入理解
     </a>
   </li>
@@ -840,7 +829,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_nil/" title="3.5. nil" class="md-nav__link">
+    <a href="../../datatype/arr_sli_nil/" title="3.5. nil" class="md-nav__link">
       3.5. nil
     </a>
   </li>
@@ -852,7 +841,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_make/" title="3.6. make" class="md-nav__link">
+    <a href="../../datatype/arr_sli_make/" title="3.6. make" class="md-nav__link">
       3.6. make
     </a>
   </li>
@@ -864,7 +853,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_nest/" title="3.7. slice嵌套" class="md-nav__link">
+    <a href="../../datatype/arr_sli_nest/" title="3.7. slice嵌套" class="md-nav__link">
       3.7. slice嵌套
     </a>
   </li>
@@ -876,7 +865,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_expand/" title="3.8. slice扩容" class="md-nav__link">
+    <a href="../../datatype/arr_sli_expand/" title="3.8. slice扩容" class="md-nav__link">
       3.8. slice扩容
     </a>
   </li>
@@ -888,7 +877,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_append/" title="3.9. append添加元素" class="md-nav__link">
+    <a href="../../datatype/arr_sli_append/" title="3.9. append添加元素" class="md-nav__link">
       3.9. append添加元素
     </a>
   </li>
@@ -900,7 +889,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_sli_copy/" title="3.10. copy复制元素" class="md-nav__link">
+    <a href="../../datatype/arr_sli_copy/" title="3.10. copy复制元素" class="md-nav__link">
       3.10. copy复制元素
     </a>
   </li>
@@ -912,7 +901,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../arr_empty_interface/" title="3.11. 空接口对切片的影响" class="md-nav__link">
+    <a href="../../datatype/arr_empty_interface/" title="3.11. 空接口对切片的影响" class="md-nav__link">
       3.11. 空接口对切片的影响
     </a>
   </li>
@@ -948,7 +937,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../map_main/" title="4.1. 声明" class="md-nav__link">
+    <a href="../../datatype/map_main/" title="4.1. 声明" class="md-nav__link">
       4.1. 声明
     </a>
   </li>
@@ -960,7 +949,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../map_nil/" title="4.2. nil map" class="md-nav__link">
+    <a href="../../datatype/map_nil/" title="4.2. nil map" class="md-nav__link">
       4.2. nil map
     </a>
   </li>
@@ -972,7 +961,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../map_struct/" title="4.3. key和value可以用struct" class="md-nav__link">
+    <a href="../../datatype/map_struct/" title="4.3. key和value可以用struct" class="md-nav__link">
       4.3. key和value可以用struct
     </a>
   </li>
@@ -984,7 +973,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../map_literal/" title="4.4. literal" class="md-nav__link">
+    <a href="../../datatype/map_literal/" title="4.4. literal" class="md-nav__link">
       4.4. literal
     </a>
   </li>
@@ -996,7 +985,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../map_get_insert_update/" title="4.5. 检索、添加和修改元素" class="md-nav__link">
+    <a href="../../datatype/map_get_insert_update/" title="4.5. 检索、添加和修改元素" class="md-nav__link">
       4.5. 检索、添加和修改元素
     </a>
   </li>
@@ -1008,7 +997,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../map_delete/" title="4.6. delete删除元素" class="md-nav__link">
+    <a href="../../datatype/map_delete/" title="4.6. delete删除元素" class="md-nav__link">
       4.6. delete删除元素
     </a>
   </li>
@@ -1044,7 +1033,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../funcvalue_main/" title="5.1. 介绍" class="md-nav__link">
+    <a href="../../datatype/funcvalue_main/" title="5.1. 介绍" class="md-nav__link">
       5.1. 介绍
     </a>
   </li>
@@ -1056,7 +1045,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../funcvalue_parameter/" title="5.2. 函数作为参数传递给另一个函数" class="md-nav__link">
+    <a href="../../datatype/funcvalue_parameter/" title="5.2. 函数作为参数传递给另一个函数" class="md-nav__link">
       5.2. 函数作为参数传递给另一个函数
     </a>
   </li>
@@ -1068,7 +1057,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../funcvalue_callback/" title="5.3. 用途1-回调函数" class="md-nav__link">
+    <a href="../../datatype/funcvalue_callback/" title="5.3. 用途1-回调函数" class="md-nav__link">
       5.3. 用途1-回调函数
     </a>
   </li>
@@ -1080,7 +1069,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../funcvalue_closure/" title="5.4. 用途2-闭包" class="md-nav__link">
+    <a href="../../datatype/funcvalue_closure/" title="5.4. 用途2-闭包" class="md-nav__link">
       5.4. 用途2-闭包
     </a>
   </li>
@@ -1568,10 +1557,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
     
     <label class="md-nav__link" for="nav-8">
       八. 协程
@@ -1589,7 +1580,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/main/" title="1. 创建协程(go关键字)" class="md-nav__link">
+    <a href="../main/" title="1. 创建协程(go关键字)" class="md-nav__link">
       1. 创建协程(go关键字)
     </a>
   </li>
@@ -1620,7 +1611,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/channel_main/" title="2.1. 基本使用" class="md-nav__link">
+    <a href="../channel_main/" title="2.1. 基本使用" class="md-nav__link">
       2.1. 基本使用
     </a>
   </li>
@@ -1632,7 +1623,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/channel_buffer/" title="2.2. buffer" class="md-nav__link">
+    <a href="../channel_buffer/" title="2.2. buffer" class="md-nav__link">
       2.2. buffer
     </a>
   </li>
@@ -1644,7 +1635,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/channel_close/" title="2.3. close" class="md-nav__link">
+    <a href="../channel_close/" title="2.3. close" class="md-nav__link">
       2.3. close
     </a>
   </li>
@@ -1656,7 +1647,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/channel_select/" title="2.4. 结合select-case" class="md-nav__link">
+    <a href="../channel_select/" title="2.4. 结合select-case" class="md-nav__link">
       2.4. 结合select-case
     </a>
   </li>
@@ -1668,7 +1659,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/channel_rw/" title="2.5. 读写类型" class="md-nav__link">
+    <a href="../channel_rw/" title="2.5. 读写类型" class="md-nav__link">
       2.5. 读写类型
     </a>
   </li>
@@ -1683,10 +1674,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3" checked>
     
     <label class="md-nav__link" for="nav-8-3">
       3. 同步(sync)
@@ -1702,11 +1695,71 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../goroutine/sync_mutex/" title="3.1. 互斥锁(Mutex)" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        3.1. 互斥锁(Mutex)
+      </label>
+    
+    <a href="./" title="3.1. 互斥锁(Mutex)" class="md-nav__link md-nav__link--active">
       3.1. 互斥锁(Mutex)
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="介绍" class="md-nav__link">
+    介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="使用" class="md-nav__link">
+    使用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="一个愿打一个愿挨" class="md-nav__link">
+    一个愿打一个愿挨
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutexgoroutine" title="已经锁定的Mutex与特定的goroutine无关联" class="md-nav__link">
+    已经锁定的Mutex与特定的goroutine无关联
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="参考资料" class="md-nav__link">
+    参考资料
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -1716,7 +1769,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/sync_rwmutex/" title="3.2. 读写锁(RWMutex)" class="md-nav__link">
+    <a href="../sync_rwmutex/" title="3.2. 读写锁(RWMutex)" class="md-nav__link">
       3.2. 读写锁(RWMutex)
     </a>
   </li>
@@ -2087,34 +2140,361 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="介绍" class="md-nav__link">
+    介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="使用" class="md-nav__link">
+    使用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="一个愿打一个愿挨" class="md-nav__link">
+    一个愿打一个愿挨
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutexgoroutine" title="已经锁定的Mutex与特定的goroutine无关联" class="md-nav__link">
+    已经锁定的Mutex与特定的goroutine无关联
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="参考资料" class="md-nav__link">
+    参考资料
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cyent/golang/edit/master/docs/datatype/struct_anon.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/cyent/golang/edit/master/docs/goroutine/sync_mutex.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>2.5. 匿名struct</h1>
+                  <h1>3.1. 互斥锁(Mutex)</h1>
                 
-                <p>如果只是临时使用struct一次，而不是多次使用，用匿名struct即可</p>
+                <p><strong>互斥锁: sync.Mutex</strong></p>
+<h2 id="_1"><strong>介绍</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
+<p>用于主动控制Mutex类型的变量或者将Mutex类型作为struct的元素的变量在同一时间只被一个routine访问（即执行Lock()方法的代码块），这个Mutex带有2个方法：Lock()和Unlock()。互斥锁不区分读和写，即无论是print打印还是写操作都是互斥的</p>
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;sync&quot;</span>
+<span class="p">)</span>
 
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">a</span> <span class="o">:=</span> <span class="kd">struct</span><span class="p">{</span><span class="nx">name</span> <span class="kt">string</span><span class="p">}{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;hello&quot;</span><span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v\n&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+    <span class="kd">var</span> <span class="nx">mutex</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%+v\n&quot;</span><span class="p">,</span> <span class="nx">mutex</span><span class="p">)</span>
+
+    <span class="nx">mutex</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%+v\n&quot;</span><span class="p">,</span> <span class="nx">mutex</span><span class="p">)</span>
+
+    <span class="nx">mutex</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%+v\n&quot;</span><span class="p">,</span> <span class="nx">mutex</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
 <p>输出</p>
-<div class="codehilite"><pre><span></span>struct { name string }
-{hello}
-hello
+<div class="codehilite"><pre><span></span>{state:0 sema:0}
+{state:1 sema:0}
+{state:0 sema:0}
 </pre></div>
+
+<p>可以看出当Lock()时，state为1，Unlock()时，state为0。</p>
+<p>这段代码其实是为后面Lock()使用做了一个工作原理铺垫（个人猜测）：Lock()时候会判断state，若为0，则将state改为1；若为1，则阻塞等待，直到state变为0，然后再将state改为1。sync.Mutex是并发安全的。</p>
+<h2 id="_2"><strong>使用</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<hr />
+<p>下面这个例子是在官网例子上做了一点修改，更容易看出互斥效果</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;sync&quot;</span>
+    <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// SafeCounter is safe to use concurrently.</span>
+<span class="kd">type</span> <span class="nx">SafeCounter</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">v</span>   <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span>
+    <span class="nx">mux</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span>
+<span class="p">}</span>
+
+<span class="c1">// Inc increments the counter for the given key.</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">SafeCounter</span><span class="p">)</span> <span class="nx">Inc</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">id</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">c</span><span class="p">.</span><span class="nx">mux</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d. Inc lock.\n&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span>
+    <span class="c1">// Lock so only one goroutine at a time can access the map c.v.</span>
+    <span class="nx">c</span><span class="p">.</span><span class="nx">v</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span><span class="o">++</span>
+    <span class="nx">c</span><span class="p">.</span><span class="nx">mux</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d. Inc unlock.\n&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// Value returns the current value of the counter for the given key.</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">SafeCounter</span><span class="p">)</span> <span class="nx">Value</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="nx">c</span><span class="p">.</span><span class="nx">mux</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Value lock.&quot;</span><span class="p">)</span>
+    <span class="c1">// Lock so only one goroutine at a time can access the map c.v.</span>
+    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Value unlock.&quot;</span><span class="p">)</span>
+    <span class="k">defer</span> <span class="nx">c</span><span class="p">.</span><span class="nx">mux</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nx">v</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">SafeCounter</span><span class="p">{</span><span class="nx">v</span><span class="p">:</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)}</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="k">go</span> <span class="nx">c</span><span class="p">.</span><span class="nx">Inc</span><span class="p">(</span><span class="s">&quot;somekey&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">Value</span><span class="p">(</span><span class="s">&quot;somekey&quot;</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>1. Inc lock.
+1. Inc unlock.
+0. Inc lock.
+0. Inc unlock.
+7. Inc lock.
+7. Inc unlock.
+8. Inc lock.
+8. Inc unlock.
+6. Inc lock.
+6. Inc unlock.
+3. Inc lock.
+3. Inc unlock.
+9. Inc lock.
+9. Inc unlock.
+2. Inc lock.
+2. Inc unlock.
+4. Inc lock.
+4. Inc unlock.
+5. Inc lock.
+5. Inc unlock.
+Value lock.
+Value unlock.
+10
+</pre></div>
+
+<ul>
+<li>
+<p>每次输出结果也不太一样：0-9的顺序不一致</p>
+</li>
+<li>
+<p>我们一般会在锁定互斥锁之后紧接着就用defer语句来保证该互斥锁的及时解锁，因为defer是先进后出</p>
+</li>
+<li>
+<p>Inc和Value方法的receiver是指针，这是必须的，因为Mutex锁对应的就是一个具体的变量（可以是struct，也可以是其他普通类型）</p>
+</li>
+</ul>
+<h2 id="_3"><strong>一个愿打一个愿挨</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<hr />
+<p>互斥锁的使用是主动控制互斥锁，即一个愿打一个愿挨。比如即使一个routine里用了Lock()，但在另一个routine可以不理会这个锁就能访问这个struct，只需要不调用Lock()就行。例子如下</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;sync&quot;</span>
+    <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">SafeCounter</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">v</span>   <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span>
+    <span class="nx">mux</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">SafeCounter</span><span class="p">)</span> <span class="nx">Inc</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">c</span><span class="p">.</span><span class="nx">mux</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+    <span class="nx">c</span><span class="p">.</span><span class="nx">v</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span><span class="o">++</span>
+    <span class="nx">c</span><span class="p">.</span><span class="nx">mux</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">SafeCounter</span><span class="p">{</span><span class="nx">v</span><span class="p">:</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)}</span>
+    <span class="k">go</span> <span class="nx">c</span><span class="p">.</span><span class="nx">Inc</span><span class="p">(</span><span class="s">&quot;somekey&quot;</span><span class="p">)</span>
+
+    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+    <span class="nx">c</span><span class="p">.</span><span class="nx">v</span><span class="p">[</span><span class="s">&quot;somekey&quot;</span><span class="p">]</span><span class="o">++</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">v</span><span class="p">[</span><span class="s">&quot;somekey&quot;</span><span class="p">])</span>
+
+    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">v</span><span class="p">[</span><span class="s">&quot;somekey&quot;</span><span class="p">])</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>1
+2
+</pre></div>
+
+<p><code>c.v[&quot;somekey&quot;]++</code>之前，是已经锁了，本应该等2-3秒，才能输出，但是从程序开始运行，只过了1秒就输出了，说明Lock只是一种人为的互斥，是一种协议，并不是强制。</p>
+<p>接下来看下不加锁的效果，即是否会产生冲突，例子如下</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;sync&quot;</span>
+    <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// SafeCounter is safe to use concurrently.</span>
+<span class="kd">type</span> <span class="nx">SafeCounter</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">v</span>   <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span>
+    <span class="nx">mux</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span>
+<span class="p">}</span>
+
+<span class="c1">// Inc increments the counter for the given key.</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">SafeCounter</span><span class="p">)</span> <span class="nx">Inc</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">id</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">//  c.mux.Lock()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d. Inc lock.\n&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span>
+    <span class="c1">// Lock so only one goroutine at a time can access the map c.v.</span>
+    <span class="nx">c</span><span class="p">.</span><span class="nx">v</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span><span class="o">++</span>
+<span class="c1">//  c.mux.Unlock()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d. Inc unlock.\n&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// Value returns the current value of the counter for the given key.</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">SafeCounter</span><span class="p">)</span> <span class="nx">Value</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="nx">c</span><span class="p">.</span><span class="nx">mux</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Value lock.&quot;</span><span class="p">)</span>
+    <span class="c1">// Lock so only one goroutine at a time can access the map c.v.</span>
+    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Value unlock.&quot;</span><span class="p">)</span>
+    <span class="k">defer</span> <span class="nx">c</span><span class="p">.</span><span class="nx">mux</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nx">v</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">SafeCounter</span><span class="p">{</span><span class="nx">v</span><span class="p">:</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)}</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="k">go</span> <span class="nx">c</span><span class="p">.</span><span class="nx">Inc</span><span class="p">(</span><span class="s">&quot;somekey&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">Value</span><span class="p">(</span><span class="s">&quot;somekey&quot;</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>有时候输出</p>
+<div class="codehilite"><pre><span></span>0. Inc lock.
+1. Inc lock.
+0. Inc unlock.
+1. Inc unlock.
+Value lock.
+Value unlock.
+2
+</pre></div>
+
+<p>有时候输出</p>
+<div class="codehilite"><pre><span></span>1. Inc lock.
+0. Inc lock.
+fatal error: 1. Inc unlock.
+concurrent map writes
+
+goroutine 5 [running]:
+runtime.throw(0x10b65f1, 0x15)
+    /usr/local/go/src/runtime/panic.go:596 +0x95 fp=0xc420098e80 sp=0xc420098e60
+runtime.mapassign(0x109d7a0, 0xc4200180f0, 0xc420098f90, 0x7)
+    /usr/local/go/src/runtime/hashmap.go:499 +0x667 fp=0xc420098f20 sp=0xc420098e80
+main.(*SafeCounter).Inc(0xc42000e270, 0x10b49f8, 0x7, 0x0)
+    /Users/foo/test/b.go:20 +0x144 fp=0xc420098fc0 sp=0xc420098f20
+runtime.goexit()
+    /usr/local/go/src/runtime/asm_amd64.s:2197 +0x1 fp=0xc420098fc8 sp=0xc420098fc0
+created by main.main
+    /Users/foo/test/b.go:38 +0xcd
+
+goroutine 1 [sleep]:
+time.Sleep(0x3b9aca00)
+    /usr/local/go/src/runtime/time.go:59 +0xf9
+main.main()
+    /Users/foo/test/b.go:41 +0xf2
+</pre></div>
+
+<p>这里报错是因为go语言的map不是并发安全，所以当并发不加锁时候就会存在冲突的可能。最新的go语言的sync包里新增了sync.Map，应该可以解决类似问题（还没研究过）</p>
+<h2 id="mutexgoroutine"><strong>已经锁定的Mutex与特定的goroutine无关联</strong><a class="headerlink" href="#mutexgoroutine" title="Permanent link">&para;</a></h2>
+<hr />
+<p>已经锁定的Mutex并不与特定的goroutine相关联，这样可以利用一个goroutine对其加锁，再利用其他goroutine对其解锁，例子如下</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;sync&quot;</span>
+    <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">v</span>   <span class="kt">int</span>
+    <span class="nx">mux</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">MyStruct</span><span class="p">)</span> <span class="nx">Lock</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">mux</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">MyStruct</span><span class="p">)</span> <span class="nx">Unlock</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">mux</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">MyStruct</span><span class="p">{</span><span class="nx">v</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">v</span> <span class="p">=</span> <span class="mi">1</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%+v\n&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+
+    <span class="k">go</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%+v\n&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+
+    <span class="k">go</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%+v\n&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>{v:1 mux:{state:0 sema:0}}
+{v:1 mux:{state:1 sema:0}}
+{v:1 mux:{state:0 sema:0}}
+</pre></div>
+
+<p>可以看出，可以一个routine里锁定，另一个routine里解锁。因为锁只和具体变量关联，和routine无关，只要这个变量是共享的，比如通过指针传递，或者全局变量都可以。</p>
+<p>虽然互斥锁可以被直接的在多个Goroutine之间共享，但是我们还是强烈建议把对同一个互斥锁的成对的锁定和解锁操作放在同一个层次的代码块中。例如，在同一个函数或方法中对某个互斥锁的进行锁定和解锁。</p>
+<h2 id="_4"><strong>参考资料</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<hr />
+<p><a href="https://www.cnblogs.com/niniwzw/archive/2013/06/24/3153955.html">https://www.cnblogs.com/niniwzw/archive/2013/06/24/3153955.html</a></p>
                 
                   
                 
@@ -2133,7 +2513,7 @@ hello
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../struct_literal/" title="2.4. literal" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../channel_rw/" title="2.5. 读写类型" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2142,19 +2522,19 @@ hello
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                2.4. literal
+                2.5. 读写类型
               </span>
             </div>
           </a>
         
         
-          <a href="../struct_interface_element/" title="2.6. 接口作为struct元素" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../sync_rwmutex/" title="3.2. 读写锁(RWMutex)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                2.6. 接口作为struct元素
+                3.2. 读写锁(RWMutex)
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
