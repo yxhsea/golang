@@ -41,9 +41,3 @@ func (rw *RWMutex) RLocker() Locker    //返回实现了sync.Locker接口的值
 ```
 
 这个RLocker()作用是，使用Lock()和Unlock()来进行读锁定和读解锁，而无需RLock()和RUnlock()来进行读锁定和读解锁
-
-## **参考资料**
-
----
-
-http://www.jb51.net/article/57335.htm
