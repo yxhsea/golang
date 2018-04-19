@@ -13,7 +13,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/golang/other/enum/">
+        <link rel="canonical" href="https://cyent.github.io/golang/other/constructor/">
       
       
         <meta name="author" content="cyent">
@@ -38,7 +38,7 @@
     
     
       
-        <title>10. 枚举 - Go语言学习 - cyent笔记</title>
+        <title>17. 构造方法 - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                10. 枚举
+                17. 构造方法
               </span>
             
           
@@ -1890,18 +1890,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="10. 枚举" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../enum/" title="10. 枚举" class="md-nav__link">
       10. 枚举
     </a>
-    
   </li>
 
         
@@ -2017,11 +2010,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../constructor/" title="17. 构造方法" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="17. 构造方法" class="md-nav__link md-nav__link--active">
       17. 构造方法
     </a>
+    
   </li>
 
         
@@ -2138,53 +2138,15 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cyent/golang/edit/master/docs/other/enum.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/cyent/golang/edit/master/docs/other/constructor.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>10. 枚举</h1>
+                  <h1>17. 构造方法</h1>
                 
-                <p>枚举就是一一列举，将所有的情况都列举出来，那么取值的时候只能是这几种情况的一种，不能是别的。</p>
-<p>go枚举：</p>
-<p>在go语言中，没有直接支持枚举的关键字，也就造成go没有直接枚举的功能。但是可以通过const+iota来模拟枚举</p>
-<p>例子：</p>
-<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="c1">// 实现枚举例子</span>
-<span class="kd">type</span> <span class="nx">State</span> <span class="kt">int</span>
-
-<span class="c1">// iota 初始化后会自动递增</span>
-<span class="kd">const</span> <span class="p">(</span>
-    <span class="nx">Running</span> <span class="nx">State</span> <span class="p">=</span> <span class="kc">iota</span>    <span class="c1">// value --&gt; 0</span>
-    <span class="nx">Stopped</span>                 <span class="c1">// value --&gt; 1</span>
-    <span class="nx">Rebooting</span>               <span class="c1">// value --&gt; 2</span>
-    <span class="nx">Terminated</span>              <span class="c1">// value --&gt; 3</span>
-<span class="p">)</span>
-
-<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="nx">State</span><span class="p">)</span> <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
-    <span class="k">switch</span> <span class="nx">this</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">Running</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">&quot;Running&quot;</span>
-    <span class="k">case</span> <span class="nx">Stopped</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">&quot;Stopped&quot;</span>
-    <span class="k">default</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">&quot;Unknown&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">state</span> <span class="o">:=</span> <span class="nx">Stopped</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;state&quot;</span><span class="p">,</span> <span class="nx">state</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-
-<p>输出</p>
-<div class="codehilite"><pre><span></span>state Stopped
-</pre></div>
-
-<p>没有重载String函数的情况下则输出<code>state 1</code></p>
-<p>附iota详解：<a href="https://studygolang.com/articles/2192">https://studygolang.com/articles/2192</a></p>
+                <p>构造方法（也叫构造函数）的概念：</p>
+<p>构造方法是java里的称呼，是一种特殊的方法，其方法名和所属类的类名相同，用于类的初始化，即当实例化一个类的时候，会自动调用这个方法。在python里就是<code>def __init__()</code></p>
+<p>构造方法英文叫做constructor。我对构造方法的理解是顾名思义，通过这个方法构造一个对象，即初始化这个对象的属性等</p>
+<p>在结构化语言中没有构造方法，但也有类似效果，比如在golang里经常会为一个自定义struct定义一个函数，比如<code>func NewXxx()</code>，调用这个函数会返回这个struct的指针</p>
                 
                   
                 
@@ -2203,7 +2165,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../make/" title="9. make" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../runtime/" title="16. 查看系统环境runtime" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2212,19 +2174,19 @@
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                9. make
+                16. 查看系统环境runtime
               </span>
             </div>
           </a>
         
         
-          <a href="../readers/" title="11. Readers" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../appendix/doc/" title="1. 文档" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                11. Readers
+                1. 文档
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

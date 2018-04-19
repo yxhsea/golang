@@ -13,7 +13,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/golang/other/enum/">
+        <link rel="canonical" href="https://cyent.github.io/golang/goroutine/sync_cond/">
       
       
         <meta name="author" content="cyent">
@@ -38,7 +38,7 @@
     
     
       
-        <title>10. 枚举 - Go语言学习 - cyent笔记</title>
+        <title>3.5. 条件变量(Cond) - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                10. 枚举
+                3.5. 条件变量(Cond)
               </span>
             
           
@@ -1557,10 +1557,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
     
     <label class="md-nav__link" for="nav-8">
       八. 协程
@@ -1578,7 +1580,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/main/" title="1. 创建协程(go关键字)" class="md-nav__link">
+    <a href="../main/" title="1. 创建协程(go关键字)" class="md-nav__link">
       1. 创建协程(go关键字)
     </a>
   </li>
@@ -1609,7 +1611,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/channel_main/" title="2.1. 基本使用" class="md-nav__link">
+    <a href="../channel_main/" title="2.1. 基本使用" class="md-nav__link">
       2.1. 基本使用
     </a>
   </li>
@@ -1621,7 +1623,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/channel_buffer/" title="2.2. buffer" class="md-nav__link">
+    <a href="../channel_buffer/" title="2.2. buffer" class="md-nav__link">
       2.2. buffer
     </a>
   </li>
@@ -1633,7 +1635,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/channel_close/" title="2.3. close" class="md-nav__link">
+    <a href="../channel_close/" title="2.3. close" class="md-nav__link">
       2.3. close
     </a>
   </li>
@@ -1645,7 +1647,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/channel_select/" title="2.4. 结合select-case" class="md-nav__link">
+    <a href="../channel_select/" title="2.4. 结合select-case" class="md-nav__link">
       2.4. 结合select-case
     </a>
   </li>
@@ -1657,7 +1659,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/channel_rw/" title="2.5. 读写类型" class="md-nav__link">
+    <a href="../channel_rw/" title="2.5. 读写类型" class="md-nav__link">
       2.5. 读写类型
     </a>
   </li>
@@ -1672,10 +1674,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3" checked>
     
     <label class="md-nav__link" for="nav-8-3">
       3. 同步(sync)
@@ -1693,7 +1697,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/sync_reference/" title="3.1. 参考资料" class="md-nav__link">
+    <a href="../sync_reference/" title="3.1. 参考资料" class="md-nav__link">
       3.1. 参考资料
     </a>
   </li>
@@ -1705,7 +1709,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/sync_mutex/" title="3.2. 互斥锁(Mutex)" class="md-nav__link">
+    <a href="../sync_mutex/" title="3.2. 互斥锁(Mutex)" class="md-nav__link">
       3.2. 互斥锁(Mutex)
     </a>
   </li>
@@ -1717,7 +1721,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/sync_rwmutex/" title="3.3. 读写锁(RWMutex)" class="md-nav__link">
+    <a href="../sync_rwmutex/" title="3.3. 读写锁(RWMutex)" class="md-nav__link">
       3.3. 读写锁(RWMutex)
     </a>
   </li>
@@ -1729,7 +1733,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/sync_waitgroup/" title="3.4. WaitGroup" class="md-nav__link">
+    <a href="../sync_waitgroup/" title="3.4. WaitGroup" class="md-nav__link">
       3.4. WaitGroup
     </a>
   </li>
@@ -1739,34 +1743,39 @@
           
           
 
-
-  <li class="md-nav__item">
-    <a href="../../goroutine/sync_cond/" title="3.5. 条件变量(Cond)" class="md-nav__link">
-      3.5. 条件变量(Cond)
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
   
 
 
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--active">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9" checked>
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="3.5. 条件变量(Cond)" class="md-nav__link md-nav__link--active">
+      3.5. 条件变量(Cond)
+    </a>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
     
     <label class="md-nav__link" for="nav-9">
       九. 其他
@@ -1784,7 +1793,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../string/" title="1. 字符串处理" class="md-nav__link">
+    <a href="../../other/string/" title="1. 字符串处理" class="md-nav__link">
       1. 字符串处理
     </a>
   </li>
@@ -1796,7 +1805,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../range/" title="2. range" class="md-nav__link">
+    <a href="../../other/range/" title="2. range" class="md-nav__link">
       2. range
     </a>
   </li>
@@ -1808,7 +1817,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../concurrent/" title="3. 并发、事件驱动等" class="md-nav__link">
+    <a href="../../other/concurrent/" title="3. 并发、事件驱动等" class="md-nav__link">
       3. 并发、事件驱动等
     </a>
   </li>
@@ -1820,7 +1829,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../binary_operation/" title="4. 位运算" class="md-nav__link">
+    <a href="../../other/binary_operation/" title="4. 位运算" class="md-nav__link">
       4. 位运算
     </a>
   </li>
@@ -1832,7 +1841,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../loop_iterate_traversal_recursion/" title="5. 循环、迭代、遍历、递归的区别" class="md-nav__link">
+    <a href="../../other/loop_iterate_traversal_recursion/" title="5. 循环、迭代、遍历、递归的区别" class="md-nav__link">
       5. 循环、迭代、遍历、递归的区别
     </a>
   </li>
@@ -1844,7 +1853,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../go_python/" title="6. go和python的比较" class="md-nav__link">
+    <a href="../../other/go_python/" title="6. go和python的比较" class="md-nav__link">
       6. go和python的比较
     </a>
   </li>
@@ -1856,7 +1865,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../oo/" title="7. 面向对象" class="md-nav__link">
+    <a href="../../other/oo/" title="7. 面向对象" class="md-nav__link">
       7. 面向对象
     </a>
   </li>
@@ -1868,7 +1877,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../nil/" title="8. nil" class="md-nav__link">
+    <a href="../../other/nil/" title="8. nil" class="md-nav__link">
       8. nil
     </a>
   </li>
@@ -1880,7 +1889,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../make/" title="9. make" class="md-nav__link">
+    <a href="../../other/make/" title="9. make" class="md-nav__link">
       9. make
     </a>
   </li>
@@ -1890,18 +1899,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="10. 枚举" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../other/enum/" title="10. 枚举" class="md-nav__link">
       10. 枚举
     </a>
-    
   </li>
 
         
@@ -1911,7 +1913,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../readers/" title="11. Readers" class="md-nav__link">
+    <a href="../../other/readers/" title="11. Readers" class="md-nav__link">
       11. Readers
     </a>
   </li>
@@ -1923,7 +1925,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../style/" title="12. 编码风格" class="md-nav__link">
+    <a href="../../other/style/" title="12. 编码风格" class="md-nav__link">
       12. 编码风格
     </a>
   </li>
@@ -1935,7 +1937,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../new/" title="13. new" class="md-nav__link">
+    <a href="../../other/new/" title="13. new" class="md-nav__link">
       13. new
     </a>
   </li>
@@ -1966,7 +1968,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ptr_cpu/" title="14.1. CPU占用率比较" class="md-nav__link">
+    <a href="../../other/ptr_cpu/" title="14.1. CPU占用率比较" class="md-nav__link">
       14.1. CPU占用率比较
     </a>
   </li>
@@ -1978,7 +1980,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ptr_stdout/" title="14.2. 屏幕输出比较" class="md-nav__link">
+    <a href="../../other/ptr_stdout/" title="14.2. 屏幕输出比较" class="md-nav__link">
       14.2. 屏幕输出比较
     </a>
   </li>
@@ -1995,7 +1997,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../fork/" title="15. C语言的fork" class="md-nav__link">
+    <a href="../../other/fork/" title="15. C语言的fork" class="md-nav__link">
       15. C语言的fork
     </a>
   </li>
@@ -2007,7 +2009,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../runtime/" title="16. 查看系统环境runtime" class="md-nav__link">
+    <a href="../../other/runtime/" title="16. 查看系统环境runtime" class="md-nav__link">
       16. 查看系统环境runtime
     </a>
   </li>
@@ -2019,7 +2021,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../constructor/" title="17. 构造方法" class="md-nav__link">
+    <a href="../../other/constructor/" title="17. 构造方法" class="md-nav__link">
       17. 构造方法
     </a>
   </li>
@@ -2138,53 +2140,12 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cyent/golang/edit/master/docs/other/enum.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/cyent/golang/edit/master/docs/goroutine/sync_cond.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>10. 枚举</h1>
+                  <h1>3.5. 条件变量(Cond)</h1>
                 
-                <p>枚举就是一一列举，将所有的情况都列举出来，那么取值的时候只能是这几种情况的一种，不能是别的。</p>
-<p>go枚举：</p>
-<p>在go语言中，没有直接支持枚举的关键字，也就造成go没有直接枚举的功能。但是可以通过const+iota来模拟枚举</p>
-<p>例子：</p>
-<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="c1">// 实现枚举例子</span>
-<span class="kd">type</span> <span class="nx">State</span> <span class="kt">int</span>
-
-<span class="c1">// iota 初始化后会自动递增</span>
-<span class="kd">const</span> <span class="p">(</span>
-    <span class="nx">Running</span> <span class="nx">State</span> <span class="p">=</span> <span class="kc">iota</span>    <span class="c1">// value --&gt; 0</span>
-    <span class="nx">Stopped</span>                 <span class="c1">// value --&gt; 1</span>
-    <span class="nx">Rebooting</span>               <span class="c1">// value --&gt; 2</span>
-    <span class="nx">Terminated</span>              <span class="c1">// value --&gt; 3</span>
-<span class="p">)</span>
-
-<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="nx">State</span><span class="p">)</span> <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
-    <span class="k">switch</span> <span class="nx">this</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">Running</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">&quot;Running&quot;</span>
-    <span class="k">case</span> <span class="nx">Stopped</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">&quot;Stopped&quot;</span>
-    <span class="k">default</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">&quot;Unknown&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">state</span> <span class="o">:=</span> <span class="nx">Stopped</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;state&quot;</span><span class="p">,</span> <span class="nx">state</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-
-<p>输出</p>
-<div class="codehilite"><pre><span></span>state Stopped
-</pre></div>
-
-<p>没有重载String函数的情况下则输出<code>state 1</code></p>
-<p>附iota详解：<a href="https://studygolang.com/articles/2192">https://studygolang.com/articles/2192</a></p>
+                
                 
                   
                 
@@ -2203,7 +2164,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../make/" title="9. make" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../sync_waitgroup/" title="3.4. WaitGroup" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2212,19 +2173,19 @@
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                9. make
+                3.4. WaitGroup
               </span>
             </div>
           </a>
         
         
-          <a href="../readers/" title="11. Readers" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../other/string/" title="1. 字符串处理" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                11. Readers
+                1. 字符串处理
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

@@ -38,7 +38,7 @@
     
     
       
-        <title>3.1. 互斥锁(Mutex) - Go语言学习 - cyent笔记</title>
+        <title>3.2. 互斥锁(Mutex) - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                3.1. 互斥锁(Mutex)
+                3.2. 互斥锁(Mutex)
               </span>
             
           
@@ -1695,6 +1695,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../sync_reference/" title="3.1. 参考资料" class="md-nav__link">
+      3.1. 参考资料
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -1704,11 +1716,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="toc">
-        3.1. 互斥锁(Mutex)
+        3.2. 互斥锁(Mutex)
       </label>
     
-    <a href="./" title="3.1. 互斥锁(Mutex)" class="md-nav__link md-nav__link--active">
-      3.1. 互斥锁(Mutex)
+    <a href="./" title="3.2. 互斥锁(Mutex)" class="md-nav__link md-nav__link--active">
+      3.2. 互斥锁(Mutex)
     </a>
     
       
@@ -1747,13 +1759,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#_4" title="参考资料" class="md-nav__link">
-    参考资料
-  </a>
-  
-</li>
-      
       
       
     </ul>
@@ -1769,8 +1774,32 @@
 
 
   <li class="md-nav__item">
-    <a href="../sync_rwmutex/" title="3.2. 读写锁(RWMutex)" class="md-nav__link">
-      3.2. 读写锁(RWMutex)
+    <a href="../sync_rwmutex/" title="3.3. 读写锁(RWMutex)" class="md-nav__link">
+      3.3. 读写锁(RWMutex)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sync_waitgroup/" title="3.4. WaitGroup" class="md-nav__link">
+      3.4. WaitGroup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sync_cond/" title="3.5. 条件变量(Cond)" class="md-nav__link">
+      3.5. 条件变量(Cond)
     </a>
   </li>
 
@@ -2032,6 +2061,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../other/constructor/" title="17. 构造方法" class="md-nav__link">
+      17. 构造方法
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -2179,13 +2220,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#_4" title="参考资料" class="md-nav__link">
-    参考资料
-  </a>
-  
-</li>
-      
       
       
     </ul>
@@ -2203,7 +2237,7 @@
                   <a href="https://github.com/cyent/golang/edit/master/docs/goroutine/sync_mutex.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>3.1. 互斥锁(Mutex)</h1>
+                  <h1>3.2. 互斥锁(Mutex)</h1>
                 
                 <p><strong>互斥锁: sync.Mutex</strong></p>
 <h2 id="_1"><strong>介绍</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
@@ -2492,9 +2526,6 @@ main.main()
 
 <p>可以看出，可以一个routine里锁定，另一个routine里解锁。因为锁只和具体变量关联，和routine无关，只要这个变量是共享的，比如通过指针传递，或者全局变量都可以。</p>
 <p>虽然互斥锁可以被直接的在多个Goroutine之间共享，但是我们还是强烈建议把对同一个互斥锁的成对的锁定和解锁操作放在同一个层次的代码块中。例如，在同一个函数或方法中对某个互斥锁的进行锁定和解锁。</p>
-<h2 id="_4"><strong>参考资料</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<hr />
-<p><a href="https://www.cnblogs.com/niniwzw/archive/2013/06/24/3153955.html">https://www.cnblogs.com/niniwzw/archive/2013/06/24/3153955.html</a></p>
                 
                   
                 
@@ -2513,7 +2544,7 @@ main.main()
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../channel_rw/" title="2.5. 读写类型" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../sync_reference/" title="3.1. 参考资料" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2522,19 +2553,19 @@ main.main()
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                2.5. 读写类型
+                3.1. 参考资料
               </span>
             </div>
           </a>
         
         
-          <a href="../sync_rwmutex/" title="3.2. 读写锁(RWMutex)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../sync_rwmutex/" title="3.3. 读写锁(RWMutex)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                3.2. 读写锁(RWMutex)
+                3.3. 读写锁(RWMutex)
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
