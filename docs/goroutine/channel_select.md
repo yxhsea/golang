@@ -175,3 +175,5 @@ default:
     fmt.Println("default")
 }
 ```
+
+可以在channel里使用select的default来告知channe已满
