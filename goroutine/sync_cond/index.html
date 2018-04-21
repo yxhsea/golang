@@ -1791,6 +1791,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_6" title="示例" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#synccond" title="条件变量和sync.Cond关系" class="md-nav__link">
     条件变量和sync.Cond关系
   </a>
@@ -1798,8 +1805,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" title="不能并发" class="md-nav__link">
+  <a href="#_7" title="不能并发" class="md-nav__link">
     不能并发
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#channelsync" title="channel和sync区别" class="md-nav__link">
+    channel和sync区别
   </a>
   
 </li>
@@ -2249,6 +2263,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_6" title="示例" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#synccond" title="条件变量和sync.Cond关系" class="md-nav__link">
     条件变量和sync.Cond关系
   </a>
@@ -2256,8 +2277,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" title="不能并发" class="md-nav__link">
+  <a href="#_7" title="不能并发" class="md-nav__link">
     不能并发
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#channelsync" title="channel和sync区别" class="md-nav__link">
+    channel和sync区别
   </a>
   
 </li>
@@ -2337,16 +2365,28 @@ cond.Broadcast()
 <h2 id="_5"><strong>工作原理(原创)</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <hr />
 <p><img alt="" src="../../img/cond_4.png" /></p>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>该图逻辑有问题，还未改</p>
+</div>
+<p>抢占锁后，判断自己是否满足处理 <strong><em>条件</em></strong>，如果不满足则先 <strong><em>释放锁给别人用</em></strong>，然后自己 <strong><em>阻塞</em></strong>，等别人主动 <strong><em>通知自己</em></strong>(肯定是别人的事情做完了才会通知自己)，就解除阻塞，然后再去 <strong><em>获得锁</em></strong></p>
+<h2 id="_6"><strong>示例</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<hr />
 <h2 id="synccond"><strong>条件变量和sync.Cond关系</strong><a class="headerlink" href="#synccond" title="Permanent link">&para;</a></h2>
 <hr />
 <p><strong>以下均为个人理解（不一定准确）</strong></p>
 <p>条件变量是一种应用场景，不是只有golang才有条件变量，其他操作系统、语言也都有条件变量</p>
 <p>sync.Cond是golang为了适配这种应用场景而开发出来的配套组件。准确说是通过sync.Cond配合sync.Mutex来实现条件变量的应用场景。</p>
 <p>因此，sync.Cond本身并不是什么条件变量，只是它的方法可以让你实现条件变量的应用，所以干脆名字就叫条件变量。也就是说，完全可以不用于条件变量而用于其他环境，只是没人这么干而已，而且也不是初衷。</p>
-<h2 id="_6"><strong>不能并发</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_7"><strong>不能并发</strong><a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <hr />
 <p>条件变量只是解决了互斥量的问题，或者说配合互斥量解决了锁的问题，但是并不能实现并发，就是说消费者和生产者都各只能有1个，如果超过1个，则会发生非预期的锁抢占问题。</p>
 <p>因为不知道锁什么时候被非预期的协程给抢占了，导致死锁或非预期的情况发生。</p>
+<p>即如果把上面原创的工作原理图里再加上一个生产者或消费者，就有可能导致非预期情况发生，比如Signal时候锁会被Wait的协程给获得(假设Signal后是Unlock)，但因为不止1个并发，结果被另一个并发的协程给抢占了锁，而且是在非同一代码状态下（比如被另一个协程的第一个Lock）</p>
+<p>条件变量因为在中间又加了一个释放锁、获取锁，因此会把情况搞得复杂，只适合于2个协程（一个生产一个消费）这样，当大于2个协程时候就容易出现异常情况，因此条件变量并不适合并发。也就是说能不用条件变量尽量不用，免得搞的太复杂不容易排查。</p>
+<h2 id="channelsync"><strong>channel和sync区别</strong><a class="headerlink" href="#channelsync" title="Permanent link">&para;</a></h2>
+<hr />
+<p>一般并发就是指多个程序逻辑上同时运行，但肯定会遇到一些非线程安全的东西需要做同步（无法并行，只能串行），这个时候就有sync和channel2种方式实现同步。只不过channel除了做同步，还能用于传递变量（即通过通信来共享变量），而sync只有同步作用（通过共享变量来通信）</p>
                 
                   
                 
