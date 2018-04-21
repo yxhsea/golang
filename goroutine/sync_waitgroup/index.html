@@ -38,7 +38,7 @@
     
     
       
-        <title>3.4. WaitGroup - Go语言学习 - cyent笔记</title>
+        <title>3.3. WaitGroup - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                3.4. WaitGroup
+                3.3. WaitGroup
               </span>
             
           
@@ -1697,8 +1697,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../sync_reference/" title="3.1. 参考资料" class="md-nav__link">
-      3.1. 参考资料
+    <a href="../sync_mutex/" title="3.1. 互斥锁(Mutex)" class="md-nav__link">
+      3.1. 互斥锁(Mutex)
     </a>
   </li>
 
@@ -1709,20 +1709,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../sync_mutex/" title="3.2. 互斥锁(Mutex)" class="md-nav__link">
-      3.2. 互斥锁(Mutex)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../sync_rwmutex/" title="3.3. 读写锁(RWMutex)" class="md-nav__link">
-      3.3. 读写锁(RWMutex)
+    <a href="../sync_rwmutex/" title="3.2. 读写锁(RWMutex)" class="md-nav__link">
+      3.2. 读写锁(RWMutex)
     </a>
   </li>
 
@@ -1739,8 +1727,8 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
-    <a href="./" title="3.4. WaitGroup" class="md-nav__link md-nav__link--active">
-      3.4. WaitGroup
+    <a href="./" title="3.3. WaitGroup" class="md-nav__link md-nav__link--active">
+      3.3. WaitGroup
     </a>
     
   </li>
@@ -1752,8 +1740,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../sync_cond/" title="3.5. 条件变量(Cond)" class="md-nav__link">
-      3.5. 条件变量(Cond)
+    <a href="../sync_cond/" title="3.4. 条件变量(Cond)" class="md-nav__link">
+      3.4. 条件变量(Cond)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sync_reference/" title="3.5. 参考资料" class="md-nav__link">
+      3.5. 参考资料
     </a>
   </li>
 
@@ -2143,7 +2143,7 @@
                   <a href="https://github.com/cyent/golang/edit/master/docs/goroutine/sync_waitgroup.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>3.4. WaitGroup</h1>
+                  <h1>3.3. WaitGroup</h1>
                 
                 <p>WaitGroup 用于等待一组 goroutine 结束，用法很简单。它有三个方法：</p>
 <div class="codehilite"><pre><span></span>func (wg *WaitGroup) Add(delta int)
@@ -2239,7 +2239,7 @@ over:             {noCopy:{} state1:[0 0 0 0 0 0 0 0 0 0 0 0] sema:0}
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../sync_rwmutex/" title="3.3. 读写锁(RWMutex)" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../sync_rwmutex/" title="3.2. 读写锁(RWMutex)" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2248,19 +2248,19 @@ over:             {noCopy:{} state1:[0 0 0 0 0 0 0 0 0 0 0 0] sema:0}
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                3.3. 读写锁(RWMutex)
+                3.2. 读写锁(RWMutex)
               </span>
             </div>
           </a>
         
         
-          <a href="../sync_cond/" title="3.5. 条件变量(Cond)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../sync_cond/" title="3.4. 条件变量(Cond)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                3.5. 条件变量(Cond)
+                3.4. 条件变量(Cond)
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

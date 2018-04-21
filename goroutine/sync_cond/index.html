@@ -38,7 +38,7 @@
     
     
       
-        <title>3.5. 条件变量(Cond) - Go语言学习 - cyent笔记</title>
+        <title>3.4. 条件变量(Cond) - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                3.5. 条件变量(Cond)
+                3.4. 条件变量(Cond)
               </span>
             
           
@@ -1697,8 +1697,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../sync_reference/" title="3.1. 参考资料" class="md-nav__link">
-      3.1. 参考资料
+    <a href="../sync_mutex/" title="3.1. 互斥锁(Mutex)" class="md-nav__link">
+      3.1. 互斥锁(Mutex)
     </a>
   </li>
 
@@ -1709,8 +1709,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../sync_mutex/" title="3.2. 互斥锁(Mutex)" class="md-nav__link">
-      3.2. 互斥锁(Mutex)
+    <a href="../sync_rwmutex/" title="3.2. 读写锁(RWMutex)" class="md-nav__link">
+      3.2. 读写锁(RWMutex)
     </a>
   </li>
 
@@ -1721,20 +1721,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../sync_rwmutex/" title="3.3. 读写锁(RWMutex)" class="md-nav__link">
-      3.3. 读写锁(RWMutex)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../sync_waitgroup/" title="3.4. WaitGroup" class="md-nav__link">
-      3.4. WaitGroup
+    <a href="../sync_waitgroup/" title="3.3. WaitGroup" class="md-nav__link">
+      3.3. WaitGroup
     </a>
   </li>
 
@@ -1751,10 +1739,89 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
-    <a href="./" title="3.5. 条件变量(Cond)" class="md-nav__link md-nav__link--active">
-      3.5. 条件变量(Cond)
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        3.4. 条件变量(Cond)
+      </label>
+    
+    <a href="./" title="3.4. 条件变量(Cond)" class="md-nav__link md-nav__link--active">
+      3.4. 条件变量(Cond)
     </a>
     
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="用途" class="md-nav__link">
+    用途
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="声明" class="md-nav__link">
+    声明
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="方法" class="md-nav__link">
+    方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="工作原理(摘取)" class="md-nav__link">
+    工作原理(摘取)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="工作原理(原创)" class="md-nav__link">
+    工作原理(原创)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#synccond" title="条件变量和sync.Cond关系" class="md-nav__link">
+    条件变量和sync.Cond关系
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" title="不能并发" class="md-nav__link">
+    不能并发
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sync_reference/" title="3.5. 参考资料" class="md-nav__link">
+      3.5. 参考资料
+    </a>
   </li>
 
         
@@ -2135,6 +2202,75 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="用途" class="md-nav__link">
+    用途
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="声明" class="md-nav__link">
+    声明
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="方法" class="md-nav__link">
+    方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="工作原理(摘取)" class="md-nav__link">
+    工作原理(摘取)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="工作原理(原创)" class="md-nav__link">
+    工作原理(原创)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#synccond" title="条件变量和sync.Cond关系" class="md-nav__link">
+    条件变量和sync.Cond关系
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" title="不能并发" class="md-nav__link">
+    不能并发
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -2143,9 +2279,74 @@
                   <a href="https://github.com/cyent/golang/edit/master/docs/goroutine/sync_cond.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>3.5. 条件变量(Cond)</h1>
+                  <h1>3.4. 条件变量(Cond)</h1>
                 
-                
+                <h2 id="_1"><strong>用途</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
+<p>与互斥量不同，条件变量的作用并不是保证在同一时刻仅有一个线程访问某一个共享数据，而是在对应的共享数据的状态发生变化时，通知其他因此而被阻塞的线程。条件变量总是与互斥量组合使用。互斥量为共享数据的访问提供互斥支持，而条件变量可以就共享数据的状态的变化向相关线程发出通知。</p>
+<h2 id="_2"><strong>声明</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<hr />
+<div class="codehilite"><pre><span></span>lock := new(sync.Mutex)
+cond := sync.NewCond(lock)
+</pre></div>
+
+<p>也可以写成一行</p>
+<div class="codehilite"><pre><span></span>cond := sync.NewCond(new(sync.Mutex))
+</pre></div>
+
+<h2 id="_3"><strong>方法</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<hr />
+<div class="codehilite"><pre><span></span>cond.L.Lock()
+cond.L.Unlock()
+cond.Wait()
+cond.Signal()
+cond.Broadcast()
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>
+<p><code>cond.L.Lock()</code>和<code>cond.L.Unlock()</code>：也可以使用<code>lock.Lock()</code>和<code>lock.Unlock()</code>，完全一样，因为是指针转递</p>
+</li>
+<li>
+<p><code>cond.Wait()</code>：Unlock()-&gt;<strong><em>阻塞等待通知(即等待Signal()或Broadcast()的通知)-&gt;收到通知</em></strong>-&gt;Lock()</p>
+</li>
+<li>
+<p><code>cond.Signal()</code>：通知一个Wait()了的，若没有Wait()，也不会报错。<strong>Signal()通知的顺序是根据原来加入通知列表(Wait())的先入先出</strong></p>
+</li>
+<li>
+<p><code>cond.Broadcast()</code>: 通知所有Wait()了的，若没有Wait()，也不会报错</p>
+</li>
+</ul>
+</div>
+<h2 id="_4"><strong>工作原理(摘取)</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<hr />
+<p>下面图1-图3来自"郝林"的go语言书籍</p>
+<p>没用条件变量时候:</p>
+<p><img alt="" src="../../img/cond_1.png" /></p>
+<p>图1：生产者线程添加数据库的流程</p>
+<p>图1存在一个问题：当队列总是满的时候，就会不停的循环获取队列状态，因此也不会释放锁，而消费者就无法获得锁来取走队列中的数据。如果队列中的数据无法取走，那么队列就永远都是满的，导致了死锁。</p>
+<p>使用条件变量后，解决了这个问题：</p>
+<p><img alt="" src="../../img/cond_2.png" /></p>
+<p>图2：生产者线程添加数据库的流程</p>
+<p>图2解决了图1的问题：当队列满的时候，则先解锁，这样就不会死锁（释放锁给其他人用）</p>
+<p>附：和图2匹配的消费者线程</p>
+<p><img alt="" src="../../img/cond_3.png" /></p>
+<p>图3：消费者线程</p>
+<h2 id="_5"><strong>工作原理(原创)</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<hr />
+<p><img alt="" src="../../img/cond_4.png" /></p>
+<h2 id="synccond"><strong>条件变量和sync.Cond关系</strong><a class="headerlink" href="#synccond" title="Permanent link">&para;</a></h2>
+<hr />
+<p><strong>以下均为个人理解（不一定准确）</strong></p>
+<p>条件变量是一种应用场景，不是只有golang才有条件变量，其他操作系统、语言也都有条件变量</p>
+<p>sync.Cond是golang为了适配这种应用场景而开发出来的配套组件。准确说是通过sync.Cond配合sync.Mutex来实现条件变量的应用场景。</p>
+<p>因此，sync.Cond本身并不是什么条件变量，只是它的方法可以让你实现条件变量的应用，所以干脆名字就叫条件变量。也就是说，完全可以不用于条件变量而用于其他环境，只是没人这么干而已，而且也不是初衷。</p>
+<h2 id="_6"><strong>不能并发</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<hr />
+<p>条件变量只是解决了互斥量的问题，或者说配合互斥量解决了锁的问题，但是并不能实现并发，就是说消费者和生产者都各只能有1个，如果超过1个，则会发生非预期的锁抢占问题。</p>
+<p>因为不知道锁什么时候被非预期的协程给抢占了，导致死锁或非预期的情况发生。</p>
                 
                   
                 
@@ -2164,7 +2365,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../sync_waitgroup/" title="3.4. WaitGroup" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../sync_waitgroup/" title="3.3. WaitGroup" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2173,19 +2374,19 @@
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                3.4. WaitGroup
+                3.3. WaitGroup
               </span>
             </div>
           </a>
         
         
-          <a href="../../other/string/" title="1. 字符串处理" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../sync_reference/" title="3.5. 参考资料" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                1. 字符串处理
+                3.5. 参考资料
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
