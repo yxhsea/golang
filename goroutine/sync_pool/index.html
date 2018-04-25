@@ -13,7 +13,7 @@
         <meta name="description" content="关于Go语言学习，包含许多个人理解">
       
       
-        <link rel="canonical" href="https://cyent.github.io/golang/other/constructor/">
+        <link rel="canonical" href="https://cyent.github.io/golang/goroutine/sync_pool/">
       
       
         <meta name="author" content="cyent">
@@ -38,7 +38,7 @@
     
     
       
-        <title>17. 构造方法 - Go语言学习 - cyent笔记</title>
+        <title>3.5. 临时对象池(Pool) - Go语言学习 - cyent笔记</title>
       
     
     
@@ -100,7 +100,7 @@
                 Go语言学习 - cyent笔记
               </span>
               <span class="md-header-nav__topic">
-                17. 构造方法
+                3.5. 临时对象池(Pool)
               </span>
             
           
@@ -1557,10 +1557,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
     
     <label class="md-nav__link" for="nav-8">
       八. 协程
@@ -1578,7 +1580,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/main/" title="1. 创建协程(go关键字)" class="md-nav__link">
+    <a href="../main/" title="1. 创建协程(go关键字)" class="md-nav__link">
       1. 创建协程(go关键字)
     </a>
   </li>
@@ -1609,7 +1611,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/channel_main/" title="2.1. 基本使用" class="md-nav__link">
+    <a href="../channel_main/" title="2.1. 基本使用" class="md-nav__link">
       2.1. 基本使用
     </a>
   </li>
@@ -1621,7 +1623,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/channel_buffer/" title="2.2. buffer" class="md-nav__link">
+    <a href="../channel_buffer/" title="2.2. buffer" class="md-nav__link">
       2.2. buffer
     </a>
   </li>
@@ -1633,7 +1635,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/channel_close/" title="2.3. close" class="md-nav__link">
+    <a href="../channel_close/" title="2.3. close" class="md-nav__link">
       2.3. close
     </a>
   </li>
@@ -1645,7 +1647,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/channel_select/" title="2.4. 结合select-case" class="md-nav__link">
+    <a href="../channel_select/" title="2.4. 结合select-case" class="md-nav__link">
       2.4. 结合select-case
     </a>
   </li>
@@ -1657,7 +1659,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/channel_rw/" title="2.5. 读写类型" class="md-nav__link">
+    <a href="../channel_rw/" title="2.5. 读写类型" class="md-nav__link">
       2.5. 读写类型
     </a>
   </li>
@@ -1672,10 +1674,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3" checked>
     
     <label class="md-nav__link" for="nav-8-3">
       3. 同步(sync)
@@ -1693,7 +1697,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/sync_mutex/" title="3.1. 互斥锁(Mutex)" class="md-nav__link">
+    <a href="../sync_mutex/" title="3.1. 互斥锁(Mutex)" class="md-nav__link">
       3.1. 互斥锁(Mutex)
     </a>
   </li>
@@ -1705,7 +1709,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/sync_rwmutex/" title="3.2. 读写锁(RWMutex)" class="md-nav__link">
+    <a href="../sync_rwmutex/" title="3.2. 读写锁(RWMutex)" class="md-nav__link">
       3.2. 读写锁(RWMutex)
     </a>
   </li>
@@ -1717,7 +1721,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/sync_waitgroup/" title="3.3. WaitGroup" class="md-nav__link">
+    <a href="../sync_waitgroup/" title="3.3. WaitGroup" class="md-nav__link">
       3.3. WaitGroup
     </a>
   </li>
@@ -1729,7 +1733,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/sync_cond/" title="3.4. 条件变量(Cond)" class="md-nav__link">
+    <a href="../sync_cond/" title="3.4. 条件变量(Cond)" class="md-nav__link">
       3.4. 条件变量(Cond)
     </a>
   </li>
@@ -1739,11 +1743,43 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../goroutine/sync_pool/" title="3.5. 临时对象池(Pool)" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        3.5. 临时对象池(Pool)
+      </label>
+    
+    <a href="./" title="3.5. 临时对象池(Pool)" class="md-nav__link md-nav__link--active">
       3.5. 临时对象池(Pool)
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="关于堆和栈的基础" class="md-nav__link">
+    关于堆和栈的基础
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -1753,7 +1789,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../goroutine/sync_reference/" title="3.5. 参考资料" class="md-nav__link">
+    <a href="../sync_reference/" title="3.5. 参考资料" class="md-nav__link">
       3.5. 参考资料
     </a>
   </li>
@@ -1773,12 +1809,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
     
     <label class="md-nav__link" for="nav-9">
       九. 其他
@@ -1796,7 +1830,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../string/" title="1. 字符串处理" class="md-nav__link">
+    <a href="../../other/string/" title="1. 字符串处理" class="md-nav__link">
       1. 字符串处理
     </a>
   </li>
@@ -1808,7 +1842,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../range/" title="2. range" class="md-nav__link">
+    <a href="../../other/range/" title="2. range" class="md-nav__link">
       2. range
     </a>
   </li>
@@ -1820,7 +1854,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../concurrent/" title="3. 并发、事件驱动等" class="md-nav__link">
+    <a href="../../other/concurrent/" title="3. 并发、事件驱动等" class="md-nav__link">
       3. 并发、事件驱动等
     </a>
   </li>
@@ -1832,7 +1866,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../binary_operation/" title="4. 位运算" class="md-nav__link">
+    <a href="../../other/binary_operation/" title="4. 位运算" class="md-nav__link">
       4. 位运算
     </a>
   </li>
@@ -1844,7 +1878,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../loop_iterate_traversal_recursion/" title="5. 循环、迭代、遍历、递归的区别" class="md-nav__link">
+    <a href="../../other/loop_iterate_traversal_recursion/" title="5. 循环、迭代、遍历、递归的区别" class="md-nav__link">
       5. 循环、迭代、遍历、递归的区别
     </a>
   </li>
@@ -1856,7 +1890,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../go_python/" title="6. go和python的比较" class="md-nav__link">
+    <a href="../../other/go_python/" title="6. go和python的比较" class="md-nav__link">
       6. go和python的比较
     </a>
   </li>
@@ -1868,7 +1902,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../oo/" title="7. 面向对象" class="md-nav__link">
+    <a href="../../other/oo/" title="7. 面向对象" class="md-nav__link">
       7. 面向对象
     </a>
   </li>
@@ -1880,7 +1914,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../nil/" title="8. nil" class="md-nav__link">
+    <a href="../../other/nil/" title="8. nil" class="md-nav__link">
       8. nil
     </a>
   </li>
@@ -1892,7 +1926,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../make/" title="9. make" class="md-nav__link">
+    <a href="../../other/make/" title="9. make" class="md-nav__link">
       9. make
     </a>
   </li>
@@ -1904,7 +1938,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../enum/" title="10. 枚举" class="md-nav__link">
+    <a href="../../other/enum/" title="10. 枚举" class="md-nav__link">
       10. 枚举
     </a>
   </li>
@@ -1916,7 +1950,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../readers/" title="11. Readers" class="md-nav__link">
+    <a href="../../other/readers/" title="11. Readers" class="md-nav__link">
       11. Readers
     </a>
   </li>
@@ -1928,7 +1962,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../style/" title="12. 编码风格" class="md-nav__link">
+    <a href="../../other/style/" title="12. 编码风格" class="md-nav__link">
       12. 编码风格
     </a>
   </li>
@@ -1940,7 +1974,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../new/" title="13. new" class="md-nav__link">
+    <a href="../../other/new/" title="13. new" class="md-nav__link">
       13. new
     </a>
   </li>
@@ -1971,7 +2005,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ptr_cpu/" title="14.1. CPU占用率比较" class="md-nav__link">
+    <a href="../../other/ptr_cpu/" title="14.1. CPU占用率比较" class="md-nav__link">
       14.1. CPU占用率比较
     </a>
   </li>
@@ -1983,7 +2017,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ptr_stdout/" title="14.2. 屏幕输出比较" class="md-nav__link">
+    <a href="../../other/ptr_stdout/" title="14.2. 屏幕输出比较" class="md-nav__link">
       14.2. 屏幕输出比较
     </a>
   </li>
@@ -2000,7 +2034,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../fork/" title="15. C语言的fork" class="md-nav__link">
+    <a href="../../other/fork/" title="15. C语言的fork" class="md-nav__link">
       15. C语言的fork
     </a>
   </li>
@@ -2012,7 +2046,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../runtime/" title="16. 查看系统环境runtime" class="md-nav__link">
+    <a href="../../other/runtime/" title="16. 查看系统环境runtime" class="md-nav__link">
       16. 查看系统环境runtime
     </a>
   </li>
@@ -2022,18 +2056,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="17. 构造方法" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../other/constructor/" title="17. 构造方法" class="md-nav__link">
       17. 构造方法
     </a>
-    
   </li>
 
         
@@ -2145,20 +2172,73 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="关于堆和栈的基础" class="md-nav__link">
+    关于堆和栈的基础
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cyent/golang/edit/master/docs/other/constructor.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/cyent/golang/edit/master/docs/goroutine/sync_pool.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>17. 构造方法</h1>
+                  <h1>3.5. 临时对象池(Pool)</h1>
                 
-                <p>构造方法（也叫构造函数）的概念：</p>
-<p>构造方法是java里的称呼，是一种特殊的方法，其方法名和所属类的类名相同，用于类的初始化，即当实例化一个类的时候，会自动调用这个方法。在python里就是<code>def __init__()</code></p>
-<p>构造方法英文叫做constructor。我对构造方法的理解是顾名思义，通过这个方法构造一个对象，即初始化这个对象的属性等</p>
-<p>在结构化语言中没有构造方法，但也有类似效果，比如在golang里经常会为一个自定义struct定义一个函数，比如<code>func NewXxx()</code>，调用这个函数会返回这个struct的指针</p>
+                <h2 id="_1"><strong>关于堆和栈的基础</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
+<p>下面内容摘自 <a href="http://blog.cyeam.com/golang/2017/02/08/go-optimize-slice-pool">http://blog.cyeam.com/golang/2017/02/08/go-optimize-slice-pool</a></p>
+<p>程序会从操作系统申请一块内存，而这块内存也会被分成堆和栈。栈可以简单得理解成一次函数调用内部申请到的内存，它们会随着函数的返回把内存还给系统。</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">F</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">temp</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>类似于上面代码里面的temp变量，只是内函数内部申请的临时变量，并不会作为返回值返回，它就是被编译器申请到栈里面。<strong>申请到栈内存好处：函数返回直接释放，不会引起垃圾回收，对性能没有影响。</strong></p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">F</span><span class="p">()</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span>
+    <span class="nx">a</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">a</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>而上面这段代码，申请的代码一模一样，但是申请后作为返回值返回了，编译器会认为变量之后还会被使用，当函数返回之后并不会将其内存归还，那么它就会被申请到堆上面了。<strong>申请到堆上面的内存才会引起垃圾回收。</strong></p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">F</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20000</span><span class="p">)</span>
+    <span class="nx">l</span> <span class="o">:=</span> <span class="mi">20</span>
+    <span class="nx">c</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">l</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>a和b代码一样，就是申请的空间不一样大，但是它们两个的命运是截然相反的。a前面已经介绍过，会申请到栈上面，而b，由于申请的内存较大，<strong>编译器会把这种申请内存较大的变量转移到堆上面。即使是临时变量，申请过大也会在堆上面申请。</strong></p>
+<p>而c，对我们而言其含义和a是一致的，<strong>但是编译器对于这种不定长度的申请方式，也会在堆上面申请，即使申请的长度很短。</strong></p>
+<p>实际项目基本都是通过c := make([]int, 0, l)来申请内存，长度都是不确定的。自然而然这些变量都会申请到堆上面了。Golang使用的垃圾回收算法是『标记——清除』。简单得说，就是程序要从操作系统申请一块比较大的内存，内存分成小块，通过链表链接。每次程序申请内存，就从链表上面遍历每一小块，找到符合的就返回其地址，没有合适的就从操作系统再申请。如果申请内存次数较多，而且申请的大小不固定，就会引起内存碎片化的问题。申请的堆内存并没有用完，但是用户申请的内存的时候却没有合适的空间提供。这样会遍历整个链表，还会继续向操作系统申请内存。这就能解释我一开始描述的问题，<strong>申请一块内存变成了慢语句。</strong></p>
+<p><strong>申请内存变成了慢语句，解决方法就是使用临时对象池</strong></p>
                 
                   
                 
@@ -2177,7 +2257,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../runtime/" title="16. 查看系统环境runtime" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../sync_cond/" title="3.4. 条件变量(Cond)" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2186,19 +2266,19 @@
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                16. 查看系统环境runtime
+                3.4. 条件变量(Cond)
               </span>
             </div>
           </a>
         
         
-          <a href="../../appendix/doc/" title="1. 文档" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../sync_reference/" title="3.5. 参考资料" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                1. 文档
+                3.5. 参考资料
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
