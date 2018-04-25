@@ -29,3 +29,9 @@
 - https://studygolang.com/articles/5956
 
 - http://ifeve.com/go-concurrency-condition-variable/
+
+## **临时对象池**
+
+---
+
+- http://blog.cyeam.com/golang/2017/02/08/go-optimize-slice-pool

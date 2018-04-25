@@ -168,6 +168,7 @@ pages:
             - 3.2. 读写锁(RWMutex): goroutine/sync_rwmutex.md
             - 3.3. WaitGroup: goroutine/sync_waitgroup.md
             - 3.4. 条件变量(Cond): goroutine/sync_cond.md
+            - 3.5. 临时对象池(Pool): goroutine/sync_pool.md
             - 3.5. 参考资料: goroutine/sync_reference.md
     - 九. 其他:
         - 1. 字符串处理: other/string.md
