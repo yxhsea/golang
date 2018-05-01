@@ -130,3 +130,9 @@ k: main.MyStruct {3 4}
 ---
 
 [详见空接口承接指针变量](/method/interface_empty/#_2)
+
+## **类型转换和类型断言的区别**
+
+---
+
+详见[接口章节-深入理解](/method/interface_deep/#_6)

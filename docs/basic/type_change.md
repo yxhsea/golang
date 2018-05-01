@@ -8,3 +8,6 @@
 另外，var b = string(a)，或者b := string(a)也可以
 
 **注意：若类型T是个指针，则需要用圆括号，比如`(*pointer)(r)`**，详见[指针章节](/datatype/pointer/#_3)
+
+!!! note ""
+	类型转换和类型断言的区别详见[接口章节-深入理解](/method/interface_deep/#_6)

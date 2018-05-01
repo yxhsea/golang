@@ -131,6 +131,36 @@ r = tty //tty实现了接口r，或者叫做tty赋值给了接口r
 
 [详见接口的类型断言实现接口章节](/method/interface_assertion/#_2)
 
+## **类型断言和类型转换的区别**
+
+---
+
+1. 类型断言是接口变量（包括空接口）的功能，只有接口变量才能做类型断言，非接口变量不能做类型断言，比如
+
+	```go
+	a := 10
+	b := a.(int)
+	```
+
+	报错
+
+	```text
+	invalid type assertion: b.(int) (non-interface type int on left)
+	```
+
+2. 类型转换只支持非接口变量，比如
+
+	```go
+	var a interface{} = 3.14
+	fmt.Printf("%d\n", int(a))
+	```
+
+	报错
+
+	```text
+	cannot convert a (type interface {}) to type int: need type assertion
+	```
+
 ## **:=**
 
 ---
