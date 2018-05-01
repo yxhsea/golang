@@ -106,4 +106,4 @@ a5be9ea34f6d9aabf1bdb3ce106dc95d  -
 
 ---
 
-详见[runtime章节](http://127.0.0.1:8000/other/runtime/#_3)
+详见[runtime章节](/other/runtime/#_3)

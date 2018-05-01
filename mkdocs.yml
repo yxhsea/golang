@@ -190,6 +190,7 @@ pages:
         - 15. C语言的fork: other/fork.md
         - 16. 查看系统环境runtime: other/runtime.md
         - 17. 构造方法: other/constructor.md
+        - 18. 生成器: other/generator.md
     - 十. 附录:
         - 1. 文档: appendix/doc.md
         - 2. 编码规范: appendix/code.md

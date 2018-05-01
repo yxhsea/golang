@@ -415,3 +415,206 @@ with    pool  17 s
 	2. 不使用pool，那么对象占用内存越大，性能下降越厉害；使用pool，无论对象占用内存大还是小，性能都保持不变。可以看到pool有点像飞机，虽然起步比跑车慢，但后劲十足。
 
 	即：pool适合占用内存大且并发量大的场景。当内存小并发量少的时候，使用pool适得其反
+
+## **示例**
+
+---
+
+```go
+package main
+
+import (
+	"fmt"
+	"sync"
+)
+
+// 一个[]int的对象池，每个对象为一个[]int
+var intPool = sync.Pool{
+	New: func() interface{} {
+		b := make([]int, 8)
+		return &b
+	},
+}
+
+func main() {
+	// 不使用对象池
+	for i := 1; i < 3; i++ {
+		obj := make([]int, 8)
+		obj[i] = i
+		fmt.Printf("obj%d: %T %+v\n", i, obj, obj)
+	}
+
+	fmt.Println("-----------")
+
+	// 使用对象池
+	for i := 1; i < 3; i++ {
+		obj := intPool.Get().(*[]int)
+		(*obj)[i] = i
+		fmt.Printf("obj%d: %T %+v\n", i, obj, obj)
+		intPool.Put(obj)
+	}
+}
+```
+
+输出
+
+```text
+obj1: []int [0 1 0 0 0 0 0 0]
+obj2: []int [0 0 2 0 0 0 0 0]
+-----------
+obj1: *[]int &[0 1 0 0 0 0 0 0]
+obj2: *[]int &[0 1 2 0 0 0 0 0]
+```
+
+可以看到，pool的Get和Put真的是从池里获得和放入池里，否则不会出现Get获得的变量是旧的变量（即之前通过Put放入的）
+
+如果把上面代码中的`intPool.Put(obj)`这行删掉，那么输出就是
+
+```text
+obj1: []int [0 1 0 0 0 0 0 0]
+obj2: []int [0 0 2 0 0 0 0 0]
+-----------
+obj1: *[]int &[0 1 0 0 0 0 0 0]
+obj2: *[]int &[0 0 2 0 0 0 0 0]
+```
+
+现在进一步，看下多次Get和Put，是否池的感觉
+
+```go
+package main
+
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+// 一个[]int的对象池，每个对象为一个[]int
+var intPool = sync.Pool{
+	New: func() interface{} {
+		b := make([]int, 10)
+		return &b
+	},
+}
+
+func main() {
+	fmt.Println("===A===")
+	for i := 1; i < 8; i++ {
+		go func(i int) {
+			obj := intPool.Get().(*[]int)
+			(*obj)[i] = i
+			fmt.Printf("%d obj: %T %+v\n", i, obj, obj)
+			intPool.Put(obj)
+		}(i)
+	}
+
+	time.Sleep(3 * time.Second)
+
+	fmt.Println("===B===")
+	for i := 1; i < 8; i++ {
+		obj := intPool.Get().(*[]int)
+		fmt.Printf("%d obj: %T %+v\n", i, obj, obj)
+	}
+}
+```
+
+第一次输出
+
+```text
+===A===
+1 obj: *[]int &[0 1 0 0 0 0 0 0 0 0]
+2 obj: *[]int &[0 0 2 0 0 0 0 0 0 0]
+4 obj: *[]int &[0 0 0 0 4 0 0 0 0 0]
+3 obj: *[]int &[0 0 0 3 0 0 0 0 0 0]
+7 obj: *[]int &[0 0 0 3 0 0 0 7 0 0]
+5 obj: *[]int &[0 0 0 0 0 5 0 0 0 0]
+6 obj: *[]int &[0 0 0 0 0 0 6 0 0 0]
+===B===
+1 obj: *[]int &[0 0 0 0 0 0 6 0 0 0]
+2 obj: *[]int &[0 0 0 0 0 0 0 0 0 0]
+3 obj: *[]int &[0 0 0 0 0 0 0 0 0 0]
+4 obj: *[]int &[0 0 0 0 0 0 0 0 0 0]
+5 obj: *[]int &[0 0 0 0 0 0 0 0 0 0]
+6 obj: *[]int &[0 0 0 0 0 0 0 0 0 0]
+7 obj: *[]int &[0 0 0 0 0 0 0 0 0 0]
+```
+
+第二次输出
+
+```text
+===A===
+5 obj: *[]int &[0 0 0 0 0 5 0 0 0 0]
+6 obj: *[]int &[0 0 0 0 0 0 6 0 0 0]
+2 obj: *[]int &[0 0 2 0 0 5 0 0 0 0]
+4 obj: *[]int &[0 0 0 0 4 0 0 0 0 0]
+1 obj: *[]int &[0 1 0 0 0 0 0 0 0 0]
+3 obj: *[]int &[0 0 0 3 0 0 0 0 0 0]
+7 obj: *[]int &[0 0 0 0 0 0 0 7 0 0]
+===B===
+1 obj: *[]int &[0 0 0 0 0 0 0 7 0 0]
+2 obj: *[]int &[0 0 0 3 0 0 0 0 0 0]
+3 obj: *[]int &[0 1 0 0 0 0 0 0 0 0]
+4 obj: *[]int &[0 0 0 0 4 0 0 0 0 0]
+5 obj: *[]int &[0 0 2 0 0 5 0 0 0 0]
+6 obj: *[]int &[0 0 0 0 0 0 0 0 0 0]
+7 obj: *[]int &[0 0 0 0 0 0 0 0 0 0]
+```
+
+经测试，每次输出均不同，包括A部分和B部分。
+
+尤其注意B部分，如果是全0，则表示没有从缓存中找到，应该是新分配的，如果非全0，则是从之前A部分中通过PUT写入缓存的。缓存即Pool
+
+## **Pool知识点**
+
+---
+
+sync.Pool：
+
+> // A Pool is a set of temporary objects that may be individually saved and
+> // retrieved.
+> //
+> // Any item stored in the Pool may be removed automatically at any time without
+> // notification. If the Pool holds the only reference when this happens, the
+> // item might be deallocated.
+> //
+> // A Pool is safe for use by multiple goroutines simultaneously.
+> //
+> // Pool's purpose is to cache allocated but unused items for later reuse,
+> // relieving pressure on the garbage collector. That is, it makes it easy to
+> // build efficient, thread-safe free lists. However, it is not suitable for all
+> // free lists.
+> //
+> // An appropriate use of a Pool is to manage a group of temporary items
+> // silently shared among and potentially reused by concurrent independent
+> // clients of a package. Pool provides a way to amortize allocation overhead
+> // across many clients.
+> //
+> // An example of good use of a Pool is in the fmt package, which maintains a
+> // dynamically-sized store of temporary output buffers. The store scales under
+> // load (when many goroutines are actively printing) and shrinks when
+> // quiescent.
+> //
+> // On the other hand, a free list maintained as part of a short-lived object is
+> // not a suitable use for a Pool, since the overhead does not amortize well in
+> // that scenario. It is more efficient to have such objects implement their own
+> // free list.
+
+1. Pool的目的是缓存已分配但未使用的项目以备后用
+
+2. 多协程并发安全
+
+3. 缓存在Pool里的item会没有任何通知情况下随时被移除，以缓解GC压力
+
+4. 池提供了一种方法来缓解跨多个客户端的分配开销。
+
+5. 不是所有场景都适合用Pool，如果释放链表是某个对象的一部分，并由这个对象维护，而这个对象只由一个客户端使用，在这个客户端工作完成后释放链表，那么用Pool实现这个释放链表是不合适的。
+
+官方对Pool的目的描述：
+
+Pool设计用意是在全局变量里维护的释放链表，尤其是被多个 goroutine 同时访问的全局变量。使用Pool代替自己写的释放链表，可以让程序运行的时候，在恰当的场景下从池里重用某项值。sync.Pool一种合适的方法是，为临时缓冲区创建一个池，多个客户端使用这个缓冲区来共享全局资源。另一方面，如果释放链表是某个对象的一部分，并由这个对象维护，而这个对象只由一个客户端使用，在这个客户端工作完成后释放链表，那么用Pool实现这个释放链表是不合适的。
+
+## **Pool的正确用法**
+
+---
+
+在Put之前重置，在Get之后重置

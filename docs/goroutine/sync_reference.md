@@ -37,3 +37,5 @@
 - http://blog.cyeam.com/golang/2017/02/08/go-optimize-slice-pool
 
 - https://www.jianshu.com/p/2bd41a8f2254
+
+- https://studygolang.com/articles/700
