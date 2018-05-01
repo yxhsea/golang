@@ -1774,6 +1774,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" title="使用" class="md-nav__link">
+    使用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="详解" class="md-nav__link">
+    详解
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="为什么要用类型断言" class="md-nav__link">
+    为什么要用类型断言
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pool" title="pool是飞机，起步加速不如跑车" class="md-nav__link">
+    pool是飞机，起步加速不如跑车
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -2190,6 +2218,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" title="使用" class="md-nav__link">
+    使用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="详解" class="md-nav__link">
+    详解
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="为什么要用类型断言" class="md-nav__link">
+    为什么要用类型断言
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pool" title="pool是飞机，起步加速不如跑车" class="md-nav__link">
+    pool是飞机，起步加速不如跑车
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -2239,6 +2295,343 @@
 <p>而c，对我们而言其含义和a是一致的，<strong>但是编译器对于这种不定长度的申请方式，也会在堆上面申请，即使申请的长度很短。</strong></p>
 <p>实际项目基本都是通过c := make([]int, 0, l)来申请内存，长度都是不确定的。自然而然这些变量都会申请到堆上面了。Golang使用的垃圾回收算法是『标记——清除』。简单得说，就是程序要从操作系统申请一块比较大的内存，内存分成小块，通过链表链接。每次程序申请内存，就从链表上面遍历每一小块，找到符合的就返回其地址，没有合适的就从操作系统再申请。如果申请内存次数较多，而且申请的大小不固定，就会引起内存碎片化的问题。申请的堆内存并没有用完，但是用户申请的内存的时候却没有合适的空间提供。这样会遍历整个链表，还会继续向操作系统申请内存。这就能解释我一开始描述的问题，<strong>申请一块内存变成了慢语句。</strong></p>
 <p><strong>申请内存变成了慢语句，解决方法就是使用临时对象池</strong></p>
+<h2 id="_2"><strong>使用</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<hr />
+<blockquote>
+<p>该例子摘自https://<a href="http://www.jianshu.com/p/2bd41a8f2254">www.jianshu.com/p/2bd41a8f2254</a></p>
+</blockquote>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;sync&quot;</span>
+    <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// 一个[]byte的对象池，每个对象为一个[]byte</span>
+<span class="kd">var</span> <span class="nx">bytePool</span> <span class="p">=</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Pool</span><span class="p">{</span>
+    <span class="nx">New</span><span class="p">:</span> <span class="kd">func</span><span class="p">()</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">{</span>
+        <span class="nx">b</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>
+        <span class="k">return</span> <span class="o">&amp;</span><span class="nx">b</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+    <span class="c1">// 不使用对象池</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">1000000000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">obj</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>
+        <span class="nx">_</span> <span class="p">=</span> <span class="nx">obj</span>
+    <span class="p">}</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+    <span class="c1">// 使用对象池</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">1000000000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">obj</span> <span class="o">:=</span> <span class="nx">bytePool</span><span class="p">.</span><span class="nx">Get</span><span class="p">().(</span><span class="o">*</span><span class="p">[]</span><span class="kt">byte</span><span class="p">)</span>
+        <span class="nx">bytePool</span><span class="p">.</span><span class="nx">Put</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;without pool &quot;</span><span class="p">,</span> <span class="nx">b</span><span class="o">-</span><span class="nx">a</span><span class="p">,</span> <span class="s">&quot;s&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;with    pool &quot;</span><span class="p">,</span> <span class="nx">c</span><span class="o">-</span><span class="nx">b</span><span class="p">,</span> <span class="s">&quot;s&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>without pool  20 s
+with    pool  15 s
+</pre></div>
+
+<h2 id="_3"><strong>详解</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<hr />
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;sync&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// 一个[]byte的对象池，每个对象为一个[]byte</span>
+<span class="kd">var</span> <span class="nx">bytePool</span> <span class="p">=</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Pool</span><span class="p">{</span>
+    <span class="nx">New</span><span class="p">:</span> <span class="kd">func</span><span class="p">()</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">{</span>
+        <span class="nx">b</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+        <span class="k">return</span> <span class="o">&amp;</span><span class="nx">b</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="nx">bytePool</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%+v\n&quot;</span><span class="p">,</span> <span class="nx">bytePool</span><span class="p">)</span>
+
+    <span class="nx">obj</span> <span class="o">:=</span> <span class="nx">bytePool</span><span class="p">.</span><span class="nx">Get</span><span class="p">().(</span><span class="o">*</span><span class="p">[]</span><span class="kt">byte</span><span class="p">)</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="nx">obj</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v\n&quot;</span><span class="p">,</span> <span class="nx">obj</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>sync.Pool
+{noCopy:{} local:&lt;nil&gt; localSize:0 New:0x1090180}
+*[]uint8
+&amp;[0 0 0 0 0 0 0 0]
+</pre></div>
+
+<h2 id="_4"><strong>为什么要用类型断言</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<hr />
+<p>下面通过3个例子来说明为什么要用类型断言<code>(*int)</code></p>
+<p>首先，这种用法是不对的</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">e</span> <span class="kd">func</span><span class="p">()</span> <span class="kd">interface</span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">foo</span> <span class="p">=</span> <span class="nx">MyStruct</span><span class="p">{</span>
+    <span class="nx">e</span><span class="p">:</span> <span class="kd">func</span><span class="p">()</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">{</span>
+        <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="o">&amp;</span><span class="nx">i</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;foo: %T\n&quot;</span><span class="p">,</span> <span class="nx">foo</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;foo: %+v\n&quot;</span><span class="p">,</span> <span class="nx">foo</span><span class="p">)</span>
+
+    <span class="nx">a</span> <span class="o">:=</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">e</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;a: %T\n&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;a: %+v\n&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+
+    <span class="nx">a</span> <span class="p">=</span> <span class="mi">2</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;a: %T\n&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;a: %+v\n&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>foo: main.MyStruct
+foo: {e:0x10901f0}
+a: *int
+a: 0xc4200160b0
+a: int
+a: 2
+</pre></div>
+
+<p>可以看到，最后a的类型是int，而不是期望中的*int。为什么会这样，因为a是一个空接口interface{}，因此a可以接受任何类型的值</p>
+<p>那么改造一下（这样也是错的）：</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">e</span> <span class="kd">func</span><span class="p">()</span> <span class="kd">interface</span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">foo</span> <span class="p">=</span> <span class="nx">MyStruct</span><span class="p">{</span>
+    <span class="nx">e</span><span class="p">:</span> <span class="kd">func</span><span class="p">()</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">{</span>
+        <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="o">&amp;</span><span class="nx">i</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;foo: %T\n&quot;</span><span class="p">,</span> <span class="nx">foo</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;foo: %+v\n&quot;</span><span class="p">,</span> <span class="nx">foo</span><span class="p">)</span>
+
+    <span class="nx">a</span> <span class="o">:=</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">e</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;a: %T\n&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;a: %+v\n&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+
+    <span class="o">*</span><span class="nx">a</span> <span class="p">=</span> <span class="mi">2</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;a: %T\n&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;a: %+v\n&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>报错</p>
+<div class="codehilite"><pre><span></span>invalid indirect of a (type interface {})
+</pre></div>
+
+<p>因为接口类型（a是空接口）是不能使用<code>*a</code>来做赋值的。接下来，使用类型断言</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">e</span> <span class="kd">func</span><span class="p">()</span> <span class="kd">interface</span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">foo</span> <span class="p">=</span> <span class="nx">MyStruct</span><span class="p">{</span>
+    <span class="nx">e</span><span class="p">:</span> <span class="kd">func</span><span class="p">()</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">{</span>
+        <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="o">&amp;</span><span class="nx">i</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;foo: %T\n&quot;</span><span class="p">,</span> <span class="nx">foo</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;foo: %+v\n&quot;</span><span class="p">,</span> <span class="nx">foo</span><span class="p">)</span>
+
+    <span class="nx">a</span> <span class="o">:=</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">e</span><span class="p">().(</span><span class="o">*</span><span class="kt">int</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;a: %T\n&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;a: %+v\n&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+
+    <span class="o">*</span><span class="nx">a</span> <span class="p">=</span> <span class="mi">2</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;a: %T\n&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;a: %+v\n&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>foo: main.MyStruct
+foo: {e:0x1090210}
+a: *int
+a: 0xc4200160b0
+a: *int
+a: 0xc4200160b0
+</pre></div>
+
+<p>这样才是预期的，即a依然为指针</p>
+<h2 id="pool"><strong>pool是飞机，起步加速不如跑车</strong><a class="headerlink" href="#pool" title="Permanent link">&para;</a></h2>
+<hr />
+<p><strong>只有当每个对象占用内存较大时候，用pool才会改善性能</strong></p>
+<p>对比1（起步阶段）:</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;sync&quot;</span>
+    <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// 一个[]byte的对象池，每个对象为一个[]byte</span>
+<span class="kd">var</span> <span class="nx">bytePool</span> <span class="p">=</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Pool</span><span class="p">{</span>
+    <span class="nx">New</span><span class="p">:</span> <span class="kd">func</span><span class="p">()</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">{</span>
+<span class="hll">        <span class="nx">b</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span>        <span class="k">return</span> <span class="o">&amp;</span><span class="nx">b</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+    <span class="c1">// 不使用对象池</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">1000000000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">obj</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="nx">_</span> <span class="p">=</span> <span class="nx">obj</span>
+    <span class="p">}</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+    <span class="c1">// 使用对象池</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">1000000000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">obj</span> <span class="o">:=</span> <span class="nx">bytePool</span><span class="p">.</span><span class="nx">Get</span><span class="p">().(</span><span class="o">*</span><span class="p">[]</span><span class="kt">byte</span><span class="p">)</span>
+        <span class="nx">bytePool</span><span class="p">.</span><span class="nx">Put</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;without pool &quot;</span><span class="p">,</span> <span class="nx">b</span><span class="o">-</span><span class="nx">a</span><span class="p">,</span> <span class="s">&quot;s&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;with    pool &quot;</span><span class="p">,</span> <span class="nx">c</span><span class="o">-</span><span class="nx">b</span><span class="p">,</span> <span class="s">&quot;s&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>without pool  0 s
+with    pool  17 s
+</pre></div>
+
+<p>可以看到，当[]byte只有1个元素时候，用pool性能反而更差</p>
+<p>对比2（追赶阶段）:</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;sync&quot;</span>
+    <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// 一个[]byte的对象池，每个对象为一个[]byte</span>
+<span class="kd">var</span> <span class="nx">bytePool</span> <span class="p">=</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Pool</span><span class="p">{</span>
+    <span class="nx">New</span><span class="p">:</span> <span class="kd">func</span><span class="p">()</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">{</span>
+<span class="hll">        <span class="nx">b</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
+</span>        <span class="k">return</span> <span class="o">&amp;</span><span class="nx">b</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+    <span class="c1">// 不使用对象池</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">1000000000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">obj</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
+        <span class="nx">_</span> <span class="p">=</span> <span class="nx">obj</span>
+    <span class="p">}</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+    <span class="c1">// 使用对象池</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">1000000000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">obj</span> <span class="o">:=</span> <span class="nx">bytePool</span><span class="p">.</span><span class="nx">Get</span><span class="p">().(</span><span class="o">*</span><span class="p">[]</span><span class="kt">byte</span><span class="p">)</span>
+        <span class="nx">bytePool</span><span class="p">.</span><span class="nx">Put</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;without pool &quot;</span><span class="p">,</span> <span class="nx">b</span><span class="o">-</span><span class="nx">a</span><span class="p">,</span> <span class="s">&quot;s&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;with    pool &quot;</span><span class="p">,</span> <span class="nx">c</span><span class="o">-</span><span class="nx">b</span><span class="p">,</span> <span class="s">&quot;s&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>without pool  16 s
+with    pool  17 s
+</pre></div>
+
+<p>可以看到，飞机快赶上跑车了</p>
+<p>对比3（超越阶段）:</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;sync&quot;</span>
+    <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// 一个[]byte的对象池，每个对象为一个[]byte</span>
+<span class="kd">var</span> <span class="nx">bytePool</span> <span class="p">=</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Pool</span><span class="p">{</span>
+    <span class="nx">New</span><span class="p">:</span> <span class="kd">func</span><span class="p">()</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">{</span>
+<span class="hll">        <span class="nx">b</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">8000</span><span class="p">)</span>
+</span>        <span class="k">return</span> <span class="o">&amp;</span><span class="nx">b</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+    <span class="c1">// 不使用对象池</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">1000000000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">obj</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">8000</span><span class="p">)</span>
+        <span class="nx">_</span> <span class="p">=</span> <span class="nx">obj</span>
+    <span class="p">}</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+    <span class="c1">// 使用对象池</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">1000000000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">obj</span> <span class="o">:=</span> <span class="nx">bytePool</span><span class="p">.</span><span class="nx">Get</span><span class="p">().(</span><span class="o">*</span><span class="p">[]</span><span class="kt">byte</span><span class="p">)</span>
+        <span class="nx">bytePool</span><span class="p">.</span><span class="nx">Put</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;without pool &quot;</span><span class="p">,</span> <span class="nx">b</span><span class="o">-</span><span class="nx">a</span><span class="p">,</span> <span class="s">&quot;s&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;with    pool &quot;</span><span class="p">,</span> <span class="nx">c</span><span class="o">-</span><span class="nx">b</span><span class="p">,</span> <span class="s">&quot;s&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>输出</p>
+<div class="codehilite"><pre><span></span>without pool  128 s
+with    pool  17 s
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">可以看到2个特征</p>
+<ol>
+<li>
+<p>当每个对象的内存小于一定量的时候，不使用pool的性能秒杀使用pool；当内存处于某个量的时候，不使用pool和使用pool性能相当；当内存大于某个量的时候，使用pool的优势就显现出来了</p>
+</li>
+<li>
+<p>不使用pool，那么对象占用内存越大，性能下降越厉害；使用pool，无论对象占用内存大还是小，性能都保持不变。可以看到pool有点像飞机，虽然起步比跑车慢，但后劲十足。</p>
+</li>
+</ol>
+<p>即：pool适合占用内存大且并发量大的场景。当内存小并发量少的时候，使用pool适得其反</p>
+</div>
                 
                   
                 

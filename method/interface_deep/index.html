@@ -1462,28 +1462,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" title=":=" class="md-nav__link">
+  <a href="#_6" title="类型断言和类型转换的区别" class="md-nav__link">
+    类型断言和类型转换的区别
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" title=":=" class="md-nav__link">
     :=
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" title="空接口" class="md-nav__link">
+  <a href="#_8" title="空接口" class="md-nav__link">
     空接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" title="值传递" class="md-nav__link">
+  <a href="#_9" title="值传递" class="md-nav__link">
     值传递
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" title="进阶" class="md-nav__link">
+  <a href="#_10" title="进阶" class="md-nav__link">
     进阶
   </a>
   
@@ -2289,28 +2296,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" title=":=" class="md-nav__link">
+  <a href="#_6" title="类型断言和类型转换的区别" class="md-nav__link">
+    类型断言和类型转换的区别
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" title=":=" class="md-nav__link">
     :=
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" title="空接口" class="md-nav__link">
+  <a href="#_8" title="空接口" class="md-nav__link">
     空接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" title="值传递" class="md-nav__link">
+  <a href="#_9" title="值传递" class="md-nav__link">
     值传递
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" title="进阶" class="md-nav__link">
+  <a href="#_10" title="进阶" class="md-nav__link">
     进阶
   </a>
   
@@ -2443,7 +2457,33 @@ r = tty //tty实现了接口r，或者叫做tty赋值给了接口r
 <h2 id="_5"><strong>类型断言</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <hr />
 <p><a href="../../method/interface_assertion/#_2">详见接口的类型断言实现接口章节</a></p>
-<h2 id="_6"><strong>:=</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_6"><strong>类型断言和类型转换的区别</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<hr />
+<ol>
+<li>
+<p>类型断言是接口变量（包括空接口）的功能，只有接口变量才能做类型断言，非接口变量不能做类型断言，比如</p>
+<div class="codehilite"><pre><span></span><span class="nx">a</span> <span class="o">:=</span> <span class="mi">10</span>
+<span class="nx">b</span> <span class="o">:=</span> <span class="nx">a</span><span class="p">.(</span><span class="kt">int</span><span class="p">)</span>
+</pre></div>
+
+<p>报错</p>
+<div class="codehilite"><pre><span></span>invalid type assertion: b.(int) (non-interface type int on left)
+</pre></div>
+
+</li>
+<li>
+<p>类型转换只支持非接口变量，比如</p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">a</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">=</span> <span class="mf">3.14</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d\n&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="nx">a</span><span class="p">))</span>
+</pre></div>
+
+<p>报错</p>
+<div class="codehilite"><pre><span></span>cannot convert a (type interface {}) to type int: need type assertion
+</pre></div>
+
+</li>
+</ol>
+<h2 id="_7"><strong>:=</strong><a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <hr />
 <p>用短声明，将一个接口赋值给一个新变量，这个新变量则是一个接口类型的变量，而不是接口hold的变量类型，例如：</p>
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
@@ -2482,10 +2522,10 @@ a:  main.MyStruct {3 4} true
 b:  main.MyStruct {3 4} true
 </pre></div>
 
-<h2 id="_7"><strong>空接口</strong><a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_8"><strong>空接口</strong><a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <hr />
 <p><a href="../../method/interface_empty/#_2">详见空接口承接指针变量章节</a></p>
-<h2 id="_8"><strong>值传递</strong><a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_9"><strong>值传递</strong><a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <hr />
 <p>需要注意：被接口承接的值是值传递，接口类型对内部值得存储是值传递，即一个变量赋值给了一个接口变量，如果改变了原始的变量，其由接口存储的值也不会改变。</p>
 <p>比如把变量A赋值给接口变量i后，变量A的值更改了，接口变量i的值不会改，因为这种承接是将变量A的值复制后赋值给接口。当然如果把指针赋值给接口，那是可以改的</p>
@@ -2522,7 +2562,7 @@ s2 *main.MyStruct &amp;{33 4}
 e2 *main.MyStruct &amp;{33 4}
 </pre></div>
 
-<h2 id="_9"><strong>进阶</strong><a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h2 id="_10"><strong>进阶</strong><a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <hr />
 <p>详见: <a href="http://research.swtch.com/2009/12/go-data-structures-interfaces.html">http://research.swtch.com/2009/12/go-data-structures-interfaces.html</a></p>
 <div class="admonition note">
