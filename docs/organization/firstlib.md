@@ -27,7 +27,7 @@ go install github.com/cyent/golang/example/stringutil
 !!! warning "注意这里的路径"
 	路径不是`cyent/golang/example/stringutil/stringutil.a`，而是`cyent/golang/example/stringutil.a`。
 
-	上面`reverse.go`里的代码也可以除了放在`$GOPATH/src/github.com/cyent/golang/example/stringutil/reverse.go`，也可以放在`$GOPATH/src/github.com/cyent/golang/example/stringutil.go`。实际效果是一样的。
+	上面`reverse.go`里的代码除了放在`$GOPATH/src/github.com/cyent/golang/example/stringutil/reverse.go`，也可以放在`$GOPATH/src/github.com/cyent/golang/example/stringutil.go`。实际效果是一样的。
 
 	用stringutil目录只是为了分隔代码，这样比较容易让人理解，而且如果stringutil包里的函数比较多的时候，就需要分成多个源码文件，用文件名来标识内容，提高可读性，比如函数名叫做Reverse，文件名就叫做reverse.go。如果所有函数都放在一个代码文件里，那么这个代码文件就太庞大，显得很乱，不利于维护
 
