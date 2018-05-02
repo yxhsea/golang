@@ -2270,7 +2270,7 @@
 <div class="admonition warning">
 <p class="admonition-title">注意这里的路径</p>
 <p>路径不是<code>cyent/golang/example/stringutil/stringutil.a</code>，而是<code>cyent/golang/example/stringutil.a</code>。</p>
-<p>上面<code>reverse.go</code>里的代码也可以除了放在<code>$GOPATH/src/github.com/cyent/golang/example/stringutil/reverse.go</code>，也可以放在<code>$GOPATH/src/github.com/cyent/golang/example/stringutil.go</code>。实际效果是一样的。</p>
+<p>上面<code>reverse.go</code>里的代码除了放在<code>$GOPATH/src/github.com/cyent/golang/example/stringutil/reverse.go</code>，也可以放在<code>$GOPATH/src/github.com/cyent/golang/example/stringutil.go</code>。实际效果是一样的。</p>
 <p>用stringutil目录只是为了分隔代码，这样比较容易让人理解，而且如果stringutil包里的函数比较多的时候，就需要分成多个源码文件，用文件名来标识内容，提高可读性，比如函数名叫做Reverse，文件名就叫做reverse.go。如果所有函数都放在一个代码文件里，那么这个代码文件就太庞大，显得很乱，不利于维护</p>
 </div>
 <h2 id="lib_1"><strong>调用lib</strong><a class="headerlink" href="#lib_1" title="Permanent link">&para;</a></h2>
