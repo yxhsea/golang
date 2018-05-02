@@ -82,7 +82,7 @@ Hello, Go!
 	注意`go install`会将`stringutil.a`对象放到`pkg/darwin_amd64`目录中，它会反映出其源码目录。 这就是在此之后调用go工具，能找到包对象并避免不必要的重新编译的原因。darwin_amd64这部分能帮助跨平台编译，并反映出你的操作系统和架构。
 
 !!! note "静态链接"
-	Go的可执行命令是静态链接的；在运行生成的可执行二进制程序时，包对象`stringutil.a`无需存在。
+	Go编译时候默认是静态链接的；在运行生成的可执行二进制程序时，包对象`stringutil.a`无需存在。
 
 !!! warning "go源码文件第一行必须是package name"
 	package name就是调用时候import中/最后一段，比如想别的程序通过import "crypto/rot13"调用，那么就写package rot13
