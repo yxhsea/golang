@@ -85,7 +85,7 @@ Hello, Go!
 	Go编译时候默认是静态链接的；在运行生成的可执行二进制程序时，包对象`stringutil.a`无需存在。
 
 !!! warning "go源码文件第一行必须是package name"
-	package name就是调用时候import中/最后一段，比如想别的程序通过import "crypto/rot13"调用，那么就写package rot13
+	package name就是调用时候import以/分隔的最后一段，比如想别的程序通过import "crypto/rot13"调用，那么这里就写package rot13
 
 	生成可执行程序，package必须为main
 
