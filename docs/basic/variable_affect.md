@@ -202,9 +202,8 @@
 
 **关于for、if等带有代码块的作用域，详见各自章节**:
 
-1. [for作用域](/syntax/for/#_4)
+1. [for作用域](/flow/for/#_4)
 
-2. [if作用域](/syntax/if/#_3)
+2. [if作用域](/flow/if/#_3)
 
-3. [switch作用域](/syntax/switch/#_4)
-
+3. [switch作用域](/flow/switch/#_4)
