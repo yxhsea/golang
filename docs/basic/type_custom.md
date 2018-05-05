@@ -64,7 +64,7 @@ type (
 	main.MyInt, 1
 	```
 
-2. 普通方式
+2. literal方式
 
 	```go
 	package main
@@ -74,8 +74,7 @@ type (
 	type MyInt int
 
 	func main() {
-		var a MyInt
-		a = 1
+		var a MyInt = 1
 		fmt.Printf("%T, %d\n", a, a)
 	}
 	```
