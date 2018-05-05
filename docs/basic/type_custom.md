@@ -185,7 +185,7 @@ type (
 
 	```text
 	main.MyInt, main.AAInt
-	1 2
+	1, 2
 	```
 
 4. 可以把type写在main里，比如：
