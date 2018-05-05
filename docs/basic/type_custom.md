@@ -177,7 +177,7 @@ type (
 		a := MyInt(1)
 		b := AAInt(2)
 		fmt.Printf("%T, %T\n", a, b)
-		fmt.Println(a, b)
+		fmt.Printf("%d, %d\n", a, b)
 	}
 	```
 
