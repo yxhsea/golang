@@ -105,6 +105,9 @@ func main() {
 }
 ```
 
+!!! note
+	使用range的话就不能在前后使用分号了
+
 [详见range详解](/other/range/)
 
 ## **作用域**

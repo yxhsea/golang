@@ -58,6 +58,6 @@ for _, value := range pow {
 ```
 
 !!! note "关于左移和右移运算符"
-	[左移运算符](/appendix/binary_operation/#_1)
+	[左移运算符](/other/binary_operation/#_1)
 
-	[右移运算符](/appendix/binary_operation/#_2)
+	[右移运算符](/other/binary_operation/#_2)
