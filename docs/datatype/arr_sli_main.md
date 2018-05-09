@@ -123,5 +123,3 @@ slice
 array的类型示例：[6]int
 
 slice的类型示例：[]int
-
-因此slice也叫做数组类型（这个忘了为啥叫数组类型）
