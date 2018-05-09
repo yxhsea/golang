@@ -1,4 +1,4 @@
-在golang中有array（数组）和slice（切片）关系紧密，因此放在一个章节里阐述
+在golang中array（数组）和slice（切片）关系紧密，因此放在一个章节里阐述
 
 下面将array和slice从不同维度进行比较
 
