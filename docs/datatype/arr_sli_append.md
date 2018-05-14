@@ -10,7 +10,7 @@ sli = append(sli, 元素)
 	每一次扩容空间，都会重新申请一块区域，把旧空间里面的元素复制进来到新空间里，然后把新的元素追加进来。旧空间里面的元素等着垃圾回收。
 
 ??? note "示例"
-	```go
+	```go hl_lines="31"
 	func printSlice(str string, s []int) {
 		fmt.Printf("%s len=%d cap=%d %v\n", str, len(s), cap(s), s)
 	}
@@ -85,7 +85,7 @@ sli = append(sli, 元素)
 	}
 	```
 
-	注意：虽然a是s的衍生出来的，但从上面红色部分开始，a和s就分道扬镳了
+	注意：虽然a是s的衍生出来的，但从上面背景高亮部分开始，a和s就分道扬镳了
 
 !!! warning "建议使用make()提前申请空间"
 	建议使用`make([]int64, 0, 8)`这种方式提前申请好空间，以便降低append扩容引起的旧空间内存回收问题，来达到性能优化。
