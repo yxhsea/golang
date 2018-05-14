@@ -87,7 +87,7 @@ func main() {
 
 若改为
 
-```text
+```go
 package main
 
 import "fmt"
