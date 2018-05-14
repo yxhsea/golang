@@ -2208,8 +2208,8 @@
     <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span> <span class="c1">// a len=3 cap=4 [777 1 2]</span>
     <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="c1">// b len=3 cap=4 [777 1 2]</span>
 
-    <span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-    <span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">66</span>
+<span class="hll">    <span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</span>    <span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">66</span>
     <span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">666</span>
     <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span> <span class="c1">// s len=5 cap=8 [777 1 2 3 4]</span>
     <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span> <span class="c1">// a len=3 cap=4 [666 1 2]</span>
@@ -2251,7 +2251,7 @@
     <span class="nx">printSlice</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="c1">// b len=3 cap=4 [111 1 2]</span>
 <span class="p">}</span>
 </pre></div>
-<p>注意：虽然a是s的衍生出来的，但从上面红色部分开始，a和s就分道扬镳了</p></details><div class="admonition warning">
+<p>注意：虽然a是s的衍生出来的，但从上面背景高亮部分开始，a和s就分道扬镳了</p></details><div class="admonition warning">
 <p class="admonition-title">建议使用make()提前申请空间</p>
 <p>建议使用<code>make([]int64, 0, 8)</code>这种方式提前申请好空间，以便降低append扩容引起的旧空间内存回收问题，来达到性能优化。</p>
 </div>
