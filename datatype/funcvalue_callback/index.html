@@ -2376,40 +2376,36 @@
 <li>
 <p>只写一个libvirt模块，接收参数来对虚拟机进行启动、停止、重启、删除等操作。但这样有3个问题</p>
 <ul>
-<li>这个模块要做很多类型的事情，包括连接libvirt接口、宿主机操作（网络、存储、性能获取）、vm操作（创建、删除、启动、停止）</li>
-<li>这个模块要维护libvirt版本的兼容性，当版本越来越多的时候，会因为兼容各个版本导致模块很臃肿</li>
-<li>每增加一个对虚拟机操作的功能，都是在更新这个模块，次数多了，自然也变得臃肿</li>
+<li>
+<p>这个模块要做很多类型的事情，包括连接libvirt接口、宿主机操作（网络、存储、性能获取）、vm操作（创建、删除、启动、停止）</p>
+</li>
+<li>
+<p>这个模块要维护libvirt版本的兼容性，当版本越来越多的时候，会因为兼容各个版本导致模块很臃肿</p>
+</li>
+<li>
+<p>每增加一个对虚拟机操作的功能，都是在更新这个模块，次数多了，自然也变得臃肿</p>
+</li>
 </ul>
 </li>
 <li>
 <p>libvirt模块只写最基础的功能，例如只写连接libvirt接口，然后接收一个函数来对宿主机或者虚拟机做操作。然后调用者自己实现宿主机操作的回调函数、虚拟机操作的回调函数，例如需要对某个虚拟机进行启动，操作是：</p>
 <ol>
-<li>调用libvirt模块连接api</li>
-<li>传入调用者自己实现的启动虚拟机的回调函数作为参数传递给libvirt模块</li>
+<li>
+<p>调用libvirt模块连接api</p>
+</li>
+<li>
+<p>传入调用者自己实现的启动虚拟机的回调函数作为参数传递给libvirt模块</p>
+</li>
 </ol>
 <p>这样的好处有2个：</p>
 <ul>
-<li>将原本libvirt模块需要做的3件事，拆解开来，维护量大大减少</li>
-<li>调用者需要哪个功能，就实现哪个功能，不需要就不用实现，代码开量明显减少</li>
+<li>
+<p>将原本libvirt模块需要做的3件事，拆解开来，维护量大大减少</p>
+</li>
+<li>
+<p>调用者需要哪个功能，就实现哪个功能，不需要就不用实现，代码开量明显减少</p>
+</li>
 </ul>
-<p>例如：</p>
-<p>上面提到的调用者，可以叫vm.py，libvirt模块分为kvm.py、container.py，用到kvm.py时候就import kvm</p>
-<p>vm.py
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">kvm</span>
-
-<span class="k">def</span> <span class="nf">reboot</span><span class="p">(</span><span class="n">dom_uuid</span><span class="p">,</span> <span class="n">host_ip</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">shutdown_vm</span><span class="p">(</span><span class="n">dom</span><span class="p">):</span>
-        <span class="o">...</span>
-    <span class="n">kvm</span><span class="o">.</span><span class="n">libvirt_connect</span><span class="p">(</span><span class="n">shutdown_vm</span><span class="p">(</span><span class="n">dom</span><span class="p">),</span> <span class="n">host_ip</span><span class="p">,</span> <span class="n">dom_uuid</span><span class="o">=</span><span class="n">dom_uuid</span><span class="p">)</span>
-</pre></div></p>
-<p>kvm.py
-<div class="codehilite"><pre><span></span><span class="c1"># 封装libvirt connect</span>
-<span class="k">def</span> <span class="nf">libvirt_conenct</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">dom_uuid</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="n">callback</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
-</pre></div></p>
-<div class="admonition note">
-<p>这个例子也是阻塞式回调，延迟式回调还没研究过~</p>
-</div>
 </li>
 </ol>
 <h2 id="_3"><strong>回调函数类型</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
