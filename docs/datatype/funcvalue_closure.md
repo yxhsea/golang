@@ -80,18 +80,8 @@ func(x int) int {
 ```
 
 !!! note "因此，这个时候就是"
-
 	```go
 	pos := func(x int) int {
-		sum += x
-		return sum
-	}
-	```
-
-	等同于
-
-	```go
-	func pos(x int) int {
 		sum += x
 		return sum
 	}

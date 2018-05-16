@@ -138,42 +138,24 @@
 使用libvirt api对虚拟机进行操作，有2种方式：
 
 1. 只写一个libvirt模块，接收参数来对虚拟机进行启动、停止、重启、删除等操作。但这样有3个问题
+
 	- 这个模块要做很多类型的事情，包括连接libvirt接口、宿主机操作（网络、存储、性能获取）、vm操作（创建、删除、启动、停止）
+
 	- 这个模块要维护libvirt版本的兼容性，当版本越来越多的时候，会因为兼容各个版本导致模块很臃肿
+
 	- 每增加一个对虚拟机操作的功能，都是在更新这个模块，次数多了，自然也变得臃肿
 
 2. libvirt模块只写最基础的功能，例如只写连接libvirt接口，然后接收一个函数来对宿主机或者虚拟机做操作。然后调用者自己实现宿主机操作的回调函数、虚拟机操作的回调函数，例如需要对某个虚拟机进行启动，操作是：
+
 	1. 调用libvirt模块连接api
+
 	2. 传入调用者自己实现的启动虚拟机的回调函数作为参数传递给libvirt模块
 
 	这样的好处有2个：
 
 	- 将原本libvirt模块需要做的3件事，拆解开来，维护量大大减少
+	
 	- 调用者需要哪个功能，就实现哪个功能，不需要就不用实现，代码开量明显减少
-
-	例如：
-
-	上面提到的调用者，可以叫vm.py，libvirt模块分为kvm.py、container.py，用到kvm.py时候就import kvm
-
-	vm.py
-	```python
-	import kvm
-
-	def reboot(dom_uuid, host_ip):
-		def shutdown_vm(dom):
-			...
-		kvm.libvirt_connect(shutdown_vm(dom), host_ip, dom_uuid=dom_uuid)
-	```
-
-	kvm.py
-	```python
-	# 封装libvirt connect
-	def libvirt_conenct(callback, host, dom_uuid=None):
-		callback(...)
-	```
-
-	!!! note ""
-		这个例子也是阻塞式回调，延迟式回调还没研究过~
 
 ## **回调函数类型**
 
