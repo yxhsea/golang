@@ -2421,8 +2421,38 @@
 <p>Overload是重载的意思，Override是覆盖的意思，也就是重写。</p>
 <p>重载Overload表示同一个类中可以有多个名称相同的方法，但这些方法的参数列表各不相同（即参数个数或类型不同）。</p>
 <p>重写Override表示子类中的方法可以与父类中的某个方法的名称和参数完全相同，通过子类创建的实例对象调用这个方法时，将调用子类中的定义方法，这相当于把父类中定义的那个完全相同的方法给覆盖了，这也是面向对象编程的多态性的一种表现。</p>
-<p>【这句话不是很理解】重写override是父类与子类之间多态性的一种表现，重载overload是一个类中多态性的一种表现</p>
-<p>python没有overload，是因为python是动态语言，python的函数可以传入任意类型和任意数量的参数（可以用*args或**kwargs）。因此python不需要overload【这句话理解不完全对，主要是说明python比较智能和灵活，可以传入任意数量的参数】。</p>
+<p><strong>重写override是父类与子类之间多态性的一种表现，重载overload是一个类中多态性的一种表现</strong>，go语言只支持overload，不支持override</p>
+<details class="note"><summary>go不支持override</summary><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span> <span class="nx">MyStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">MyStruct</span><span class="p">)</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">this</span><span class="p">.</span><span class="nx">X</span> <span class="o">+</span> <span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">MyStruct</span><span class="p">)</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">j</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">this</span><span class="p">.</span><span class="nx">X</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">j</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">MyStruct</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">}</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">foo</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">foo</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<p>报错</p><div class="codehilite"><pre><span></span>./t.go:13:6: (*MyStruct).foo redeclared in this block
+    previous declaration at ./t.go:9:6
+./t.go:13:6: method redeclared: MyStruct.foo
+    method(*MyStruct) func(int)
+    method(*MyStruct) func(string)
+./t.go:21:8: cannot use &quot;hello&quot; (type string) as type int in argument to s.foo
+</pre></div>
+</details><p>python没有overload，是因为python是动态语言，python的函数可以传入任意类型和任意数量的参数（可以用*args或**kwargs）。因此python不需要overload【这句话理解不完全对，主要是说明python比较智能和灵活，可以传入任意数量的参数】。</p>
 <h2 id="_1"><strong>多态</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <hr />
 <p><a href="http://bbs.itheima.com/thread-119448-1-1.html">http://bbs.itheima.com/thread-119448-1-1.html</a></p>
