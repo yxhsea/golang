@@ -26,7 +26,44 @@ Overload是重载的意思，Override是覆盖的意思，也就是重写。
 
 重写Override表示子类中的方法可以与父类中的某个方法的名称和参数完全相同，通过子类创建的实例对象调用这个方法时，将调用子类中的定义方法，这相当于把父类中定义的那个完全相同的方法给覆盖了，这也是面向对象编程的多态性的一种表现。
 
-【这句话不是很理解】重写override是父类与子类之间多态性的一种表现，重载overload是一个类中多态性的一种表现
+**重写override是父类与子类之间多态性的一种表现，重载overload是一个类中多态性的一种表现**，go语言只支持overload，不支持override
+
+??? note "go不支持override"
+	```go
+	package main
+
+	import "fmt"
+
+	type MyStruct struct {
+		X, Y int
+	}
+
+	func (this *MyStruct) foo(i int) {
+		fmt.Println(this.X + i)
+	}
+
+	func (this *MyStruct) foo(j string) {
+		fmt.Println(this.X)
+		fmt.Println(j)
+	}
+
+	func main() {
+		s := MyStruct{3,4}
+		s.foo(100)
+		s.foo("hello")
+	}
+	```
+
+	报错
+
+	```text
+	./t.go:13:6: (*MyStruct).foo redeclared in this block
+		previous declaration at ./t.go:9:6
+	./t.go:13:6: method redeclared: MyStruct.foo
+		method(*MyStruct) func(int)
+		method(*MyStruct) func(string)
+	./t.go:21:8: cannot use "hello" (type string) as type int in argument to s.foo
+	```
 
 python没有overload，是因为python是动态语言，python的函数可以传入任意类型和任意数量的参数（可以用*args或**kwargs）。因此python不需要overload【这句话理解不完全对，主要是说明python比较智能和灵活，可以传入任意数量的参数】。
 
