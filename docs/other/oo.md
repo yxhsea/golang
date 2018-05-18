@@ -299,7 +299,7 @@ func main() {
 
 ---
 
-http://legendtkl.com/2015/11/25/go-generic-programming/
+[go"泛型编程"](http://legendtkl.com/2015/11/25/go-generic-programming/)
 
 ## **抽象类与接口**
 
