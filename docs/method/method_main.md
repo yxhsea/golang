@@ -108,17 +108,18 @@ func main() {
 
 	上面这个例子说明了导入的包里的自定义type可以用（type首字母大写），但不能作为method的receiver
 
-3. 只有放在包级别的type，并且首字母大写的，才能被导入给其他模块引用，详见[数据类型章节-自定义类型](/basic/type_custom/#_3)的第4点
+!!! quote "顺带说下"
+	1. 只有放在包级别的type，并且首字母大写的，才能被导入给其他模块引用，详见[数据类型章节-自定义类型](/basic/type_custom/#_3)的第4点
 
-4. 若只调用一次方法，则不用赋给变量，直接在类型后跟方法就行，比如
+	2. 若只调用一次方法，则不用赋给变量，直接在类型后跟方法就行，比如
 
-	```go
-	a := Vertex{3, 4}
-	fmt.Println(a.Abs())
-	```
+		```go
+		a := Vertex{3, 4}
+		fmt.Println(a.Abs())
+		```
 
-	也可以这么写
+		也可以这么写
 
-	```go
-	fmt.Println(Vertex{3, 4}.Abs())
-	```
+		```go
+		fmt.Println(Vertex{3, 4}.Abs())
+		```
