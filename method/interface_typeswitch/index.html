@@ -2371,14 +2371,19 @@ fmt.Printf(&quot;%v %T\n&quot;, a, a)
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;case MyStruct: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
     <span class="k">case</span> <span class="kd">interface</span><span class="p">{}:</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;case interface{}: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-    <span class="k">case</span> <span class="nx">Adder</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;case Adder: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+<span class="hll">    <span class="k">case</span> <span class="nx">Adder</span><span class="p">:</span>
+</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;case Adder: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
     <span class="k">default</span><span class="p">:</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;not case: %T %v\n&quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
+<p>输出</p>
+<div class="codehilite"><pre><span></span>case MyStruct: main.MyStruct {3 4}
+</pre></div>
+
+<p>另外上面</p>
 <ol>
 <li>
 <p><code>var i interface{} = s</code>或<code>var i Adder = s</code>用哪个都一样</p>
