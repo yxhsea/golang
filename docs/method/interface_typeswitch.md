@@ -133,7 +133,7 @@ undefined: MyStruct
 
 ---
 
-```go
+```go hl_lines="26"
 package main
 
 import "fmt"
@@ -166,6 +166,14 @@ func main() {
 	}
 }
 ```
+
+输出
+
+```text
+case MyStruct: main.MyStruct {3 4}
+```
+
+另外上面
 
 1. `var i interface{} = s`或`var i Adder = s`用哪个都一样
 
