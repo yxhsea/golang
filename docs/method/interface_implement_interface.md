@@ -81,10 +81,8 @@ func main() {
 7
 ```
 
-!!! warning
-	返回类型可以用来实现接口，但在内部并不等于类型转换：
-
-	```go
+??? warning "返回类型可以用来实现接口，但在内部并不等于类型转换"
+	```go linenums="1"
 	package main
 
 	import "fmt"
@@ -140,7 +138,7 @@ func main() {
 	./example.go:44: res3.Sum undefined (type Fooer has no field or method Sum)
 	```
 
-	附类型转换的报错：
+	附类型转换的报错（比如`Fooer(s3)`，而s3没有没有实现Fooer接口）：
 	```text
 	./test.go:39: cannot convert s3 (type *MyStruct) to type Fooer:
 	*MyStruct does not implement Fooer (missing Foo method)
