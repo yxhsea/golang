@@ -2358,10 +2358,51 @@ i: main.MyStruct {3 4}
 <div class="codehilite"><pre><span></span>7
 </pre></div>
 
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>返回类型可以用来实现接口，但在内部并不等于类型转换：</p>
-<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+<details class="warning"><summary>返回类型可以用来实现接口，但在内部并不等于类型转换</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 
@@ -2407,20 +2448,15 @@ i: main.MyStruct {3 4}
     <span class="nx">res3</span><span class="p">.</span><span class="nx">Sum</span><span class="p">()</span>
 <span class="p">}</span>
 </pre></div>
-
-<p>报错：</p>
-<div class="codehilite"><pre><span></span>./example.go:26: cannot use m (type *MyStruct) as type Fooer in return argument:
+</td></tr></table>
+<p>报错：</p><div class="codehilite"><pre><span></span>./example.go:26: cannot use m (type *MyStruct) as type Fooer in return argument:
     *MyStruct does not implement Fooer (missing Foo method)
 ./example.go:44: res3.Sum undefined (type Fooer has no field or method Sum)
 </pre></div>
-
-<p>附类型转换的报错：
+<p>附类型转换的报错（比如<code>Fooer(s3)</code>，而s3没有没有实现Fooer接口）：
 <div class="codehilite"><pre><span></span>./test.go:39: cannot convert s3 (type *MyStruct) to type Fooer:
 *MyStruct does not implement Fooer (missing Foo method)
-</pre></div></p>
-<p>比较上面2个错误可以发现报错内容是不一样的，虽然第二行的提示是一样的，都是没有实现，并且括号里说明了没有实现的原因，但第一行的前者是提示类型不对，后者是不能转换。这说明了返回类型可以用来实现接口，但在内部并不等于类型转换</p>
-</div>
-<h2 id="_5"><strong>类型断言实现接口</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+</pre></div></p><p>比较上面2个错误可以发现报错内容是不一样的，虽然第二行的提示是一样的，都是没有实现，并且括号里说明了没有实现的原因，但第一行的前者是提示类型不对，后者是不能转换。这说明了返回类型可以用来实现接口，但在内部并不等于类型转换</p></details><h2 id="_5"><strong>类型断言实现接口</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <hr />
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
