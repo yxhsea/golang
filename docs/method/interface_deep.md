@@ -78,7 +78,7 @@ r = new(bytes.Buffer)
 即接口变量的类型始终这个接口类型 ，而不是实现了这个接口变量的某type，无论这个接口变量hold哪个type
 
 !!! warning
-	目前还不找到办法查询到这个接口变量的类型，比如是io.Reader而不是io.Writer
+	目前还不找到办法查询到这个接口变量hold的值的类型，比如是io.Reader而不是io.Writer
 
 ## **基类型**
 
