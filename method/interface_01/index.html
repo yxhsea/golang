@@ -2207,7 +2207,7 @@ create_vrouter<span class="o">()</span> <span class="o">{</span>
 create_vrouter <span class="s2">&quot;vrtest&quot;</span>
 </pre></div>
 
-<p>第二个耦合的解决：将netns封装为一个函数</p>
+<p>第二个耦合的解决：将netns名的获取封装为一个函数</p>
 <div class="codehilite"><pre><span></span>get_ns_name<span class="o">()</span> <span class="o">{</span>
     <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
     <span class="nb">echo</span> <span class="s2">&quot;VRouter-</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span>
