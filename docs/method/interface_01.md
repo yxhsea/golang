@@ -39,7 +39,7 @@ create_vrouter() {
 create_vrouter "vrtest"
 ```
 
-第二个耦合的解决：将netns封装为一个函数
+第二个耦合的解决：将netns名的获取封装为一个函数
 
 ```shell
 get_ns_name() {
