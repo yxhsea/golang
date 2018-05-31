@@ -2539,7 +2539,7 @@ b:  main.MyStruct {3 4} true
 <p><a href="../../method/interface_empty/#_2">详见空接口承接指针变量章节</a></p>
 <h2 id="_9"><strong>值传递</strong><a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <hr />
-<p>需要注意：被接口承接的值是值传递，接口类型对内部值得存储是值传递，即一个变量赋值给了一个接口变量，如果改变了原始的变量，其由接口存储的值也不会改变。</p>
+<p>需要注意：被接口承接的值是值传递，接口类型对内部值的存储是值传递，即一个变量赋值给了一个接口变量，如果改变了原始的变量，其由接口存储的值也不会改变。</p>
 <p>比如把变量A赋值给接口变量i后，变量A的值更改了，接口变量i的值不会改，因为这种承接是将变量A的值复制后赋值给接口。当然如果把指针赋值给接口，那是可以改的</p>
 <p>举例如下：</p>
 <div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
