@@ -2709,7 +2709,7 @@ true
 </ol>
 <h3 id="fieldname"><strong>Field().Name</strong><a class="headerlink" href="#fieldname" title="Permanent link">&para;</a></h3>
 <p>查询struct元素值，比如.Field(0)表示查询struct中第一个元素的值，.FieldByName("X")表示查询struct中元素名为X的值</p>
-<p>但由于Type和Value都有Field()和FieldByName()，但有所不同，并且有的支持.Name，有的不支持，这里做了个测试，贴出结果</p>
+<p>Type和Value都有Field()和FieldByName()，但有所不同，并且有的支持.Name，有的不支持，这里做了个测试，贴出结果</p>
 <div class="codehilite"><pre><span></span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
 <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">Name</span><span class="p">)</span> <span class="c1">// panic</span>
 <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">FieldByName</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">))</span>
