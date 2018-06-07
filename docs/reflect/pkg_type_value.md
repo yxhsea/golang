@@ -198,7 +198,7 @@ true
 
 查询struct元素值，比如.Field(0)表示查询struct中第一个元素的值，.FieldByName("X")表示查询struct中元素名为X的值
 
-但由于Type和Value都有Field()和FieldByName()，但有所不同，并且有的支持.Name，有的不支持，这里做了个测试，贴出结果
+Type和Value都有Field()和FieldByName()，但有所不同，并且有的支持.Name，有的不支持，这里做了个测试，贴出结果
 
 ```go
 fmt.Println(v.Field(i))
